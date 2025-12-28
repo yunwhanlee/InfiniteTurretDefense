@@ -7,22 +7,23 @@ public class Player : MonoBehaviour
         IDLE, DEAD
     }
 
+    public bool IsAlive => hp > 0;
+
+    [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
+
     int hp;
     int maxHp;
-    int dmg;
     int missileCnt = 1;
     float attackSpeed = 3;
     float criticalPer = 0;
-    float criticalDmg = 1.5f;
+    float criticalDmgPer = 1.5f;
     float fixSpan = 5;
     float splashPer = 0;
     float splashing = 0;
-    
+
     float time = 0;
     bool isTarget = false;
-    public bool IsAlive => hp > 0;
-    public STATE state;
-    
+
     void Start(){
         state = STATE.IDLE;
         time = attackSpeed;
