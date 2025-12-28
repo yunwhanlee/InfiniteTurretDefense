@@ -1,3 +1,6 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="ParticleImage.csproj" />
+  <Project Path="ParticleImage.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>
