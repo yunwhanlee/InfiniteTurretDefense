@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public enum MONSTER_TYPE
+public enum ENEMY_TYPE
 {
     NORMAL, ELITE, BOSS
 }
@@ -16,12 +16,13 @@ public class Enemy : MonoBehaviour
     }
     
     public int maxHp;
-    public float hp;
+    public int hp;
     public float moveSpeed;
     public int dmg;
     public bool IsAlive => hp > 0;
+    public Transform targetSpotTf;
 
-    [SerializeField] MONSTER_TYPE type;    public MONSTER_TYPE Type {get => type;}
+    [SerializeField] ENEMY_TYPE type;    public ENEMY_TYPE Type {get => type;}
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
     // 컴포넌트
@@ -102,17 +103,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void OnHit(int dmg)
     {
-        if(IsAlive)
-        {
-            hp -= dmg;
-            Flash();
-        }
-        else
+        hp -= dmg;
+        Flash();
+
+        if(!IsAlive)
         {
             state = STATE.DEAD;
             hp = 0;
-            Flash();
-
             Destroy(gameObject, 0.1f);
         }
     }

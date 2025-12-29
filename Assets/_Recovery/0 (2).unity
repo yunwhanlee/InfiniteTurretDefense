@@ -546,7 +546,7 @@ MonoBehaviour:
   state: 0
   hp: 0
   maxHp: 1000
-  attackSpeed: 1
+  attackSpeed: 2
   time: 0
 --- !u!114 &1495804812
 MonoBehaviour:
@@ -560,10 +560,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d520b4b741e26f74fb541a14101799ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetFinder
-  radius: 5
+  radius: 4.5
+  viewAngle: 120
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
+  bossWeight: 1000
+  eliteWeight: 500
+  distanceWeight: 1
+  hpWeight: 2
   CurrentTarget: {fileID: 0}
 --- !u!1 &1856723148
 GameObject:

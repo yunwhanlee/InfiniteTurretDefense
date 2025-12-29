@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    int dmg;
-    float moveSpeed;
+    [SerializeField] int dmg; public int Dmg {get => dmg; set => dmg = value;}
+    [SerializeField] float moveSpeed;
 
-    Vector3 playerPos = Vector3.zero;
-    Vector3 direction;
-
-    void Start()
-    {
-        direction = (playerPos - transform.position).normalized;
-    }
+    Vector3 direction; public Vector3 Direction {get => direction; set => direction = value;}
 
     void Update()
     {
@@ -25,7 +19,10 @@ public class Missile : MonoBehaviour
         {
             Enemy enemy = col.GetComponent<Enemy>();
             enemy.OnHit(dmg);
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
         }
     }
+
+#region FUNC
+#endregion
 }

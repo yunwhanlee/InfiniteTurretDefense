@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7057000730045369669}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b621362da1d2834797aa8afa8a664fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
+  dmg: 5
+  moveSpeed: 5
 --- !u!58 &7057000730045369669
 CircleCollider2D:
   m_ObjectHideFlags: 0
