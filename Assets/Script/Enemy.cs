@@ -110,7 +110,8 @@ public class Enemy : MonoBehaviour
         {
             state = STATE.DEAD;
             hp = 0;
-            Destroy(gameObject, 0.1f);
+            anim.SetTrigger(ANIM_TRG_IS_DEAD);
+            Destroy(gameObject, 1.5f);
         }
     }
 
