@@ -46,11 +46,11 @@ TagManager:
   - name: Shadow
     uniqueID: 3928739325
     locked: 0
-  - name: Enemy
-    uniqueID: 940146193
-    locked: 0
   - name: Tower
     uniqueID: 898599701
+    locked: 0
+  - name: Enemy
+    uniqueID: 940146193
     locked: 0
   - name: Chara
     uniqueID: 2057799953
