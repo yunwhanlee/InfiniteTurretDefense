@@ -14,15 +14,12 @@ public class EnemyManager : MonoBehaviour
     public Transform enemyGroupTf;
     IObjectPool<Enemy> pool;    public IObjectPool<Enemy> Pool {get => pool;}
 
-    void Awake()
+    void Start()
     {
         pool = new ObjectPool<Enemy>(
             Create, OnGet, OnRelease, OnDelete, maxSize: 20
         );
-    }
 
-    void Start()
-    {
         time = span;
     }
 

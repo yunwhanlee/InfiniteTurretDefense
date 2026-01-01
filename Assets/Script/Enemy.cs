@@ -8,6 +8,8 @@ public enum ENEMY_TYPE
     NORMAL, ELITE, BOSS
 }
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
     public enum STATE
@@ -29,7 +31,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
     // 컴포넌트
-    [SerializeField] EnemyManager em;
     SpriteRenderer sprRdr;
     Animator anim;
 
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
     Vector3 playerPos;
     Vector3 direction;
     Coroutine corFlashId;
+    Coroutine CorAttackId;
 
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
 
@@ -44,13 +46,12 @@ public class Enemy : MonoBehaviour
     const string ANIM_TRG_IS_ATTACK = "IsAttack";
     const string ANIM_TRG_IS_DEAD = "IsDead";
 
-    void Start()
+    void Awake()
     {
         // 게임 시작이후 한번만 실행될 것
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         propBlock = new MaterialPropertyBlock();
-
         playerPos = Vector3.zero;
     }
 
@@ -70,7 +71,7 @@ public class Enemy : MonoBehaviour
         //TODO Player를 Config로 상수만들기
         if(col.gameObject.CompareTag("Player"))
         {
-            Player player = col.GetComponent<Player>();
+            Player player = GameManager._.Player;
             Attack(player);
         }
     }
@@ -97,10 +98,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Attack(Player player)
     {
-        Debug.Log("Attack()::");
+        Debug.Log("Attack():: player=", player);
         state = STATE.ATTACK;
 
-        StartCoroutine(CorAttack(player));
+        CorAttackId = StartCoroutine(CorAttack(player));
     }
 
     IEnumerator CorAttack(Player player)
@@ -120,15 +121,17 @@ public class Enemy : MonoBehaviour
 
         if(!IsAlive)
         {
-            state = STATE.DEAD;
-            hp = 0;
-            anim.SetTrigger(ANIM_TRG_IS_DEAD);
             StartCoroutine(CorDead());
         }
     }
 
     IEnumerator CorDead()
     {
+        state = STATE.DEAD;
+        hp = 0;
+        anim.SetTrigger(ANIM_TRG_IS_DEAD);
+        StopCoroutine(CorAttackId);
+
         yield return new WaitForSeconds(1.5f);
         OnDeadEvent?.Invoke(this);
     }
