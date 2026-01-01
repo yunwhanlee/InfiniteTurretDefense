@@ -38,6 +38,13 @@ public class Missile : MonoBehaviour
         }
     }
 
+    // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 #region FUNC
+
 #endregion
 }
