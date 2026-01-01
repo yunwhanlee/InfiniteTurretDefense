@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
     public static GameManager _;
 
     // 컴포넌트
-    public Player Player;
+    public Tower tower;
+    public MissileManager msm;
 
     void Awake()
     {
         _ = this;
-        Player = GameObject.Find("Tower").GetComponent<Player>();
+        tower = GameObject.Find("Tower").GetComponent<Tower>();
+        msm = GameObject.Find("MissileManager").GetComponent<MissileManager>();
     }
 
     //! 어차피 하나의 씬에서 플레이 될거라서 필요X

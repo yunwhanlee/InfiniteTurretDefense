@@ -71,8 +71,8 @@ public class Enemy : MonoBehaviour
         //TODO Player를 Config로 상수만들기
         if(col.gameObject.CompareTag("Player"))
         {
-            Player player = GameManager._.Player;
-            Attack(player);
+            Tower tower = GameManager._.tower;
+            Attack(tower);
         }
     }
 
@@ -96,18 +96,18 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 플레이어를 공격
     /// </summary>
-    public void Attack(Player player)
+    public void Attack(Tower tower)
     {
-        Debug.Log("Attack():: player=", player);
+        Debug.Log("Attack():: tower=", tower);
         state = STATE.ATTACK;
 
-        CorAttackId = StartCoroutine(CorAttack(player));
+        CorAttackId = StartCoroutine(CorAttack(tower));
     }
 
-    IEnumerator CorAttack(Player player)
+    IEnumerator CorAttack(Tower tower)
     {
         anim.SetTrigger(ANIM_TRG_IS_ATTACK);
-        player.OnHit(dmg);
+        tower.OnHit(dmg);
         yield return new WaitForSeconds(1);
     }
 

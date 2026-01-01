@@ -3,16 +3,16 @@ using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
+    // 오브젝트 풀링
+    public Transform enemyGroupTf;
+    IObjectPool<Enemy> pool;    public IObjectPool<Enemy> Pool {get => pool;}
+
+    public Enemy enemyPref;
+
     [SerializeField] float time;
     [SerializeField] float span;
     [Header("몬스터 생성 원 크기")]
     [SerializeField] float spawnRadius;
-
-    public Enemy enemyPref;
-
-    // 오브젝트 풀링
-    public Transform enemyGroupTf;
-    IObjectPool<Enemy> pool;    public IObjectPool<Enemy> Pool {get => pool;}
 
     void Start()
     {

@@ -6,13 +6,7 @@ public class Missile : MonoBehaviour
     [SerializeField] float moveSpeed;
 
     Vector3 direction; public Vector3 Direction {get => direction; set => direction = value;}
-    bool isHit = false;
-
-    void Start()
-    {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
+    [SerializeField] bool isHit = false;
 
     void Update()
     {
@@ -34,17 +28,28 @@ public class Missile : MonoBehaviour
 
             isHit = true;
             enemy.OnHit(dmg);
-            Destroy(gameObject);
+            GameManager._.msm.Pool.Release(this);
         }
     }
 
     // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
     void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        if(gameObject.activeSelf)
+            GameManager._.msm.Pool.Release(this);
     }
 
 #region FUNC
+    public void Init(Vector3 pos, Vector3 dir)
+    {
+        isHit = false;
 
+        transform.position = pos;
+
+        // 발사 방향(각도)
+        direction = dir;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
 #endregion
 }

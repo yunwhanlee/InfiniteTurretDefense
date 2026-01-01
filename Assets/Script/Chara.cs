@@ -52,8 +52,7 @@ public class Chara : MonoBehaviour
         anim.SetTrigger("IsAttack");
 
         // 투사체 발사
-        Missile ins = Instantiate(missile, transform.position, Quaternion.identity);
-        ins.Direction = direction;
+        GameManager._.msm.SpawnMissile(transform.position, direction);
     }
 #endregion
 }
