@@ -1,18 +1,20 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GM : MonoBehaviour
 {
     // 싱글톤 패턴
-    public static GameManager _;
+    public static GM _;
 
     // 컴포넌트
     public Tower tower;
+    public EnemyManager emm;
     public MissileManager msm;
 
     void Awake()
     {
         _ = this;
         tower = GameObject.Find("Tower").GetComponent<Tower>();
+        emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         msm = GameObject.Find("MissileManager").GetComponent<MissileManager>();
     }
 

@@ -1,18 +1,54 @@
+using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
+    const int DEF_HP = 10;
+    const int DEF_DMG = 5;
+
     // 오브젝트 풀링
     public Transform enemyGroupTf;
     IObjectPool<Enemy> pool;    public IObjectPool<Enemy> Pool {get => pool;}
 
-    public Enemy enemyPref;
-
+    [SerializeField] float totalTime;
     [SerializeField] float time;
     [SerializeField] float span;
-    [Header("몬스터 생성 원 크기")]
-    [SerializeField] float spawnRadius;
+    [SerializeField] float spawnRadius; // 몬스터 생성 원 크기
+    [SerializeField] Enemy enemyPref; // 몬스터 프리팹
+
+    [SerializeField] int killCnt;   public int KillCnt
+        {
+            get => killCnt;
+            set {
+                killCnt = value;
+                UI._.killCntTxt.text = $"{value}킬";
+            }
+        }
+    [SerializeField] int enemyCnt;   public int EnemyCnt
+        {
+            get => enemyCnt;
+            set {
+                enemyCnt = value;
+                UI._.EnemyCntTxt.text = $"몬스터 수 : {value}";
+            }
+        }
+    [SerializeField] int enemyHp;    public int EnemyHp
+        {
+            get => enemyHp;
+            set {
+                enemyHp = value;
+                UI._.EnemyHpTxt.text = $"체력 : {value}";
+            }
+        }
+    [SerializeField] int enemyDmg;  public int EnemyDmg
+        {
+            get => enemyDmg;
+            set {
+                enemyDmg = value;
+                UI._.EnemyDmgTxt.text = $"데미지 : {value}";
+            }
+        }
 
     void Start()
     {
@@ -21,20 +57,43 @@ public class EnemyManager : MonoBehaviour
         );
 
         time = span;
+
+        KillCnt = 0;
+        EnemyCnt = 0;
+        EnemyHp = DEF_HP;
+        EnemyDmg = DEF_DMG;
     }
 
     void Update()
     {
+        totalTime += Time.deltaTime;
         time += Time.deltaTime;
 
         if(time > span)
         {
             time = 0;
 
+            const int OFFSET_SEC = 10;
+
+            if(totalTime >= OFFSET_SEC)
+            {
+                float calTime = totalTime - OFFSET_SEC;
+
+                // 적 체력 및 공격력 업데이트
+                EnemyHp = DEF_HP + (int)(calTime / 2.5f);
+                EnemyDmg = DEF_DMG + (int)(calTime / OFFSET_SEC);
+            }
+
             // 적 생성
-            Enemy enemy = pool.Get();
-            // 죽었을시 오브젝트풀링 회수 이벤트 구독
-            enemy.OnDeadEvent = (enemy) => pool.Release(enemy);
+            Enemy enemy = SpawnEnemy(enemyHp, enemyDmg);
+
+            // 카운트 증가
+            EnemyCnt++;
+
+            // (이벤트 구독) 죽었을시 오브젝트풀링 회수 
+            enemy.OnDeadEvent = (enemy) => {
+                pool.Release(enemy);
+            };
         }
     }
 
@@ -44,8 +103,7 @@ public class EnemyManager : MonoBehaviour
     void OnGet(Enemy enemy)
     {
         enemy.gameObject.SetActive(true);
-        enemy.transform.position = GetRandomCirclePosition(spawnRadius);
-        enemy.Init();
+
     }
 
     void OnRelease(Enemy enemy)
@@ -54,6 +112,15 @@ public class EnemyManager : MonoBehaviour
     }
 
     void OnDelete(Enemy enemy) => Destroy(enemy);
+
+    public Enemy SpawnEnemy(int maxHp, int dmg)
+    {
+        Enemy enemy = pool.Get();
+        enemy.transform.position = GetRandomCirclePosition(spawnRadius);
+        enemy.Init(maxHp, dmg);
+
+        return enemy;
+    }
     #endregion
 
     #region FUNC

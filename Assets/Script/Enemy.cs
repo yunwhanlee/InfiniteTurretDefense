@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         //TODO Player를 Config로 상수만들기
         if(col.gameObject.CompareTag("Player"))
         {
-            Tower tower = GameManager._.tower;
+            Tower tower = GM._.tower;
             Attack(tower);
         }
     }
@@ -80,8 +80,11 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 초기화
     /// </summary>
-    public void Init()
+    public void Init(int maxHp, int dmg)
     {
+        this.maxHp = maxHp;
+        this.dmg = dmg;
+
         state = STATE.MOVE;
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
         hp = maxHp;
@@ -127,10 +130,15 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CorDead()
     {
+        GM._.emm.KillCnt++;
+        GM._.emm.EnemyCnt--;
+
         state = STATE.DEAD;
         hp = 0;
         anim.SetTrigger(ANIM_TRG_IS_DEAD);
-        StopCoroutine(CorAttackId);
+
+        if(CorAttackId != null)
+            StopCoroutine(CorAttackId);
 
         yield return new WaitForSeconds(1.5f);
         OnDeadEvent?.Invoke(this);

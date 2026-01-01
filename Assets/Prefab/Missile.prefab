@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -230017727
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7251233210798674817, guid: 29e95eef1cbe708499c3b2107d9333e6, type: 3}
@@ -105,8 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b621362da1d2834797aa8afa8a664fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
-  dmg: 5
+  dmg: 10
   moveSpeed: 8
+  isHit: 0
 --- !u!58 &7057000730045369669
 CircleCollider2D:
   m_ObjectHideFlags: 0

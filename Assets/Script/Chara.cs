@@ -52,7 +52,7 @@ public class Chara : MonoBehaviour
         anim.SetTrigger("IsAttack");
 
         // 투사체 발사
-        GameManager._.msm.SpawnMissile(transform.position, direction);
+        GM._.msm.SpawnMissile(transform.position, direction);
     }
 #endregion
 }

@@ -28,7 +28,7 @@ public class Missile : MonoBehaviour
 
             isHit = true;
             enemy.OnHit(dmg);
-            GameManager._.msm.Pool.Release(this);
+            GM._.msm.Pool.Release(this);
         }
     }
 
@@ -36,7 +36,7 @@ public class Missile : MonoBehaviour
     void OnBecameInvisible()
     {
         if(gameObject.activeSelf)
-            GameManager._.msm.Pool.Release(this);
+            GM._.msm.Pool.Release(this);
     }
 
 #region FUNC
