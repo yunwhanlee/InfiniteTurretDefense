@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 940146193
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -631031158, guid: f31dcce30889fc64c99864fb656e2713, type: 3}
@@ -116,6 +116,7 @@ MonoBehaviour:
   targetSpotTf: {fileID: 5824243940381422805}
   type: 0
   state: 0
+  em: {fileID: 0}
 --- !u!61 &8124658118983439031
 BoxCollider2D:
   m_ObjectHideFlags: 0

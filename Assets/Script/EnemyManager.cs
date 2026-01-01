@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -7,8 +8,18 @@ public class EnemyManager : MonoBehaviour
     [Header("몬스터 생성 원 크기")]
     [SerializeField] float spawnRadius;
 
-    [Header("몬스터 생성 원 크기")]
-    public GameObject enemyPref;
+    public Enemy enemyPref;
+
+    // 오브젝트 풀링
+    public Transform enemyGroupTf;
+    IObjectPool<Enemy> pool;    public IObjectPool<Enemy> Pool {get => pool;}
+
+    void Awake()
+    {
+        pool = new ObjectPool<Enemy>(
+            Create, OnGet, OnRelease, OnDelete, maxSize: 20
+        );
+    }
 
     void Start()
     {
@@ -23,14 +34,32 @@ public class EnemyManager : MonoBehaviour
         {
             time = 0;
 
-            float x = Random.Range(-2, 2);
-            float y = Random.Range(-2, 2);
-
-            Instantiate(enemyPref, GetRandomCirclePosition(spawnRadius), Quaternion.identity);
+            // 적 생성
+            Enemy enemy = pool.Get();
+            // 죽었을시 오브젝트풀링 회수 이벤트 구독
+            enemy.OnDeadEvent = (enemy) => pool.Release(enemy);
         }
     }
 
-#region FUNC
+#region OBJECT POOL
+    Enemy Create() => Instantiate(enemyPref, enemyGroupTf);
+
+    void OnGet(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(true);
+        enemy.transform.position = GetRandomCirclePosition(spawnRadius);
+        enemy.Init();
+    }
+
+    void OnRelease(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(false);
+    }
+
+    void OnDelete(Enemy enemy) => Destroy(enemy);
+    #endregion
+
+    #region FUNC
     Vector3 GetRandomCirclePosition(float radius)
     {
         float angle = Random.Range(0f, 360f);

@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
         MOVE, ATTACK, DEAD
     }
     
+    // 이벤트 액션
+    public Action<Enemy> OnDeadEvent = (Enemy) => {};
+
     public int maxHp;
     public int hp;
     public float moveSpeed;
@@ -26,6 +29,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
     // 컴포넌트
+    [SerializeField] EnemyManager em;
     SpriteRenderer sprRdr;
     Animator anim;
 
@@ -42,20 +46,12 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        // 게임 시작이후 한번만 실행될 것
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-
-        state = STATE.MOVE;
-        anim.SetTrigger(ANIM_TRG_IS_MOVE);
         propBlock = new MaterialPropertyBlock();
-        playerPos = Vector3.zero;
-        hp = maxHp;
 
-        // 방향
-        direction = (playerPos - transform.position).normalized;
-        // 방향에 따라 이미지 반전
-        bool isFlip = (direction.x < 0)? true : false;
-        sprRdr.flipX = isFlip;
+        playerPos = Vector3.zero;
     }
 
     void Update()
@@ -80,6 +76,22 @@ public class Enemy : MonoBehaviour
     }
 
 #region FUNC
+    /// <summary>
+    /// 초기화
+    /// </summary>
+    public void Init()
+    {
+        state = STATE.MOVE;
+        anim.SetTrigger(ANIM_TRG_IS_MOVE);
+        hp = maxHp;
+
+        // 방향
+        direction = (playerPos - transform.position).normalized;
+        // 방향에 따라 이미지 반전
+        bool isFlip = (direction.x < 0)? true : false;
+        sprRdr.flipX = isFlip;
+    }
+    
     /// <summary>
     /// 플레이어를 공격
     /// </summary>
@@ -111,8 +123,14 @@ public class Enemy : MonoBehaviour
             state = STATE.DEAD;
             hp = 0;
             anim.SetTrigger(ANIM_TRG_IS_DEAD);
-            Destroy(gameObject, 1.5f);
+            StartCoroutine(CorDead());
         }
+    }
+
+    IEnumerator CorDead()
+    {
+        yield return new WaitForSeconds(1.5f);
+        OnDeadEvent?.Invoke(this);
     }
 
     /// <summary>
