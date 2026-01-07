@@ -8,15 +8,35 @@ public class Tower : MonoBehaviour
         IDLE, DEAD
     }
 
-    public bool IsAlive => hp > 0;
 
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
-    [SerializeField] int hp;
     [SerializeField] int maxHp;
+    [SerializeField] int armor; public int Armor
+        {
+            get => armor;
+            set{
+                armor = value;
+                UI._.towerArmorTxt.text = armor.ToString();
+            }
+        }
+    [SerializeField] int hp;    public int Hp
+        {
+            get => hp;
+            set{
+                hp = value;
+                UI._.towerHpTxt.text = $"{hp} / {maxHp}";
+                UI._.towerHpSlider.value = (float)hp / maxHp;
+            }
+        }
+
+    public bool IsAlive => hp > 0;
+
 
     void Start(){
         state = STATE.IDLE;
-        hp = maxHp;
+        Armor = 0;
+        maxHp = 1000;
+        Hp = maxHp;
     }
     
     void Update(){
@@ -32,12 +52,13 @@ public class Tower : MonoBehaviour
     {
         if(IsAlive)
         {
-            hp -= dmg;
+            dmg = armor >= dmg ? 1 : dmg - armor;
+            Hp -= dmg;
         }
         else
         {
             state = STATE.DEAD;
-            hp = 0;
+            Hp = 0;
 
             //TODO ReStart Game
         }
