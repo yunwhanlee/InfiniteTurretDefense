@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public enum STATE
-    {
-        IDLE, DEAD
-    }
+    public enum STATE {IDLE, DEAD}
 
 
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
