@@ -5,7 +5,6 @@ public class Tower : MonoBehaviour
 {
     public enum STATE {IDLE, DEAD}
 
-
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
     [SerializeField] int maxHp;
     [SerializeField] int armor; public int Armor
@@ -28,11 +27,14 @@ public class Tower : MonoBehaviour
 
     public bool IsAlive => hp > 0;
 
+    TowerUIManager towerUI;
 
     void Start(){
+        towerUI = UI._.towerUI;
+
         state = STATE.IDLE;
         Armor = 0;
-        maxHp = 1000;
+        maxHp = GetMaxHp();
         Hp = maxHp;
     }
     
@@ -60,5 +62,18 @@ public class Tower : MonoBehaviour
             //TODO ReStart Game
         }
     }
+
+    public int GetMaxHp()
+    {
+        const int DEF_HP = 500;
+        return DEF_HP + (towerUI.upgradeHpLv * towerUI.upgHpVal);
+    }
+    public void SetMaxHp() => maxHp = GetMaxHp();
+
+    public int GetArmor()
+    {
+        return towerUI.UpgradeArmorLv * towerUI.upgArmorVal;
+    }
+    public void SetArmor() => armor = GetArmor();
 #endregion
 }
