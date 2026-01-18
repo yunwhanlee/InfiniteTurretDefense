@@ -2900,7 +2900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183646744}
   m_Layer: 5
-  m_Name: '@Panel'
+  m_Name: '#Panel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6368,10 +6368,10 @@ RectTransform:
   - {fileID: 1630764784}
   m_Father: {fileID: 2055793490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215, y: -75}
-  m_SizeDelta: {x: 120, y: 120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &473698741
 MonoBehaviour:
@@ -6419,7 +6419,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2116928451}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: OnClickTowerBtn
+        m_MethodName: OnClickMenuTowerBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6839,7 +6839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518288347}
   m_Layer: 5
-  m_Name: '@Panel'
+  m_Name: '#Panel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10360,9 +10360,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 409044992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 316.205, y: -47.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810615391
@@ -11894,10 +11894,10 @@ RectTransform:
   - {fileID: 3314327152859172390}
   m_Father: {fileID: 3314327153017891550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 405, y: -87.5}
-  m_SizeDelta: {x: 750, y: 175}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901983935
 MonoBehaviour:
@@ -13972,40 +13972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bcb62f652fe94488b57990684c9176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerUIManager
-  panelObj: {fileID: 3314327152068505008}
-  charaSeatBtnArr:
-  - isLocked: 0
-    seatBtn: {fileID: 273247762}
-    charaImg: {fileID: 639142456}
-    lockedFrameObj: {fileID: 0}
-    priceTxt: {fileID: 0}
-  - isLocked: 0
-    seatBtn: {fileID: 685272711}
-    charaImg: {fileID: 1871133401}
-    lockedFrameObj: {fileID: 353896879}
-    priceTxt: {fileID: 643715590}
-  - isLocked: 0
-    seatBtn: {fileID: 1985484772}
-    charaImg: {fileID: 498709084}
-    lockedFrameObj: {fileID: 1427653563}
-    priceTxt: {fileID: 2029912607}
-  - isLocked: 0
-    seatBtn: {fileID: 351358475}
-    charaImg: {fileID: 1612295588}
-    lockedFrameObj: {fileID: 1832439298}
-    priceTxt: {fileID: 1399874614}
-  - isLocked: 0
-    seatBtn: {fileID: 110392313}
-    charaImg: {fileID: 2079160137}
-    lockedFrameObj: {fileID: 1370060589}
-    priceTxt: {fileID: 1818838141}
-  upgradeBtnArr:
-  - levelTxt: {fileID: 1370024359}
-    valTxt: {fileID: 2001206196}
-    priceTxt: {fileID: 3314327152017829557}
-  - levelTxt: {fileID: 730894592}
-    valTxt: {fileID: 844082309}
-    priceTxt: {fileID: 595717292}
+  panelObj: {fileID: 0}
+  charaSeatBtnArr: []
+  upgradeBtnArr: []
   upgradeHpLv: 1
   maxUpgradeHpLv: 9999
   upgHpVal: 100
@@ -14027,7 +13996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1081716417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15095,19 +15064,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142590019}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1070823235}
-        m_TargetAssemblyTypeName: TowerUIManager, Assembly-CSharp
-        m_MethodName: OnClickUpgradeArmorBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1142590019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18412,7 +18369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3314327152068505008}
+      - m_Target: {fileID: 1081716416}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -18975,7 +18932,7 @@ GameObject:
   - component: {fileID: 1399874615}
   - component: {fileID: 1399874614}
   m_Layer: 0
-  m_Name: PriceTxt
+  m_Name: Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21274,7 +21231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8489199935292362954, guid: 6b55aa024d0e24fcaaac6e4a4d4680e2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8489199935292362955, guid: 6b55aa024d0e24fcaaac6e4a4d4680e2, type: 3}
       propertyPath: m_Pivot.x
@@ -21366,7 +21323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8489199936389795609, guid: 6b55aa024d0e24fcaaac6e4a4d4680e2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8489199937018894211, guid: 6b55aa024d0e24fcaaac6e4a4d4680e2, type: 3}
       propertyPath: m_Pivot.x
@@ -22241,11 +22198,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8219485880633806126, guid: 5fd6ffedf68804be58707a51357a49e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.631
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8219485880633806126, guid: 5fd6ffedf68804be58707a51357a49e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8219485881813783918, guid: 5fd6ffedf68804be58707a51357a49e9, type: 3}
       propertyPath: m_Pivot.x
@@ -22334,10 +22291,6 @@ PrefabInstance:
     - target: {fileID: 8219485881813783919, guid: 5fd6ffedf68804be58707a51357a49e9, type: 3}
       propertyPath: m_Name
       value: Slider_Play01_Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219485881813783919, guid: 5fd6ffedf68804be58707a51357a49e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22532,10 +22485,10 @@ RectTransform:
   - {fileID: 1065819642}
   m_Father: {fileID: 2055793490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 345, y: -75}
-  m_SizeDelta: {x: 120, y: 120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673432260
 MonoBehaviour:
@@ -22792,10 +22745,10 @@ RectTransform:
   m_Children:
   - {fileID: 1974005712}
   - {fileID: 1092515269}
+  - {fileID: 998190520}
   - {fileID: 1848038712}
   - {fileID: 628252167}
   - {fileID: 1009653035}
-  - {fileID: 998190520}
   m_Father: {fileID: 3314327152068505009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -23991,9 +23944,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 409044992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 431.65, y: -47.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 144.89, y: 67.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765571060
@@ -24925,10 +24878,10 @@ RectTransform:
   - {fileID: 1142590017}
   m_Father: {fileID: 3314327153017891550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 405, y: -287.5}
-  m_SizeDelta: {x: 750, y: 175}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805028292
 MonoBehaviour:
@@ -25301,7 +25254,7 @@ GameObject:
   - component: {fileID: 1818838142}
   - component: {fileID: 1818838141}
   m_Layer: 0
-  m_Name: PriceTxt
+  m_Name: Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28756,7 +28709,7 @@ GameObject:
   - component: {fileID: 2029912608}
   - component: {fileID: 2029912607}
   m_Layer: 0
-  m_Name: PriceTxt
+  m_Name: Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30264,7 +30217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3314327152068505009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30556,19 +30509,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3314327152859172388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1070823235}
-        m_TargetAssemblyTypeName: TowerUIManager, Assembly-CSharp
-        m_MethodName: OnClickUpgradeHpBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3314327152859172393
 GameObject:
   m_ObjectHideFlags: 0
@@ -32205,9 +32146,9 @@ SceneRoots:
   - {fileID: 812618674}
   - {fileID: 1495804808}
   - {fileID: 140134697}
-  - {fileID: 1070823234}
   - {fileID: 1060418560}
   - {fileID: 562499543}
+  - {fileID: 1070823234}
   - {fileID: 1611016180}
   - {fileID: 46000723}
   - {fileID: 1237254240}

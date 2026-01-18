@@ -42,11 +42,12 @@ public class UI : MonoBehaviour
         menuPanel.SetActive(true);
     }
 
-    public void OnClickMenuTowerBtn()
+    public void OnClickTowerBtn()
     {
+        Debug.Log("OnClickTowerBtn()::");
         towerUI.ShowPanel();
     }
-    public void OnClickMenuCharaBtn()
+    public void OnClickCharaBtn()
     {
         //TODO 캐릭터 패널 띄우기
     }
