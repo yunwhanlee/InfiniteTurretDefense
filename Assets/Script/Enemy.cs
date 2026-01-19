@@ -30,6 +30,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] ENEMY_TYPE type;    public ENEMY_TYPE Type {get => type;}
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
+    [SerializeField] float time = 0;
+    [SerializeField] float span = 1.0f;
+
     // 컴포넌트
     SpriteRenderer sprRdr;
     Animator anim;
@@ -62,6 +65,18 @@ public class Enemy : MonoBehaviour
             // 이동
             transform.position += moveSpeed * Time.deltaTime * direction;
         }
+        else if(state == STATE.ATTACK)
+        {
+            time += Time.deltaTime;
+
+            if(time > span)
+            {
+                Tower tower = GM._.tower;
+                Attack(tower);
+
+                time = 0;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -71,8 +86,7 @@ public class Enemy : MonoBehaviour
         //TODO Player를 Config로 상수만들기
         if(col.gameObject.CompareTag("Player"))
         {
-            Tower tower = GM._.tower;
-            Attack(tower);
+            state = STATE.ATTACK;
         }
     }
 
@@ -102,8 +116,6 @@ public class Enemy : MonoBehaviour
     public void Attack(Tower tower)
     {
         Debug.Log("Attack():: tower=", tower);
-        state = STATE.ATTACK;
-
         CorAttackId = StartCoroutine(CorAttack(tower));
     }
 
@@ -130,12 +142,12 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CorDead()
     {
-        GM._.emm.KillCnt++;
-        GM._.emm.EnemyCnt--;
-
         state = STATE.DEAD;
         hp = 0;
         anim.SetTrigger(ANIM_TRG_IS_DEAD);
+
+        GM._.emm.KillCnt++;
+        GM._.emm.EnemyCnt--;
 
         if(CorAttackId != null)
             StopCoroutine(CorAttackId);
@@ -167,7 +179,7 @@ public class Enemy : MonoBehaviour
         propBlock.SetFloat(hitFlashMat_IsHit, WHITE_COLOR);
         sprRdr.SetPropertyBlock(propBlock);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
 
         // 원래대로 돌리기
         sprRdr.GetPropertyBlock(propBlock);

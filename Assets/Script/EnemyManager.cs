@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
             get => enemyCnt;
             set {
                 enemyCnt = value;
-                UI._.EnemyCntTxt.text = $"몬스터 수 : {value}";
+                UI._.EnemyCntTxt.text = $" : {value}";
             }
         }
     [SerializeField] int enemyHp;    public int EnemyHp
