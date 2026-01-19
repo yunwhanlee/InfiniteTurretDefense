@@ -18,10 +18,10 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI EnemyHpTxt;  // 몬스터 체력
     public TextMeshProUGUI EnemyDmgTxt; // 몬스터 공격력
 
-    // BOTTOM
-    public TextMeshProUGUI towerArmorTxt;
-    public TextMeshProUGUI towerHpTxt;
+    //* BOTTOM
     public Slider towerHpSlider;
+    public TextMeshProUGUI towerHpTxt;
+    public TextMeshProUGUI towerArmorTxt;
 
     public TowerUIManager towerUI;
 
@@ -53,5 +53,18 @@ public class UI : MonoBehaviour
     }
 #endregion
 #region FUNC
+    /// <summary>
+    /// 타워 체력 슬라이더 UI 설정
+    /// </summary>
+    public void SetTowerHpSlider(int hp, int maxHp)
+    {
+        towerHpTxt.text = $"{hp} / {maxHp}";
+        towerHpSlider.value = (float)hp / maxHp;
+    }
+
+    public void SetTowerArmorTxt(int armor)
+    {
+        towerArmorTxt.text = armor.ToString();
+    }
 #endregion
 }

@@ -36,12 +36,12 @@ public class TowerUIManager : MonoBehaviour
     readonly int[] seatPriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
     public int upgradeHpLv = 1; 
-    public int maxUpgradeHpLv = 9999;
-    public int upgHpVal = 100;
+    const int MAX_UPGRADE_HP_LV = 9999;
+    public readonly int UPGRADE_HP_VAL = 100;
 
-    public int UpgradeArmorLv = 1;
-    public int maxUpgradeArmorLv = 999;
-    public int upgArmorVal = 1;
+    public int upgradeArmorLv = 1;
+    const int MAX_UPGRADE_ARMOR_LV = 999;
+    const int UPGRADE_ARMOR_VAL = 1;
     Tower tower;
 
     void Start()
@@ -75,22 +75,32 @@ public class TowerUIManager : MonoBehaviour
 
     public void OnClickUpgradeHpBtn()
     {
+        Debug.Log("Upgrade HP");
         upgradeHpLv++;
         tower.SetMaxHp();
-
-
+        UI._.SetTowerHpSlider(tower.Hp, tower.GetMaxHp());
     }
 
     public void OnClickUpgradeArmorBtn()
     {
-        UpgradeArmorLv++;
+        Debug.Log("Upgrade Armor");
+        upgradeArmorLv++;
         tower.SetArmor();
+        UI._.SetTowerArmorTxt(tower.Armor);
     }
 #endregion
 #region FUNC
     public void ShowPanel()
-        {
-            panelObj.SetActive(true);
-        }
+    {
+        panelObj.SetActive(true);
+    }
+    /// <summary>
+    /// 업그레이드된 최대 체력 값 반환
+    /// </summary>
+    public int GetUpgradeHpVal() => upgradeHpLv * UPGRADE_HP_VAL;
+    /// <summary>
+    /// 업그레이드된 방어력 값 반환
+    /// </summary>
+    public int GetUpgradeArmorVal() => upgradeArmorLv * UPGRADE_ARMOR_VAL;
 #endregion
 }

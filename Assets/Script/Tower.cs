@@ -25,8 +25,7 @@ public class Tower : MonoBehaviour
             get => hp;
             set{
                 hp = value;
-                UI._.towerHpTxt.text = $"{hp} / {maxHp}";
-                UI._.towerHpSlider.value = (float)hp / maxHp;
+                UI._.SetTowerHpSlider(hp, maxHp);
             }
         }
     public bool IsAlive => hp > 0;
@@ -34,9 +33,10 @@ public class Tower : MonoBehaviour
     TowerUIManager towerUI;
     SpriteRenderer sprRdr;
     MaterialPropertyBlock propBlock;
-    Coroutine corFlashId;
+
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
     const float FLASH_DEF_TIME = 0.05f;
+    const int DEF_HP = 500;
 
     void Start(){
         towerUI = UI._.towerUI;
@@ -93,17 +93,14 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public int GetMaxHp()
+    public int GetMaxHp() => DEF_HP + towerUI.GetUpgradeHpVal();
+    public void SetMaxHp()
     {
-        const int DEF_HP = 500;
-        return DEF_HP + (towerUI.upgradeHpLv * towerUI.upgHpVal);
+        hp += towerUI.UPGRADE_HP_VAL;
+        maxHp = GetMaxHp();
     }
-    public void SetMaxHp() => maxHp = GetMaxHp();
 
-    public int GetArmor()
-    {
-        return towerUI.UpgradeArmorLv * towerUI.upgArmorVal;
-    }
+    public int GetArmor() => towerUI.GetUpgradeArmorVal();
     public void SetArmor() => armor = GetArmor();
 
     private void SetFlashColor(bool isEnable)
@@ -116,36 +113,5 @@ public class Tower : MonoBehaviour
         propBlock.SetFloat(hitFlashMat_IsHit, val);
         sprRdr.SetPropertyBlock(propBlock);
     }
-
-    /// <summary>
-    /// 피격시 이미지 흰색번쩍 효과
-    /// </summary>
-    // public void Flash()
-    // {
-    //     if(corFlashId != null)
-    //         StopCoroutine(corFlashId);
-    //     corFlashId = StartCoroutine(CorFlash());
-    // }
-
-    /// <summary>
-    /// (코루틴 대기) 피격시 이미지 흰색번쩍 효과
-    /// </summary>
-    // IEnumerator CorFlash()
-    // {
-    //     const int ORIGIN_COLOR = 0;
-    //     const int WHITE_COLOR = 1;
-
-    //     // 흰색으로 만들기
-    //     sprRdr.GetPropertyBlock(propBlock);
-    //     propBlock.SetFloat(hitFlashMat_IsHit, WHITE_COLOR);
-    //     sprRdr.SetPropertyBlock(propBlock);
-
-    //     yield return new WaitForSeconds(0.1f);
-
-    //     // 원래대로 돌리기
-    //     sprRdr.GetPropertyBlock(propBlock);
-    //     propBlock.SetFloat(hitFlashMat_IsHit, ORIGIN_COLOR);
-    //     sprRdr.SetPropertyBlock(propBlock);
-    // }
 #endregion
 }
