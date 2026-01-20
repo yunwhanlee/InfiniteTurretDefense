@@ -18,16 +18,63 @@ public struct TowerSeatBtn
 }
 
 [Serializable]
-public struct TowerUpgradeBtn
+public class TowerUpgradeBtn
 {
+    const int MAX_UPGRADE_HP_LV = 5; // 9999;
+    const int MAX_UPGRADE_ARMOR_LV = 999;
+    const int MAX_UPGRADE_HEAL_LV = 999;
+
+    public GameObject btnObj;
     public TextMeshProUGUI levelTxt;
     public TextMeshProUGUI valTxt;
     public TextMeshProUGUI priceTxt;
+    
+    // 레벨 문자열 반환
+    private string GetLv(int lv, int maxLv)
+    {
+        return lv < maxLv ? $"Lv.{lv}" : "Lv.MAX";
+    }
+
+    private void ActiveBtn(bool isNotMaxLv)
+    {
+        btnObj.SetActive(isNotMaxLv);
+    }
+
+    // 체력 업그레이드 UI 업데이트
+    public void UpdateHpCardUI(int lv)
+    {
+        levelTxt.text = GetLv(lv, MAX_UPGRADE_HP_LV);
+        valTxt.text = $"+{lv * TowerUpgradeUIManager.UPGRADE_HP_UNIT}";
+        priceTxt.text = $"💰{lv * 30}";
+
+        ActiveBtn(lv < MAX_UPGRADE_HP_LV);
+    }
+
+    // 방어력 업그레이드 UI 업데이트
+    public void UpdateArmorCardUI(int lv)
+    {
+        levelTxt.text = GetLv(lv, MAX_UPGRADE_ARMOR_LV);
+        valTxt.text = $"+{lv}";
+        priceTxt.text = $"💰{lv * 150}";
+
+        ActiveBtn(lv < MAX_UPGRADE_ARMOR_LV);
+    }
+
+    // 회복력 업그레이드 UI 업데이트
+    public void UpdateHealCardUI(int lv)
+    {
+        levelTxt.text = GetLv(lv, MAX_UPGRADE_HEAL_LV);
+        valTxt.text = $"+{lv}";
+        priceTxt.text = $"💰{lv * 50}";
+
+        ActiveBtn(lv < MAX_UPGRADE_HEAL_LV);
+    }
 }
 
 public class TowerUpgradeUIManager : MonoBehaviour
 {
     public enum SEAT_IDX { CENTER, LEFT, BOTTOM, RIGHT, TOP }
+    public enum UPG_IDX { HP, ARMOR, HEAL }
 
     public GameObject panelObj; // 패널
     public TowerSeatBtn[] charaSeatBtnArr; // 캐릭터 잠김화면 버튼
@@ -35,14 +82,9 @@ public class TowerUpgradeUIManager : MonoBehaviour
 
     readonly int[] seatPriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
+    public static int UPGRADE_HP_UNIT = 100;
     private int upgradeHpLv = 1; 
-    const int MAX_UPGRADE_HP_LV = 9999;
-    const int UPGRADE_HP_VAL = 100;
-
     private int upgradeArmorLv = 1;
-    const int MAX_UPGRADE_ARMOR_LV = 999;
-    const int UPGRADE_ARMOR_VAL = 1;
-
     private int upgradeHealLv = 1;
 
     Tower tower;
@@ -61,6 +103,11 @@ public class TowerUpgradeUIManager : MonoBehaviour
             charaSeatBtnArr[i].lockedFrameObj.SetActive(true); //TODO DB에서 잠금여부 가져오기
             charaSeatBtnArr[i].priceTxt.text = $"{seatPriceArr[i]}";
         }
+
+        // 업그레이드 버튼 초기화
+        upgradeBtnArr[(int)UPG_IDX.HP].UpdateHpCardUI(upgradeHpLv);
+        upgradeBtnArr[(int)UPG_IDX.ARMOR].UpdateArmorCardUI(upgradeArmorLv);
+        upgradeBtnArr[(int)UPG_IDX.HEAL].UpdateHealCardUI(upgradeHealLv);
     }
 
 #region EVENT
@@ -80,17 +127,22 @@ public class TowerUpgradeUIManager : MonoBehaviour
     {
         Debug.Log("Upgrade HP");
         upgradeHpLv++;
+
         // 타워 최대 체력 증가
-        tower.AddMaxHp(UPGRADE_HP_VAL);
+        tower.AddMaxHp(UPGRADE_HP_UNIT);
+
+        // UI 패널 업데이트
+        upgradeBtnArr[(int)UPG_IDX.HP].UpdateHpCardUI(upgradeHpLv);
     }
 
     public void OnClickUpgradeArmorBtn()
     {
         Debug.Log("Upgrade Armor");
         upgradeArmorLv++;
-
         // 타워 방어력 증가
-        tower.AddArmor(UPGRADE_ARMOR_VAL);
+        tower.AddArmor(1);
+        // UI 패널 업데이트
+        upgradeBtnArr[(int)UPG_IDX.ARMOR].UpdateArmorCardUI(upgradeArmorLv);
     }
 
     public void OnClickUpgradeHealBtn()
@@ -99,6 +151,8 @@ public class TowerUpgradeUIManager : MonoBehaviour
         upgradeHealLv++;
         // 타워 회복력 업데이트
         tower.HealVal = upgradeHealLv;
+        // UI 패널 업데이트
+        upgradeBtnArr[(int)UPG_IDX.HEAL].UpdateHealCardUI(upgradeHealLv);
     }
 #endregion
 #region FUNC
@@ -106,9 +160,5 @@ public class TowerUpgradeUIManager : MonoBehaviour
     {
         panelObj.SetActive(true);
     }
-    /// <summary>
-    /// 업그레이드된 방어력 값 반환
-    /// </summary>
-    public int GetUpgradeArmorVal() => upgradeArmorLv * UPGRADE_ARMOR_VAL;
 #endregion
 }

@@ -42,6 +42,7 @@ public class Tower : MonoBehaviour
 
     SpriteRenderer sprRdr;
     MaterialPropertyBlock propBlock;
+
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit"); // 피격시 흰색 플래시 효과용 SHADER 프로퍼티 ID
 
     const float FLASH_DEF_TIME = 0.05f; // 피격시 플래시 지속시간
