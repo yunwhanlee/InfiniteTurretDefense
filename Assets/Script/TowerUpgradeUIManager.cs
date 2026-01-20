@@ -25,23 +25,26 @@ public struct TowerUpgradeBtn
     public TextMeshProUGUI priceTxt;
 }
 
-public class TowerUIManager : MonoBehaviour
+public class TowerUpgradeUIManager : MonoBehaviour
 {
     public enum SEAT_IDX { CENTER, LEFT, BOTTOM, RIGHT, TOP }
 
     public GameObject panelObj; // 패널
-    public TowerSeatBtn[] charaSeatBtnArr; // 캐릭터 잠김화면
+    public TowerSeatBtn[] charaSeatBtnArr; // 캐릭터 잠김화면 버튼
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
 
     readonly int[] seatPriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
-    public int upgradeHpLv = 1; 
+    private int upgradeHpLv = 1; 
     const int MAX_UPGRADE_HP_LV = 9999;
-    public readonly int UPGRADE_HP_VAL = 100;
+    const int UPGRADE_HP_VAL = 100;
 
-    public int upgradeArmorLv = 1;
+    private int upgradeArmorLv = 1;
     const int MAX_UPGRADE_ARMOR_LV = 999;
     const int UPGRADE_ARMOR_VAL = 1;
+
+    private int upgradeHealLv = 1;
+
     Tower tower;
 
     void Start()
@@ -77,16 +80,25 @@ public class TowerUIManager : MonoBehaviour
     {
         Debug.Log("Upgrade HP");
         upgradeHpLv++;
-        tower.SetMaxHp();
-        UI._.SetTowerHpSlider(tower.Hp, tower.GetMaxHp());
+        // 타워 최대 체력 증가
+        tower.AddMaxHp(UPGRADE_HP_VAL);
     }
 
     public void OnClickUpgradeArmorBtn()
     {
         Debug.Log("Upgrade Armor");
         upgradeArmorLv++;
-        tower.SetArmor();
-        UI._.SetTowerArmorTxt(tower.Armor);
+
+        // 타워 방어력 증가
+        tower.AddArmor(UPGRADE_ARMOR_VAL);
+    }
+
+    public void OnClickUpgradeHealBtn()
+    {
+        Debug.Log("Upgrade Heal");
+        upgradeHealLv++;
+        // 타워 회복력 업데이트
+        tower.HealVal = upgradeHealLv;
     }
 #endregion
 #region FUNC
@@ -94,10 +106,6 @@ public class TowerUIManager : MonoBehaviour
     {
         panelObj.SetActive(true);
     }
-    /// <summary>
-    /// 업그레이드된 최대 체력 값 반환
-    /// </summary>
-    public int GetUpgradeHpVal() => upgradeHpLv * UPGRADE_HP_VAL;
     /// <summary>
     /// 업그레이드된 방어력 값 반환
     /// </summary>

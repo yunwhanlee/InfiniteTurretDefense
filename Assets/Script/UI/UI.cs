@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 홈화면에 표시되어있는 UI관리 (패널관련 UI는 각자 매니저 스크립트에서 관리)
+/// 홈화면 UI
 /// </summary>
 public class UI : MonoBehaviour
 {
@@ -23,12 +23,13 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI towerHpTxt;
     public TextMeshProUGUI towerArmorTxt;
 
-    public TowerUIManager towerUI;
+    //* 외부 컴포넌트
+    public TowerUpgradeUIManager towerUpgUI; // 타워 업그레이드 UI 매니저
 
     void Awake()
     {
         _ = this;
-        towerUI = GameObject.Find("TowerUIManager").GetComponent<TowerUIManager>();
+        towerUpgUI = GameObject.Find("TowerUpgradeUIManager").GetComponent<TowerUpgradeUIManager>();
     }
 
     void Start()
@@ -45,7 +46,7 @@ public class UI : MonoBehaviour
     public void OnClickTowerBtn()
     {
         Debug.Log("OnClickTowerBtn()::");
-        towerUI.ShowPanel();
+        towerUpgUI.ShowPanel();
     }
     public void OnClickCharaBtn()
     {
