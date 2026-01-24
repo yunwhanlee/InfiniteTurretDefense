@@ -4,9 +4,8 @@ using TMPro;
 using System;
 
 /// <summary>
-/// 타워 캐릭터배치 버튼
+/// 타워 캐릭터배치 버튼 클래스
 /// </summary>
-
 [Serializable]
 public struct TowerSeatBtn
 {
@@ -17,6 +16,9 @@ public struct TowerSeatBtn
     public TextMeshProUGUI priceTxt;
 }
 
+/// <summary>
+/// 타워 업그레이드 버튼 클래스
+/// </summary>
 [Serializable]
 public class TowerUpgradeBtn
 {
@@ -71,6 +73,9 @@ public class TowerUpgradeBtn
     }
 }
 
+/// <summary>
+/// 타워 업그레이드 UI 매니저
+/// </summary>
 public class TowerUpgradeUIManager : MonoBehaviour
 {
     public enum SEAT_IDX { CENTER, LEFT, BOTTOM, RIGHT, TOP }

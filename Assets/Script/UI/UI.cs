@@ -25,11 +25,13 @@ public class UI : MonoBehaviour
 
     //* 외부 컴포넌트
     public TowerUpgradeUIManager towerUpgUI; // 타워 업그레이드 UI 매니저
+    public CharaUpgradeUIManager charaUpgUI; // 캐릭터 업그레이드 UI 매니저
 
     void Awake()
     {
         _ = this;
         towerUpgUI = GameObject.Find("TowerUpgradeUIManager").GetComponent<TowerUpgradeUIManager>();
+        charaUpgUI = GameObject.Find("CharaUpgradeUIManager").GetComponent<CharaUpgradeUIManager>();
     }
 
     void Start()
@@ -45,12 +47,11 @@ public class UI : MonoBehaviour
 
     public void OnClickTowerBtn()
     {
-        Debug.Log("OnClickTowerBtn()::");
         towerUpgUI.ShowPanel();
     }
     public void OnClickCharaBtn()
     {
-        //TODO 캐릭터 패널 띄우기
+        charaUpgUI.ShowPanel();
     }
 #endregion
 #region FUNC
