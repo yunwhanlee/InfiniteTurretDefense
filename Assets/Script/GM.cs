@@ -7,6 +7,7 @@ public class GM : MonoBehaviour
 
     // 컴포넌트
     public Tower tower;
+    public CharaManager crm;
     public EnemyManager emm;
     public MissileManager msm;
 
@@ -14,6 +15,7 @@ public class GM : MonoBehaviour
     {
         _ = this;
         tower = GameObject.Find("Tower").GetComponent<Tower>();
+        crm = GameObject.Find("CharaManager").GetComponent<CharaManager>();
         emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         msm = GameObject.Find("MissileManager").GetComponent<MissileManager>();
     }

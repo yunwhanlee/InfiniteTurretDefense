@@ -82,31 +82,37 @@ public class TowerUpgradeUIManager : MonoBehaviour
     public enum UPG_IDX { HP, ARMOR, HEAL }
 
     public GameObject panelObj; // 패널
-    public TowerSeatBtn[] charaSeatBtnArr; // 캐릭터 잠김화면 버튼
+    public TowerSeatBtn[] charaPlaceBtnArr; // 캐릭터 잠김화면 버튼
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
 
+    // 캐릭터 배치
     readonly int[] seatPriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
+    // 업그레이드
     public static int UPGRADE_HP_UNIT = 100;
     private int upgradeHpLv = 1; 
     private int upgradeArmorLv = 1;
     private int upgradeHealLv = 1;
 
     Tower tower;
+    CharaManager crm;
 
     void Start()
     {
         tower = GM._.tower;
+        crm = GM._.crm;
 
         panelObj.SetActive(false);
 
         // 캐릭터 배치버튼 초기화 (CENTER는 기본 오픈)
-        for (int i = (int)SEAT_IDX.LEFT; i < charaSeatBtnArr.Length; i++)
+        for (int i = (int)SEAT_IDX.LEFT; i < charaPlaceBtnArr.Length; i++)
         {
-            charaSeatBtnArr[i].isLocked = true; 
+            // 잠김여부
+            bool isLocked = charaPlaceBtnArr[i].isLocked = crm.DB_isPlaceLockedArr[i];
+            charaPlaceBtnArr[i].lockedFrameObj.SetActive(isLocked); // 잠김 프레임
+
             // charaSeatBtnArr[i].charaImg.sprite = null; //TODO 이미지 설정
-            charaSeatBtnArr[i].lockedFrameObj.SetActive(true); //TODO DB에서 잠금여부 가져오기
-            charaSeatBtnArr[i].priceTxt.text = $"{seatPriceArr[i]}";
+            charaPlaceBtnArr[i].priceTxt.text = $"{seatPriceArr[i]}"; // 가격
         }
 
         // 업그레이드 버튼 초기화
@@ -116,9 +122,9 @@ public class TowerUpgradeUIManager : MonoBehaviour
     }
 
 #region EVENT
-    public void OnClickSeatBtn(int idx)
+    public void OnClickPlaceBtn(int idx)
     {
-        if( charaSeatBtnArr[idx].isLocked )
+        if(charaPlaceBtnArr[idx].isLocked)
         {
             //TODO 좌석 잠금해제 로직
         }

@@ -9,6 +9,18 @@ public class CharaManager : MonoBehaviour
 
     public Chara charaArr;
 
+    public GameObject[] placeObjArr; // 캐릭터 배치 오브젝트 배열
+
+    //TODO DB화 하기
+    /// <summary> 캐릭터 배치 잠김여부 배열 </summary>
+    public bool[] DB_isPlaceLockedArr;
+
+    void Awake()
+    {
+        //TODO (DB로드) 캐릭터 배치 잠금해제
+        DB_isPlaceLockedArr = new bool[] { false, true, true, true, true };
+    }
+
     void Start()
     {
         
