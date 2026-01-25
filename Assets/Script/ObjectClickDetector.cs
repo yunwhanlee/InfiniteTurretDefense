@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class ObjectClickDetector : MonoBehaviour
 {
-    public bool isClicked; // 현재 클릭되어있는지 여부
     public LayerMask targetLayer; // 일부 레이어만 체크할 수 있도록
 
     void Update()
