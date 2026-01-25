@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour
 
     [SerializeField] STATE state;    public STATE State { get => state; set => state = value; }
 
-    //* 값이 바뀔 때 UI에게 알려줄 이벤트
+    //* 이벤트
     public event Action<int, int> OnHpChanged; // 현재 체력, 최대 체력
     public event Action<int> OnArmorChanged; // 방어력
 
@@ -49,7 +49,8 @@ public class Tower : MonoBehaviour
     const int DEF_HP = 500;             // 기본 체력
     const int HEAL_SPAN_SEC = 1;        // 자동 회복 간격(초)
 
-    void Start(){
+    void Start()
+    {
         sprRdr = GetComponent<SpriteRenderer>();
         propBlock = new MaterialPropertyBlock();
 

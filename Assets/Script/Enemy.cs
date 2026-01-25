@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     Vector3 playerPos;
     Vector3 direction;
     Coroutine corFlashId;
-    Coroutine CorAttackId;
+    Coroutine corAttackId;
 
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
 
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
     public void Attack(Tower tower)
     {
         Debug.Log("Attack():: tower=", tower);
-        CorAttackId = StartCoroutine(CorAttack(tower));
+        corAttackId = StartCoroutine(CorAttack(tower));
     }
 
     IEnumerator CorAttack(Tower tower)
@@ -160,8 +160,8 @@ public class Enemy : MonoBehaviour
         GM._.emm.KillCnt++;
         GM._.emm.EnemyCnt--;
 
-        if(CorAttackId != null)
-            StopCoroutine(CorAttackId);
+        if(corAttackId != null)
+            StopCoroutine(corAttackId);
 
         yield return new WaitForSeconds(1.5f);
         OnDeadEvent?.Invoke(this);

@@ -12,6 +12,10 @@ public class UI : MonoBehaviour
     [Header("메뉴 패널")]
     public GameObject menuPanel;
 
+    //* TOP
+    public TextMeshProUGUI coinTxt;
+    public TextMeshProUGUI diamondTxt;
+
     [Space(10)]
     public TextMeshProUGUI killCntTxt;  //TODO 지금은 안씀
     public TextMeshProUGUI EnemyCntTxt; // 몬스터 수

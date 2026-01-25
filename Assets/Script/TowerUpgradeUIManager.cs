@@ -86,7 +86,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
 
     // 캐릭터 배치
-    readonly int[] seatPriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
+    readonly int[] placePriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
     // 업그레이드
     public static int UPGRADE_HP_UNIT = 100;
@@ -108,11 +108,12 @@ public class TowerUpgradeUIManager : MonoBehaviour
         for (int i = (int)SEAT_IDX.LEFT; i < charaPlaceBtnArr.Length; i++)
         {
             // 잠김여부
-            bool isLocked = charaPlaceBtnArr[i].isLocked = crm.DB_isPlaceLockedArr[i];
+            charaPlaceBtnArr[i].isLocked = crm.DB_isPlaceLockedArr[i];
+            bool isLocked = charaPlaceBtnArr[i].isLocked;
             charaPlaceBtnArr[i].lockedFrameObj.SetActive(isLocked); // 잠김 프레임
 
             // charaSeatBtnArr[i].charaImg.sprite = null; //TODO 이미지 설정
-            charaPlaceBtnArr[i].priceTxt.text = $"{seatPriceArr[i]}"; // 가격
+            charaPlaceBtnArr[i].priceTxt.text = $"{placePriceArr[i]}"; // 가격
         }
 
         // 업그레이드 버튼 초기화
@@ -127,10 +128,26 @@ public class TowerUpgradeUIManager : MonoBehaviour
         if(charaPlaceBtnArr[idx].isLocked)
         {
             //TODO 좌석 잠금해제 로직
+
+            int price = placePriceArr[idx];
+
+            if(GM._.Coin >= price)
+            {
+                GM._.Coin -= price;
+                crm.DB_isPlaceLockedArr[idx] = false;
+                charaPlaceBtnArr[idx].isLocked = false;
+                Util._.SuccessMessage("구매 성공!");
+            }
+            else
+            {
+                Util._.ErrorMessage("코인이 부족합니다.");
+                return;
+            }
         }
         else
         {
             //TODO 캐릭터 배치 로직
+            // 캐릭터 콜렉션 슬롯 표시
         }
     }
 
