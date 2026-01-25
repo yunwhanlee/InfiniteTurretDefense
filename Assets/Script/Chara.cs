@@ -5,6 +5,8 @@ public class Chara : MonoBehaviour
     public TargetFinder targetFinder;
     public Missile missile;
 
+    public bool isPlaced; // 현재 배치되어있는지 여부
+
     [SerializeField] float time = 0;
     [SerializeField] float attackSpeed = 2.0f;
 
@@ -34,7 +36,8 @@ public class Chara : MonoBehaviour
         time += Time.deltaTime;
 
         // 공격
-        if(time > attackSpeed){
+        if(time > attackSpeed)
+        {
             Attack(target);
             time = 0;
         }
@@ -46,11 +49,8 @@ public class Chara : MonoBehaviour
         Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
 
         Vector3 direction = (enemy.targetSpotTf.position - transform.position).normalized;
-
         sprRdr.flipX = direction.x < 0;
-
         anim.SetTrigger("IsAttack");
-
         // 투사체 발사
         GM._.msm.SpawnMissile(transform.position, direction);
     }

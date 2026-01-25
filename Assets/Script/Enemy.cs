@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public enum ENEMY_TYPE
 {
@@ -12,10 +12,7 @@ public enum ENEMY_TYPE
 [RequireComponent(typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
-    public enum STATE
-    {
-        MOVE, ATTACK, DEAD
-    }
+    public enum STATE { MOVE, ATTACK, DEAD }
     
     // 이벤트 액션
     public Action<Enemy> OnDeadEvent = (Enemy) => {};
@@ -36,6 +33,9 @@ public class Enemy : MonoBehaviour
     // 컴포넌트
     SpriteRenderer sprRdr;
     Animator anim;
+
+    // UI
+    public Slider hpSlider;
 
     MaterialPropertyBlock propBlock;
     Vector3 playerPos;
@@ -96,12 +96,15 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Init(int maxHp, int dmg)
     {
+        hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
+
         this.maxHp = maxHp;
         this.dmg = dmg;
 
         state = STATE.MOVE;
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
         hp = maxHp;
+        hpSlider.value = (float)hp / maxHp;
 
         // 방향
         direction = (playerPos - transform.position).normalized;
@@ -132,8 +135,15 @@ public class Enemy : MonoBehaviour
     public void OnHit(int dmg)
     {
         hp -= dmg;
-        Flash();
 
+        Flash();
+        hpSlider.value = (float)hp / maxHp;
+
+        // HP슬라이더 표시
+        if(!hpSlider.gameObject.activeSelf)
+            hpSlider.gameObject.SetActive(true);
+
+        // 죽음
         if(!IsAlive)
         {
             StartCoroutine(CorDead());
@@ -145,6 +155,7 @@ public class Enemy : MonoBehaviour
         state = STATE.DEAD;
         hp = 0;
         anim.SetTrigger(ANIM_TRG_IS_DEAD);
+        hpSlider.gameObject.SetActive(false);
 
         GM._.emm.KillCnt++;
         GM._.emm.EnemyCnt--;
