@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetFinder : MonoBehaviour
 {
     [Header("Search Settings")]
-    public float radius = 10f;
+    public float radius;
     public LayerMask enemyLayer;
 
     public Enemy CurrentTarget;

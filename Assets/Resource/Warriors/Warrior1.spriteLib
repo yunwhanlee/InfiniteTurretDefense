@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrarySourceAsset
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Archer1-sheet_0
+      m_Hash: 381467907
+      m_Sprite: {fileID: -2066297647, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2066297647, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_1
+      m_Hash: 565939605
+      m_Sprite: {fileID: 1181363434, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1181363434, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Spawn
+    m_Hash: 298836195
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Idle
+      m_Hash: 1008081451
+      m_Sprite: {fileID: 1093233854, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1093233854, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_3
+      m_Hash: 263580857
+      m_Sprite: {fileID: 2071114183, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2071114183, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_4
+      m_Hash: 298940698
+      m_Sprite: {fileID: -200527379, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -200527379, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
+  - m_Name: Attack
+    m_Hash: 7088141
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Archer1-sheet_5
+      m_Hash: 651577740
+      m_Sprite: {fileID: 2072315712, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2072315712, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_6
+      m_Hash: 1071585334
+      m_Sprite: {fileID: 1412704417, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1412704417, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_7
+      m_Hash: 148383904
+      m_Sprite: {fileID: 1547850474, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1547850474, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    - m_Name: Archer1-sheet_8
+      m_Hash: 409417009
+      m_Sprite: {fileID: 1547850474, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1547850474, guid: 56c354bd247a26b4e812702591ef9694, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 639049808001939179
+  m_Version: 1

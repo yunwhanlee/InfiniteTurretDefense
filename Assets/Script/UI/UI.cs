@@ -30,6 +30,7 @@ public class UI : MonoBehaviour
     //* 외부 컴포넌트
     public TowerUpgradeUIManager towerUpgUI; // 타워 업그레이드 UI 매니저
     public CharaUpgradeUIManager charaUpgUI; // 캐릭터 업그레이드 UI 매니저
+    public CharaCollectionUIManager charaCltUI; // 캐릭터 카드콜레션 UI 매니저
 
     void Awake()
     {
@@ -56,6 +57,10 @@ public class UI : MonoBehaviour
     public void OnClickCharaBtn()
     {
         charaUpgUI.ShowPanel();
+    }
+    public void OnClickCollectionBtn()
+    {
+        charaCltUI.ShowPanel();
     }
 #endregion
 #region FUNC

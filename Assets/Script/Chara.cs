@@ -8,6 +8,7 @@ public class Chara : MonoBehaviour
     public Missile missile;
 
     public bool isPlaced; // 현재 배치되어있는지 여부
+    public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
 
     // Status
     [SerializeField] CHR_GRADE grade = CHR_GRADE.NORMAL;    
@@ -25,7 +26,7 @@ public class Chara : MonoBehaviour
         get => attackSpeed;
         set => attackSpeed = value;
     }
-    [SerializeField] float range = 10f; 
+    [SerializeField] float range = 5f; 
     public float Range {
         get => range;
         set => range = value;
@@ -49,9 +50,11 @@ public class Chara : MonoBehaviour
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        rangeCircle.SetActive(false);
 
         time = attackSpeed; // 공속 적용
         targetFinder.radius = range; // 범위 적용
+        rangeCircle.transform.localScale = Vector3.one * range; // 범위 스케일 조정
     }
 
     void Update()

@@ -21,6 +21,11 @@ public class CharaUpgradeUIManager : MonoBehaviour
     }
 
 #region EVENT
+    public void OnClickCloseBtn()
+    {
+        panelObj.SetActive(false);
+        GM._.crm.InActiveCharaRangeCircle();
+    }
     /// <summary>
     /// 현재 배치된 캐릭터 선택 좌우 이동
     /// </summary>
@@ -34,7 +39,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public void ShowPanel()
     {
         panelObj.SetActive(true);
-        UpdateUI(GM._.crm.charaArr[0]);
+        UpdateUI(GM._.crm.charaInsList[0]);
     }
 
     public void UpdateUI(Chara chara)

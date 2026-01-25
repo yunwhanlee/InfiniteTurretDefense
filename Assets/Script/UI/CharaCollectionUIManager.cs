@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class CharaCollectionUIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject panelObj;
+
+
     void Start()
     {
-        
+        panelObj.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    #region EVENT
+    #endregion
+    #region FUNC
+    public void ShowPanel()
     {
-        
+        panelObj.SetActive(true);
     }
+#endregion
 }

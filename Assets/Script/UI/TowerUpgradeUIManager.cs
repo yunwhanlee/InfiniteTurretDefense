@@ -145,14 +145,13 @@ public class TowerUpgradeUIManager : MonoBehaviour
             else
             {
                 Util._.ErrorMessage("코인이 부족합니다.");
-                return;
             }
         }
         else
         {
-            Debug.Log("캐릭터 배치 로직");
+            Debug.Log("캐릭터 배치 변경 로직");
             // 캐릭터 콜렉션 슬롯 표시
-            
+            // UI._.charaCltUI.ShowPanel();
         }
     }
 
