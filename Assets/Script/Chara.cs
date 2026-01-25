@@ -1,22 +1,47 @@
 using UnityEngine;
+using static Config;
 
 public class Chara : MonoBehaviour
 {
+    // 외부 클래스
     public TargetFinder targetFinder;
     public Missile missile;
 
     public bool isPlaced; // 현재 배치되어있는지 여부
 
-    [SerializeField] float time = 0;
-    [SerializeField] float attackSpeed = 2.0f;
+    // Status
+    [SerializeField] CHR_GRADE grade = CHR_GRADE.NORMAL;    
+    public CHR_GRADE Grade {
+        get => grade;
+        set => grade = value;
+    }
+    [SerializeField] int dmg = 10;  
+    public int Dmg {
+        get => dmg;
+        set => dmg = value;
+    }
+    [SerializeField] float attackSpeed = 2.0f;  
+    public float AttackSpeed {
+        get => attackSpeed;
+        set => attackSpeed = value;
+    }
+    [SerializeField] float range = 10f; 
+    public float Range {
+        get => range;
+        set => range = value;
+    }
+    [SerializeField] float critPer = 0f;    
+    public float CritPer {
+        get => critPer;
+        set => critPer = value;
+    }
+    [SerializeField] float critDmgPer = 1.5f;   
+    public float CritDmgPer {
+        get => critDmgPer;
+        set => critDmgPer = value;
+    }
 
-    int missileCnt = 1;
-    float criticalPer = 0;
-    float criticalDmgPer = 1.5f;
-    float fixSpan = 5;
-    float splashPer = 0;
-    float splashing = 0;
-
+    float time = 0;
     SpriteRenderer sprRdr;
     Animator anim;
 
@@ -24,7 +49,9 @@ public class Chara : MonoBehaviour
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        time = attackSpeed;
+
+        time = attackSpeed; // 공속 적용
+        targetFinder.radius = range; // 범위 적용
     }
 
     void Update()
@@ -52,7 +79,7 @@ public class Chara : MonoBehaviour
         sprRdr.flipX = direction.x < 0;
         anim.SetTrigger("IsAttack");
         // 투사체 발사
-        GM._.msm.SpawnMissile(transform.position, direction);
+        GM._.msm.SpawnMissile(transform.position, direction, dmg);
     }
 #endregion
 }
