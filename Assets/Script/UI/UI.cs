@@ -37,6 +37,7 @@ public class UI : MonoBehaviour
         _ = this;
         towerUpgUI = GameObject.Find("TowerUpgradeUIManager").GetComponent<TowerUpgradeUIManager>();
         charaUpgUI = GameObject.Find("CharaUpgradeUIManager").GetComponent<CharaUpgradeUIManager>();
+        charaCltUI = GameObject.Find("CharaCollectionUIManager").GetComponent<CharaCollectionUIManager>();
     }
 
     void Start()
@@ -56,6 +57,7 @@ public class UI : MonoBehaviour
     }
     public void OnClickCharaBtn()
     {
+        GM._.crm.SelectChara(GM._.crm.curSelectedChara); // 캐릭터 선택
         charaUpgUI.ShowPanel();
     }
     public void OnClickCollectionBtn()
