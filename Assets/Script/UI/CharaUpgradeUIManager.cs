@@ -39,7 +39,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public void ShowPanel()
     {
         panelObj.SetActive(true);
-        UpdateUI(GM._.crm.charaInsList[0]);
+        UpdateUI(GM._.crm.charaObjList[0]);
     }
 
     public void UpdateUI(Chara chara)

@@ -17898,9 +17898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7a79a5b372adc479091f222e786945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharaManager
-  applyCharaPrefArr:
+  charaPrefArr:
   - {fileID: 5979120318890232752, guid: abd573e445c5e304aa9b8b8fbf53eeba, type: 3}
-  charaInsList: []
+  - {fileID: 5979120318890232752, guid: 98c6d927559886546b9d9713dcc712ca, type: 3}
+  charaObjList: []
   placeObjArr:
   - {fileID: 1821240972}
   - {fileID: 386750185}

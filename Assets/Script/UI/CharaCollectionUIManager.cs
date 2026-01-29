@@ -4,7 +4,6 @@ public class CharaCollectionUIManager : MonoBehaviour
 {
     public GameObject panelObj;
 
-
     void Start()
     {
         panelObj.SetActive(false);

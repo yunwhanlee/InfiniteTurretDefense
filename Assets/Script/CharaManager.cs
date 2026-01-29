@@ -8,11 +8,11 @@ public class CharaManager : MonoBehaviour
 {
     public enum PLACE { CENTER, LEFT, RIGHT, TOP, BOTTOM }
 
-    [Header("(테스트) 배치시킬 캐릭터 프리팹 리스트")]
-    public Chara[] applyCharaPrefArr; //TODO 나중에 캐릭터가 선택된 정보를 저장하여 프리팹을 불러오는 기능 추가필요
+    [Header("모든 캐릭터 프리팹 리스트")]
+    public Chara[] charaPrefArr;
 
-    [Header("배치 생성된 캐릭터 리스트")]
-    public List<Chara> charaInsList;
+    [Header("실제 및 배치 생성된 캐릭터 리스트")]
+    public List<Chara> charaObjList;
 
     [Header("캐릭터 배치장소 오브젝트 배열")]
     public GameObject[] placeObjArr;
@@ -33,16 +33,16 @@ public class CharaManager : MonoBehaviour
     void Start()
     {
         //TODO 선택한 캐릭터가 배치되도록 로직 추가 필요
-        for(int i = 0; i < applyCharaPrefArr.Length; i++)
+        for(int i = 0; i < charaPrefArr.Length; i++)
         {
             // 프리팹 캐릭터 생성
-            Chara ins = Instantiate(applyCharaPrefArr[i], placeObjArr[(int)PLACE.CENTER].transform);
+            Chara ins = Instantiate(charaPrefArr[i], placeObjArr[(int)PLACE.CENTER].transform);
             // 현재 배치된 캐릭터 리스트에 추가
-            charaInsList.Add(ins);
+            charaObjList.Add(ins);
         }
 
         // CENTER로 현재 선택한 캐릭터 초기화
-        curSelectedChara = charaInsList[0];
+        curSelectedChara = charaObjList[0];
     }
 
 #region FUNC
@@ -52,7 +52,7 @@ public class CharaManager : MonoBehaviour
     public void InActiveCharaRangeCircle()
     {
         Debug.Log("모든 캐릭터 공격범위 원 비활성화");
-        charaInsList.ForEach(chara =>
+        charaObjList.ForEach(chara =>
         {
             chara.rangeCircle.SetActive(false);
         });
