@@ -85,6 +85,10 @@ public class TowerUpgradeUIManager : MonoBehaviour
     public TowerSeatBtn[] charaPlaceBtnArr; // 캐릭터 잠김화면 버튼
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
 
+    //TODO DB화 하기
+    /// <summary> 캐릭터 배치 잠김여부 배열 </summary>
+    public bool[] DB_isPlaceLockedArr;
+
     // 캐릭터 배치
     readonly int[] placePriceArr = { 0, 5000, 20000, 50000, 100000 }; // 좌석별 가격
 
@@ -97,6 +101,12 @@ public class TowerUpgradeUIManager : MonoBehaviour
     Tower tower;
     CharaManager crm;
 
+    void Awake()
+    {
+        //TODO (DB로드) 캐릭터 배치 잠금해제
+        DB_isPlaceLockedArr = new bool[] { false, true, true, true, true };
+    }
+
     void Start()
     {
         tower = GM._.tower;
@@ -108,7 +118,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
         for (int i = (int)SEAT_IDX.LEFT; i < charaPlaceBtnArr.Length; i++)
         {
             // 잠김여부
-            charaPlaceBtnArr[i].isLocked = crm.DB_isPlaceLockedArr[i];
+            charaPlaceBtnArr[i].isLocked = DB_isPlaceLockedArr[i];
             bool isLocked = charaPlaceBtnArr[i].isLocked;
             charaPlaceBtnArr[i].lockedFrameObj.SetActive(isLocked); // 잠김 프레임
 
@@ -135,7 +145,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
                 GM._.Coin -= price;
 
                 // 데이터 업데이트
-                crm.DB_isPlaceLockedArr[idx] = false;
+                DB_isPlaceLockedArr[idx] = false;
                 charaPlaceBtnArr[idx].isLocked = false;
                 // UI 업데이트
                 charaPlaceBtnArr[idx].lockedFrameObj.SetActive(false);

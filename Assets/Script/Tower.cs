@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using System;
 using System.Collections;
+using static Config;
 
 public class Tower : MonoBehaviour
 {
@@ -76,7 +77,6 @@ public class Tower : MonoBehaviour
             Heal(HealVal);
         }
 
-
         // 피격 받았을시 플래시 효과
         if(flashTime > 0f)
         {
@@ -91,6 +91,16 @@ public class Tower : MonoBehaviour
     }
 
 #region FUNC
+    private void SetFlashColor(bool isEnable)
+    {
+        isFlashing = isEnable;
+
+        int val = isEnable ? 1 : 0;
+
+        sprRdr.GetPropertyBlock(propBlock);
+        propBlock.SetFloat(hitFlashMat_IsHit, val);
+        sprRdr.SetPropertyBlock(propBlock);
+    }
     /// <summary>
     /// 적으로부터 공격받음
     /// </summary>
@@ -117,7 +127,6 @@ public class Tower : MonoBehaviour
             //TODO ReStart Game
         }
     }
-
     /// <summary>
     /// 최대체력 증가
     /// </summary>
@@ -127,6 +136,9 @@ public class Tower : MonoBehaviour
         Hp += val; // 최대 체력 증가시 현재 체력도 같이 증가
     }
 
+    /// <summary>
+    /// 최대방어력 증가
+    /// </summary>
     public void AddArmor(int val)
     {
         Armor += val;
@@ -138,17 +150,6 @@ public class Tower : MonoBehaviour
     public void Heal(int val)
     {
         Hp += val;
-    }
-
-    private void SetFlashColor(bool isEnable)
-    {
-        isFlashing = isEnable;
-
-        int val = isEnable ? 1 : 0;
-
-        sprRdr.GetPropertyBlock(propBlock);
-        propBlock.SetFloat(hitFlashMat_IsHit, val);
-        sprRdr.SetPropertyBlock(propBlock);
     }
 #endregion
 }

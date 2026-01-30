@@ -1,65 +1,69 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Config;
 
 /// <summary>
 /// 현재 배치된 캐릭터 및 캐릭터 카드 관리 매니저
 /// </summary>
 public class CharaManager : MonoBehaviour
 {
-    public enum PLACE { CENTER, LEFT, RIGHT, TOP, BOTTOM }
-
-    [Header("모든 캐릭터 프리팹 리스트")]
-    public Chara[] charaPrefArr;
-
     [Header("실제 및 배치 생성된 캐릭터 리스트")]
-    public List<Chara> charaObjList;
+    public List<Chara> curCharaList;
 
     [Header("캐릭터 배치장소 오브젝트 배열")]
-    public GameObject[] placeObjArr;
+    public GameObject[] placeAreaArr;
 
     [Header("현재 선택되어있는 캐릭터")]
     public Chara curSelectedChara;
 
-    //TODO DB화 하기
-    /// <summary> 캐릭터 배치 잠김여부 배열 </summary>
-    public bool[] DB_isPlaceLockedArr;
-
-    void Awake()
-    {
-        //TODO (DB로드) 캐릭터 배치 잠금해제
-        DB_isPlaceLockedArr = new bool[] { false, true, true, true, true };
-    }
-
     void Start()
     {
-        //TODO 선택한 캐릭터가 배치되도록 로직 추가 필요
-        for(int i = 0; i < charaPrefArr.Length; i++)
-        {
-            // 프리팹 캐릭터 생성
-            Chara ins = Instantiate(charaPrefArr[i], placeObjArr[(int)PLACE.CENTER].transform);
-            // 현재 배치된 캐릭터 리스트에 추가
-            charaObjList.Add(ins);
+        //모든 캐릭터 카드배열
+        CharaCard[] charaCardArr = UI._.charaCltUI.charaCardArr;
+
+        for(int i = 0; i < charaCardArr.Length; i++) {
+            // 캐릭터 프리팹 생성 및 배치
+            if(charaCardArr[i].place != CHR_PLACE.NONE)
+            {
+                Chara chara = PlaceChara(charaCardArr[i]);
+                // 현재 캐릭터 리스트에 추가
+                curCharaList.Add(chara);
+            }
         }
 
         // CENTER로 현재 선택한 캐릭터 초기화
-        curSelectedChara = charaObjList[0];
+        curSelectedChara = curCharaList[0];
     }
 
 #region FUNC
     /// <summary>
-    /// 공격범위 원 전부 비표시 초기화
+    ///* 캐릭터 자리 배치
+    /// </summary>
+    /// <param name="chara">배치할 캐릭터 카드에서 정보를 뽑음</param>
+    public Chara PlaceChara(CharaCard card)
+    {
+        if(card.place == CHR_PLACE.NONE)
+            return null;
+
+        // 캐릭터 생성 및 배치
+        GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeAreaArr[(int)card.grade].transform);
+        Chara chara = obj.GetComponent<Chara>();
+
+        return chara; // 리턴한 캐릭터를 전역변수인 캐릭터 리스트에 추가
+    }
+
+    /// <summary>
+    ///* 공격범위 원 전부 비표시 초기화
     /// </summary>
     public void InActiveCharaRangeCircle()
     {
         Debug.Log("모든 캐릭터 공격범위 원 비활성화");
-        charaObjList.ForEach(chara =>
-        {
-            chara.rangeCircle.SetActive(false);
-        });
+        curCharaList.ForEach(chara => chara.rangeCircle.SetActive(false));
     }
 
     /// <summary>
-    /// 캐릭터 선택
+    ///* 캐릭터 선택
     /// </summary>
     public void SelectChara(Chara target)
     {
