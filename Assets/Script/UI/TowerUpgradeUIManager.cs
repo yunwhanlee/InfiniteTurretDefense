@@ -82,7 +82,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
     public enum UPG_IDX { HP, ARMOR, HEAL }
 
     public GameObject panelObj; // 패널
-    public TowerSeatBtn[] charaPlaceBtnArr; // 캐릭터 잠김화면 버튼
+    public TowerSeatBtn[] charaPlaceBtnArr; // 캐릭터 배치 버튼
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
 
     //TODO DB화 하기
@@ -142,15 +142,20 @@ public class TowerUpgradeUIManager : MonoBehaviour
             // 좌석 잠금해제
             if(GM._.Coin >= price)
             {
-                GM._.Coin -= price;
+                Util._.ShowConfirmPopup("구매", "정말로 구매하시겠습니까?", "네",
+                    () => {
+                        GM._.Coin -= price;
 
-                // 데이터 업데이트
-                DB_isPlaceLockedArr[idx] = false;
-                charaPlaceBtnArr[idx].isLocked = false;
-                // UI 업데이트
-                charaPlaceBtnArr[idx].lockedFrameObj.SetActive(false);
+                        // 데이터 업데이트
+                        DB_isPlaceLockedArr[idx] = false;
+                        charaPlaceBtnArr[idx].isLocked = false;
+                        // UI 업데이트
+                        charaPlaceBtnArr[idx].lockedFrameObj.SetActive(false);
 
-                Util._.SuccessMessage("구매 성공!");
+                        Util._.SuccessMessage("구매 성공!");
+                    }
+                );
+
             }
             else
             {
@@ -159,9 +164,8 @@ public class TowerUpgradeUIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("캐릭터 배치 변경 로직");
-            // 캐릭터 콜렉션 슬롯 표시
-            // UI._.charaCltUI.ShowPanel();
+            Debug.Log("캐릭터 업그레이드 UI창 표시");
+            UI._.charaUpgUI.ShowPanel();
         }
     }
 

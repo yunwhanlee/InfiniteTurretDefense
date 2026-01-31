@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,10 +19,28 @@ public class Util : MonoBehaviour
     public GameObject interactionMsgToast;
     public TextMeshProUGUI msgTxt;
 
+    // 확인 팝업
+    public event Action OnClickConfirmEvent;
+    public GameObject confirmPopup;
+    public TextMeshProUGUI confirmTitleTxt;
+    public TextMeshProUGUI confirmMessageTxt;
+    public TextMeshProUGUI confirmBtnTxt;
+
     // private
     Coroutine corShowMsgID;
 
     void Start() => _ = this;
+
+#region EVENT
+    /// <summary>
+    /// 확인 팝업 버튼 클릭시, 콜백 이벤트 실행
+    /// </summary>
+    public void OnClickConfirmPopUpBtn()
+    {
+        confirmPopup.SetActive(false);
+        OnClickConfirmEvent.Invoke();
+    }
+#endregion
 
 #region FUNC
     /// <summary>
@@ -61,6 +80,21 @@ public class Util : MonoBehaviour
     {
         ShowMsg(MSG_TYPE.SUCCESS, msg);
     }
+
+    /// <summary>
+    /// 확인 팝업 표시
+    /// </summary>
+    public void ShowConfirmPopup(string title, string msg, string okTxt, Action callback)
+    {
+        confirmPopup.SetActive(true);
+        // UI
+        confirmTitleTxt.text = title;
+        confirmMessageTxt.text = msg;
+        confirmBtnTxt.text = okTxt;
+        // 이벤트 구독
+        OnClickConfirmEvent = callback;
+    }
+
     public void InteractionMessage(string msg)
     {
         //TODO 
