@@ -142,7 +142,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
             // 좌석 잠금해제
             if(GM._.Coin >= price)
             {
-                Util._.ShowConfirmPopup("구매", "정말로 구매하시겠습니까?", "네",
+                Util._.ShowConfirmPopup("잠금 해제", "정말로 구매하시겠습니까?", "네",
                     () => {
                         GM._.Coin -= price;
 
@@ -164,8 +164,8 @@ public class TowerUpgradeUIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("캐릭터 업그레이드 UI창 표시");
-            UI._.charaUpgUI.ShowPanel();
+            Debug.Log("캐릭터 카드 콜렉션 UI창 표시");
+            UI._.charaCltUI.ShowPanel();
         }
     }
 
