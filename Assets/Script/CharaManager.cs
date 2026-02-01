@@ -49,6 +49,9 @@ public class CharaManager : MonoBehaviour
 
         // 현재 캐릭터 리스트에 추가
         curCharaList.Add(chara);
+
+        // 현재 선택된 캐릭터리스트 최신화
+        GM._.crm.curSelectedChara = curCharaList[0];
     }
 
     /// <summary>
