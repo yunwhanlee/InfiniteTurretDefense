@@ -77,7 +77,7 @@ public class Chara : MonoBehaviour
 #region FUNC
     public void Attack(Enemy enemy)
     {
-        Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
+        // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
 
         Vector3 direction = (enemy.targetSpotTf.position - transform.position).normalized;
         sprRdr.flipX = direction.x < 0;

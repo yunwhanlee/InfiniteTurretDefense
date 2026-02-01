@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static Config;
 
 /// <summary>
 /// 타워 캐릭터배치 버튼 클래스
 /// </summary>
 [Serializable]
-public struct TowerSeatBtn
+public struct TowerPlaceBtn
 {
     public bool isLocked;
     public Button seatBtn;
@@ -78,12 +79,14 @@ public class TowerUpgradeBtn
 /// </summary>
 public class TowerUpgradeUIManager : MonoBehaviour
 {
-    public enum SEAT_IDX { CENTER, LEFT, BOTTOM, RIGHT, TOP }
     public enum UPG_IDX { HP, ARMOR, HEAL }
 
     public GameObject panelObj; // 패널
-    public TowerSeatBtn[] charaPlaceBtnArr; // 캐릭터 배치 버튼
+    public TowerPlaceBtn[] charaPlaceBtnArr; // 캐릭터 배치 버튼
     public TowerUpgradeBtn[] upgradeBtnArr; // 타워 업그레이드 버튼
+
+    public bool isChangeCharaMode; // 캐릭터 변경 모드 트리거
+    public CHR_PLACE changePlaceIdx; // 변경할 캐릭터 배치 위치
 
     //TODO DB화 하기
     /// <summary> 캐릭터 배치 잠김여부 배열 </summary>
@@ -115,15 +118,28 @@ public class TowerUpgradeUIManager : MonoBehaviour
         panelObj.SetActive(false);
 
         // 캐릭터 배치버튼 초기화 (CENTER는 기본 오픈)
-        for (int i = (int)SEAT_IDX.LEFT; i < charaPlaceBtnArr.Length; i++)
+        for (int i = 0; i < charaPlaceBtnArr.Length; i++)
         {
-            // 잠김여부
+            // 1. 잠금여부 및 가격 설정
             charaPlaceBtnArr[i].isLocked = DB_isPlaceLockedArr[i];
-            bool isLocked = charaPlaceBtnArr[i].isLocked;
-            charaPlaceBtnArr[i].lockedFrameObj.SetActive(isLocked); // 잠김 프레임
+            charaPlaceBtnArr[i].lockedFrameObj.SetActive(charaPlaceBtnArr[i].isLocked);
+            charaPlaceBtnArr[i].priceTxt.text = $"{placePriceArr[i]}";
 
-            // charaSeatBtnArr[i].charaImg.sprite = null; //TODO 이미지 설정
-            charaPlaceBtnArr[i].priceTxt.text = $"{placePriceArr[i]}"; // 가격
+            // 2. 해당 자리에 배치된 카드 찾기
+            CHR_PLACE currentPlace = (CHR_PLACE)i;
+            var foundCard = UI._.charaCltUI.FindCharaCard(currentPlace);
+
+            // 3. 카드가 있을 때만 이미지 변경, 없으면 이미지 끄기
+            if (foundCard)
+            {
+                charaPlaceBtnArr[i].charaImg.enabled = true; // 이미지 켜기
+                charaPlaceBtnArr[i].charaImg.sprite = foundCard.GetCurGradeSprite();
+            }
+            else
+            {
+                // 배치된 캐릭터가 없으면 이미지를 끄거나 기본 이미지로 설정
+                charaPlaceBtnArr[i].charaImg.enabled = false; 
+            }
         }
 
         // 업그레이드 버튼 초기화
@@ -133,6 +149,10 @@ public class TowerUpgradeUIManager : MonoBehaviour
     }
 
 #region EVENT
+    /// <summary>
+    /// 캐릭터 배치 버튼 (현재 캐릭터가 배치되어있는 위치 표시)
+    /// </summary>
+    /// <param name="idx">enum형 CENTER, LEFT, BOTTOM, RIGHT, TOP</param>
     public void OnClickPlaceBtn(int idx)
     {
         if(charaPlaceBtnArr[idx].isLocked)
@@ -155,7 +175,6 @@ public class TowerUpgradeUIManager : MonoBehaviour
                         Util._.SuccessMessage("구매 성공!");
                     }
                 );
-
             }
             else
             {
@@ -165,7 +184,12 @@ public class TowerUpgradeUIManager : MonoBehaviour
         else
         {
             Debug.Log("캐릭터 카드 콜렉션 UI창 표시");
+            Util._.InteractionMessage("변경할 캐릭터 카드를 선택해주세요.");
             UI._.charaCltUI.ShowPanel();
+
+            // 캐릭터 변경 모드 ON
+            isChangeCharaMode = true;
+            changePlaceIdx = (CHR_PLACE)idx;
         }
     }
 

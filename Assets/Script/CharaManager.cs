@@ -46,8 +46,15 @@ public class CharaManager : MonoBehaviour
         if(card.place == CHR_PLACE.NONE)
             return null;
 
+        Transform placeTf = placeAreaArr[(int)card.place].transform;
+
+        // 이전 캐릭터 오브젝트 제거 초기화
+        if(placeTf.childCount > 0)
+            for(int i = 0; i < placeTf.childCount; i++)
+                Destroy(placeTf.GetChild(i).gameObject);
+
         // 캐릭터 생성 및 배치
-        GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeAreaArr[(int)card.grade].transform);
+        GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeTf);
         Chara chara = obj.GetComponent<Chara>();
 
         return chara; // 리턴한 캐릭터를 전역변수인 캐릭터 리스트에 추가

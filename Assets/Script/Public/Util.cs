@@ -59,9 +59,16 @@ public class Util : MonoBehaviour
 
         msgTxt.text = $"{msg}";
 
-        // 코루틴 실행
-        if(corShowMsgID != null) StopCoroutine(corShowMsgID);
-        corShowMsgID = StartCoroutine(CorShowMsg());
+        if(type == MSG_TYPE.SUCCESS || type == MSG_TYPE.ERROR)
+        {
+            // 코루틴 실행
+            if(corShowMsgID != null) StopCoroutine(corShowMsgID);
+            corShowMsgID = StartCoroutine(CorShowMsg());
+        }
+        else
+        {
+            msgPopup.SetActive(true);
+        }
     }
 
     private IEnumerator CorShowMsg()
@@ -81,6 +88,14 @@ public class Util : MonoBehaviour
         ShowMsg(MSG_TYPE.SUCCESS, msg);
     }
 
+    public void InteractionMessage(string msg)
+    {
+        //TODO => EX) 캐릭터를 선택해주세요
+        // 선택할때까지 메세지 팝업창 표시
+        ShowMsg(MSG_TYPE.INTERACTION, msg);
+        // 선택하고나서 비표시 (Event Action)
+
+    }
     /// <summary>
     /// 확인 팝업 표시
     /// </summary>
@@ -93,14 +108,6 @@ public class Util : MonoBehaviour
         confirmBtnTxt.text = okTxt;
         // 이벤트 구독
         OnClickConfirmEvent = callback;
-    }
-
-    public void InteractionMessage(string msg)
-    {
-        //TODO 
-        // EX) 캐릭터를 선택해주세요
-        // 선택할때까지 메세지 팝업창 표시
-        // 선택하고나서 비표시 (Event Action)
     }
 #endregion
 }

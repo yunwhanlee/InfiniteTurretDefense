@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log($"OnTriggerEnter2D():: collision= {col.name}");
+        // Debug.Log($"OnTriggerEnter2D():: collision= {col.name}");
 
         //TODO Player를 Config로 상수만들기
         if(col.gameObject.CompareTag("Player"))
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Attack(Tower tower)
     {
-        Debug.Log("Attack():: tower=", tower);
+        // Debug.Log("Attack():: tower=", tower);
         corAttackId = StartCoroutine(CorAttack(tower));
     }
 

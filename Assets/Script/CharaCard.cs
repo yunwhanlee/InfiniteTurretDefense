@@ -20,7 +20,7 @@ public class CharaCard : MonoBehaviour
     public CHR_PLACE place; // 배치 위치
     public Sprite[] gradeCharaSprArr; // 등급에 따른 캐릭터 아이콘 스프라이트 배열
     public string[] gradeCharaNameArr; // 등급에 따른 캐릭터 고유 이름 배열
-    public bool isLocked => cardCnt > 0; // 잠김 여부
+    public bool IsLocked => cardCnt <= 0; // 잠김 여부
 
     //* Object
     public GameObject[] charaPrefArr; // 캐릭터 등급별 프리팹
@@ -35,17 +35,24 @@ public class CharaCard : MonoBehaviour
          return ((int)grade + OFFSET) * 10;
     }
 
+    public void UpdateData(CHR_GRADE grade, CHR_PLACE place, int cardCnt)
+    {
+        this.grade = grade;
+        this.place = place;
+        this.cardCnt = cardCnt;
+    }
+
     public void UpdateUI()
     {
         // 프레임 (비)표시
-        lockFrame.SetActive(isLocked);
+        lockFrame.SetActive(IsLocked);
         placedFrame.SetActive(place != CHR_PLACE.NONE);
 
         nameTxt.text = gradeCharaNameArr[(int)grade];
         placedTxt.text = place.ToString();
         cardCntTxt.text = $"{cardCnt} / {GetNextGradeCardCnt(grade)}";
         cardCntGaugeSlider.value = (float)0 / 0;
-        iconImg.sprite = gradeCharaSprArr[(int)grade];
+        iconImg.sprite = GetCurGradeSprite();
     }
 
     /// <summary>
@@ -54,6 +61,12 @@ public class CharaCard : MonoBehaviour
     public GameObject GetCurGradeCharaPref()
     {
         return charaPrefArr[(int)grade];
+    }
+
+    public Sprite GetCurGradeSprite()
+    {
+        Debug.Log($"GetCurGradeSprite():: sprite= {gradeCharaSprArr[(int)grade]}");
+        return gradeCharaSprArr[(int)grade];
     }
 #endregion
 }
