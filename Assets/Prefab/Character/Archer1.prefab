@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3747730231229651677}
   - component: {fileID: 5076223502629872650}
+  - component: {fileID: 2309301490465845743}
   - component: {fileID: 5979120318890232752}
   - component: {fileID: 4527924225899619}
   - component: {fileID: 83279591892131207}
@@ -190,7 +191,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5979120318890232752
+--- !u!114 &2309301490465845743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,6 +199,30 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3544792553527042751}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048c741d90f47fa44b658574645bc58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Archer
+  targetFinder: {fileID: 4527924225899619}
+  missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
+  isLocked: 0
+  place: -1
+  rangeCircle: {fileID: 1902532493617669342}
+  direction: {x: 0, y: 0, z: 0}
+  grade: 0
+  dmg: 10
+  attackSpeed: 1
+  range: 5
+  critPer: 0
+  critDmgPer: 1.5
+--- !u!114 &5979120318890232752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544792553527042751}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc43e1103930504e877a5dd8d15aed2, type: 3}
   m_Name: 
@@ -207,6 +232,7 @@ MonoBehaviour:
   isLocked: 0
   place: 0
   rangeCircle: {fileID: 1902532493617669342}
+  direction: {x: 0, y: 0, z: 0}
   grade: 0
   dmg: 10
   attackSpeed: 1

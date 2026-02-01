@@ -29,10 +29,13 @@ public class CharaCollectionUIManager : MonoBehaviour
     {
         //TODO DB로 캐릭터카드 클래스 데이터 로드
         charaCardArr[(int)CHR_CARD_IDX.ARCHER].UpdateData(CHR_GRADE.NORMAL, CHR_PLACE.CENTER, 1);
+        charaCardArr[(int)CHR_CARD_IDX.WARRIOR].UpdateData(CHR_GRADE.NORMAL, CHR_PLACE.NONE, 1);
     }
 
     void Start()
     {
+        panelObj.SetActive(false);
+
         // 캐릭터 콜렉션 카드 UI 업데이트
         UpdateUI();
     }
@@ -46,7 +49,10 @@ public class CharaCollectionUIManager : MonoBehaviour
         // 캐릭터 배치변경 모드
         if (UI._.towerUpgUI.isChangeCharaMode)
         {
-            if(charaCardArr[cardIdx].place == UI._.towerUpgUI.changePlaceIdx)
+            var targetPlace = UI._.towerUpgUI.changePlaceIdx; // 배치하려는 위치
+            var selectedCard = charaCardArr[cardIdx]; // 선택한 캐릭터카드
+
+            if(selectedCard.place == targetPlace)
             {
                 Util._.ShowUnderBarMessage("같은 캐릭터입니다. 다른걸 선택해주세요.");
                 return;
@@ -54,11 +60,24 @@ public class CharaCollectionUIManager : MonoBehaviour
 
             UI._.towerUpgUI.isChangeCharaMode = false;
 
-            // 이전 배치의 캐릭터 삭제
-            GM._.crm.RemoveChara(charaCardArr[cardIdx]);
+            // 배치하려는 위치에 이미 캐릭터가 존재한다면
+            var targetCard = FindCharaCard(targetPlace);
+            if(targetCard != null)
+            {
+                // 다른캐릭으로 대체되기때문에 제거
+                GM._.crm.RemoveChara(targetCard);
+                targetCard.place = CHR_PLACE.NONE; 
+            }
+
+            // 선택한 캐릭터카드가 이미 존재한다면
+            if(selectedCard.place != CHR_PLACE.NONE)
+            {
+                // 다른곳으로 배치될거기때문에 제거
+                GM._.crm.RemoveChara(selectedCard);
+            }
 
             // 캐릭터카드 배치데이터 변경
-            charaCardArr[cardIdx].place = UI._.towerUpgUI.changePlaceIdx;
+            charaCardArr[cardIdx].place = targetPlace;
 
             // 캐릭터 생성 배치
             GM._.crm.PlaceChara(charaCardArr[cardIdx]);
@@ -70,11 +89,13 @@ public class CharaCollectionUIManager : MonoBehaviour
             panelObj.SetActive(false);
             Util._.toastMsgPopup.SetActive(false);
 
+            // 메시지 표시
             Util._.ShowUnderBarMessage("캐릭터 위치변경 완료");
         }
         else
         {
-            
+            //TODO 배치중인지 표시추가하여 캐릭터 업그레이드 창 표시
+            //TODO GM._.crm.curSelectedChara이 방식을 사용하면 배치된 캐릭터만 표시가능하므로 고민 필요
         }
     }
     #endregion
@@ -91,7 +112,8 @@ public class CharaCollectionUIManager : MonoBehaviour
     public void UpdateUI()
     {
         charaCardArr[(int)CHR_CARD_IDX.ARCHER].UpdateUI();
-        //? 캐릭터카드 추가시 여기에도 추가
+        charaCardArr[(int)CHR_CARD_IDX.WARRIOR].UpdateUI();
+        //* 캐릭터카드 추가시 위에도 추가
     }
 
     /// <summary>
@@ -104,11 +126,15 @@ public class CharaCollectionUIManager : MonoBehaviour
         var findCard = Array.Find(charaCardArr, card => place == card.place);
 
         if(findCard != null)
+        {
             Debug.Log($"FindCharaCard({place}):: findCard = {findCard.name}");
+            return findCard;
+        }
         else
+        {
             Debug.Log($"FindCharaCard({place}):: 못 찾음 (Null)");
-
-        return findCard;
+            return null;
+        }
     }
 #endregion
 }

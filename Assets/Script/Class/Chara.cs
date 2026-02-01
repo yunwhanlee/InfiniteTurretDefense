@@ -11,6 +11,7 @@ public class Chara : MonoBehaviour
     public bool isLocked; // 잠김 여부
     public CHR_PLACE place; // 배치 위치
     public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
+    public Vector3 direction;
 
     // Status
     [SerializeField] CHR_GRADE grade = CHR_GRADE.NORMAL;    
@@ -48,7 +49,7 @@ public class Chara : MonoBehaviour
     SpriteRenderer sprRdr;
     Animator anim;
 
-    void Start()
+    protected void Start()
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -76,15 +77,14 @@ public class Chara : MonoBehaviour
     }
 
 #region FUNC
-    public void Attack(Enemy enemy)
+    public virtual void Attack(Enemy enemy)
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
-
-        Vector3 direction = (enemy.targetSpotTf.position - transform.position).normalized;
+        direction = (enemy.targetSpotTf.position - transform.position).normalized;
         sprRdr.flipX = direction.x < 0;
         anim.SetTrigger("IsAttack");
-        // 투사체 발사
-        GM._.msm.SpawnMissile(transform.position, direction, dmg);
+
+        // 이후 공격방식은 각각 자식클래스에서 오버라이딩으로 추가할 것!
     }
 #endregion
 }

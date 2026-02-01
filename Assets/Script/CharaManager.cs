@@ -41,8 +41,7 @@ public class CharaManager : MonoBehaviour
     /// <param name="chara">배치할 캐릭터 카드에서 정보를 뽑음</param>
     public void PlaceChara(CharaCard card)
     {
-        // 배치할 공간 오브젝트 삭제 초기화
-        Transform placeTf = RemoveChara(card);
+        Transform placeTf = placeAreaArr[(int)card.place].transform;
 
         // 캐릭터 생성 및 배치
         GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeTf);
