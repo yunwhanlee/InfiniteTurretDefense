@@ -26,9 +26,7 @@ public class CharaManager : MonoBehaviour
             // 캐릭터 프리팹 생성 및 배치
             if(charaCardArr[i].place != CHR_PLACE.NONE)
             {
-                Chara chara = PlaceChara(charaCardArr[i]);
-                // 현재 캐릭터 리스트에 추가
-                curCharaList.Add(chara);
+                PlaceChara(charaCardArr[i]);
             }
         }
 
@@ -41,29 +39,37 @@ public class CharaManager : MonoBehaviour
     ///* 캐릭터 자리 배치
     /// </summary>
     /// <param name="chara">배치할 캐릭터 카드에서 정보를 뽑음</param>
-    public Chara PlaceChara(CharaCard card)
+    public void PlaceChara(CharaCard card)
     {
-        if(card.place == CHR_PLACE.NONE)
-            return null;
-
-        // 이전 캐릭터 오브젝트 제거 초기화
+        // 배치할 공간 오브젝트 삭제 초기화
         Transform placeTf = RemoveChara(card);
 
         // 캐릭터 생성 및 배치
         GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeTf);
         Chara chara = obj.GetComponent<Chara>();
 
-        return chara; // 리턴한 캐릭터를 전역변수인 캐릭터 리스트에 추가
+        // 현재 캐릭터 리스트에 추가
+        curCharaList.Add(chara);
     }
 
+    /// <summary>
+    ///* 캐릭터 제거
+    /// </summary>
+    /// <param name="card">제거할 캐릭터카드</param>
     public Transform RemoveChara(CharaCard card)
     {
         Transform placeTf = placeAreaArr[(int)card.place].transform;
 
+        // 배치 오브젝트에 있는 자식오브젝트 제거
         if(placeTf.childCount > 0)
             for(int i = 0; i < placeTf.childCount; i++)
-                Destroy(placeTf.GetChild(i).gameObject);
-        
+            {
+                GameObject obj = placeTf.GetChild(i).gameObject;
+                // 리스트 제거
+                curCharaList.Remove(obj.GetComponent<Chara>());
+                // 오브젝트 제거
+                Destroy(obj);
+            }
         return placeTf;
     }
 

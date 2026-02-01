@@ -48,13 +48,13 @@ public class CharaCollectionUIManager : MonoBehaviour
         {
             if(charaCardArr[cardIdx].place == UI._.towerUpgUI.changePlaceIdx)
             {
-                Util._.ShowUnderBarMessage("현재 적용된 캐릭터입니다. 다른걸 선택해주세요.");
+                Util._.ShowUnderBarMessage("같은 캐릭터입니다. 다른걸 선택해주세요.");
                 return;
             }
 
             UI._.towerUpgUI.isChangeCharaMode = false;
 
-            // 이전 캐릭터 삭제
+            // 이전 배치의 캐릭터 삭제
             GM._.crm.RemoveChara(charaCardArr[cardIdx]);
 
             // 캐릭터카드 배치데이터 변경

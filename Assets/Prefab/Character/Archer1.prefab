@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8801099913921090214
 Transform:
   m_ObjectHideFlags: 0
@@ -204,7 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chara
   targetFinder: {fileID: 4527924225899619}
   missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
-  isPlaced: 0
+  isLocked: 0
+  place: 0
   rangeCircle: {fileID: 1902532493617669342}
   grade: 0
   dmg: 10

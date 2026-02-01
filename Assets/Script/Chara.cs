@@ -7,6 +7,7 @@ public class Chara : MonoBehaviour
     public TargetFinder targetFinder;
     public Missile missile;
 
+    // Value
     public bool isLocked; // 잠김 여부
     public CHR_PLACE place; // 배치 위치
     public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
