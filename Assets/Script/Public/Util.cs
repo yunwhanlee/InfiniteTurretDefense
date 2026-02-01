@@ -11,23 +11,30 @@ public class Util : MonoBehaviour
     // 코루틴 대기시간 변수 선언
     public WaitForSecondsRealtime WFS_RT_2SEC = new WaitForSecondsRealtime(2);
 
-    // 메세지 팝업
+    // 토스트 메세지 팝업
     enum MSG_TYPE {ERROR, SUCCESS, INTERACTION}
-    public GameObject msgPopup;
-    public GameObject errMsgToast;
-    public GameObject successMsgToast;
-    public GameObject interactionMsgToast;
-    public TextMeshProUGUI msgTxt;
+    [SerializeField] public GameObject toastMsgPopup;
+    [SerializeField] public GameObject errMsgToast;
+    [SerializeField] public GameObject successMsgToast;
+    [SerializeField] public GameObject interactionMsgToast;
+    [SerializeField] public TextMeshProUGUI toastMsgTxt;
+    [SerializeField] public GameObject interactionBackBtn;
+
+    // 언더바 메세지 팝업
+    [SerializeField] public GameObject underBarMsgPopup;
+    [SerializeField] public TextMeshProUGUI underBarMsgTxt;
 
     // 확인 팝업
     public event Action OnClickConfirmEvent;
-    public GameObject confirmPopup;
-    public TextMeshProUGUI confirmTitleTxt;
-    public TextMeshProUGUI confirmMessageTxt;
-    public TextMeshProUGUI confirmBtnTxt;
+    [SerializeField] public GameObject confirmPopup;
+    [SerializeField] public TextMeshProUGUI confirmTitleTxt;
+    [SerializeField] public TextMeshProUGUI confirmMessageTxt;
+    [SerializeField] public TextMeshProUGUI confirmBtnTxt;
 
     // private
-    Coroutine corShowMsgID;
+    event Action OnBackInteractionMsgEvent; // Interaction 뒤로가기 버튼 콜백 이벤트
+    Coroutine corShowToastMsgID;
+    Coroutine corShowUnderbarMsgID;
 
     void Start() => _ = this;
 
@@ -43,9 +50,7 @@ public class Util : MonoBehaviour
 #endregion
 
 #region FUNC
-    /// <summary>
-    /// 메세지 팝업 타입배경 표시
-    /// </summary>
+    /// <summary> 메세지 팝업 타입배경 표시 </summary>
     private void ActiveMsgPopupBg(MSG_TYPE type)
     {
         errMsgToast.SetActive(type == MSG_TYPE.ERROR);
@@ -53,52 +58,82 @@ public class Util : MonoBehaviour
         interactionMsgToast.SetActive(type == MSG_TYPE.INTERACTION);
     }
 
-    private void ShowMsg(MSG_TYPE type, string msg)
-    {
-        ActiveMsgPopupBg(type);
-
-        msgTxt.text = $"{msg}";
-
-        if(type == MSG_TYPE.SUCCESS || type == MSG_TYPE.ERROR)
-        {
-            // 코루틴 실행
-            if(corShowMsgID != null) StopCoroutine(corShowMsgID);
-            corShowMsgID = StartCoroutine(CorShowMsg());
-        }
-        else
-        {
-            msgPopup.SetActive(true);
-        }
-    }
-
-    private IEnumerator CorShowMsg()
+    /// <summary> (코루틴) 해당 메세지 2초간 표시 </summary>
+    private IEnumerator CorShowMsg(GameObject msgPopup)
     {
         msgPopup.SetActive(true);
         yield return WFS_RT_2SEC;
         msgPopup.SetActive(false);
     }
 
-    public void ErrorMessage(string msg)
+    /// <summary> 토스트 메시지 처리 </summary>
+    private void ShowToastMsg(MSG_TYPE type, string msg)
     {
-        ShowMsg(MSG_TYPE.ERROR, msg);
+        ActiveMsgPopupBg(type);
+
+        toastMsgTxt.text = $"{msg}";
+
+        if(type == MSG_TYPE.SUCCESS || type == MSG_TYPE.ERROR)
+        {
+            // 코루틴 실행
+            if(corShowToastMsgID != null) StopCoroutine(corShowToastMsgID);
+            corShowToastMsgID = StartCoroutine(CorShowMsg(toastMsgPopup));
+        }
+        else
+        {
+            toastMsgPopup.SetActive(true);
+        }
     }
 
-    public void SuccessMessage(string msg)
+    /// <summary> UnderBar 메시지 처리 </summary>
+    private void ShowUnderBarMsg(string msg)
     {
-        ShowMsg(MSG_TYPE.SUCCESS, msg);
+        underBarMsgTxt.text = msg;
+
+        // 코루틴 실행
+        if(corShowUnderbarMsgID != null) StopCoroutine(corShowUnderbarMsgID);
+        corShowUnderbarMsgID = StartCoroutine(CorShowMsg(underBarMsgPopup));
     }
 
-    public void InteractionMessage(string msg)
+    /// <summary> 실패 토스트 메시지 표시 </summary>
+    public void ShowErrorMessage(string msg)
     {
-        //TODO => EX) 캐릭터를 선택해주세요
+        ShowToastMsg(MSG_TYPE.ERROR, msg);
+    }
+
+    /// <summary> 성공 토스트 메시지 표시 </summary>
+    public void ShowSuccessMessage(string msg)
+    {
+        ShowToastMsg(MSG_TYPE.SUCCESS, msg);
+    }
+
+    /// <summary> 특정 상호작용까지 토스트 메시지를 표시 </summary>
+    /// <param name="msg">메시지</param>
+    /// <param name="callback">뒤로가기 버튼 누를시 실행하는 콜백함수</param>
+    public void ShowInteractionMessage(string msg, Action callback)
+    {
+        // 뒤로가기 전용 버튼 표시
+        interactionBackBtn.SetActive(true);
         // 선택할때까지 메세지 팝업창 표시
-        ShowMsg(MSG_TYPE.INTERACTION, msg);
-        // 선택하고나서 비표시 (Event Action)
-
+        ShowToastMsg(MSG_TYPE.INTERACTION, msg);
+        // 만약 닫기버튼 누를시 실행할 콜백함수
+        OnBackInteractionMsgEvent = callback;
     }
-    /// <summary>
-    /// 확인 팝업 표시
-    /// </summary>
+
+    /// <summary> 상호작용 뒤로가기 버튼 클릭 </summary>
+    public void OnClickInteractionBackBtn()
+    {
+        interactionBackBtn.SetActive(false);
+        OnBackInteractionMsgEvent.Invoke(); // 콜백함수 실행
+    }
+
+    /// <summary> UnderBar 메시지 2초간 표시 </summary>
+    public void ShowUnderBarMessage(string msg)
+    {
+        ShowUnderBarMsg(msg);
+    }
+
+    /// <summary> 확인 팝업 표시 </summary>
     public void ShowConfirmPopup(string title, string msg, string okTxt, Action callback)
     {
         confirmPopup.SetActive(true);

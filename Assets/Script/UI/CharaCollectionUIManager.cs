@@ -34,7 +34,7 @@ public class CharaCollectionUIManager : MonoBehaviour
     void Start()
     {
         // 캐릭터 콜렉션 카드 UI 업데이트
-        charaCardArr[(int)CHR_CARD_IDX.ARCHER].UpdateUI();
+        UpdateUI();
     }
 
     #region EVENT
@@ -46,14 +46,31 @@ public class CharaCollectionUIManager : MonoBehaviour
         // 캐릭터 배치변경 모드
         if (UI._.towerUpgUI.isChangeCharaMode)
         {
-            Debug.Log($"OnClickCharaCardFrameBtn({cardIdx}):: 캐릭터 배치변경 완료");
+            if(charaCardArr[cardIdx].place == UI._.towerUpgUI.changePlaceIdx)
+            {
+                Util._.ShowUnderBarMessage("현재 적용된 캐릭터입니다. 다른걸 선택해주세요.");
+                return;
+            }
+
             UI._.towerUpgUI.isChangeCharaMode = false;
+
+            // 이전 캐릭터 삭제
+            GM._.crm.RemoveChara(charaCardArr[cardIdx]);
+
+            // 캐릭터카드 배치데이터 변경
             charaCardArr[cardIdx].place = UI._.towerUpgUI.changePlaceIdx;
 
+            // 캐릭터 생성 배치
             GM._.crm.PlaceChara(charaCardArr[cardIdx]);
 
+            // 타워 업그레이드 UI 업데이트
+            UI._.towerUpgUI.UpdatePlaceUI();
+
+            // 불필요한 패널 닫기
             panelObj.SetActive(false);
-            Util._.msgPopup.SetActive(false);
+            Util._.toastMsgPopup.SetActive(false);
+
+            Util._.ShowUnderBarMessage("캐릭터 위치변경 완료");
         }
         else
         {
@@ -65,6 +82,16 @@ public class CharaCollectionUIManager : MonoBehaviour
     public void ShowPanel()
     {
         panelObj.SetActive(true);
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// 캐릭터 콜렉션 카드 UI 업데이트
+    /// </summary>
+    public void UpdateUI()
+    {
+        charaCardArr[(int)CHR_CARD_IDX.ARCHER].UpdateUI();
+        //? 캐릭터카드 추가시 여기에도 추가
     }
 
     /// <summary>
