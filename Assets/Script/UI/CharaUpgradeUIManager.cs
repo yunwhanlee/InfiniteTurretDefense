@@ -7,6 +7,7 @@ using UnityEngine;
 public class CharaUpgradeUIManager : MonoBehaviour
 {
     public GameObject panelObj;
+    public GameObject placedNoticeIcon;
 
     public TextMeshProUGUI gradeTxt;
     public TextMeshProUGUI dmgTxt;
