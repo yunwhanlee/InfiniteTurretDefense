@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Config;
 
 public class Archer : Chara
 {

@@ -50,6 +50,7 @@ public class CharaManager : MonoBehaviour
         // 캐릭터 생성 및 배치
         GameObject obj = Instantiate(card.GetCharaPref(), placeTf);
         Chara chara = obj.GetComponent<Chara>();
+        chara.Init(card.GetCharaDataAsset());
 
         // 현재 캐릭터 리스트에 추가
         curCharaList.Add(chara);

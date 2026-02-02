@@ -1,13 +1,13 @@
 using UnityEngine;
 using static Config;
 
-public class Chara : MonoBehaviour
+public abstract class Chara : MonoBehaviour
 {
     // 외부 클래스
     public TargetFinder targetFinder;
     public Missile missile;
 
-    // Value
+    // Value (Read Only)
     public bool isLocked; // 잠김 여부
     public CHR_PLACE place; // 배치 위치
     public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
@@ -15,36 +15,12 @@ public class Chara : MonoBehaviour
     public Vector3 direction;
 
     // Status
-    [SerializeField] CHR_GRADE grade = CHR_GRADE.NORMAL;    
-    public CHR_GRADE Grade {
-        get => grade;
-        set => grade = value;
-    }
-    [SerializeField] int dmg = 10;  
-    public int Dmg {
-        get => dmg;
-        set => dmg = value;
-    }
-    [SerializeField] float attackSpeed = 2.0f;  
-    public float AttackSpeed {
-        get => attackSpeed;
-        set => attackSpeed = value;
-    }
-    [SerializeField] float range = 5f; 
-    public float Range {
-        get => range;
-        set => range = value;
-    }
-    [SerializeField] float critPer = 0f;    
-    public float CritPer {
-        get => critPer;
-        set => critPer = value;
-    }
-    [SerializeField] float critDmgPer = 1.5f;   
-    public float CritDmgPer {
-        get => critDmgPer;
-        set => critDmgPer = value;
-    }
+    public CHR_GRADE Grade {get; private set;}
+    public int Dmg {get; private set;}
+    public float AttackSpeed {get; private set;}
+    public float Range {get; private set;}
+    public float CritPer {get; private set;}
+    public float CritDmgPer {get; private set;}
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -55,11 +31,6 @@ public class Chara : MonoBehaviour
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rangeCircle.SetActive(false);
-        defaultSpr = GetComponent<SpriteRenderer>().sprite; // Default 캐릭터 이미지 넣기
-
-        time = attackSpeed; // 공속 적용
-        targetFinder.radius = range; // 범위 적용
-        rangeCircle.transform.localScale = Vector3.one * range; // 범위 스케일 조정
     }
 
     void Update()
@@ -71,7 +42,7 @@ public class Chara : MonoBehaviour
         time += Time.deltaTime;
 
         // 공격
-        if(time > attackSpeed)
+        if(time > AttackSpeed)
         {
             Attack(target);
             time = 0;
@@ -79,6 +50,21 @@ public class Chara : MonoBehaviour
     }
 
 #region FUNC
+    public void Init(CharaDataAsset charaDataAsset)
+    {
+        defaultSpr = charaDataAsset.icon; // Default 캐릭터 이미지 넣기
+        Grade = charaDataAsset.grade;
+        Dmg = charaDataAsset.baseDmg;
+        AttackSpeed = charaDataAsset.baseAttackSpeed;
+        Range = charaDataAsset.baseRange;
+        CritPer = charaDataAsset.baseRange;
+        CritDmgPer = charaDataAsset.baseRange;
+
+        time = AttackSpeed; // 공속 적용
+        targetFinder.radius = Range; // 범위 적용
+        rangeCircle.transform.localScale = Vector3.one * Range; // 범위 스케일 조정
+    }
+    
     public virtual void Attack(Enemy enemy)
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
