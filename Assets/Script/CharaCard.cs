@@ -62,6 +62,7 @@ public class CharaCard : MonoBehaviour
     }
 
     public CharaDataAsset GetCharaDataAsset() => charaDataAsset;
+    public CHR_GRADE GetGrade() => userData.grade;
     public CHR_PLACE GetPlace() => userData.place;
     public CHR_PLACE SetPlace(CHR_PLACE place) => userData.place = place;
     public GameObject GetCharaPref() => charaDataAsset.charaPrefab;

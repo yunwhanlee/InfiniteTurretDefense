@@ -2,22 +2,6 @@ using System;
 using UnityEngine;
 using static Config;
 
-//TODO DB에서 캐릭터 Data 만들기
-[Serializable]
-public class CharaCardData
-{
-    public CHR_GRADE grade;
-    public CHR_PLACE place;
-    public int cnt;
-
-    public CharaCardData(CHR_GRADE grade, CHR_PLACE place, int cnt)
-    {
-        this.grade = grade;
-        this.place = place;
-        this.cnt = cnt;
-    }
-}
-
 public class CharaCollectionUIManager : MonoBehaviour
 {
     public GameObject panelObj;
@@ -27,7 +11,7 @@ public class CharaCollectionUIManager : MonoBehaviour
 
     void Awake()
     {
-        //TODO DB로 캐릭터카드 클래스 데이터 로드
+        // DB 캐릭터 데이터 에셋 적용
         charaCardArr[(int)CHR_CARD_IDX.ARCHER].SetUp(CHR_CARD_IDX.ARCHER);
         charaCardArr[(int)CHR_CARD_IDX.WARRIOR].SetUp(CHR_CARD_IDX.WARRIOR);
     }
@@ -91,7 +75,7 @@ public class CharaCollectionUIManager : MonoBehaviour
         }
         else
         {
-            // 배치중인지 표시추가하여 캐릭터 업그레이드 창 표시
+            // 캐릭터카드 콜랙션에서 카드 클릭시 전용 업그레이드 창 표시
             UI._.charaUpgUI.ShowPanel(charaCardArr[cardIdx]);
         }
     }

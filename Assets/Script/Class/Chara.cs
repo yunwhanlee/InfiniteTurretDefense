@@ -15,6 +15,7 @@ public abstract class Chara : MonoBehaviour
     public Vector3 direction;
 
     // Status
+    public CHR_CARD_IDX CardIdx {get; private set;}
     public CHR_GRADE Grade {get; private set;}
     public int Dmg {get; private set;}
     public float AttackSpeed {get; private set;}
@@ -31,6 +32,7 @@ public abstract class Chara : MonoBehaviour
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rangeCircle.SetActive(false);
+        defaultSpr = GetComponent<SpriteRenderer>().sprite; // Default 캐릭터 이미지 넣기
     }
 
     void Update()
@@ -52,7 +54,7 @@ public abstract class Chara : MonoBehaviour
 #region FUNC
     public void Init(CharaDataAsset charaDataAsset)
     {
-        defaultSpr = charaDataAsset.icon; // Default 캐릭터 이미지 넣기
+        CardIdx = CardIdx;
         Grade = charaDataAsset.grade;
         Dmg = charaDataAsset.baseDmg;
         AttackSpeed = charaDataAsset.baseAttackSpeed;

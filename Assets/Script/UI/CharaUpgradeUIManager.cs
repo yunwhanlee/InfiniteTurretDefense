@@ -42,25 +42,29 @@ public class CharaUpgradeUIManager : MonoBehaviour
     }
 #endregion
 #region FUNC
+    /// <summary>
+    /// 인게임에서 캐릭터 클릭 또는 메뉴:캐릭터 버튼 클릭
+    /// </summary>
     public void ShowPanel()
     {
         panelObj.SetActive(true);
         UpdateUI(GM._.crm.curSelectedChara);
     }
 
+    /// <summary>
+    /// 캐릭터카드 콜랙션에서 카드 클릭
+    /// </summary>
+    /// <param name="card"></param>
     public void ShowPanel(CharaCard card)
     {
         panelObj.SetActive(true);
-        UpdateUI(card.GetCharaPref().GetComponent<Chara>());
+        UpdateUI(card);
     }
 
     public void UpdateUI(Chara chara)
     {
-        // 현재 캐릭터가 배치중인지
-        bool isPlaced = GM._.crm.curCharaList.Exists(_chara => _chara.place == chara.place);
-
         // 배치중 아이콘 표시
-        placedNoticeIcon.SetActive(isPlaced);
+        placedNoticeIcon.SetActive(true); //isPlaced);
 
         // 캐릭터 이미지 교체
         charaImg.sprite = chara.defaultSpr;
@@ -72,6 +76,26 @@ public class CharaUpgradeUIManager : MonoBehaviour
         rangeTxt.text = $"{chara.Range}";
         critPerTxt.text = $"{chara.CritPer}";
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
+    }
+
+    /// <summary> 콜렉션에서 캐릭터카드 선택시 업그레이드 UI 창 표시 </summary>
+    public void UpdateUI(CharaCard card)
+    {
+        CharaDataAsset data = card.GetCharaDataAsset();
+
+        // 배치중 아이콘 표시
+        placedNoticeIcon.SetActive(false);
+
+        // 캐릭터 이미지 교체
+        charaImg.sprite = card.GetIconSprite();
+
+        // UI텍스트 최신화
+        gradeTxt.text = $"{card.GetGrade()}";
+        dmgTxt.text = $"{data.baseDmg}";
+        atkSpdTxt.text = $"{data.baseAttackSpeed}";
+        rangeTxt.text = $"{data.baseRange}";
+        critPerTxt.text = $"{data.baseCritPer}";
+        critDmgPerTxt.text = $"{data.baseCritDmgPer}";
     }
 #endregion
 }
