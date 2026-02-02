@@ -11,6 +11,7 @@ public class Chara : MonoBehaviour
     public bool isLocked; // 잠김 여부
     public CHR_PLACE place; // 배치 위치
     public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
+    public Sprite defaultSpr; // 캐릭터 아이콘 이미지
     public Vector3 direction;
 
     // Status
@@ -54,6 +55,7 @@ public class Chara : MonoBehaviour
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rangeCircle.SetActive(false);
+        defaultSpr = GetComponent<SpriteRenderer>().sprite; // Default 캐릭터 이미지 넣기
 
         time = attackSpeed; // 공속 적용
         targetFinder.radius = range; // 범위 적용

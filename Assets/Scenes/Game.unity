@@ -14130,6 +14130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharaUpgradeUIManager
   panelObj: {fileID: 7004760757720754399}
   placedNoticeIcon: {fileID: 8663106078594476516}
+  charaImg: {fileID: 1322368895}
   gradeTxt: {fileID: 1563338990}
   dmgTxt: {fileID: 742895122}
   atkSpdTxt: {fileID: 97275870}
@@ -53554,7 +53555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deployed
+  m_text: "\uBC30\uCE58\uC911"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd11ec7a157be4b4b85d94e058a6ca1c, type: 2}
   m_sharedMaterial: {fileID: -3301815107822425389, guid: cd11ec7a157be4b4b85d94e058a6ca1c, type: 2}
@@ -53581,7 +53582,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.35
+  m_fontSize: 15
   m_fontSizeBase: 29
   m_fontWeight: 400
   m_enableAutoSizing: 1

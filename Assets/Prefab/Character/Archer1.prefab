@@ -208,6 +208,7 @@ MonoBehaviour:
   isLocked: 0
   place: -1
   rangeCircle: {fileID: 1902532493617669342}
+  charaIconImg: {fileID: -987349885, guid: a7f16178f5671634bb7d1829abc98e25, type: 3}
   direction: {x: 0, y: 0, z: 0}
   grade: 0
   dmg: 10
@@ -232,6 +233,7 @@ MonoBehaviour:
   isLocked: 0
   place: 0
   rangeCircle: {fileID: 1902532493617669342}
+  charaIconImg: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   grade: 0
   dmg: 10

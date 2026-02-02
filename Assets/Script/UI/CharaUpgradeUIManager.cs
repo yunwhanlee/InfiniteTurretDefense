@@ -1,5 +1,7 @@
 using TMPro;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 캐릭터 업그레이드 UI 매니저
@@ -7,7 +9,9 @@ using UnityEngine;
 public class CharaUpgradeUIManager : MonoBehaviour
 {
     public GameObject panelObj;
-    public GameObject placedNoticeIcon;
+    public GameObject placedNoticeIcon; // 배치중 아이콘
+
+    public Image charaImg; // 캐릭터 이미지
 
     public TextMeshProUGUI gradeTxt;
     public TextMeshProUGUI dmgTxt;
@@ -19,6 +23,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     void Start()
     {
         panelObj.SetActive(false);
+        placedNoticeIcon.SetActive(false);
     }
 
 #region EVENT
@@ -45,6 +50,16 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
     public void UpdateUI(Chara chara)
     {
+        // 현재 캐릭터가 배치중인지
+        bool isPlaced = GM._.crm.curCharaList.Exists(_chara => _chara.place == chara.place);
+
+        // 배치중 아이콘 표시
+        placedNoticeIcon.SetActive(isPlaced);
+
+        // 캐릭터 이미지 교체
+        charaImg.sprite = chara.defaultSpr;
+
+        // UI텍스트 최신화
         gradeTxt.text = $"{chara.Grade}";
         dmgTxt.text = $"{chara.Dmg}";
         atkSpdTxt.text = $"{chara.AttackSpeed}";
