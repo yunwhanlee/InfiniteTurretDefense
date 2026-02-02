@@ -14,18 +14,22 @@ public class CharaCard : MonoBehaviour
     public Slider cardCntGaugeSlider; // 카드 카운트 게이지 슬라이더
     public Image iconImg; // 캐릭터 아이콘 이미지
 
+
     //* Value
-    public int cardCnt; // 소유중인 카드 수량
-    public CHR_GRADE grade; // 등급
-    public CHR_PLACE place; // 배치 위치
-    public Sprite[] gradeCharaSprArr; // 등급에 따른 캐릭터 아이콘 스프라이트 배열
+    // public int cardCnt; // 소유중인 카드 수량
+    // public CHR_GRADE grade; // 등급
+    // public CHR_PLACE place; // 배치 위치
+    // public Sprite[] gradeCharaSprArr; // 등급에 따른 캐릭터 아이콘 스프라이트 배열
     public string[] gradeCharaNameArr; // 등급에 따른 캐릭터 고유 이름 배열
-    public bool IsLocked => cardCnt <= 0; // 잠김 여부
-
+    // public bool IsLocked => cardCnt <= 0; // 잠김 여부
     //* Object
-    public GameObject[] charaPrefArr; // 캐릭터 등급별 프리팹
+    // public GameObject[] charaPrefArr; // 캐릭터 등급별 프리팹
 
-#region FUNC
+    // Data
+    private UserCharaData userData; // 유저 캐릭터 데이터
+    private CharaDataAsset charaDataAsset; // 캐릭터 데이터 에셋
+
+    #region FUNC
     /// <summary>
     /// 다음 등급업에 필요한 카드 수량 반환
     /// </summary>
@@ -35,38 +39,43 @@ public class CharaCard : MonoBehaviour
          return ((int)grade + OFFSET) * 10;
     }
 
-    public void UpdateData(CHR_GRADE grade, CHR_PLACE place, int cardCnt)
+    /// <summary>
+    /// 데이터 세팅
+    /// </summary>
+    /// <param name="cardIdx">캐릭터 카드 인덱스</param>
+    public void SetUp(CHR_CARD_IDX cardIdx)
     {
-        this.grade = grade;
-        this.place = place;
-        this.cardCnt = cardCnt;
+        userData = DB._.GetUserCharaDataAsset(cardIdx);
+
+        switch (cardIdx)
+        {
+            case CHR_CARD_IDX.ARCHER:
+                charaDataAsset = GM._.crm.archerDataAssetArr[(int)userData.grade];
+                break;
+            case CHR_CARD_IDX.WARRIOR:
+                charaDataAsset = GM._.crm.warriorDataAssetArr[(int)userData.grade];
+                break;
+            // 여기에 추가
+        }
     }
 
     public void UpdateUI()
     {
         // 프레임 (비)표시
-        lockFrame.SetActive(IsLocked);
-        placedFrame.SetActive(place != CHR_PLACE.NONE);
+        lockFrame.SetActive(userData.IsLocked);
+        placedFrame.SetActive(userData.place != CHR_PLACE.NONE);
 
-        nameTxt.text = gradeCharaNameArr[(int)grade];
-        placedTxt.text = place.ToString();
-        cardCntTxt.text = $"{cardCnt} / {GetNextGradeCardCnt(grade)}";
+        nameTxt.text = charaDataAsset.charaName;
+        placedTxt.text = userData.place.ToString();
+        cardCntTxt.text = $"{userData.cardCnt} / {GetNextGradeCardCnt(userData.grade)}";
         cardCntGaugeSlider.value = (float)0 / 0;
-        iconImg.sprite = GetCurGradeSprite();
+        iconImg.sprite = charaDataAsset.icon;
     }
 
-    /// <summary>
-    /// 현재 등급의 캐릭터 프리팹을 리턴
-    /// </summary>
-    public GameObject GetCurGradeCharaPref()
-    {
-        return charaPrefArr[(int)grade];
-    }
-
-    public Sprite GetCurGradeSprite()
-    {
-        Debug.Log($"GetCurGradeSprite():: sprite= {gradeCharaSprArr[(int)grade]}");
-        return gradeCharaSprArr[(int)grade];
-    }
+    public CHR_PLACE GetPlace() => userData.place;
+    public CHR_PLACE SetPlace(CHR_PLACE place) => userData.place = place;
+    public GameObject GetCharaPref() => charaDataAsset.charaPrefab;
+    public Sprite GetIconSprite() => charaDataAsset.icon;
+    public bool IsLocked() => userData.IsLocked;
 #endregion
 }

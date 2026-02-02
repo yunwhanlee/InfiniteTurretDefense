@@ -48,6 +48,12 @@ public class CharaUpgradeUIManager : MonoBehaviour
         UpdateUI(GM._.crm.curSelectedChara);
     }
 
+    public void ShowPanel(CharaCard card)
+    {
+        panelObj.SetActive(true);
+        UpdateUI(card.GetCharaPref().GetComponent<Chara>());
+    }
+
     public void UpdateUI(Chara chara)
     {
         // 현재 캐릭터가 배치중인지

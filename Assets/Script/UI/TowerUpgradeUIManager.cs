@@ -208,7 +208,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
         int cnt = 0;
         foreach(var card in UI._.charaCltUI.charaCardArr)
         {
-            if (!card.IsLocked) cnt++;
+            if (!card.IsLocked()) cnt++;
             if (cnt >= 2) break; // 2개 찾으면 바로 중단
         }
 
@@ -237,7 +237,7 @@ public class TowerUpgradeUIManager : MonoBehaviour
             if (foundCard)
             {
                 charaPlaceBtnArr[i].charaImg.enabled = true; // 이미지 켜기
-                charaPlaceBtnArr[i].charaImg.sprite = foundCard.GetCurGradeSprite();
+                charaPlaceBtnArr[i].charaImg.sprite = foundCard.GetIconSprite();
             }
             else
             {

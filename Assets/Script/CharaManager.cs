@@ -8,6 +8,10 @@ using static Config;
 /// </summary>
 public class CharaManager : MonoBehaviour
 {
+    [Header("모든 캐릭터 데이터 에셋 배열")]
+    public CharaDataAsset[] archerDataAssetArr;
+    public CharaDataAsset[] warriorDataAssetArr;
+
     [Header("실제 및 배치 생성된 캐릭터 리스트")]
     public List<Chara> curCharaList;
 
@@ -24,7 +28,7 @@ public class CharaManager : MonoBehaviour
 
         for(int i = 0; i < charaCardArr.Length; i++) {
             // 캐릭터 프리팹 생성 및 배치
-            if(charaCardArr[i].place != CHR_PLACE.NONE)
+            if(charaCardArr[i].GetPlace() != CHR_PLACE.NONE)
             {
                 PlaceChara(charaCardArr[i]);
             }
@@ -41,10 +45,10 @@ public class CharaManager : MonoBehaviour
     /// <param name="chara">배치할 캐릭터 카드에서 정보를 뽑음</param>
     public void PlaceChara(CharaCard card)
     {
-        Transform placeTf = placeAreaArr[(int)card.place].transform;
+        Transform placeTf = placeAreaArr[(int)card.GetPlace()].transform;
 
         // 캐릭터 생성 및 배치
-        GameObject obj = Instantiate(card.GetCurGradeCharaPref(), placeTf);
+        GameObject obj = Instantiate(card.GetCharaPref(), placeTf);
         Chara chara = obj.GetComponent<Chara>();
 
         // 현재 캐릭터 리스트에 추가
@@ -60,7 +64,7 @@ public class CharaManager : MonoBehaviour
     /// <param name="card">제거할 캐릭터카드</param>
     public Transform RemoveChara(CharaCard card)
     {
-        Transform placeTf = placeAreaArr[(int)card.place].transform;
+        Transform placeTf = placeAreaArr[(int)card.GetPlace()].transform;
 
         // 배치 오브젝트에 있는 자식오브젝트 제거
         if(placeTf.childCount > 0)
