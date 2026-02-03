@@ -2,6 +2,7 @@ using TMPro;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static Config;
 
 /// <summary>
 /// 캐릭터 업그레이드 UI 매니저
@@ -10,6 +11,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
 {
     public GameObject panelObj;
     public GameObject placedNoticeIcon; // 배치중 아이콘
+    public GameObject arrowBtnGroup;    // 화살표 버튼 그룹
 
     public Image charaImg; // 캐릭터 이미지
 
@@ -43,24 +45,27 @@ public class CharaUpgradeUIManager : MonoBehaviour
 #endregion
 #region FUNC
     /// <summary>
-    /// 인게임에서 캐릭터 클릭 또는 메뉴:캐릭터 버튼 클릭
+    /// 인게임에서 캐릭터 클릭 또는 메뉴>캐릭터 버튼 클릭 시, 패널 표시 (배치된 캐릭터만 표시)
     /// </summary>
     public void ShowPanel()
     {
         panelObj.SetActive(true);
+        arrowBtnGroup.SetActive(true); // 화살표 이동 활성화
         UpdateUI(GM._.crm.curSelectedChara);
     }
 
     /// <summary>
-    /// 캐릭터카드 콜랙션에서 카드 클릭
+    /// 캐릭터카드 콜랙션에서 카드 클릭 시, 패널 표시 (모든 캐릭터 표시)
     /// </summary>
     /// <param name="card"></param>
     public void ShowPanel(CharaCard card)
     {
         panelObj.SetActive(true);
+        arrowBtnGroup.SetActive(false); // 화살표 이동 비활성화
         UpdateUI(card);
     }
 
+    /// <summary> 인게임에서 캐릭터 선택시 업데이트 </summary>
     public void UpdateUI(Chara chara)
     {
         // 배치중 아이콘 표시
@@ -78,13 +83,14 @@ public class CharaUpgradeUIManager : MonoBehaviour
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
     }
 
-    /// <summary> 콜렉션에서 캐릭터카드 선택시 업그레이드 UI 창 표시 </summary>
+    /// <summary> 콜렉션에서 캐릭터카드 선택시 업데이트 </summary>
     public void UpdateUI(CharaCard card)
     {
         CharaDataAsset data = card.GetCharaDataAsset();
 
         // 배치중 아이콘 표시
-        placedNoticeIcon.SetActive(false);
+        bool isPlaced = card.GetPlace() != CHR_PLACE.NONE;
+        placedNoticeIcon.SetActive(isPlaced);
 
         // 캐릭터 이미지 교체
         charaImg.sprite = card.GetIconSprite();

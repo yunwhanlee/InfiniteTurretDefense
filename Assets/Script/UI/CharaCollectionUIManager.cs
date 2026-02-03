@@ -94,7 +94,7 @@ public class CharaCollectionUIManager : MonoBehaviour
     {
         charaCardArr[(int)CHR_CARD_IDX.ARCHER].UpdateUI();
         charaCardArr[(int)CHR_CARD_IDX.WARRIOR].UpdateUI();
-        //* 캐릭터카드 추가시 위에도 추가
+        //* 캐릭터카드 추가시 여기에 추가
     }
 
     /// <summary>
