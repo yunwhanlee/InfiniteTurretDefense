@@ -54,6 +54,8 @@ public abstract class Chara : MonoBehaviour
 #region FUNC
     public void Init(CharaDataAsset charaDataAsset)
     {
+        const int SCALE_UNIT = 2; // 범위 원 스케일 단위
+
         CardIdx = CardIdx;
         Grade = charaDataAsset.grade;
         Dmg = charaDataAsset.baseDmg;
@@ -64,7 +66,7 @@ public abstract class Chara : MonoBehaviour
 
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
-        rangeCircle.transform.localScale = Vector3.one * Range; // 범위 스케일 조정
+        rangeCircle.transform.localScale = Vector3.one * SCALE_UNIT * Range; // 범위 스케일 조정
     }
     
     public virtual void Attack(Enemy enemy)
