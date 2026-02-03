@@ -22,8 +22,12 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public TextMeshProUGUI critPerTxt;
     public TextMeshProUGUI critDmgPerTxt;
 
+    CharaManager crm;
+
     void Start()
     {
+        crm = GM._.crm;
+
         panelObj.SetActive(false);
         placedNoticeIcon.SetActive(false);
     }
@@ -32,15 +36,24 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public void OnClickCloseBtn()
     {
         panelObj.SetActive(false);
-        GM._.crm.InActiveCharaRangeCircle();
+        crm.InActiveCharaRangeCircle();
     }
+
     /// <summary>
     /// 현재 배치된 캐릭터 선택 좌우 이동
     /// </summary>
-    /// <param name="isRight">True : 오른쪽 방향, False : 왼쪽 방향</param>
-    public void OnClickArrowBtn(bool isRight)
+    /// <param name="sign">1 : 오른쪽 방향, -1 : 왼쪽 방향</param>
+    public void OnClickArrowBtn(int sign)
     {
-        
+        int curIdx = crm.curCharaList.IndexOf(crm.curSelectedChara);
+        int idx = curIdx + sign;
+
+        // 현재 선택된 캐릭터 변경
+        crm.curSelectedChara = crm.curCharaList[idx % crm.curCharaList.Count];
+
+        // 캐릭터 선택 및 UI 업데이트
+        crm.SelectChara(crm.curSelectedChara);
+        UpdateUI(crm.curSelectedChara);
     }
 #endregion
 #region FUNC
@@ -51,7 +64,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     {
         panelObj.SetActive(true);
         arrowBtnGroup.SetActive(true); // 화살표 이동 활성화
-        UpdateUI(GM._.crm.curSelectedChara);
+        UpdateUI(crm.curSelectedChara);
     }
 
     /// <summary>

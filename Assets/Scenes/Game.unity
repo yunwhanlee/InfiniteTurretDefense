@@ -3158,7 +3158,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 126749709}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 736835895}
+        m_TargetAssemblyTypeName: CharaUpgradeUIManager, Assembly-CSharp
+        m_MethodName: OnClickArrowBtn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &126749709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32048,7 +32060,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1579327956}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 736835895}
+        m_TargetAssemblyTypeName: CharaUpgradeUIManager, Assembly-CSharp
+        m_MethodName: OnClickArrowBtn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1579327956
 MonoBehaviour:
   m_ObjectHideFlags: 0
