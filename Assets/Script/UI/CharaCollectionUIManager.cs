@@ -68,7 +68,7 @@ public class CharaCollectionUIManager : MonoBehaviour
 
             // 불필요한 패널 닫기
             panelObj.SetActive(false);
-            Util._.toastMsgPopup.SetActive(false);
+            Util._.CloseInteractionMsgPopup();
 
             // 메시지 표시
             Util._.ShowUnderBarMessage("캐릭터 위치변경 완료");

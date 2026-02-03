@@ -16,9 +16,10 @@ public class Util : MonoBehaviour
     [SerializeField] public GameObject toastMsgPopup;
     [SerializeField] public GameObject errMsgToast;
     [SerializeField] public GameObject successMsgToast;
-    [SerializeField] public GameObject interactionMsgToast;
     [SerializeField] public TextMeshProUGUI toastMsgTxt;
-    [SerializeField] public GameObject interactionBackBtn;
+
+    [SerializeField] public GameObject interactionMsgToast;
+    [SerializeField] public TextMeshProUGUI interactionMsgTxt;
 
     // 언더바 메세지 팝업
     [SerializeField] public GameObject underBarMsgPopup;
@@ -50,14 +51,6 @@ public class Util : MonoBehaviour
 #endregion
 
 #region FUNC
-    /// <summary> 메세지 팝업 타입배경 표시 </summary>
-    private void ActiveMsgPopupBg(MSG_TYPE type)
-    {
-        errMsgToast.SetActive(type == MSG_TYPE.ERROR);
-        successMsgToast.SetActive(type == MSG_TYPE.SUCCESS);
-        interactionMsgToast.SetActive(type == MSG_TYPE.INTERACTION);
-    }
-
     /// <summary> (코루틴) 해당 메세지 2초간 표시 </summary>
     private IEnumerator CorShowMsg(GameObject msgPopup)
     {
@@ -69,7 +62,9 @@ public class Util : MonoBehaviour
     /// <summary> 토스트 메시지 처리 </summary>
     private void ShowToastMsg(MSG_TYPE type, string msg)
     {
-        ActiveMsgPopupBg(type);
+        // 메세지 팝업 타입배경 표시
+        errMsgToast.SetActive(type == MSG_TYPE.ERROR);
+        successMsgToast.SetActive(type == MSG_TYPE.SUCCESS);
 
         toastMsgTxt.text = $"{msg}";
 
@@ -112,18 +107,25 @@ public class Util : MonoBehaviour
     /// <param name="callback">뒤로가기 버튼 누를시 실행하는 콜백함수</param>
     public void ShowInteractionMessage(string msg, Action callback)
     {
-        // 뒤로가기 전용 버튼 표시
-        interactionBackBtn.SetActive(true);
         // 선택할때까지 메세지 팝업창 표시
-        ShowToastMsg(MSG_TYPE.INTERACTION, msg);
+        interactionMsgToast.SetActive(true);
+        interactionMsgTxt.text = msg;
+
         // 만약 닫기버튼 누를시 실행할 콜백함수
-        OnBackInteractionMsgEvent = callback;
+        OnBackInteractionMsgEvent = CloseInteractionMsgPopup;
+        OnBackInteractionMsgEvent += callback;
+    }
+
+    /// <summary> 상호작용 메시지 숨기기 </summary>
+    public void CloseInteractionMsgPopup()
+    {
+        interactionMsgToast.SetActive(false);
     }
 
     /// <summary> 상호작용 뒤로가기 버튼 클릭 </summary>
     public void OnClickInteractionBackBtn()
     {
-        interactionBackBtn.SetActive(false);
+        if(OnBackInteractionMsgEvent == null) return;
         OnBackInteractionMsgEvent.Invoke(); // 콜백함수 실행
     }
 

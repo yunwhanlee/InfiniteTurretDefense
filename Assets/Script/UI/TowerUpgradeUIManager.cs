@@ -158,7 +158,6 @@ public class TowerUpgradeUIManager : MonoBehaviour
 
             Util._.ShowInteractionMessage("변경할 캐릭터 카드를 선택해주세요.",
                 () => {
-                    Util._.toastMsgPopup.SetActive(false);
                     UI._.charaCltUI.panelObj.SetActive(false);
                 }
             );
