@@ -87,6 +87,7 @@ public class CharaManager : MonoBehaviour
     {
         Debug.Log("모든 캐릭터 공격범위 원 비활성화");
         curCharaList.ForEach(chara => chara.rangeCircle.SetActive(false));
+        curSelectedChara.SetOutline(false);
     }
 
     /// <summary>
@@ -100,6 +101,8 @@ public class CharaManager : MonoBehaviour
         InActiveCharaRangeCircle();
         // 선택한 캐릭터 공격범위 원 표시
         target.rangeCircle.SetActive(true);
+        // target 캐릭터 아웃라인 표시
+        target.SetOutline(true);
     }
 #endregion
 }

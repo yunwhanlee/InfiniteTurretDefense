@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8927625461893646837}
   - component: {fileID: 2922150406429055484}
   - component: {fileID: 3926822100353082275}
+  - component: {fileID: 8387603257266804225}
   m_Layer: 6
   m_Name: Archer1
   m_TagString: Character
@@ -157,7 +158,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 7ce2c8c50f9c949498f4411431704695, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,12 +210,8 @@ MonoBehaviour:
   rangeCircle: {fileID: 1902532493617669342}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
-  grade: 0
-  dmg: 10
-  attackSpeed: 1
-  range: 5
-  critPer: 0
-  critDmgPer: 1.5
+  defaultMt: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outlineMt: {fileID: 2100000, guid: 7ce2c8c50f9c949498f4411431704695, type: 2}
 --- !u!114 &4527924225899619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +327,14 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4540158, y: 0.60801435}
   m_EdgeRadius: 0
+--- !u!222 &8387603257266804225
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544792553527042751}
+  m_CullTransparentMesh: 1
 --- !u!1 &8835989785640415848
 GameObject:
   m_ObjectHideFlags: 0
