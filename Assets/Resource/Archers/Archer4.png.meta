@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d9ac29462abb3bc4eb26b63c96cc9de5
+guid: 6ce6f8494da7c77499218e35332249cc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer4_0
+      name: Archer5_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aada3c65fbd5a474097f487fd5972e5c
-      internalID: 1027843464
+      spriteID: 3ba4d166f2aefc04e9f7c90d48974478
+      internalID: 988713354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_1
+      name: Archer5_1
       rect:
         serializedVersion: 2
         x: 64
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4ba88bad4361b49ba3aec6c5590702
-      internalID: 263085973
+      spriteID: 799bf0e35d3a14d4eaa0797e7550568b
+      internalID: -1179142145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_2
+      name: Archer5_2
       rect:
         serializedVersion: 2
         x: 128
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 664d3f4d1c38248468d16c656605eb7f
-      internalID: -1244478713
+      spriteID: 703c7b21dd89c1b4e87f26a22b3c1cb3
+      internalID: -1743848078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_3
+      name: Archer5_3
       rect:
         serializedVersion: 2
         x: 0
@@ -191,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37a1ff6363d1bef45bcb062a462234b6
-      internalID: -263017572
+      spriteID: 180b31cb798b18b499997fadc30fb110
+      internalID: -1563881613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_4
+      name: Archer5_4
       rect:
         serializedVersion: 2
         x: 64
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24af49f5bfe7884aac4dd697d458897
-      internalID: -1107756423
+      spriteID: 582eb8bab94309c469c563a8bb16ceca
+      internalID: -865679601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_5
+      name: Archer5_5
       rect:
         serializedVersion: 2
         x: 128
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 565f6ae3945bc89429e53f72b2b641b1
-      internalID: -384592967
+      spriteID: 46de92c89abe0f44aa53396966048942
+      internalID: -1730785551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_6
+      name: Archer5_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21b6367da2cde064cb73c7a7694448d6
-      internalID: 295138522
+      spriteID: 066d0b01958208e4ebfe5568787716b9
+      internalID: 1050515352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer4_7
+      name: Archer5_7
       rect:
         serializedVersion: 2
         x: 64
@@ -279,8 +279,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82820f0b80aebfb4d9ccbe1207672ec0
-      internalID: 1513936137
+      spriteID: a108eff066a4d0245afcfa5525bbff86
+      internalID: 94665183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer5_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe93ccb5c7bc2ed458e97a4b1917a63f
+      internalID: -1659382321
       vertices: []
       indices: 
       edges: []
@@ -299,14 +321,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Archer4_0: 1027843464
-      Archer4_1: 263085973
-      Archer4_2: -1244478713
-      Archer4_3: -263017572
-      Archer4_4: -1107756423
-      Archer4_5: -384592967
-      Archer4_6: 295138522
-      Archer4_7: 1513936137
+      Archer5_0: 988713354
+      Archer5_1: -1179142145
+      Archer5_2: -1743848078
+      Archer5_3: -1563881613
+      Archer5_4: -865679601
+      Archer5_5: -1730785551
+      Archer5_6: 1050515352
+      Archer5_7: 94665183
+      Archer5_8: -1659382321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

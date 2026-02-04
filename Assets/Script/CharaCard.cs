@@ -22,10 +22,10 @@ public class CharaCard : MonoBehaviour
     /// <summary>
     /// 다음 등급업에 필요한 카드 수량 반환
     /// </summary>
-    private int GetNextGradeCardCnt(CHR_GRADE grade)
+    public int GetNextGradeCardCnt()
     {
         const int OFFSET = 1;
-         return ((int)grade + OFFSET) * 10;
+        return ((int)userData.grade + OFFSET) * 10;
     }
 
     /// <summary>
@@ -56,9 +56,35 @@ public class CharaCard : MonoBehaviour
 
         nameTxt.text = charaDataAsset.charaName;
         placedTxt.text = userData.place.ToString();
-        cardCntTxt.text = $"{userData.cardCnt} / {GetNextGradeCardCnt(userData.grade)}";
+        cardCntTxt.text = $"{userData.cardCnt} / {GetNextGradeCardCnt()}";
         cardCntGaugeSlider.value = (float)0 / 0;
         iconImg.sprite = charaDataAsset.icon;
+    }
+
+    /// <summary>
+    /// 등급 업
+    /// </summary>
+    public bool GradeUp()
+    {
+        if(GetCardCnt() >= GetNextGradeCardCnt())
+        {
+            Util._.ShowUnderBarMessage("캐릭터 등급업 완료!");
+            userData.grade++;
+            charaDataAsset = GM._.crm.archerDataAssetArr[(int)userData.grade];
+
+            userData.cardCnt -= GetNextGradeCardCnt();
+
+            GM._.crm.RemoveChara(this);
+            GM._.crm.PlaceChara(this);
+            GM._.crm.SelectChara(GM._.crm.curSelectedChara);
+
+            return true;
+        }
+        else
+        {
+            Util._.ShowErrorMessage("캐릭터카드가 부족합니다.");
+            return false;
+        }
     }
 
     public CharaDataAsset GetCharaDataAsset() => charaDataAsset;
@@ -67,6 +93,7 @@ public class CharaCard : MonoBehaviour
     public CHR_PLACE SetPlace(CHR_PLACE place) => userData.place = place;
     public GameObject GetCharaPref() => charaDataAsset.charaPrefab;
     public Sprite GetIconSprite() => charaDataAsset.icon;
+    public int GetCardCnt() => userData.cardCnt;
     public bool IsLocked() => userData.IsLocked;
 #endregion
 }

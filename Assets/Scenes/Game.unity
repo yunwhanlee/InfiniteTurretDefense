@@ -18654,7 +18654,10 @@ MonoBehaviour:
   archerDataAssetArr:
   - {fileID: 11400000, guid: 05c89322951dc764bbfd13878f92a8ae, type: 2}
   - {fileID: 11400000, guid: ec8017bfd03f26b4c8e7c086ed9aa7a8, type: 2}
+  - {fileID: 11400000, guid: c1d80c314489c69439a241b81196fc4c, type: 2}
+  - {fileID: 11400000, guid: b48f2417b34ef2f4db50ea3839dfc61b, type: 2}
   warriorDataAssetArr:
+  - {fileID: 11400000, guid: 29e2247201182c4409a8cf7a7832e1fc, type: 2}
   - {fileID: 11400000, guid: 29e2247201182c4409a8cf7a7832e1fc, type: 2}
   curCharaList: []
   placeAreaArr:
@@ -52008,7 +52011,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2259219639279676715}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 736835895}
+        m_TargetAssemblyTypeName: CharaUpgradeUIManager, Assembly-CSharp
+        m_MethodName: OnClickGradeUpBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5016892139622040396
 GameObject:
   m_ObjectHideFlags: 0

@@ -206,7 +206,7 @@ MonoBehaviour:
   missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
   isLocked: 0
   place: -1
-  rangeCircle: {fileID: 1902532493617669342, guid: abd573e445c5e304aa9b8b8fbf53eeba, type: 3}
+  rangeCircle: {fileID: 920408537845552026}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &4527924225899619

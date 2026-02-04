@@ -72,8 +72,8 @@ public class DB : MonoBehaviour
 
         // 캐릭터 데이터 로드
         userCharaDataArr = new UserCharaData[] {
-            new (CHR_CARD_IDX.ARCHER, CHR_GRADE.NORMAL, 1, CHR_PLACE.CENTER),
-            new (CHR_CARD_IDX.WARRIOR, CHR_GRADE.NORMAL, 1, CHR_PLACE.NONE)
+            new (CHR_CARD_IDX.ARCHER, CHR_GRADE.NORMAL, 99, CHR_PLACE.CENTER),
+            new (CHR_CARD_IDX.WARRIOR, CHR_GRADE.NORMAL, 99, CHR_PLACE.NONE)
         };
     }
 

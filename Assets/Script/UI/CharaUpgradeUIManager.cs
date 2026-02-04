@@ -39,6 +39,16 @@ public class CharaUpgradeUIManager : MonoBehaviour
         crm.InActiveCharaRangeCircle();
     }
 
+    public void OnClickGradeUpBtn()
+    {
+        int cardIdx = (int)GM._.crm.curSelectedChara.CardIdx;
+
+        var curCard = UI._.charaCltUI.charaCardArr[cardIdx];
+
+        if(curCard.GradeUp())
+            UpdateUI(curCard);
+    }
+
     /// <summary>
     /// 현재 배치된 캐릭터 선택 좌우 이동
     /// </summary>

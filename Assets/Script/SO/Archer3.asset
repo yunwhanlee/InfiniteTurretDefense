@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70b42bd1d221c5e4eb17bb3ba1c0b4e7, type: 3}
-  m_Name: Archer2
+  m_Name: Archer3
   m_EditorClassIdentifier: Assembly-CSharp::CharaBaseData
   cardIdx: 0
-  grade: 1
-  charaName: "\uAD81\uC2182"
-  icon: {fileID: -1836204633, guid: 96c95f5458dde27488f7ed734f37f24f, type: 3}
-  charaPrefab: {fileID: 3544792553527042751, guid: 231c46f5ab3317940b56f38f842b0346, type: 3}
-  baseDmg: 14
-  baseAttackSpeed: 0.8
-  baseRange: 6
+  grade: 2
+  charaName: "\uAD81\uC2183"
+  icon: {fileID: 1623160787, guid: b2b1b98e52c798f4bbe7253c686c3c38, type: 3}
+  charaPrefab: {fileID: 3544792553527042751, guid: e7c5ca33885119745b5d41b57f6f77d3, type: 3}
+  baseDmg: 18
+  baseAttackSpeed: 0.6
+  baseRange: 7
   baseCritPer: 0
   baseCritDmgPer: 1.5

@@ -33,7 +33,7 @@ public abstract class Chara : MonoBehaviour
     // 쉐이더의 Color 프로퍼티 레퍼런스 ID 캐싱 (문자열 검색보다 훨씬 빠름)
     private static readonly int OutlineColorId = Shader.PropertyToID("_Color");
 
-    protected void Start()
+    protected void Awake()
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
