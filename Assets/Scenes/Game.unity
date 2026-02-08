@@ -18659,6 +18659,8 @@ MonoBehaviour:
   warriorDataAssetArr:
   - {fileID: 11400000, guid: 29e2247201182c4409a8cf7a7832e1fc, type: 2}
   - {fileID: 11400000, guid: 29e2247201182c4409a8cf7a7832e1fc, type: 2}
+  - {fileID: 11400000, guid: 543002bb96853da4e914c0ca2e702bc5, type: 2}
+  - {fileID: 11400000, guid: bb546cf25f4c2f347878c470113e8e7b, type: 2}
   curCharaList: []
   placeAreaArr:
   - {fileID: 1821240972}

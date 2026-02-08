@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70b42bd1d221c5e4eb17bb3ba1c0b4e7, type: 3}
-  m_Name: Warrior2
+  m_Name: Warrior3
   m_EditorClassIdentifier: Assembly-CSharp::CharaBaseData
   cardIdx: 1
-  grade: 1
-  charaName: "\uC804\uC0AC2"
-  icon: {fileID: -1842273496, guid: 8d52df456332ebf4192d2bbfe711d908, type: 3}
-  charaPrefab: {fileID: 3544792553527042751, guid: 400334e646c3c5b4db6d6b634b85f0d9, type: 3}
-  baseDmg: 23
-  baseAttackSpeed: 1.1
-  baseRange: 1.5
+  grade: 2
+  charaName: "\uC804\uC0AC3"
+  icon: {fileID: 1902745069, guid: d07f3cfbfc1b5bf45b3a75b2d591035a, type: 3}
+  charaPrefab: {fileID: 3544792553527042751, guid: 252691e4cbd5b744b82ec47c40de52a5, type: 3}
+  baseDmg: 74
+  baseAttackSpeed: 1.2
+  baseRange: 2
   baseCritPer: 0
   baseCritDmgPer: 1.5

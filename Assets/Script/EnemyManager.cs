@@ -4,8 +4,8 @@ using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
-    const int DEF_HP = 10;
-    const int DEF_DMG = 5;
+    const int DEF_HP = 5;
+    const int DEF_DMG = 2;
 
     // 오브젝트 풀링
     public Transform enemyGroupTf;

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2922150406429055484}
   - component: {fileID: 880944963251362565}
   m_Layer: 6
-  m_Name: Warrior2
+  m_Name: Warrior4
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1842273496, guid: 8d52df456332ebf4192d2bbfe711d908, type: 3}
+  m_Sprite: {fileID: -1597497579, guid: d5dec969b6a010544a948a79620df56a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 73948c9c21705f04ba085b4b9c9fb76c, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: b123030c666639b40b24e6ddbe0ee543, type: 3}
 --- !u!114 &2922150406429055484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.125}
-    oldSize: {x: 2.1333334, y: 2.1333334}
+    oldSize: {x: 3.5555556, y: 3.5555556}
     newSize: {x: 3.5555556, y: 3.5555556}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -17,8 +17,8 @@ MonoBehaviour:
   charaName: "\uAD81\uC2182"
   icon: {fileID: -1836204633, guid: 96c95f5458dde27488f7ed734f37f24f, type: 3}
   charaPrefab: {fileID: 3544792553527042751, guid: 231c46f5ab3317940b56f38f842b0346, type: 3}
-  baseDmg: 14
-  baseAttackSpeed: 0.8
-  baseRange: 6
+  baseDmg: 9
+  baseAttackSpeed: 2
+  baseRange: 3
   baseCritPer: 0
   baseCritDmgPer: 1.5

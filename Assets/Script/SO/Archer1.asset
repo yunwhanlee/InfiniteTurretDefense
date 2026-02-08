@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b42bd1d221c5e4eb17bb3ba1c0b4e7, type: 3}
   m_Name: Archer1
   m_EditorClassIdentifier: Assembly-CSharp::CharaBaseData
-  id: 0
+  cardIdx: 0
+  grade: 0
   charaName: "\uAD81\uC2181"
   icon: {fileID: -987349885, guid: a7f16178f5671634bb7d1829abc98e25, type: 3}
   charaPrefab: {fileID: 3544792553527042751, guid: abd573e445c5e304aa9b8b8fbf53eeba, type: 3}
-  baseDmg: 10
-  baseAttackSpeed: 1
-  baseRange: 5
+  baseDmg: 3
+  baseAttackSpeed: 1.5
+  baseRange: 2.5
   baseCritPer: 0
   baseCritDmgPer: 1.5
