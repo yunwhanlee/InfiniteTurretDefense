@@ -4,14 +4,14 @@ public static class Config
 {
     /// <summary> 캐릭터 등급 </summary>
     public enum CHR_GRADE {
-        NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, GOD
+        NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, GOD, COUNT
     }
     /// <summary> 캐릭터 배치 위치 </summary>
     public enum CHR_PLACE {
         NONE = -1, CENTER, LEFT, RIGHT, TOP, BOTTOM
     }
     /// <summary> 캐릭터카드 인덱스 (UI Content에 배치 순서) </summary>
-    public enum CHR_CARD_IDX {
+    public enum CHR_CATE {
         ARCHER, WARRIOR,
     }
 }

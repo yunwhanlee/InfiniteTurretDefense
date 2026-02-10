@@ -41,7 +41,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
     public void OnClickGradeUpBtn()
     {
-        int cardIdx = (int)GM._.crm.curSelectedChara.CardIdx;
+        int cardIdx = (int)GM._.crm.curSelectedChara.Cate;
 
         var curCard = UI._.charaCltUI.charaCardArr[cardIdx];
 
@@ -64,6 +64,18 @@ public class CharaUpgradeUIManager : MonoBehaviour
         // 캐릭터 선택 및 UI 업데이트
         crm.SelectChara(crm.curSelectedChara);
         UpdateUI(crm.curSelectedChara);
+    }
+
+    /// <summary>
+    /// 스킬레벨 업그레이드 버튼 클릭
+    /// </summary>
+    /// <param name="lv">스킬</param>
+    public void OnClickUpgradeSkillBtn(CHR_GRADE grade)
+    {
+        Chara chara = crm.curSelectedChara;
+
+        UpdateUI(chara);
+        chara.UpdateSkillLv(grade);
     }
 #endregion
 #region FUNC
@@ -104,6 +116,9 @@ public class CharaUpgradeUIManager : MonoBehaviour
         rangeTxt.text = $"{chara.Range}";
         critPerTxt.text = $"{chara.CritPer}";
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
+
+        // Skill 최신화
+        
     }
 
     /// <summary> 콜렉션에서 캐릭터카드 선택시 업데이트 </summary>

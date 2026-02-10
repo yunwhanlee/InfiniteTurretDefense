@@ -32,16 +32,16 @@ public class CharaCard : MonoBehaviour
     /// 데이터 세팅
     /// </summary>
     /// <param name="cardIdx">캐릭터 카드 인덱스</param>
-    public void SetUp(CHR_CARD_IDX cardIdx)
+    public void SetUp(CHR_CATE cardIdx)
     {
         userData = DB._.GetUserCharaDataAsset(cardIdx);
 
         switch (cardIdx)
         {
-            case CHR_CARD_IDX.ARCHER:
+            case CHR_CATE.ARCHER:
                 charaDataAsset = GM._.crm.archerDataAssetArr[(int)userData.grade];
                 break;
-            case CHR_CARD_IDX.WARRIOR:
+            case CHR_CATE.WARRIOR:
                 charaDataAsset = GM._.crm.warriorDataAssetArr[(int)userData.grade];
                 break;
             // 여기에 추가
@@ -88,6 +88,8 @@ public class CharaCard : MonoBehaviour
     }
 
     public CharaDataAsset GetCharaDataAsset() => charaDataAsset;
+    public UserCharaData GetUserData() => userData;
+    public CHR_CATE GetCate() => userData.cate;
     public CHR_GRADE GetGrade() => userData.grade;
     public CHR_PLACE GetPlace() => userData.place;
     public CHR_PLACE SetPlace(CHR_PLACE place) => userData.place = place;

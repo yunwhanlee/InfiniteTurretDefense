@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using static Config;
 
@@ -16,13 +17,16 @@ public abstract class Chara : MonoBehaviour
     public Vector3 direction;
 
     // Status
-    public CHR_CARD_IDX CardIdx {get; private set;}
+    public CHR_CATE Cate {get; private set;}
     public CHR_GRADE Grade {get; private set;}
     public int Dmg {get; private set;}
     public float AttackSpeed {get; private set;}
     public float Range {get; private set;}
     public float CritPer {get; private set;}
     public float CritDmgPer {get; private set;}
+
+    // Skill
+    public int[] SkillLvArr {get; private set;}
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -63,17 +67,21 @@ public abstract class Chara : MonoBehaviour
     }
 
 #region FUNC
-    public void Init(CharaDataAsset charaDataAsset)
+    public void Init(CharaDataAsset charaDataAsset, UserCharaData userData)
     {
         const int SCALE_UNIT = 2; // 범위 원 스케일 단위
 
-        CardIdx = CardIdx;
-        Grade = charaDataAsset.grade;
+        // 저장 데이터 불러오기
+        Cate = userData.cate;
+        Grade = userData.grade;
+        SkillLvArr = userData.skillLvArr;
+
+        // 현재등급 에셋 데이터 불러오기
         Dmg = charaDataAsset.baseDmg;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
-        CritPer = charaDataAsset.baseRange;
-        CritDmgPer = charaDataAsset.baseRange;
+        CritPer = charaDataAsset.baseCritPer;
+        CritDmgPer = charaDataAsset.baseCritDmgPer;
 
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
@@ -114,6 +122,25 @@ public abstract class Chara : MonoBehaviour
 
         // 변경된 블록을 렌더러에 다시 반영
         sprRdr.SetPropertyBlock(mtPropBlock);
+    }
+#endregion
+#region SKILL
+    /// <summary>
+    /// 스킬레벨업 시 호출하여 데이터 동기화 업데이트
+    /// </summary>
+    /// <param name="grade"></param>
+    public void UpdateSkillLv(CHR_GRADE grade)
+    {
+        SkillLvArr[(int)grade]++;
+    }
+    
+    /// <summary> 스킬1. 평타 (통일) </summary>
+    /// <param name="gradeUnitArr">등급에 따른 공격력 증가비율 배열</param>
+    /// <returns>스킬레벨에 따른 데미지</returns>
+    public int Skill1_Dmg(float[] gradeUnitArr)
+    {
+        int lv = SkillLvArr[(int)CHR_GRADE.NORMAL];
+        return (int)Math.Round(Dmg * gradeUnitArr[(int)Grade] * lv);
     }
 #endregion
 }
