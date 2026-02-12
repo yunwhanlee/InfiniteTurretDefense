@@ -31,12 +31,12 @@ public class CharaCard : MonoBehaviour
     /// <summary>
     /// 데이터 세팅
     /// </summary>
-    /// <param name="cardIdx">캐릭터 카드 인덱스</param>
-    public void SetUp(CHR_CATE cardIdx)
+    /// <param name="cate">캐릭터 카테고리</param>
+    public void SetUp(CHR_CATE cate)
     {
-        userData = DB._.GetUserCharaDataAsset(cardIdx);
+        userData = DB._.GetUserCharaDataAsset(cate);
 
-        switch (cardIdx)
+        switch (cate)
         {
             case CHR_CATE.ARCHER:
                 charaDataAsset = GM._.crm.archerDataAssetArr[(int)userData.grade];

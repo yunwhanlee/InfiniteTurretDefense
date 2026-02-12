@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using static Config;
+using System.Collections.Generic;
 
 /// <summary>
 /// 캐릭터 업그레이드 UI 매니저
@@ -21,6 +22,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public TextMeshProUGUI rangeTxt;
     public TextMeshProUGUI critPerTxt;
     public TextMeshProUGUI critDmgPerTxt;
+
+    public SkillCard[] skillCardArr;
 
     CharaManager crm;
 
@@ -42,9 +45,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public void OnClickGradeUpBtn()
     {
         int cardIdx = (int)GM._.crm.curSelectedChara.Cate;
-
         var curCard = UI._.charaCltUI.charaCardArr[cardIdx];
-
         if(curCard.GradeUp())
             UpdateUI(curCard);
     }
@@ -118,7 +119,27 @@ public class CharaUpgradeUIManager : MonoBehaviour
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
 
         // Skill 최신화
-        
+        for(int i = 0; i < (int)CHR_GRADE.COUNT; i++)
+        {
+            SkillCard skillcard = skillCardArr[i];
+
+            bool isOverGrade = i > (int)chara.Grade;
+            skillcard.lockFrame.SetActive(isOverGrade);
+
+            if(i <= 1)
+            {
+                skillcard.lockedTxt.text = $"{CHR_GRADE.RARE}등급 잠금해제";
+                Skill skillAsset = chara.SkillArr[i];
+
+                skillcard.titleTxt.text = skillAsset.Name;
+                skillcard.descTxt.text = skillAsset.Desc;
+                skillcard.priceTxt.text = "9999"; // TODO 가격
+                skillcard.lvTxt.text = $"LV.{chara.SkillLvArr[i]}"; // TODO 레벨
+                skillcard.iconImg.sprite = skillAsset.Img;
+            }
+
+            //TODO 아직 모든 등급 스킬 SO 데이터에셋이 다 준비 안됨.
+        }
     }
 
     /// <summary> 콜렉션에서 캐릭터카드 선택시 업데이트 </summary>

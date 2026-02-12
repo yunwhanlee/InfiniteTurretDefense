@@ -16,17 +16,18 @@ public abstract class Chara : MonoBehaviour
     public Sprite defaultSpr; // 캐릭터 아이콘 이미지
     public Vector3 direction;
 
-    // Status
+    // 저장 데이터 로드
     public CHR_CATE Cate {get; private set;}
     public CHR_GRADE Grade {get; private set;}
+    public int[] SkillLvArr {get; private set;}
+
+    // 데이터 에셋 DB 가져오기
     public int Dmg {get; private set;}
     public float AttackSpeed {get; private set;}
     public float Range {get; private set;}
     public float CritPer {get; private set;}
     public float CritDmgPer {get; private set;}
-
-    // Skill
-    public int[] SkillLvArr {get; private set;}
+    public Skill[] SkillArr {get; private set;} // 스킬 데이터 에셋
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -76,12 +77,13 @@ public abstract class Chara : MonoBehaviour
         Grade = userData.grade;
         SkillLvArr = userData.skillLvArr;
 
-        // 현재등급 에셋 데이터 불러오기
+        // 현재등급 에셋 데이터 불러오기 (DB)
         Dmg = charaDataAsset.baseDmg;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
         CritPer = charaDataAsset.baseCritPer;
         CritDmgPer = charaDataAsset.baseCritDmgPer;
+        SkillArr = charaDataAsset.SkillArr;
 
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
