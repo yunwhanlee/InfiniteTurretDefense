@@ -6,7 +6,7 @@ using static Config;
 using System.Collections.Generic;
 
 /// <summary>
-/// 캐릭터 업그레이드 UI 매니저
+///* 캐릭터 업그레이드 UI 매니저
 /// </summary>
 public class CharaUpgradeUIManager : MonoBehaviour
 {
@@ -133,8 +133,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
                 skillcard.titleTxt.text = skillAsset.Name;
                 skillcard.descTxt.text = skillAsset.Desc;
-                skillcard.priceTxt.text = "9999"; // TODO 가격
-                skillcard.lvTxt.text = $"LV.{chara.SkillLvArr[i]}"; // TODO 레벨
+                skillcard.priceTxt.text = $"{skillAsset.PriceUnit + chara.SkillLvArr[i] * (chara.SkillLvArr[i] - 1) * skillAsset.PriceUnit / 2}"; // TODO 가격
+                skillcard.lvTxt.text = $"LV.{chara.SkillLvArr[i]}/{skillAsset.MaxLv}"; // TODO 레벨업시 업데이트 반영
                 skillcard.iconImg.sprite = skillAsset.Img;
             }
 

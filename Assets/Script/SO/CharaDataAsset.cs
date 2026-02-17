@@ -8,6 +8,8 @@ public class Skill
     public CHR_GRADE Grade;
     public Sprite Img;
     public string Desc;
+    public int MaxLv;
+    public int PriceUnit; // 강화비용 계수 단위 (예: 1000, 2000 등)
 }
 
 // 에셋 메뉴에서 쉽게 생성 가능하게 함

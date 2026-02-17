@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Config;
 
+/// <summary>
+///* 캐릭터 카드 UI
+/// </summary>
 public class CharaCard : MonoBehaviour
 {
     // UI

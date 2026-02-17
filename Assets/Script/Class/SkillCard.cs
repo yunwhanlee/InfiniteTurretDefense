@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+///* 캐릭터 업그레이드UI의 스킬카드
+/// </summary>
 public class SkillCard : MonoBehaviour
 {
     // UI
@@ -17,9 +20,11 @@ public class SkillCard : MonoBehaviour
 
 
 #region FUNC
-    public void SetUp()
+    public void UpdateUI()
     {
         
     }
+
+    
 #endregion
 }
