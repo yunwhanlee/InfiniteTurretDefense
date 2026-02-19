@@ -71,12 +71,14 @@ public class CharaUpgradeUIManager : MonoBehaviour
     /// 스킬레벨 업그레이드 버튼 클릭
     /// </summary>
     /// <param name="lv">스킬</param>
-    public void OnClickUpgradeSkillBtn(CHR_GRADE grade)
+    public void OnClickUpgradeSkillBtn(int idx)
     {
         Chara chara = crm.curSelectedChara;
 
+        chara.LevelUpSkill((CHR_GRADE)idx);
         UpdateUI(chara);
-        chara.UpdateSkillLv(grade);
+
+        Util._.ShowUnderBarMessage("스킬 업그레이드 성공!");
     }
 #endregion
 #region FUNC
@@ -119,26 +121,30 @@ public class CharaUpgradeUIManager : MonoBehaviour
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
 
         // Skill 최신화
-        for(int i = 0; i < (int)CHR_GRADE.COUNT; i++)
+        for(int i = 0; i < skillCardArr.Length; i++)
         {
             SkillCard skillcard = skillCardArr[i];
+            skillcard.UpdateUI(i, chara.CharaSkill, chara.SkillLvArr[i], chara.Grade);
 
-            bool isOverGrade = i > (int)chara.Grade;
-            skillcard.lockFrame.SetActive(isOverGrade);
-
-            if(i <= 1)
+            switch (i)
             {
-                skillcard.lockedTxt.text = $"{CHR_GRADE.RARE}등급 잠금해제";
-                Skill skillAsset = chara.SkillArr[i];
-
-                skillcard.titleTxt.text = skillAsset.Name;
-                skillcard.descTxt.text = skillAsset.Desc;
-                skillcard.priceTxt.text = $"{skillAsset.PriceUnit + chara.SkillLvArr[i] * (chara.SkillLvArr[i] - 1) * skillAsset.PriceUnit / 2}"; // TODO 가격
-                skillcard.lvTxt.text = $"LV.{chara.SkillLvArr[i]}/{skillAsset.MaxLv}"; // TODO 레벨업시 업데이트 반영
-                skillcard.iconImg.sprite = skillAsset.Img;
+                case 0:
+                    skillcard.UpdateDescUI_Lv1(
+                        chara.SkillLvArr[i],
+                        chara.CharaSkill.skillAssetArr[i].Desc,
+                        chara.Dmg,
+                        chara.DmgUpgUnit
+                    );
+                    break;
+                case 1:
+                    skillcard.UpdateDescUI(
+                        chara.SkillLvArr[i],
+                        chara.CharaSkill.skillAssetArr[i].Desc,
+                        chara.CharaSkill.skillAssetArr[i].ValueList
+                    );
+                    break;
             }
-
-            //TODO 아직 모든 등급 스킬 SO 데이터에셋이 다 준비 안됨.
+            
         }
     }
 
@@ -161,6 +167,13 @@ public class CharaUpgradeUIManager : MonoBehaviour
         rangeTxt.text = $"{data.baseRange}";
         critPerTxt.text = $"{data.baseCritPer}";
         critDmgPerTxt.text = $"{data.baseCritDmgPer}";
+
+        // Skill 최신화
+        for(int i = 0; i < skillCardArr.Length; i++)
+        {
+            SkillCard skillcard = skillCardArr[i];
+            skillcard.UpdateUI(i, data.charaSkillAsset, card.GetSkillLv(i), card.GetGrade());
+        }
     }
 #endregion
 }

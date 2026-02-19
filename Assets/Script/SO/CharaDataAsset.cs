@@ -12,7 +12,9 @@ public class Skill
     public int PriceUnit; // 강화비용 계수 단위 (예: 1000, 2000 등)
 }
 
-// 에셋 메뉴에서 쉽게 생성 가능하게 함
+/// <summary>
+/// 캐릭터 등급별 데이터 에셋
+/// </summary>
 [CreateAssetMenu(fileName = "CharaDataAsset", menuName = "Scriptable Ojbect/CharaDataAsset")]
 public class CharaDataAsset : ScriptableObject
 {
@@ -31,5 +33,6 @@ public class CharaDataAsset : ScriptableObject
     public float baseCritDmgPer;
 
     [Header("스킬 정보")]
-    public Skill[] SkillArr;
+    public float dmgUpgUnit; // 스킬1 업그레이드 공격력 단위 증가량
+    public CharaSkillAsset charaSkillAsset;
 }

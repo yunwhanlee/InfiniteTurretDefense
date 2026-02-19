@@ -22,3 +22,5 @@ MonoBehaviour:
   baseRange: 3.5
   baseCritPer: 0
   baseCritDmgPer: 1.5
+  dmgUpgUnit: 0.15
+  charaSkillAsset: {fileID: 11400000, guid: 6abba7e0de08f7e4c9ad918dbcdb8c79, type: 2}

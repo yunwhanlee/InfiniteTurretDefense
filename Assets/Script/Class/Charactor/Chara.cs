@@ -3,6 +3,9 @@ using Unity.Mathematics;
 using UnityEngine;
 using static Config;
 
+/// <summary>
+/// 캐릭터 (부모) :: CharaCard에 있는 데이터로부터 생성시 데이터 모두 적용
+/// </summary>
 public abstract class Chara : MonoBehaviour
 {
     // 외부 클래스
@@ -23,11 +26,12 @@ public abstract class Chara : MonoBehaviour
 
     // 데이터 에셋 DB 가져오기
     public int Dmg {get; private set;}
+    public float DmgUpgUnit {get; private set;} // 스킬1 업그레이드 공격력 단위 증가량
     public float AttackSpeed {get; private set;}
     public float Range {get; private set;}
     public float CritPer {get; private set;}
     public float CritDmgPer {get; private set;}
-    public Skill[] SkillArr {get; private set;} // 스킬 데이터 에셋
+    public CharaSkillAsset CharaSkill {get; private set;} // 스킬 데이터 에셋
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -79,11 +83,12 @@ public abstract class Chara : MonoBehaviour
 
         // 현재등급 에셋 데이터 불러오기 (DB)
         Dmg = charaDataAsset.baseDmg;
+        DmgUpgUnit = charaDataAsset.dmgUpgUnit;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
         CritPer = charaDataAsset.baseCritPer;
         CritDmgPer = charaDataAsset.baseCritDmgPer;
-        SkillArr = charaDataAsset.SkillArr;
+        CharaSkill = charaDataAsset.charaSkillAsset;
 
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
@@ -131,7 +136,7 @@ public abstract class Chara : MonoBehaviour
     /// 스킬레벨업 시 호출하여 데이터 동기화 업데이트
     /// </summary>
     /// <param name="grade"></param>
-    public void UpdateSkillLv(CHR_GRADE grade)
+    public void LevelUpSkill(CHR_GRADE grade)
     {
         SkillLvArr[(int)grade]++;
     }
@@ -141,8 +146,8 @@ public abstract class Chara : MonoBehaviour
     /// <returns>스킬레벨에 따른 데미지</returns>
     public int Skill1_Dmg(float[] gradeUnitArr)
     {
-        int lv = SkillLvArr[(int)CHR_GRADE.NORMAL];
-        return (int)Math.Round(Dmg * gradeUnitArr[(int)Grade] * lv);
+        int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
+        return (int)Math.Round(Dmg * gradeUnitArr[(int)Grade] * skillLv);
     }
 #endregion
 }

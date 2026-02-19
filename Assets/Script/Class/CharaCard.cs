@@ -99,6 +99,7 @@ public class CharaCard : MonoBehaviour
     public GameObject GetCharaPref() => charaDataAsset.charaPrefab;
     public Sprite GetIconSprite() => charaDataAsset.icon;
     public int GetCardCnt() => userData.cardCnt;
+    public int GetSkillLv(int idx) => userData.skillLvArr[idx];
     public bool IsLocked() => userData.IsLocked;
 #endregion
 }

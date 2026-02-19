@@ -4,7 +4,7 @@ public static class Config
 {
     /// <summary> 캐릭터 등급 </summary>
     public enum CHR_GRADE {
-        NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, GOD, COUNT
+        NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, PRIME, COUNT
     }
     /// <summary> 캐릭터 배치 위치 </summary>
     public enum CHR_PLACE {
@@ -14,4 +14,6 @@ public static class Config
     public enum CHR_CATE {
         ARCHER, WARRIOR,
     }
+
+    
 }
