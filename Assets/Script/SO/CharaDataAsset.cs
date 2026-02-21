@@ -29,8 +29,6 @@ public class CharaDataAsset : ScriptableObject
     public int baseDmg;
     public float baseAttackSpeed;
     public float baseRange;
-    public float baseCritPer;
-    public float baseCritDmgPer;
 
     [Header("스킬 정보")]
     public float dmgUpgUnit; // 스킬1 업그레이드 공격력 단위 증가량

@@ -34,6 +34,9 @@ public class GM : MonoBehaviour
     public EnemyManager emm;
     public MissileManager msm;
 
+    // 이펙트 매니저
+    public DmgTxtManager dmgTxtMng;
+
     void Awake()
     {
         _ = this;
@@ -41,6 +44,7 @@ public class GM : MonoBehaviour
         crm = GameObject.Find("CharaManager").GetComponent<CharaManager>();
         emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         msm = GameObject.Find("MissileManager").GetComponent<MissileManager>();
+        dmgTxtMng = GameObject.Find("DmgTxtManager").GetComponent<DmgTxtManager>();
     }
 
     void Start()

@@ -126,7 +126,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
             SkillCard skillcard = skillCardArr[i];
             skillcard.UpdateUI(i, chara.CharaSkill, chara.SkillLvArr[i], chara.Grade);
 
-            switch (i)
+            switch(i)
             {
                 case 0:
                     skillcard.UpdateDescUI_Lv1(
@@ -165,8 +165,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
         dmgTxt.text = $"{data.baseDmg}";
         atkSpdTxt.text = $"{data.baseAttackSpeed}";
         rangeTxt.text = $"{data.baseRange}";
-        critPerTxt.text = $"{data.baseCritPer}";
-        critDmgPerTxt.text = $"{data.baseCritDmgPer}";
+        critPerTxt.text = "TODO";//$"{data.baseCritPer}";
+        critDmgPerTxt.text = "TODO";//$"{data.baseCritDmgPer}";
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)

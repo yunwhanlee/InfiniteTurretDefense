@@ -136,6 +136,9 @@ public class Enemy : MonoBehaviour
     {
         hp -= dmg;
 
+        // 데미지 텍스트 표시
+        GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical: false);
+
         Flash();
         hpSlider.value = (float)hp / maxHp;
 

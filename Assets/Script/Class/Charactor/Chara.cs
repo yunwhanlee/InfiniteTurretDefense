@@ -1,5 +1,4 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 using static Config;
 
@@ -29,8 +28,8 @@ public abstract class Chara : MonoBehaviour
     public float DmgUpgUnit {get; private set;} // 스킬1 업그레이드 공격력 단위 증가량
     public float AttackSpeed {get; private set;}
     public float Range {get; private set;}
-    public float CritPer {get; private set;}
-    public float CritDmgPer {get; private set;}
+    public float CritPer {get; protected set;}
+    public float CritDmgPer {get; protected set;}
     public CharaSkillAsset CharaSkill {get; private set;} // 스킬 데이터 에셋
 
     float time = 0;
@@ -86,15 +85,15 @@ public abstract class Chara : MonoBehaviour
         DmgUpgUnit = charaDataAsset.dmgUpgUnit;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
-        CritPer = charaDataAsset.baseCritPer;
-        CritDmgPer = charaDataAsset.baseCritDmgPer;
+        CritPer = 0;
+        CritDmgPer = 1.5f;
         CharaSkill = charaDataAsset.charaSkillAsset;
 
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
         rangeCircle.transform.localScale = Vector3.one * SCALE_UNIT * Range; // 범위 스케일 조정
     }
-    
+
     public virtual void Attack(Enemy enemy)
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
@@ -144,10 +143,20 @@ public abstract class Chara : MonoBehaviour
     /// <summary> 스킬1. 평타 (통일) </summary>
     /// <param name="gradeUnitArr">등급에 따른 공격력 증가비율 배열</param>
     /// <returns>스킬레벨에 따른 데미지</returns>
-    public int Skill1_Dmg(float[] gradeUnitArr)
+    public int Skill1_Dmg()
     {
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
-        return (int)Math.Round(Dmg * gradeUnitArr[(int)Grade] * skillLv);
+        int damage = Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
+
+        // 치명타 확률
+        int random = UnityEngine.Random.Range(0, 100);
+        if(random <= CritPer)
+        {
+            Debug.Log($"Skill1_Dmg():: {random} <= {CritPer} = {random <= CritPer}");
+            damage = Mathf.RoundToInt(damage * CritDmgPer);
+        }
+        
+        return Mathf.RoundToInt(damage);
     }
 #endregion
 }

@@ -32,10 +32,10 @@ public class MissileManager : MonoBehaviour
     void OnDelete(Missile missile) => Destroy(missile);
 #endregion
 #region FUNC
-    public void SpawnMissile(Vector3 pos, Vector3 dir, int dmg)
+    public void SpawnMissile(Vector3 pos, Vector3 dir, int dmg, float angleOffset)
     {
         Missile missile = pool.Get();
-        missile.Init(pos, dir);
+        missile.Init(pos, dir, angleOffset);
         missile.Dmg = dmg;
     }
 #endregion

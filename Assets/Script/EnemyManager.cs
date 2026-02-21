@@ -103,7 +103,6 @@ public class EnemyManager : MonoBehaviour
     void OnGet(Enemy enemy)
     {
         enemy.gameObject.SetActive(true);
-
     }
 
     void OnRelease(Enemy enemy)

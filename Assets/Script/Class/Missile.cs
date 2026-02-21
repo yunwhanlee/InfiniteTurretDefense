@@ -40,14 +40,14 @@ public class Missile : MonoBehaviour
     }
 
 #region FUNC
-    public void Init(Vector3 pos, Vector3 dir)
+    public void Init(Vector3 pos, Vector3 dir, float angleOffset)
     {
         isHit = false;
 
         transform.position = pos;
 
         // 발사 방향(각도)
-        direction = dir;
+        direction = Quaternion.Euler(0, 0, angleOffset) * dir;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
