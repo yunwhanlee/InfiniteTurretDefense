@@ -92,6 +92,8 @@ public abstract class Chara : MonoBehaviour
         time = AttackSpeed; // 공속 적용
         targetFinder.radius = Range; // 범위 적용
         rangeCircle.transform.localScale = Vector3.one * SCALE_UNIT * Range; // 범위 스케일 조정
+
+        Debug.Log($"Init():: Dmg({Dmg}) = charaDataAsset.baseDmg({charaDataAsset.baseDmg})");
     }
 
     public virtual void Attack(Enemy enemy)
@@ -146,7 +148,7 @@ public abstract class Chara : MonoBehaviour
     public int Skill1_Dmg()
     {
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
-        int damage = Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
+        int damage = Dmg + Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
 
         // 치명타 확률
         int random = UnityEngine.Random.Range(0, 100);
