@@ -1,0 +1,51 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
+/// <summary>
+/// 궁수 관통샷 스킬
+/// </summary>
+public class PassArrow : MonoBehaviour
+{
+    const float moveSpeed = 5;
+    private Vector3 direction;
+    private int damage;
+
+    void Update()
+    {
+        transform.position += moveSpeed * Time.deltaTime * direction;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //TODO Enemy를 Config 상수만들기
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = col.GetComponent<Enemy>();
+
+            if(enemy.State == Enemy.STATE.DEAD)
+                return;
+
+            enemy.OnHit(damage);
+        }
+    }
+
+    // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
+    void OnBecameInvisible()
+    {
+        if(gameObject.activeSelf)
+            GM._.msm.ReleaseMissilePoolList(MISSILE_IDX.PassArrow, gameObject);
+    }
+
+#region FUNC
+    public void Init(Vector3 pos, Vector3 dir, int dmg)
+    {
+        transform.position = pos;
+        direction = dir;
+        damage = dmg;
+
+        // 발사 방향(각도)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+#endregion
+}

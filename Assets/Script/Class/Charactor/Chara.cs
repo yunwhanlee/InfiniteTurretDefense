@@ -54,7 +54,7 @@ public abstract class Chara : MonoBehaviour
         SetOutline(false); // 아웃라인 비활성화 (셰이더)
     }
 
-    void Update()
+    protected void Update()
     {
         Enemy target = targetFinder.CurrentTarget;
         if(target == null)

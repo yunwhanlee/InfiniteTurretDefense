@@ -10235,7 +10235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissileManager
   missileGroupTf: {fileID: 1161255579}
   missilePref: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
-  passArrowPref: {fileID: 6875505668728191044, guid: bf7457e3ef3a95740a8f18b22a3ef691, type: 3}
 --- !u!1 &572235545
 GameObject:
   m_ObjectHideFlags: 0

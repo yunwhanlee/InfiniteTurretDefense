@@ -3,6 +3,25 @@ using static Config;
 
 public class Archer : Chara
 {
+    const int PASS_ARROW_COOLTIME = 10;
+    public float passArrowTime = 0;
+
+    protected void Update()
+    {
+        base.Update();
+
+        // 스킬4 관통샷
+        if(Grade >= CHR_GRADE.UNIQUE)
+        {
+            passArrowTime += Time.deltaTime;
+            if(passArrowTime >= PASS_ARROW_COOLTIME)
+            {
+                Skill4_PassArrow();
+                passArrowTime = 0;
+            }
+        }
+    }
+
     public override void Attack(Enemy enemy)
     {
         base.Attack(enemy);
@@ -21,8 +40,11 @@ public class Archer : Chara
         Skill2_MultiShot(damage);
     }
 
-#region SKILL
-    // 나머지 스킬 관련 함수 작성
+#region SKILL 
+    /// <summary>
+    /// 멀티샷
+    /// </summary>
+    /// <param name="damage">데미지</param>
     private void Skill2_MultiShot(int damage)
     {
         if(Grade < CHR_GRADE.RARE)
@@ -67,6 +89,10 @@ public class Archer : Chara
         }
     }
 
+    /// <summary>
+    /// 크리티컬 샷
+    /// </summary>
+    /// <returns>발동확률</returns>
     private float Skill3_Critical()
     {
         if(Grade < CHR_GRADE.EPIC)
@@ -79,6 +105,26 @@ public class Archer : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
 
         return defPer + unitPer * skillLv;
+    }
+
+    /// <summary>
+    /// 관통샷
+    /// </summary>
+    private void Skill4_PassArrow()
+    {
+        const int gradeIdx = (int)CHR_GRADE.UNIQUE;
+
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPercent = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPercent);
+
+        // 오브젝트 풀링리스트 관통샷 생성 및 초기화
+        PassArrow passArrow = GM._.msm.SpawnMissilePoolList(MISSILE_IDX.PassArrow).GetComponent<PassArrow>();
+        passArrow.Init(transform.position, direction, damage);
     }
 #endregion
 }
