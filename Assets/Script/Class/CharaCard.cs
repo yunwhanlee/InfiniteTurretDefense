@@ -27,8 +27,8 @@ public class CharaCard : MonoBehaviour
     /// </summary>
     public int GetNextGradeCardCnt()
     {
-        const int OFFSET = 1;
-        return ((int)userData.grade + OFFSET) * 10;
+        const int DEF = 10;
+        return DEF << (int)userData.grade; // grade가 0이면 10, 1이면 20, 2면 40, 3이면 80...
     }
 
     /// <summary>

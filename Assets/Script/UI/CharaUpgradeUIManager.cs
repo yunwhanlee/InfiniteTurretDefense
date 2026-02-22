@@ -23,6 +23,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public TextMeshProUGUI critPerTxt;
     public TextMeshProUGUI critDmgPerTxt;
 
+    public TextMeshProUGUI gradeUpTxt;
+
     public SkillCard[] skillCardArr;
 
     CharaManager crm;
@@ -42,6 +44,9 @@ public class CharaUpgradeUIManager : MonoBehaviour
         crm.InActiveCharaRangeCircle();
     }
 
+    /// <summary>
+    /// 등급업 버튼 클릭
+    /// </summary>
     public void OnClickGradeUpBtn()
     {
         int cardIdx = (int)GM._.crm.curSelectedChara.Cate;
@@ -119,6 +124,10 @@ public class CharaUpgradeUIManager : MonoBehaviour
         rangeTxt.text = $"{chara.Range}";
         critPerTxt.text = $"{chara.CritPer}";
         critDmgPerTxt.text = $"{chara.CritDmgPer}";
+        
+        // 등급업 텍스트 최신화
+        CharaCard curCard = UI._.charaCltUI.charaCardArr[(int)chara.Cate];
+        gradeUpTxt.text = $"등급업 {curCard.GetUserData().cardCnt} / {curCard.GetNextGradeCardCnt()}";
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)
@@ -167,6 +176,9 @@ public class CharaUpgradeUIManager : MonoBehaviour
         rangeTxt.text = $"{data.baseRange}";
         critPerTxt.text = "TODO";//$"{data.baseCritPer}";
         critDmgPerTxt.text = "TODO";//$"{data.baseCritDmgPer}";
+
+        // 등급업 텍스트 최신화
+        gradeUpTxt.text = $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)
