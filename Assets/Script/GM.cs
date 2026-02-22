@@ -56,8 +56,8 @@ public class GM : MonoBehaviour
         OnDiamondChanged = (_diamond) => UI._.diamondTxt.text = $"{_diamond}";
 
         //TODO DB 재화 로드
-        Coin = 10000;
-        Diamond = 100;
+        // Coin = 10000;
+        // Diamond = 100;
     }
 
     //! 어차피 하나의 씬에서 플레이 될거라서 필요X

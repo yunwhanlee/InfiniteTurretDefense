@@ -210,6 +210,7 @@ MonoBehaviour:
   rangeCircle: {fileID: 1902532493617669342}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  passArrowTime: 0
 --- !u!114 &4527924225899619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +413,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 898599701
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6313726}

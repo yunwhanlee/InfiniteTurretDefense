@@ -15,7 +15,7 @@ MonoBehaviour:
   cardIdx: 0
   grade: 3
   charaName: "\uAD81\uC2184"
-  icon: {fileID: 988713354, guid: 6ce6f8494da7c77499218e35332249cc, type: 3}
+  icon: {fileID: 1623160787, guid: b2b1b98e52c798f4bbe7253c686c3c38, type: 3}
   charaPrefab: {fileID: 3544792553527042751, guid: f46f77eb583a99148a1b83620b7980c6, type: 3}
   baseDmg: 81
   baseAttackSpeed: 3

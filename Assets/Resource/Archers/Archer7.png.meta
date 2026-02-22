@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: 96c95f5458dde27488f7ed734f37f24f
+guid: 5297060c3cdfaf34d88f8cef4f418675
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8876220977850422044
+    second: Archer7 1_0
+  - first:
+      213: -8273360074538381443
+    second: Archer7 1_1
+  - first:
+      213: -2088198877661482561
+    second: Archer7 1_2
+  - first:
+      213: 68216410390379564
+    second: Archer7 1_3
+  - first:
+      213: 1075100919708309890
+    second: Archer7 1_4
+  - first:
+      213: -7436850328080353136
+    second: Archer7 1_5
+  - first:
+      213: 9164679482891370829
+    second: Archer7 1_6
+  - first:
+      213: -2553720736841394921
+    second: Archer7 1_7
+  - first:
+      213: -2034211625444211680
+    second: Archer7 1_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -95,14 +122,14 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -110,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer2-sheet_0
+      name: Archer7_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6879d34d4db1af4995cb79759038e77
-      internalID: -1836204633
+      spriteID: bc3cc1ee0bf06c14f8ea7f03e2bac480
+      internalID: 1896730466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_1
+      name: Archer7_1
       rect:
         serializedVersion: 2
         x: 64
@@ -147,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68a89f7416aabe442bfb294b5a5bb65b
-      internalID: -87935816
+      spriteID: edd03647f0ac44c47bb231ac74722c1a
+      internalID: 899817437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_2
+      name: Archer7_2
       rect:
         serializedVersion: 2
         x: 128
@@ -169,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1842e274e9aa69a4881a0bb9cfcfdf4e
-      internalID: 2146514959
+      spriteID: 8e669f69779c5844a87c8f89e404d3df
+      internalID: 374330795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_3
+      name: Archer7_3
       rect:
         serializedVersion: 2
         x: 0
@@ -191,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b696691d76eab3f4eb72aa17c60699f5
-      internalID: -2136382926
+      spriteID: 559c7440c42ee0b44852113edd0c7a58
+      internalID: -536090492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_4
+      name: Archer7_4
       rect:
         serializedVersion: 2
         x: 64
@@ -213,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01da2b8d9a426004f918442fe9b556ea
-      internalID: -617305748
+      spriteID: 1dbd89f3ccff6be4283d6254ce7f33f8
+      internalID: -71202177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_5
+      name: Archer7_5
       rect:
         serializedVersion: 2
         x: 128
@@ -235,14 +262,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ef75a8bef86d3048bca1895266776fe
-      internalID: -2114781698
+      spriteID: a31443301a767324f9292b010a215118
+      internalID: -1297480792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_6
+      name: Archer7_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c56b49e2674239842a7504a4e979d308
-      internalID: 1562373742
+      spriteID: 31b6eb4de46d2ae44a78e17b59a177f5
+      internalID: 320450264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_7
+      name: Archer7_7
       rect:
         serializedVersion: 2
         x: 64
@@ -279,14 +306,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90cdb8b50b266a84290001ea90d26317
-      internalID: -1143486210
+      spriteID: ac38e8251ac352b4d81e61ca1de68644
+      internalID: -1694420525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer2-sheet_8
+      name: Archer7_8
       rect:
         serializedVersion: 2
         x: 128
@@ -301,8 +328,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2761e8cafd911f4c80ca5589cd825d7
-      internalID: 1967841107
+      spriteID: 4ffbd70b9f1b73f4882ff0fa0be72861
+      internalID: -340410355
       vertices: []
       indices: 
       edges: []
@@ -311,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 96e779ea83fccbc449733961f4dcf0fa
     internalID: 0
     vertices: []
     indices: 
@@ -319,17 +346,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Archer2-sheet_0: -1836204633
-      Archer2-sheet_1: -87935816
-      Archer2-sheet_2: 2146514959
-      Archer2-sheet_3: -2136382926
-      Archer2-sheet_4: -617305748
-      Archer2-sheet_5: -2114781698
-      Archer2-sheet_6: 1562373742
-      Archer2-sheet_7: -1143486210
-      Archer2-sheet_8: 1967841107
+      Archer7_0: 1896730466
+      Archer7_1: 899817437
+      Archer7_2: 374330795
+      Archer7_3: -536090492
+      Archer7_4: -71202177
+      Archer7_5: -1297480792
+      Archer7_6: 320450264
+      Archer7_7: -1694420525
+      Archer7_8: -340410355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
