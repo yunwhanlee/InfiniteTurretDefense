@@ -73,7 +73,7 @@ public class SkillCard : MonoBehaviour
     /// <param name="msg">스킬내용</param>
     /// <param name="dmg">등급별 초기데미지</param>
     /// <param name="unit">등급별 업그레이드 단위 증가량</param>
-    public void UpdateDescUI_Lv1(int skillLv, string msg, int dmg, float unit)
+    public void UpdateDescUI_Normal(int skillLv, string msg, int dmg, float unit)
     {
         descTxt.text = string.Format(msg, dmg + skillLv * Mathf.Round(dmg * unit));
     }

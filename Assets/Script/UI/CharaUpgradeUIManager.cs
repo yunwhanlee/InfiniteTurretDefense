@@ -135,25 +135,23 @@ public class CharaUpgradeUIManager : MonoBehaviour
             SkillCard skillcard = skillCardArr[i];
             skillcard.UpdateUI(i, chara.CharaSkill, chara.SkillLvArr[i], chara.Grade);
 
+            int lv = chara.SkillLvArr[i];
+            var skillAst = chara.CharaSkill.skillAssetArr[i];
+
             switch(i)
             {
-                case 0:
-                    skillcard.UpdateDescUI_Lv1(
-                        chara.SkillLvArr[i],
-                        chara.CharaSkill.skillAssetArr[i].Desc,
-                        chara.Dmg,
-                        chara.DmgUpgUnit
-                    );
+                case (int)CHR_GRADE.NORMAL:
+                    skillcard.UpdateDescUI_Normal(lv, skillAst.Desc, chara.Dmg, chara.DmgUpgUnit);
                     break;
-                case 1:
-                    skillcard.UpdateDescUI(
-                        chara.SkillLvArr[i],
-                        chara.CharaSkill.skillAssetArr[i].Desc,
-                        chara.CharaSkill.skillAssetArr[i].ValueList
-                    );
+                case (int)CHR_GRADE.RARE:
+                case (int)CHR_GRADE.EPIC:
+                case (int)CHR_GRADE.UNIQUE:
+                case (int)CHR_GRADE.LEGEND:
+                case (int)CHR_GRADE.MYTHIC:
+                case (int)CHR_GRADE.PRIME:
+                    skillcard.UpdateDescUI(lv, skillAst.Desc, skillAst.ValueList);
                     break;
             }
-            
         }
     }
 

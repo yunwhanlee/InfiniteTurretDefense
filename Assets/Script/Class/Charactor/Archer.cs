@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using static Config;
+using Random = UnityEngine.Random;
 
 public class Archer : Chara
 {
@@ -29,6 +31,9 @@ public class Archer : Chara
         // 치명타 확률 설정
         CritPer = 0;
         CritPer += Skill3_Critical();
+
+        CritDmgPer = 1.5f;
+        CritDmgPer += Skill5_CriticalDamage();
 
         // TODO 치명타 데미지 설정
 
@@ -113,7 +118,6 @@ public class Archer : Chara
     private void Skill4_PassArrow()
     {
         const int gradeIdx = (int)CHR_GRADE.UNIQUE;
-
         int skillLv = SkillLvArr[gradeIdx];
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
@@ -125,6 +129,23 @@ public class Archer : Chara
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
         PassArrow passArrow = GM._.msm.SpawnMissilePoolList(MISSILE_IDX.PassArrow).GetComponent<PassArrow>();
         passArrow.Init(transform.position, direction, damage);
+    }
+
+    private float Skill5_CriticalDamage()
+    {
+        if(Grade < CHR_GRADE.LEGEND)
+            return 0;
+
+        const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+
+        float result = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
+        Debug.Log($"Skill5_CriticalDamage():: skillLv= {skillLv}, unitPer={unitPer}, result= {result}");
+
+        return result; // 백분률
     }
 #endregion
 }

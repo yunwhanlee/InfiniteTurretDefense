@@ -152,9 +152,9 @@ public abstract class Chara : MonoBehaviour
 
         // 치명타 확률
         int random = UnityEngine.Random.Range(0, 100);
+        Debug.Log($"Skill1_Dmg():: {random} <= {CritPer} = {random <= CritPer}, CritDmgPer={CritDmgPer}");
         if(random <= CritPer)
         {
-            Debug.Log($"Skill1_Dmg():: {random} <= {CritPer} = {random <= CritPer}");
             damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
         
