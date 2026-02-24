@@ -3,7 +3,7 @@ using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random; // POTA!
 
-// A P
+// TEST
 
 public class Archer : Chara
 {
