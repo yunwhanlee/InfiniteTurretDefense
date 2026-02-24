@@ -1,7 +1,7 @@
 using System; // PAPA
 using UnityEngine;
 using static Config;
-using Random = UnityEngine.Random;
+using Random = UnityEngine.Random; // POTA!
 
 // A P
 
