@@ -1,4 +1,4 @@
-using System; // PAPA
+using System; // PAPA POPO!
 using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random; // POTA!
