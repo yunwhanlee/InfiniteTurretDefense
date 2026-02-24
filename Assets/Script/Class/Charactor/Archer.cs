@@ -3,7 +3,7 @@ using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random;
 
-// ARCHER
+// A
 
 public class Archer : Chara
 {
