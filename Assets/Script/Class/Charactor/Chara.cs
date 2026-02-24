@@ -2,8 +2,6 @@ using System;
 using UnityEngine; // !
 using static Config;
 
-// CHARA
-
 /// <summary>
 /// 캐릭터 (부모) :: CharaCard에 있는 데이터로부터 생성시 데이터 모두 적용
 /// </summary>
