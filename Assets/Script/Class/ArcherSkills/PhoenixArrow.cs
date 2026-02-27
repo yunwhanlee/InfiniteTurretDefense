@@ -2,11 +2,11 @@ using UnityEngine;
 using static SkillPoolManager;
 
 /// <summary>
-/// 궁수 관통샷 스킬
+/// 궁수 피닉스 스킬
 /// </summary>
-public class PassArrow : MonoBehaviour
+public class PhoenixArrow : MonoBehaviour
 {
-    const float moveSpeed = 5;
+    const float moveSpeed = 6;
     private Vector3 direction;
     private int damage;
 

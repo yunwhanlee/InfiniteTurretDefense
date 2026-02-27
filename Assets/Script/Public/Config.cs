@@ -2,6 +2,13 @@ using UnityEngine;
 
 public static class Config
 {
+    /// <summary> 태그네임 </summary>
+    public class TAG
+    {
+        public static readonly string Enemy = "Enemy";
+    }
+
+
     /// <summary> 캐릭터 등급 </summary>
     public enum CHR_GRADE {
         NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, PRIME, COUNT
@@ -14,6 +21,4 @@ public static class Config
     public enum CHR_CATE {
         ARCHER, WARRIOR,
     }
-
-    
 }

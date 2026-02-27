@@ -8,6 +8,7 @@ public class SkillPoolManager : MonoBehaviour
     {
         SK_PassArrow, // 관통샷 (궁수스킬),
         SK_ArrowRain, // 화살비 (궁수스킬),
+        SK_PhoenixArrow, // 피닉스화살 (궁수스킬),
     }
 
     // 오브젝트 풀링
@@ -16,12 +17,14 @@ public class SkillPoolManager : MonoBehaviour
 
     public PassArrow passArrowPf;
     public ArrowRain arrowRainPf;
+    public ArrowRain phoenixArrowPf;
 
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
         poolDics.Add(SK_IDX.SK_PassArrow, Init(passArrowPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_ArrowRain, Init(arrowRainPf.gameObject, 2));
+        poolDics.Add(SK_IDX.SK_PhoenixArrow, Init(phoenixArrowPf.gameObject, 2));
     }
 
 #region POOL
