@@ -13,31 +13,37 @@ public class Archer : Chara
     const int ARROW_RAIN_COOLTIME = 35;
     [SerializeField] float arrowRainTime = 0;
     // 불사조 화살
-
+    const int PHOENIX_ARROW_COOLTIME = 63;
+    [SerializeField] float phoenixArrowTime = 0;
 
     protected void Update()
     {
         base.Update();
 
         // 스킬4 관통샷
-        if(Grade >= CHR_GRADE.UNIQUE)
-        {
+        if(Grade >= CHR_GRADE.UNIQUE) {
             passArrowTime += Time.deltaTime;
-            if(passArrowTime >= PASS_ARROW_COOLTIME)
-            {
+            if(passArrowTime >= PASS_ARROW_COOLTIME) {
                 Skill4_PassArrow();
                 passArrowTime = 0;
             }
         }
 
         // 스킬5 화살비
-        if(Grade >= CHR_GRADE.MYTHIC)
-        {
+        if(Grade >= CHR_GRADE.MYTHIC) {
             arrowRainTime += Time.deltaTime;
-            if(arrowRainTime > ARROW_RAIN_COOLTIME)
-            {
+            if(arrowRainTime > ARROW_RAIN_COOLTIME) {
                 Skill6_ArrowRain();
                 arrowRainTime = 0;
+            }
+        }
+
+        // 스킬7 불사조 화살
+        if(Grade >= CHR_GRADE.PRIME) {
+            phoenixArrowTime += Time.deltaTime;
+            if(phoenixArrowTime > PHOENIX_ARROW_COOLTIME) {
+                Skill7_PhoenixArrow();
+                phoenixArrowTime = 0;
             }
         }
     }
@@ -199,8 +205,18 @@ public class Archer : Chara
     /// </summary>
     private void Skill7_PhoenixArrow()
     {
-        //TODO
-        
+        const int gradeIdx = (int)CHR_GRADE.PRIME;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
+
+        int damage = Skill1_Dmg();
+        damage = Mathf.RoundToInt(damage * dmgPer);
+
+        PhoenixArrow phoenix = GM._.spm.SpawnPoolDics(SK_IDX.SK_PhoenixArrow).GetComponent<PhoenixArrow>();
+        phoenix.Init(transform.position, direction, damage);
     }
 #endregion
 }

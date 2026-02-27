@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 55
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +89,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 1024
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -128,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Phoenix_0
+      name: PhoenixArrow_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
-        width: 256
-        height: 240
+        y: 512
+        width: 240
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63467683e01ab0149b9dcb19a817effd
-      internalID: -542343745
+      spriteID: 6a93b987dd1ef074481bf3438a6bf5d9
+      internalID: -1237656353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phoenix_1
+      name: PhoenixArrow_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 240
-        width: 256
-        height: 240
+        x: 240
+        y: 512
+        width: 240
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b329770304da7f04c98f0fdfbaa3eafd
-      internalID: -284500152
+      spriteID: 047dfa491979480468996306198db098
+      internalID: 268654798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phoenix_2
+      name: PhoenixArrow_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 240
-        width: 256
-        height: 240
+        x: 0
+        y: 256
+        width: 240
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0585543d84f26924dbc246e891ee9673
-      internalID: 550547096
+      spriteID: 91a135e45c5fd01409ede577b94f1426
+      internalID: 1653251787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phoenix_3
+      name: PhoenixArrow_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 256
+        width: 240
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9126a97fb949ca94a8de338f02aba4f4
+      internalID: 1995200508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PhoenixArrow_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 240
+        width: 240
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6467b4f5313de4844b579be4592ba663
-      internalID: 1545155708
+      spriteID: 6d30069be957afe45be70af70ca8d396
+      internalID: -140332751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phoenix_4
+      name: PhoenixArrow_5
       rect:
         serializedVersion: 2
-        x: 256
+        x: 240
         y: 0
-        width: 256
-        height: 240
+        width: 240
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,30 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd9abdf76307aab49ac62e82af9e4ded
-      internalID: -793708014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Phoenix_5
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 240
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da322ddf6d0866a4faf7251ccec54686
-      internalID: 156818400
+      spriteID: 282e485f73fc74d46bfd6b4294c40adc
+      internalID: -1767318982
       vertices: []
       indices: 
       edges: []
@@ -273,14 +273,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":2.0},"gridSpriteSize":{"x":256.0,"y":240.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":3.0},"gridSpriteSize":{"x":240.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Phoenix_0: -542343745
-      Phoenix_1: -284500152
-      Phoenix_2: 550547096
-      Phoenix_3: 1545155708
-      Phoenix_4: -793708014
-      Phoenix_5: 156818400
+      PhoenixArrow_0: -1237656353
+      PhoenixArrow_1: 268654798
+      PhoenixArrow_2: 1653251787
+      PhoenixArrow_3: 1995200508
+      PhoenixArrow_4: -140332751
+      PhoenixArrow_5: -1767318982
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

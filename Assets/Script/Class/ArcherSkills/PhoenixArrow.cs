@@ -6,7 +6,7 @@ using static SkillPoolManager;
 /// </summary>
 public class PhoenixArrow : MonoBehaviour
 {
-    const float moveSpeed = 6;
+    const float moveSpeed = 4;
     private Vector3 direction;
     private int damage;
 

@@ -6,7 +6,7 @@ using static SkillPoolManager;
 /// </summary>
 public class PassArrow : MonoBehaviour
 {
-    const float moveSpeed = 5;
+    const float moveSpeed = 10;
     private Vector3 direction;
     private int damage;
 

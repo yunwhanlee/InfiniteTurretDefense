@@ -30828,6 +30828,7 @@ MonoBehaviour:
   skillGroupTf: {fileID: 926728730}
   passArrowPf: {fileID: 6875505668728191044, guid: bf7457e3ef3a95740a8f18b22a3ef691, type: 3}
   arrowRainPf: {fileID: 3740990749599762617, guid: 6b23595c234943f4aaab71e6e0a13f4e, type: 3}
+  phoenixArrowPf: {fileID: 1505174479506520233, guid: d2a7e64f70b43df44b790b923daf4f0b, type: 3}
 --- !u!4 &1682242765
 Transform:
   m_ObjectHideFlags: 0

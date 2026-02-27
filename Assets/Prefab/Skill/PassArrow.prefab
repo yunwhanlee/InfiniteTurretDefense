@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8771934927018414898}
+  - component: {fileID: 6875505668728191044}
   - component: {fileID: 5220582975802092743}
   - component: {fileID: 1829857966156442109}
-  - component: {fileID: 6875505668728191044}
   - component: {fileID: 8453629119461047859}
   m_Layer: 0
   m_Name: PassArrow
@@ -35,6 +35,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6875505668728191044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009423042604052806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ef65017b2796948ab574406b76005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassArrow
 --- !u!212 &5220582975802092743
 SpriteRenderer:
   serializedVersion: 2
@@ -116,18 +128,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6875505668728191044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009423042604052806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ef65017b2796948ab574406b76005e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PassArrow
 --- !u!61 &8453629119461047859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,11 +166,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7777778, y: 0.8888889}
+    oldSize: {x: 2, y: 1}
     newSize: {x: 0.64, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1021898, y: 0.6055776}
+  m_Size: {x: 1.1021898, y: 0.8}
   m_EdgeRadius: 0

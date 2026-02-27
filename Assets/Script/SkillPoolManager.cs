@@ -17,7 +17,7 @@ public class SkillPoolManager : MonoBehaviour
 
     public PassArrow passArrowPf;
     public ArrowRain arrowRainPf;
-    public ArrowRain phoenixArrowPf;
+    public PhoenixArrow phoenixArrowPf;
 
     void Awake()
     {
