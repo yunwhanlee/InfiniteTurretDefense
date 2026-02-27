@@ -1,9 +1,8 @@
-using System; // PAPA POPO!
+using System;
 using UnityEngine;
 using static Config;
-using Random = UnityEngine.Random; // POTA!
-
-// TEST TOST
+using Random = UnityEngine.Random;
+using static MissilePoolManager;
 
 public class Archer : Chara
 {
@@ -136,10 +135,13 @@ public class Archer : Chara
         int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPercent);
 
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
-        PassArrow passArrow = GM._.msm.SpawnMissilePoolList(MISSILE_IDX.PassArrow).GetComponent<PassArrow>();
+        PassArrow passArrow = GM._.msm.SpawnMissilePoolList(MISSILE_IDX.SK_PassArrow).GetComponent<PassArrow>();
         passArrow.Init(transform.position, direction, damage);
     }
 
+    /// <summary>
+    /// 크리티컬 데미지
+    /// </summary>
     private float Skill5_CriticalDamage()
     {
         if(Grade < CHR_GRADE.LEGEND)
@@ -155,6 +157,22 @@ public class Archer : Chara
         Debug.Log($"Skill5_CriticalDamage():: skillLv= {skillLv}, unitPer={unitPer}, result= {result}");
 
         return result; // 백분률
+    }
+
+    /// <summary>
+    /// 화살비
+    /// </summary>
+    private void Skill6_ArrowRain()
+    {
+        //TODO
+    }
+
+    /// <summary>
+    /// 불사조 화살
+    /// </summary>
+    private void Skill7_PhoenixArrow()
+    {
+        //TODO
     }
 #endregion
 }

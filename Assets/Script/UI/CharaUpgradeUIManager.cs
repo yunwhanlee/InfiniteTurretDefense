@@ -172,8 +172,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
         dmgTxt.text = $"{data.baseDmg}";
         atkSpdTxt.text = $"{data.baseAttackSpeed}";
         rangeTxt.text = $"{data.baseRange}";
-        critPerTxt.text = "TODO";//$"{data.baseCritPer}";
-        critDmgPerTxt.text = "TODO";//$"{data.baseCritDmgPer}";
+        critPerTxt.text = $"{Chara.DEF_CRIT}%";
+        critDmgPerTxt.text = $"{Chara.DEF_CRITDMG * 100}%";
 
         // 등급업 텍스트 최신화
         gradeUpTxt.text = $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
@@ -183,6 +183,31 @@ public class CharaUpgradeUIManager : MonoBehaviour
         {
             SkillCard skillcard = skillCardArr[i];
             skillcard.UpdateUI(i, data.charaSkillAsset, card.GetSkillLv(i), card.GetGrade());
+        }
+
+        // Skill 최신화
+        for(int i = 0; i < skillCardArr.Length; i++)
+        {
+            SkillCard skillcard = skillCardArr[i];
+            skillcard.UpdateUI(i, data.charaSkillAsset, card.GetSkillLv(i), card.GetGrade());
+
+            int lv = card.GetSkillLv(i);
+            var skillAst = data.charaSkillAsset.skillAssetArr[i];
+
+            switch(i)
+            {
+                case (int)CHR_GRADE.NORMAL:
+                    skillcard.UpdateDescUI_Normal(lv, skillAst.Desc, card.GetCharaDataAsset().baseDmg, card.GetCharaDataAsset().dmgUpgUnit);
+                    break;
+                case (int)CHR_GRADE.RARE:
+                case (int)CHR_GRADE.EPIC:
+                case (int)CHR_GRADE.UNIQUE:
+                case (int)CHR_GRADE.LEGEND:
+                case (int)CHR_GRADE.MYTHIC:
+                case (int)CHR_GRADE.PRIME:
+                    skillcard.UpdateDescUI(lv, skillAst.Desc, skillAst.ValueList);
+                    break;
+            }
         }
     }
 #endregion

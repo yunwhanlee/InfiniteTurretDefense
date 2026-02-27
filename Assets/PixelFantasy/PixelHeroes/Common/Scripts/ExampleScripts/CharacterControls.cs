@@ -33,7 +33,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
             if (Input.GetKeyDown(KeyCode.D)) _animation.Die();
             if (Input.GetKeyDown(KeyCode.N)) _animation.Roll();
             if (Input.GetKeyDown(KeyCode.H)) _animation.Hit();
-            if (Input.GetKeyUp(KeyCode.L)) EffectManager.Instance.Blink(_character);
+            if (Input.GetKeyUp(KeyCode.L)) PixelEffectManager.Instance.Blink(_character);
         }
 
         private void Move()
@@ -95,8 +95,8 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
             }
 
             _character.AudioSource.pitch = Random.Range(0.9f, 1.1f);
-            _character.AudioSource.PlayOneShot(EffectManager.Instance.FireAudioClip);
-            EffectManager.Instance.CreateSpriteEffect(_character, power ? "FireMuzzleM" : "FireMuzzleS", direction: 1, parent: firearm.FireMuzzle);
+            _character.AudioSource.PlayOneShot(PixelEffectManager.Instance.FireAudioClip);
+            PixelEffectManager.Instance.CreateSpriteEffect(_character, power ? "FireMuzzleM" : "FireMuzzleS", direction: 1, parent: firearm.FireMuzzle);
         }
     }
 }

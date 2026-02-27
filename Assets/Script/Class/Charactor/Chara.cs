@@ -7,6 +7,9 @@ using static Config;
 /// </summary>
 public abstract class Chara : MonoBehaviour
 {
+    public static readonly int DEF_CRIT = 0;
+    public static readonly float DEF_CRITDMG = 1.5f;
+
     // 외부 클래스
     public TargetFinder targetFinder;
     public Missile missile;
@@ -85,8 +88,8 @@ public abstract class Chara : MonoBehaviour
         DmgUpgUnit = charaDataAsset.dmgUpgUnit;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
-        CritPer = 0;
-        CritDmgPer = 1.5f;
+        CritPer = DEF_CRIT;
+        CritDmgPer = DEF_CRITDMG;
         CharaSkill = charaDataAsset.charaSkillAsset;
 
         time = AttackSpeed; // 공속 적용

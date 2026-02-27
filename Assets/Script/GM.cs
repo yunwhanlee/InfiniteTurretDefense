@@ -32,7 +32,7 @@ public class GM : MonoBehaviour
     public Tower tower;
     public CharaManager crm;
     public EnemyManager emm;
-    public MissileManager msm;
+    public MissilePoolManager msm;
 
     // 이펙트 매니저
     public DmgTxtManager dmgTxtMng;
@@ -43,7 +43,7 @@ public class GM : MonoBehaviour
         tower = GameObject.Find("Tower").GetComponent<Tower>();
         crm = GameObject.Find("CharaManager").GetComponent<CharaManager>();
         emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        msm = GameObject.Find("MissileManager").GetComponent<MissileManager>();
+        msm = GameObject.Find("MissilePoolManager").GetComponent<MissilePoolManager>();
         dmgTxtMng = GameObject.Find("DmgTxtManager").GetComponent<DmgTxtManager>();
     }
 

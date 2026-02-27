@@ -25,7 +25,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
         {
             if (GetState() == CharacterState.Run)
             {
-                EffectManager.Instance.CreateSpriteEffect(_character, "Brake");
+                PixelEffectManager.Instance.CreateSpriteEffect(_character, "Brake");
             }
 
             SetState(CharacterState.Ready);
@@ -35,7 +35,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
         {
             if (GetState() != CharacterState.Run)
             {
-                EffectManager.Instance.CreateSpriteEffect(_character, "Run");
+                PixelEffectManager.Instance.CreateSpriteEffect(_character, "Run");
             }
 
             SetState(CharacterState.Run);
@@ -44,7 +44,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
         public void Jump()
         {
             SetState(CharacterState.Jump);
-            EffectManager.Instance.CreateSpriteEffect(_character, "Jump");
+            PixelEffectManager.Instance.CreateSpriteEffect(_character, "Jump");
         }
 
         public void Fall()
@@ -55,7 +55,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
         public void Land(CharacterState state = CharacterState.Land)
         {
             SetState(state);
-            EffectManager.Instance.CreateSpriteEffect(_character, "Fall");
+            PixelEffectManager.Instance.CreateSpriteEffect(_character, "Fall");
         }
 
         public void Block()
@@ -76,7 +76,7 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
         public void Roll()
         {
             _character.Animator.SetTrigger("Roll");
-            EffectManager.Instance.CreateSpriteEffect(_character, "Dash");
+            PixelEffectManager.Instance.CreateSpriteEffect(_character, "Dash");
         }
 
         public void Slash()

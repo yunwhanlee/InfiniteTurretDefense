@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.PixelFantasy.Common.Scripts
 {
     [CreateAssetMenu(fileName = "EffectManager", menuName = "Pixel Heroes/EffectManager")]
-    public class EffectManager : ScriptableObject
+    public class PixelEffectManager : ScriptableObject
     {
         public SpriteEffect SpriteEffectPrefab;
         public AudioClip FireAudioClip;
@@ -13,12 +13,12 @@ namespace Assets.PixelFantasy.Common.Scripts
         private static Material _baseMaterial;
         private static Material _blinkMaterial;
 
-        public static EffectManager Instance;
+        public static PixelEffectManager Instance;
 
         [RuntimeInitializeOnLoadMethod]
         static void Initialize()
         {
-            Instance = Resources.Load<EffectManager>("EffectManager");
+            Instance = Resources.Load<PixelEffectManager>("EffectManager");
         }
 
         public void Blink(Creature creature)

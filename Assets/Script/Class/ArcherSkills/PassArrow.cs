@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static MissilePoolManager;
 
 /// <summary>
 /// 궁수 관통샷 스킬
@@ -33,7 +34,7 @@ public class PassArrow : MonoBehaviour
     void OnBecameInvisible()
     {
         if(gameObject.activeSelf)
-            GM._.msm.ReleaseMissilePoolList(MISSILE_IDX.PassArrow, gameObject);
+            GM._.msm.ReleaseMissilePoolList(MISSILE_IDX.SK_PassArrow, gameObject);
     }
 
 #region FUNC

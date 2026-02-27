@@ -2,13 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public enum MISSILE_IDX
-{
-    PassArrow // 관통샷 (궁수스킬)
-}
 
-public class MissileManager : MonoBehaviour
+
+/// <summary>
+/// 투사체 매니저 (스킬 포함)
+/// </summary>
+public class MissilePoolManager : MonoBehaviour
 {
+    public enum MISSILE_IDX
+    {
+        SK_PassArrow, // 관통샷 (궁수스킬),
+        SK_ArrowRain, // 화살비 (궁수스킬),
+    }
+
     // 오브젝트 풀링
     public Transform missileGroupTf;
 
@@ -17,6 +23,7 @@ public class MissileManager : MonoBehaviour
 
     public Missile missilePref;
     public PassArrow passArrowPref;
+
 
     void Awake()
     {
