@@ -25,7 +25,7 @@ public class PassArrow : MonoBehaviour
             if(enemy.State == Enemy.STATE.DEAD)
                 return;
 
-            enemy.OnHit(damage);
+            enemy.OnHit(damage, isCritical: false);
         }
     }
 

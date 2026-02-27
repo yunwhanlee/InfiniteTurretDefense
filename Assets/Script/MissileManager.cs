@@ -43,11 +43,12 @@ public class MissileManager : MonoBehaviour
     }
 
     /// <summary> 오브젝트 풀링 생성 </summary>
-    public void SpawnMissile(Vector3 pos, Vector3 dir, int dmg, float angleOffset)
+    public void SpawnMissile(Vector3 pos, Vector3 dir, int dmg, float angleOffset, bool isCritical)
     {
         Missile missile = pool.Get();
         missile.Init(pos, dir, angleOffset);
         missile.Dmg = dmg;
+        missile.IsCritical = isCritical;
     }
 #endregion
 #region POOL LIST

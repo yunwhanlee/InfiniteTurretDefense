@@ -3,6 +3,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     [SerializeField] int dmg; public int Dmg {get => dmg; set => dmg = value;}
+    [SerializeField] bool isCritical; public bool IsCritical {get => isCritical; set => isCritical = value;}
     [SerializeField] float moveSpeed;
 
     Vector3 direction; public Vector3 Direction {get => direction; set => direction = value;}
@@ -27,7 +28,7 @@ public class Missile : MonoBehaviour
                 return;
 
             isHit = true;
-            enemy.OnHit(dmg);
+            enemy.OnHit(dmg, isCritical);
             GM._.msm.Pool.Release(this);
         }
     }
@@ -43,7 +44,6 @@ public class Missile : MonoBehaviour
     public void Init(Vector3 pos, Vector3 dir, float angleOffset)
     {
         isHit = false;
-
         transform.position = pos;
 
         // 발사 방향(각도)

@@ -149,15 +149,6 @@ public abstract class Chara : MonoBehaviour
     {
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
         int damage = Dmg + Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
-
-        // 치명타 확률
-        int random = UnityEngine.Random.Range(0, 100);
-        Debug.Log($"Skill1_Dmg():: {random} <= {CritPer} = {random <= CritPer}, CritDmgPer={CritDmgPer}");
-        if(random <= CritPer)
-        {
-            damage = Mathf.RoundToInt(damage * CritDmgPer);
-        }
-        
         return Mathf.RoundToInt(damage);
     }
 #endregion

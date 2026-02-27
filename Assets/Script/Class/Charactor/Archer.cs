@@ -30,21 +30,28 @@ public class Archer : Chara
     {
         base.Attack(enemy);
 
-        // 치명타 확률 설정
+        // 치명타 및 데미지 확률 설정
         CritPer = 0;
         CritPer += Skill3_Critical();
-
         CritDmgPer = 1.5f;
         CritDmgPer += Skill5_CriticalDamage();
-
-        // TODO 치명타 데미지 설정
 
         // 등급에따른 공격력 업글당 증가비율 배열
         int damage = Skill1_Dmg();
 
+        // 치명타 확률 적용
+        bool isCritical = false;
+        if(CritPer > 0)
+        {
+            int random = Random.Range(0, 100);
+            isCritical = random <= CritPer;
+            if(isCritical)
+                damage = Mathf.RoundToInt(damage * CritDmgPer);
+        }
+
         // 투사체 발사
-        GM._.msm.SpawnMissile(transform.position, direction, damage, 0);
-        Skill2_MultiShot(damage);
+        GM._.msm.SpawnMissile(transform.position, direction, damage, 0, isCritical);
+        Skill2_MultiShot(damage, isCritical);
     }
 
 #region SKILL 
@@ -52,7 +59,7 @@ public class Archer : Chara
     /// 멀티샷
     /// </summary>
     /// <param name="damage">데미지</param>
-    private void Skill2_MultiShot(int damage)
+    private void Skill2_MultiShot(int damage, bool isCritical)
     {
         if(Grade < CHR_GRADE.RARE)
             return;
@@ -73,24 +80,24 @@ public class Archer : Chara
             {
                 case CHR_GRADE.RARE:
                 case CHR_GRADE.EPIC:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
                     break;
                 case CHR_GRADE.UNIQUE:
                 case CHR_GRADE.LEGEND:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45, isCritical);
                     break;
                 case CHR_GRADE.MYTHIC:
                 case CHR_GRADE.PRIME:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -67.5f);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +67.5f);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, -67.5f, isCritical);
+                    GM._.msm.SpawnMissile(transform.position, direction, damage, +67.5f, isCritical);
                     break;
             }
         }

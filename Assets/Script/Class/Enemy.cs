@@ -132,12 +132,12 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 플레이어로부터 공격받음
     /// </summary>
-    public void OnHit(int dmg)
+    public void OnHit(int dmg, bool isCritical)
     {
         hp -= dmg;
 
         // 데미지 텍스트 표시
-        GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical: false);
+        GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical);
 
         Flash();
         hpSlider.value = (float)hp / maxHp;
