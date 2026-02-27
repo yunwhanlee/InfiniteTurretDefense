@@ -127,6 +127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1285356722375040961}
   - {fileID: 1172788599572530928}
   - {fileID: 367246908562806515}
   m_Father: {fileID: 0}
@@ -209,7 +210,10 @@ MonoBehaviour:
   rangeCircle: {fileID: 920408537845552026}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  shootTf: {fileID: 1285356722375040961}
   passArrowTime: 0
+  arrowRainTime: 0
+  phoenixArrowTime: 0
 --- !u!114 &4527924225899619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +329,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4540158, y: 0.60801435}
   m_EdgeRadius: 0
+--- !u!1 &6840104860351944885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285356722375040961}
+  m_Layer: 6
+  m_Name: ShootTf
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285356722375040961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840104860351944885}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.165, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3747730231229651677}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7136300389341600976
 GameObject:
   m_ObjectHideFlags: 0
