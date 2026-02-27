@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
-    const int DEF_HP = 900;//5;
+    const int DEF_HP = 900; //5;
     const int DEF_DMG = 2;
 
     // 오브젝트 풀링
@@ -72,7 +72,6 @@ public class EnemyManager : MonoBehaviour
         if(time > span)
         {
             time = 0;
-
             const int OFFSET_SEC = 10;
 
             if(totalTime >= OFFSET_SEC)
@@ -121,7 +120,6 @@ public class EnemyManager : MonoBehaviour
         return enemy;
     }
     #endregion
-
     #region FUNC
     Vector3 GetRandomCirclePosition(float radius)
     {
@@ -140,9 +138,7 @@ public class EnemyManager : MonoBehaviour
 #region GIZMOS
     void OnDrawGizmosSelected() {
         const int SEGMENTS = 64;
-
         Gizmos.color = Color.green;
-
         Vector2 prev = new Vector2(spawnRadius, 0f);
 
         for (int i = 1; i <= SEGMENTS; i++)

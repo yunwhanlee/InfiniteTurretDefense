@@ -14,6 +14,7 @@ public class Archer : Chara
     [SerializeField] float arrowRainTime = 0;
     // 불사조 화살
 
+
     protected void Update()
     {
         base.Update();
@@ -199,6 +200,7 @@ public class Archer : Chara
     private void Skill7_PhoenixArrow()
     {
         //TODO
+        
     }
 #endregion
 }
