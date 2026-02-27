@@ -2,12 +2,17 @@ using System;
 using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random;
-using static MissilePoolManager;
+using static SkillPoolManager;
 
 public class Archer : Chara
 {
+    // 관통샷
     const int PASS_ARROW_COOLTIME = 10;
-    public float passArrowTime = 0;
+    [SerializeField] float passArrowTime = 0;
+    // 화살비
+    const int ARROW_RAIN_COOLTIME = 35;
+    [SerializeField] float arrowRainTime = 0;
+    // 불사조 화살
 
     protected void Update()
     {
@@ -21,6 +26,17 @@ public class Archer : Chara
             {
                 Skill4_PassArrow();
                 passArrowTime = 0;
+            }
+        }
+
+        // 스킬5 화살비
+        if(Grade >= CHR_GRADE.MYTHIC)
+        {
+            arrowRainTime += Time.deltaTime;
+            if(arrowRainTime > ARROW_RAIN_COOLTIME)
+            {
+                Skill6_ArrowRain();
+                arrowRainTime = 0;
             }
         }
     }
@@ -49,7 +65,7 @@ public class Archer : Chara
         }
 
         // 투사체 발사
-        GM._.msm.SpawnMissile(transform.position, direction, damage, 0, isCritical);
+        GM._.mpm.SpawnPool(transform.position, direction, damage, 0, isCritical);
         Skill2_MultiShot(damage, isCritical);
     }
 
@@ -79,24 +95,24 @@ public class Archer : Chara
             {
                 case CHR_GRADE.RARE:
                 case CHR_GRADE.EPIC:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +22.5f, isCritical);
                     break;
                 case CHR_GRADE.UNIQUE:
                 case CHR_GRADE.LEGEND:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -45, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +45, isCritical);
                     break;
                 case CHR_GRADE.MYTHIC:
                 case CHR_GRADE.PRIME:
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -22.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +22.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -45, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +45, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, -67.5f, isCritical);
-                    GM._.msm.SpawnMissile(transform.position, direction, damage, +67.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +22.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -45, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +45, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, -67.5f, isCritical);
+                    GM._.mpm.SpawnPool(transform.position, direction, damage, +67.5f, isCritical);
                     break;
             }
         }
@@ -135,7 +151,7 @@ public class Archer : Chara
         int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPercent);
 
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
-        PassArrow passArrow = GM._.msm.SpawnMissilePoolList(MISSILE_IDX.SK_PassArrow).GetComponent<PassArrow>();
+        PassArrow passArrow = GM._.spm.SpawnPoolDics(SK_IDX.SK_PassArrow).GetComponent<PassArrow>();
         passArrow.Init(transform.position, direction, damage);
     }
 
@@ -152,9 +168,8 @@ public class Archer : Chara
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-
         float result = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
-        Debug.Log($"Skill5_CriticalDamage():: skillLv= {skillLv}, unitPer={unitPer}, result= {result}");
+        // Debug.Log($"Skill5_CriticalDamage():: skillLv= {skillLv}, unitPer={unitPer}, result= {result}");
 
         return result; // 백분률
     }
@@ -164,7 +179,18 @@ public class Archer : Chara
     /// </summary>
     private void Skill6_ArrowRain()
     {
-        //TODO
+        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
+
+        int damage = Skill1_Dmg();
+        damage = Mathf.RoundToInt(damage * dmgPer);
+
+        ArrowRain arrowRain = GM._.spm.SpawnPoolDics(SK_IDX.SK_ArrowRain).GetComponent<ArrowRain>();
+        arrowRain.Init(damage);
     }
 
     /// <summary>

@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 public class EnemyManager : MonoBehaviour
 {
-    const int DEF_HP = 5;
+    const int DEF_HP = 900;//5;
     const int DEF_DMG = 2;
 
     // 오브젝트 풀링

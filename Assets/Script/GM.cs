@@ -32,7 +32,8 @@ public class GM : MonoBehaviour
     public Tower tower;
     public CharaManager crm;
     public EnemyManager emm;
-    public MissilePoolManager msm;
+    public MissilePoolManager mpm;
+    public SkillPoolManager spm;
 
     // 이펙트 매니저
     public DmgTxtManager dmgTxtMng;
@@ -43,7 +44,8 @@ public class GM : MonoBehaviour
         tower = GameObject.Find("Tower").GetComponent<Tower>();
         crm = GameObject.Find("CharaManager").GetComponent<CharaManager>();
         emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        msm = GameObject.Find("MissilePoolManager").GetComponent<MissilePoolManager>();
+        mpm = GameObject.Find("MissilePoolManager").GetComponent<MissilePoolManager>();
+        spm = GameObject.Find("SkillPoolManager").GetComponent<SkillPoolManager>();
         dmgTxtMng = GameObject.Find("DmgTxtManager").GetComponent<DmgTxtManager>();
     }
 
