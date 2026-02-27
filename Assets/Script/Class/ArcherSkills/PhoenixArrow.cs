@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using static SkillPoolManager;
 
@@ -6,9 +7,9 @@ using static SkillPoolManager;
 /// </summary>
 public class PhoenixArrow : MonoBehaviour
 {
-    const float moveSpeed = 4;
-    private Vector3 direction;
-    private int damage;
+    public float moveSpeed = 4;
+    Vector3 direction;
+    int damage;
 
     void Update()
     {
@@ -28,13 +29,6 @@ public class PhoenixArrow : MonoBehaviour
         }
     }
 
-    // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
-    void OnBecameInvisible()
-    {
-        if(gameObject.activeSelf)
-            GM._.spm.ReleasePoolDics(SK_IDX.SK_PassArrow, gameObject);
-    }
-
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg)
     {
@@ -45,6 +39,21 @@ public class PhoenixArrow : MonoBehaviour
         // 발사 방향(각도)
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // 일정시간뒤 제거 및 불장판 생성
+        StartCoroutine(CoDestroyMe());
+    }
+
+    IEnumerator CoDestroyMe()
+    {
+        // 불장판 생성
+        yield return new WaitForSeconds(3.5f);
+        PhoenixFireField fireField = GM._.spm.SpawnPoolDics(SK_IDX.SK_PhoenixFireField).GetComponent<PhoenixFireField>();
+        fireField.Init(direction, Mathf.RoundToInt(damage * 0.1f));
+
+        // 오브젝트 회수
+        yield return new WaitForSeconds(0.5f);
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_PassArrow, gameObject);
     }
 #endregion
 }

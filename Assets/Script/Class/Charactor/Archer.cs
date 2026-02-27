@@ -3,6 +3,7 @@ using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random;
 using static SkillPoolManager;
+using System.Collections;
 
 public class Archer : Chara
 {

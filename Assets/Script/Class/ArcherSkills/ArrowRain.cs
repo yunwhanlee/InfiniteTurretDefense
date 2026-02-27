@@ -4,13 +4,13 @@ using static SkillPoolManager;
 
 public class ArrowRain : MonoBehaviour
 {
-    const int DURATION = 5;
-    const float SPAN = 1;
+    const int DURATION = 5; // 지속시간
+    const float SPAN = 1;   // 공격주기
 
-    Transform enemyGroupTf;
     WaitForSeconds attackSpan;
+    Transform enemyGroupTf;
     Coroutine corID;
-    [SerializeField] int dmg;
+    int dmg;
 
     void Awake()
     {
