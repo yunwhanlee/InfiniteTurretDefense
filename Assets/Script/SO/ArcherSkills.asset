@@ -20,7 +20,7 @@ MonoBehaviour:
     ValueList:
     - def: 0
       unit: 0
-    MaxLv: 999
+    MaxLv: 1000
     PriceUnit: 1000
   - Name: "\uBA40\uD2F0\uC0F7"
     Grade: 1

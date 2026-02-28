@@ -158,9 +158,9 @@ public class Archer : Chara
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        float dmgPercent = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPercent);
+        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPer);
 
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
         PassArrow passArrow = GM._.spm.SpawnPoolDics(SK_IDX.SK_PassArrow).GetComponent<PassArrow>();

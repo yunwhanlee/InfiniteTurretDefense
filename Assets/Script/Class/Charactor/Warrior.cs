@@ -2,6 +2,54 @@ using UnityEngine;
 
 public class Warrior : Chara
 {
+    // 강타
+    const int POWER_STRIKE_COOLTIME = 6;
+    [SerializeField] float powerStrikeTime = 0;
+    bool IsPowerStrikeActive {get => powerStrikeTime > POWER_STRIKE_COOLTIME;} // 강타 활성화 트리거
+    // 격려
+    const int WARCRY_COOLTIME = 0;
+    [SerializeField] float warCryTime = 0;
+    // 휠윈드
+    const int WHIRLWIND_COOLTIME = 0;
+    [SerializeField] float whirlWindTime = 0;
+    // 충격파
+    const int SHOCKWAVE_COOLTIME = 0;
+    [SerializeField] float shockWaveTime = 0;
+
+    protected void Update()
+    {
+        base.Update();
+
+        // 강타
+        powerStrikeTime += Time.deltaTime;
+
+        // 격려
+        if(Grade >= Config.CHR_GRADE.LEGEND) {
+            warCryTime += Time.deltaTime;
+            if(warCryTime >= WARCRY_COOLTIME) {
+                Skill5_WarCry();
+                warCryTime = 0;
+            }
+        }
+
+        // 휠원드
+        if(Grade >= Config.CHR_GRADE.MYTHIC) {
+            whirlWindTime += Time.deltaTime;
+            if(whirlWindTime >= WHIRLWIND_COOLTIME) {
+                Skill6_WhirlWind();
+                whirlWindTime = 0;
+            }
+        }
+        // 충격파
+        if(Grade >= Config.CHR_GRADE.PRIME) {
+            shockWaveTime += Time.deltaTime;
+            if(shockWaveTime >= SHOCKWAVE_COOLTIME) {
+                Skill7_ShockWave();
+                shockWaveTime = 0;
+            }
+        }
+    }
+
     public override void Attack(Enemy enemy)
     {
         base.Attack(enemy);
@@ -29,11 +77,70 @@ public class Warrior : Chara
                 damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
 
+        // 스킬2. 강타 활성화 경우
+        if(IsPowerStrikeActive)
+        {
+            damage = Skill2_PowerStrike(damage); // 강타 데미지 추가 계산
+            // TODO 강타 이펙트
+        }
+        else
+        {
+            // TODO 일반공격 이펙트
+        }
+
         // 타겟 공격
         enemy.OnHit(damage, isCritical);
     }
 
 #region SKILL
-    // 나머지 스킬 관련 함수 작성
+    /// <summary>
+    /// 강타
+    /// </summary>
+    private int Skill2_PowerStrike(int dmg)
+    {
+        
+
+        return dmg;
+    }
+
+    /// <summary>
+    /// 광전사
+    /// </summary>
+    private void Skill3_Berserker()
+    {
+        
+    }
+
+    /// <summary>
+    /// 이중 공격
+    /// </summary>
+    private void Skill4_DoubleAttack()
+    {
+        
+    }
+
+    /// <summary>
+    /// 격려
+    /// </summary>
+    private void Skill5_WarCry()
+    {
+        
+    }
+
+    /// <summary>
+    /// 휠윈드
+    /// </summary>
+    private void Skill6_WhirlWind()
+    {
+        
+    }
+
+    /// <summary>
+    /// 충격파
+    /// </summary>
+    private void Skill7_ShockWave()
+    {
+        
+    }
 #endregion
 }
