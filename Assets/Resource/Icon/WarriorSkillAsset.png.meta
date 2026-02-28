@@ -1,34 +1,10 @@
 fileFormatVersion: 2
-guid: fe24214099fda444a93c483aaa6cea6c
+guid: 3001eddfa98fcc84b9e8b69239ed478a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4604657735580060453
-    second: Warrior5_0
-  - first:
-      213: -8555585911858206750
-    second: Warrior5_1
-  - first:
-      213: 991610487915063627
-    second: Warrior5_2
-  - first:
-      213: -7830569471659735786
-    second: Warrior5_3
-  - first:
-      213: -5592320840350957875
-    second: Warrior5_4
-  - first:
-      213: -1697296062108825451
-    second: Warrior5_5
-  - first:
-      213: 1383722680866440768
-    second: Warrior5_6
-  - first:
-      213: 7649291267679168442
-    second: Warrior5_7
-  - first:
-      213: -6298727515351225536
-    second: Warrior5_8
+      213: 5765685816306639189
+    second: WarriorSkillAsset_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,9 +72,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -137,199 +113,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior5_0
+      name: WarriorSkillAsset_
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        y: 342
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd4fe7e9f28f810c0800000000000000
-      internalID: -4604657735580060453
+      spriteID: 5512777b3b4d30050800000000000000
+      internalID: 5765685816306639189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_1
+      name: WarriorSkillAsset_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 171
+        y: 342
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e7ea5e41f3744980800000000000000
-      internalID: -8555585911858206750
+      spriteID: 858cdf00a3856ef4780d308dd41c6ad7
+      internalID: -1105723916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_2
+      name: WarriorSkillAsset_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 342
+        y: 342
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b49aab72c78e2cd00800000000000000
-      internalID: 991610487915063627
+      spriteID: aa6ebcde1d887ec47b7a3a7343cbe737
+      internalID: -1847661740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_3
+      name: WarriorSkillAsset_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        y: 171
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 61504bcbd8a345390800000000000000
-      internalID: -7830569471659735786
+      spriteID: bd15094cb73a4304c9e13e95a6dae4e8
+      internalID: -1992624382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_4
+      name: WarriorSkillAsset_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 171
+        y: 171
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dcefdd833d51462b0800000000000000
-      internalID: -5592320840350957875
+      spriteID: a839e44cd734f324fb2b493cee9e6811
+      internalID: -171707342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_5
+      name: WarriorSkillAsset_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 342
+        y: 171
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5988553693ef178e0800000000000000
-      internalID: -1697296062108825451
+      spriteID: d00143ce4cfca194a9e0ad2b484ed314
+      internalID: 274532851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_6
+      name: WarriorSkillAsset_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04602bc6278f33310800000000000000
-      internalID: 1383722680866440768
+      spriteID: 9885485d8e2441d4f90e01089b623479
+      internalID: -1221411049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_7
+      name: WarriorSkillAsset_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 170
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ab7a38951edb72a60800000000000000
-      internalID: 7649291267679168442
+      spriteID: 2ffa693d03a7b9041aeed4cf0714c4f9
+      internalID: 19905415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_8
+      name: WarriorSkillAsset_8
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+        x: 340
+        y: 2
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04be28662bc6698a0800000000000000
-      internalID: -6298727515351225536
+      spriteID: e221f0755de4ed64081d5bbdc60c5707
+      internalID: -1424104041
       vertices: []
       indices: 
       edges: []
@@ -338,7 +314,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0cdc6b3249df17747997c37193b3b5aa
+    spriteID: 98febd74827b11a46af4f4d3d9a8a45e
     internalID: 0
     vertices: []
     indices: 
@@ -348,17 +324,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":170.0,"y":170.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":1.0,"y":1.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Warrior5_0: -4604657735580060453
-      Warrior5_1: -8555585911858206750
-      Warrior5_2: 991610487915063627
-      Warrior5_3: -7830569471659735786
-      Warrior5_4: -5592320840350957875
-      Warrior5_5: -1697296062108825451
-      Warrior5_6: 1383722680866440768
-      Warrior5_7: 7649291267679168442
-      Warrior5_8: -6298727515351225536
+      WarriorSkillAsset_: 5765685816306639189
+      WarriorSkillAsset_1: -1105723916
+      WarriorSkillAsset_2: -1847661740
+      WarriorSkillAsset_3: -1992624382
+      WarriorSkillAsset_4: -171707342
+      WarriorSkillAsset_5: 274532851
+      WarriorSkillAsset_6: -1221411049
+      WarriorSkillAsset_7: 19905415
+      WarriorSkillAsset_8: -1424104041
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

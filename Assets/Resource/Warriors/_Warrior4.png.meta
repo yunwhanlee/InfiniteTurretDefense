@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: fe24214099fda444a93c483aaa6cea6c
+guid: d5dec969b6a010544a948a79620df56a
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -4604657735580060453
-    second: Warrior5_0
-  - first:
-      213: -8555585911858206750
-    second: Warrior5_1
-  - first:
-      213: 991610487915063627
-    second: Warrior5_2
-  - first:
-      213: -7830569471659735786
-    second: Warrior5_3
-  - first:
-      213: -5592320840350957875
-    second: Warrior5_4
-  - first:
-      213: -1697296062108825451
-    second: Warrior5_5
-  - first:
-      213: 1383722680866440768
-    second: Warrior5_6
-  - first:
-      213: 7649291267679168442
-    second: Warrior5_7
-  - first:
-      213: -6298727515351225536
-    second: Warrior5_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 18
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,9 +69,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -122,14 +95,14 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -137,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior5_0
+      name: Warrior4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,16 +123,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bd4fe7e9f28f810c0800000000000000
-      internalID: -4604657735580060453
+      spriteID: 282193c42e330604a800fd2ff7bc18d9
+      internalID: -1597497579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_1
+      name: Warrior4_1
       rect:
         serializedVersion: 2
         x: 64
@@ -172,16 +145,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e7ea5e41f3744980800000000000000
-      internalID: -8555585911858206750
+      spriteID: d5f16345a4acf1e4daaa1dc187f8a27a
+      internalID: -353451062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_2
+      name: Warrior4_2
       rect:
         serializedVersion: 2
         x: 128
@@ -194,16 +167,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b49aab72c78e2cd00800000000000000
-      internalID: 991610487915063627
+      spriteID: c64324c83c7e4e14dbb7f6a03fb7252c
+      internalID: -407497531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_3
+      name: Warrior4_3
       rect:
         serializedVersion: 2
         x: 0
@@ -216,16 +189,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 61504bcbd8a345390800000000000000
-      internalID: -7830569471659735786
+      spriteID: 229d175a694ec224e95008f4b51d468a
+      internalID: 598786657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_4
+      name: Warrior4_4
       rect:
         serializedVersion: 2
         x: 64
@@ -238,16 +211,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dcefdd833d51462b0800000000000000
-      internalID: -5592320840350957875
+      spriteID: 01cdfb130970bc54696c6ff1ec768c0c
+      internalID: -1888026608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_5
+      name: Warrior4_5
       rect:
         serializedVersion: 2
         x: 128
@@ -260,16 +233,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5988553693ef178e0800000000000000
-      internalID: -1697296062108825451
+      spriteID: 47e12741fffdff647a1476a64bc7311c
+      internalID: -1339480916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_6
+      name: Warrior4_6
       rect:
         serializedVersion: 2
         x: 0
@@ -282,16 +255,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04602bc6278f33310800000000000000
-      internalID: 1383722680866440768
+      spriteID: 8cf7ed81ead90264090bd138bff943a2
+      internalID: -1167399107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_7
+      name: Warrior4_7
       rect:
         serializedVersion: 2
         x: 64
@@ -304,32 +277,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ab7a38951edb72a60800000000000000
-      internalID: 7649291267679168442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior5_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 04be28662bc6698a0800000000000000
-      internalID: -6298727515351225536
+      spriteID: 802e2ab759992cc44a5421681db1a450
+      internalID: 272422280
       vertices: []
       indices: 
       edges: []
@@ -338,7 +289,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0cdc6b3249df17747997c37193b3b5aa
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -346,19 +297,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Warrior5_0: -4604657735580060453
-      Warrior5_1: -8555585911858206750
-      Warrior5_2: 991610487915063627
-      Warrior5_3: -7830569471659735786
-      Warrior5_4: -5592320840350957875
-      Warrior5_5: -1697296062108825451
-      Warrior5_6: 1383722680866440768
-      Warrior5_7: 7649291267679168442
-      Warrior5_8: -6298727515351225536
+      Warrior4_0: -1597497579
+      Warrior4_1: -353451062
+      Warrior4_2: -407497531
+      Warrior4_3: 598786657
+      Warrior4_4: -1888026608
+      Warrior4_5: -1339480916
+      Warrior4_6: -1167399107
+      Warrior4_7: 272422280
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

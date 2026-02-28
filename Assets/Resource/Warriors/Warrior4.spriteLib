@@ -19,14 +19,14 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Archer1-sheet_0
       m_Hash: 381467907
-      m_Sprite: {fileID: -1597497579, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: -8810844283316897003, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1597497579, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: -8810844283316897003, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_1
       m_Hash: 565939605
-      m_Sprite: {fileID: -353451062, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: -1637150345223220511, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -353451062, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: -1637150345223220511, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 2
   - m_Name: Spawn
@@ -35,19 +35,19 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Idle
       m_Hash: 1008081451
-      m_Sprite: {fileID: -407497531, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: 6583653276931035013, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -407497531, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: 6583653276931035013, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_3
       m_Hash: 263580857
-      m_Sprite: {fileID: 598786657, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: 5485423523849659538, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 598786657, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: 5485423523849659538, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_4
       m_Hash: 298940698
-      m_Sprite: {fileID: -1888026608, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: 3705832802995206833, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1888026608, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: 3705832802995206833, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 3
   - m_Name: Attack
@@ -56,26 +56,26 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Archer1-sheet_5
       m_Hash: 651577740
-      m_Sprite: {fileID: -1339480916, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: 5757628467216302422, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1339480916, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: 5757628467216302422, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_6
       m_Hash: 1071585334
-      m_Sprite: {fileID: -1167399107, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: 8661416366727548213, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1167399107, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: 8661416366727548213, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_7
       m_Hash: 148383904
-      m_Sprite: {fileID: -1167399107, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: -3689711088838551469, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1167399107, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: -3689711088838551469, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     - m_Name: Archer1-sheet_8
       m_Hash: 409417009
-      m_Sprite: {fileID: 272422280, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_Sprite: {fileID: -3751812990576000526, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 272422280, guid: d5dec969b6a010544a948a79620df56a, type: 3}
+      m_SpriteOverride: {fileID: -3751812990576000526, guid: bb3e5ac842eadb440830c6be9690efc4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639061796497587672
+  m_ModificationHash: 639079047326824335
   m_Version: 1
