@@ -35685,9 +35685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3441020f00bbba4684445835ad2740a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectPoolManager
-  slashEF: {fileID: 7089556877889253151, guid: 4fd0b421ba35f17428e2d2ba91dc6059, type: 3}
-  powerStrikeEF: {fileID: 6864862304246900697, guid: 2b09cbff5d2662a44931ee8e59624728, type: 3}
   effectGroupTf: {fileID: 1802811015}
+  slashEF: {fileID: 5641158056376935, guid: fb3b3afbd2adc6042b8b250a79bc431a, type: 3}
 --- !u!4 &1925302458
 Transform:
   m_ObjectHideFlags: 0

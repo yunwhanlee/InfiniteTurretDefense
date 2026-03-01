@@ -33,6 +33,7 @@ public class GM : MonoBehaviour
     public CharaManager crm;
     public EnemyManager emm;
     public MissilePoolManager mpm;
+    public EffectPoolManager epm;
     public SkillPoolManager spm;
 
     // 이펙트 매니저
@@ -45,6 +46,7 @@ public class GM : MonoBehaviour
         crm = GameObject.Find("CharaManager").GetComponent<CharaManager>();
         emm = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         mpm = GameObject.Find("MissilePoolManager").GetComponent<MissilePoolManager>();
+        epm = GameObject.Find("EffectPoolManager").GetComponent<EffectPoolManager>();
         spm = GameObject.Find("SkillPoolManager").GetComponent<SkillPoolManager>();
         dmgTxtMng = GameObject.Find("DmgTxtManager").GetComponent<DmgTxtManager>();
     }

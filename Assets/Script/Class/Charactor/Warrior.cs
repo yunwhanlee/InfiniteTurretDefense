@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Config;
+using static EffectPoolManager;
 
 public class Warrior : Chara
 {
@@ -21,11 +22,12 @@ public class Warrior : Chara
     {
         base.Update();
 
-        // 강타
-        powerStrikeTime += Time.deltaTime;
+        // 강타 카운트팅만 => 처리는 Attack()에서
+        if(Grade >= CHR_GRADE.RARE)
+            powerStrikeTime += Time.deltaTime;
 
         // 격려
-        if(Grade >= Config.CHR_GRADE.LEGEND) {
+        if(Grade >= CHR_GRADE.LEGEND) {
             warCryTime += Time.deltaTime;
             if(warCryTime >= WARCRY_COOLTIME) {
                 Skill5_WarCry();
@@ -34,7 +36,7 @@ public class Warrior : Chara
         }
 
         // 휠원드
-        if(Grade >= Config.CHR_GRADE.MYTHIC) {
+        if(Grade >= CHR_GRADE.MYTHIC) {
             whirlWindTime += Time.deltaTime;
             if(whirlWindTime >= WHIRLWIND_COOLTIME) {
                 Skill6_WhirlWind();
@@ -42,7 +44,7 @@ public class Warrior : Chara
             }
         }
         // 충격파
-        if(Grade >= Config.CHR_GRADE.PRIME) {
+        if(Grade >= CHR_GRADE.PRIME) {
             shockWaveTime += Time.deltaTime;
             if(shockWaveTime >= SHOCKWAVE_COOLTIME) {
                 Skill7_ShockWave();
@@ -79,14 +81,16 @@ public class Warrior : Chara
         }
 
         // 스킬2. 강타 활성화 경우
-        if(Grade < CHR_GRADE.RARE && IsPowerStrikeActive)
+        if(Grade >= CHR_GRADE.RARE && IsPowerStrikeActive)
         {
+            powerStrikeTime = 0;
             damage = Skill2_PowerStrike(damage); // 강타 데미지 추가 계산
-            // TODO 강타 이펙트
+            GM._.epm.SpawnPoolDics(EF_IDX.PowerStrikeEF, enemy.transform.position);
         }
         else
         {
-            // TODO 일반공격 이펙트
+            // 일반공격 이펙트
+            GM._.epm.SpawnPoolDics(EF_IDX.SlashEF, enemy.transform.position);
         }
 
         // 타겟 공격
@@ -99,7 +103,7 @@ public class Warrior : Chara
     /// </summary>
     private int Skill2_PowerStrike(int dmg)
     {
-        Debug.Log($"전사:: 강타! dmg= {dmg}");
+        Debug.Log($"Skill2_PowerStrike():: dmg= {dmg}");
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 
