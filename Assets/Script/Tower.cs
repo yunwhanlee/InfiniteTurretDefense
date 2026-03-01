@@ -6,16 +6,19 @@ using static Config;
 
 public class Tower : MonoBehaviour
 {
-    public enum STATE {IDLE, DEAD}
+    const float BLINK_TIME = 0.05f; // 피격시 플래시 지속시간
+    const int DEF_HP = 500;             // 기본 체력
+    const int HEAL_SPAN_SEC = 1;        // 자동 회복 간격(초)
 
+    public enum STATE {IDLE, DEAD}
     [SerializeField] STATE state;    public STATE State { get => state; set => state = value; }
 
     //* 이벤트
     public event Action<int, int> OnHpChanged; // 현재 체력, 최대 체력
     public event Action<int> OnArmorChanged; // 방어력
 
-    [SerializeField] float flashTime = 0f; // 현재 색이 흰색인지 체크하는 변수
-    [SerializeField] bool isFlashing = false;
+    [SerializeField] float blinkTime = 0f; // 현재 색이 흰색인지 체크하는 변수
+    [SerializeField] bool isBlink = false;
 
     [SerializeField] float healTime = 0f;
     [SerializeField] int healVal = 0;  public int HealVal { get => healVal; set { healVal = value; } }
@@ -39,21 +42,17 @@ public class Tower : MonoBehaviour
             }
         }
 
-    public bool IsAlive => hp > 0;
-
+    Coroutine corBlinkID;
+    WaitForSeconds waitSec;
     SpriteRenderer sprRdr;
     MaterialPropertyBlock propBlock;
-
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit"); // 피격시 흰색 플래시 효과용 SHADER 프로퍼티 ID
-
-    const float FLASH_DEF_TIME = 0.05f; // 피격시 플래시 지속시간
-    const int DEF_HP = 500;             // 기본 체력
-    const int HEAL_SPAN_SEC = 1;        // 자동 회복 간격(초)
 
     void Start()
     {
         sprRdr = GetComponent<SpriteRenderer>();
         propBlock = new MaterialPropertyBlock();
+        waitSec = new WaitForSeconds(BLINK_TIME);
 
         state = STATE.IDLE;
         Armor = 0;
@@ -76,47 +75,47 @@ public class Tower : MonoBehaviour
             healTime = 0f;
             Heal(HealVal);
         }
-
-        // 피격 받았을시 플래시 효과
-        if(flashTime > 0f)
-        {
-            flashTime -= Time.deltaTime;
-
-            if(flashTime <= 0f && isFlashing)
-            {
-                // 원래대로 돌리기
-                SetFlashColor(false);
-            }
-        }
     }
 
 #region FUNC
-    private void SetFlashColor(bool isEnable)
+    IEnumerator CoBlink()
     {
-        isFlashing = isEnable;
+        // 블링크 처리
+        Blink(true);
+        yield return waitSec;
+        Blink(false);
 
+        // 코루틴 비우기
+        StopCoroutine(corBlinkID);
+        corBlinkID = null;
+    }
+
+    private void Blink(bool isEnable)
+    {
         int val = isEnable ? 1 : 0;
 
         sprRdr.GetPropertyBlock(propBlock);
         propBlock.SetFloat(hitFlashMat_IsHit, val);
         sprRdr.SetPropertyBlock(propBlock);
     }
+
     /// <summary>
     /// 적으로부터 공격받음
     /// </summary>
     public void OnHit(int dmg)
     {
-        if(IsAlive)
-        {
-            dmg = armor >= dmg ? 1 : dmg - armor;
-            Hp -= dmg;
-            
-            flashTime = FLASH_DEF_TIME;
+        if(state == STATE.DEAD) return;
 
-            if(!isFlashing)
+        dmg = armor >= dmg ? 1 : dmg - armor;
+        Hp -= dmg;
+
+        if(hp > 0)
+        {
+
+            // 블링크
+            if(corBlinkID == null)
             {
-                // 흰색으로 만들기
-                SetFlashColor(true);
+                corBlinkID = StartCoroutine(CoBlink());
             }
         }
         else
