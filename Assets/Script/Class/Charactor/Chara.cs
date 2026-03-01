@@ -28,11 +28,11 @@ public abstract class Chara : MonoBehaviour
 
     // 데이터 에셋 DB 가져오기
     public int Dmg {get; private set;}
-    public float DmgUpgUnit {get; private set;} // 스킬1 업그레이드 공격력 단위 증가량
-    public float AttackSpeed {get; private set;}
+    public virtual float AttackSpeed {get; private set;}
     public float Range {get; private set;}
     public float CritPer {get; protected set;}
     public float CritDmgPer {get; protected set;}
+    public float DmgUpgUnit {get; private set;} // 스킬1 업그레이드 공격력 단위 증가량
     public CharaSkillAsset CharaSkill {get; private set;} // 스킬 데이터 에셋
 
     float time = 0;

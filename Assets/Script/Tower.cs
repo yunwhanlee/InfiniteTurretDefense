@@ -23,7 +23,7 @@ public class Tower : MonoBehaviour
     [SerializeField] float healTime = 0f;
     [SerializeField] int healVal = 0;  public int HealVal { get => healVal; set { healVal = value; } }
 
-    [SerializeField] int maxHp;
+    [SerializeField] int maxHp; public int MaxHp { get => maxHp;}
     [SerializeField] int armor; public int Armor
         {
             get => armor;

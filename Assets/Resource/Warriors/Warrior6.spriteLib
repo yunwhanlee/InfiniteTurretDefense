@@ -66,9 +66,9 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -1640504310, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
     - m_Name: Archer1-sheet_7
       m_Hash: 148383904
-      m_Sprite: {fileID: -1640504310, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
+      m_Sprite: {fileID: -150685342, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1640504310, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
+      m_SpriteOverride: {fileID: -150685342, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
     - m_Name: Archer1-sheet_8
       m_Hash: 409417009
       m_Sprite: {fileID: -150685342, guid: fc3b1e66da976aa4eb759cd136b3a03f, type: 3}
@@ -77,5 +77,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639079048073461713
+  m_ModificationHash: 639080152062302661
   m_Version: 1

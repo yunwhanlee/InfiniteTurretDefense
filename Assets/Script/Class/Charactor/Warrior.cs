@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
+using Random = UnityEngine.Random;
 
 public class Warrior : Chara
 {
@@ -17,6 +19,25 @@ public class Warrior : Chara
     // 충격파
     const int SHOCKWAVE_COOLTIME = 0;
     [SerializeField] float shockWaveTime = 0;
+
+    public override float AttackSpeed
+    {
+        get
+        {
+            // 추가 공격속도
+            float extraVal = 0;
+
+            // 스킬3. 버서커 (공격속도 증가)
+            if(Grade >= CHR_GRADE.EPIC)
+            {
+                var (_, berserkerSpd) = Skill3_Berserker();
+                extraVal = berserkerSpd;
+            }
+
+            return base.AttackSpeed + extraVal;
+        }
+    }
+
 
     protected void Update()
     {
@@ -80,6 +101,13 @@ public class Warrior : Chara
                 damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
 
+        // 스킬3. 버서커 (공격력 증가)
+        if(Grade >= CHR_GRADE.EPIC)
+        {
+            var (berserkerDmg, _) = Skill3_Berserker();
+            damage += berserkerDmg;
+        }
+
         // 스킬2. 강타 활성화 경우
         if(Grade >= CHR_GRADE.RARE && IsPowerStrikeActive)
         {
@@ -116,11 +144,30 @@ public class Warrior : Chara
     }
 
     /// <summary>
-    /// 광전사
+    /// 광전사 성벽HP가 10%씩 낮아질때마다 공격력, 공속 배로 증가 (합연산)
     /// </summary>
-    private void Skill3_Berserker()
+    private (int dmg, float atkSpd) Skill3_Berserker()
     {
-        
+        const int gradeIdx = (int)CHR_GRADE.EPIC;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def; // 10(%)
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit; // 1(%) 
+        float extraPer = (defPer + unitPer * skillLv) * 0.01f;
+
+        // 성벽 HP가 몇% 깎였는지 중첩횟수 게산
+        float hpPer = (float)GM._.tower.Hp / GM._.tower.MaxHp;
+        float lostHpPer = 1f - hpPer;
+        int times = Mathf.FloorToInt(lostHpPer / 0.1f);
+        extraPer *= times;
+
+        // 공격력 증가
+        int resDmg = Mathf.RoundToInt(Skill1_Dmg() * extraPer);
+        // 공격속도 증가 (100% => 1증가 방식)
+        float resAtkSpd = (float)Math.Round(extraPer, 1);
+
+        // Debug.Log($"Skill3_Berserker():: extraPer={extraPer}, resDmg={resDmg}, resAtkSpd={resAtkSpd}");
+        return (resDmg, resAtkSpd);
     }
 
     /// <summary>

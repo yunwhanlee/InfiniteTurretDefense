@@ -34,12 +34,12 @@ MonoBehaviour:
   - Name: "\uAD11\uC804\uC0AC"
     Grade: 2
     Img: {fileID: -1847661740, guid: 3001eddfa98fcc84b9e8b69239ed478a, type: 3}
-    Desc: "10%\uC529 \uC131\uBCBD\uCCB4\uB825\uC774 \uB0AE\uC544\uC9C8\uC218\uB85D
-      \uCD5C\uB300 \uACF5\uACA9\uB825\uACFC \uC18D\uB3C4\uAC00 {0}\uB9CC\uD07C \uC0C1\uC2B9"
+    Desc: "\uC131\uBCBD HP\uAC00 \uB0AE\uC544\uC9C8\uC218\uB85D 10%\uB2F9 \uACF5\uACA9\uB825\uACFC
+      \uACF5\uC18D {0}% \uC0C1\uC2B9"
     ValueList:
-    - def: 10
-      unit: 1
-    MaxLv: 300
+    - def: 3
+      unit: 0.1
+    MaxLv: 100
     PriceUnit: 4000
   - Name: "\uC774\uC911 \uACF5\uACA9"
     Grade: 3
