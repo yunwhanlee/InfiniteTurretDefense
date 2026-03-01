@@ -83,9 +83,9 @@ public class DB : MonoBehaviour
 
 #region FUNC
     /// <summary> 유저 캐릭터 데이터 로드 </summary>
-    public UserCharaData GetUserCharaDataAsset(CHR_CATE cardIdx)
+    public UserCharaData GetUserCharaDataAsset(CHR_CATE cate)
     {
-        return userCharaDataArr[(int)cardIdx];
+        return userCharaDataArr[(int)cate];
     }
 
 #endregion

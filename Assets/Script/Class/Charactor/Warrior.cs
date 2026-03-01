@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Config;
 
 public class Warrior : Chara
 {
@@ -78,7 +79,7 @@ public class Warrior : Chara
         }
 
         // 스킬2. 강타 활성화 경우
-        if(IsPowerStrikeActive)
+        if(Grade < CHR_GRADE.RARE && IsPowerStrikeActive)
         {
             damage = Skill2_PowerStrike(damage); // 강타 데미지 추가 계산
             // TODO 강타 이펙트
@@ -98,9 +99,16 @@ public class Warrior : Chara
     /// </summary>
     private int Skill2_PowerStrike(int dmg)
     {
-        
+        Debug.Log($"전사:: 강타! dmg= {dmg}");
+        const int gradeIdx = (int)CHR_GRADE.RARE;
+        int skillLv = SkillLvArr[gradeIdx];
 
-        return dmg;
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        int damage = Mathf.RoundToInt(dmg * dmgPer);
+        return damage;
     }
 
     /// <summary>

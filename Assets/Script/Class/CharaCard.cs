@@ -18,26 +18,17 @@ public class CharaCard : MonoBehaviour
     public Image iconImg; // 캐릭터 아이콘 이미지
 
     // Data
-    private UserCharaData userData; // 유저 캐릭터 데이터
-    private CharaDataAsset charaDataAsset; // 캐릭터 데이터 에셋
+    [SerializeField] private UserCharaData userData; // 유저 캐릭터 데이터
+    [SerializeField] private CharaDataAsset charaDataAsset; // 캐릭터 데이터 에셋
 
     #region FUNC
     /// <summary>
-    /// 다음 등급업에 필요한 카드 수량 반환
-    /// </summary>
-    public int GetNextGradeCardCnt()
-    {
-        const int DEF = 10;
-        return DEF << (int)userData.grade; // grade가 0이면 10, 1이면 20, 2면 40, 3이면 80...
-    }
-
-    /// <summary>
-    /// 데이터 세팅
+    /// 캐릭터에셋 변경
     /// </summary>
     /// <param name="cate">캐릭터 카테고리</param>
-    public void SetUp(CHR_CATE cate)
+    private void SetCharaDataAsset(CHR_CATE cate)
     {
-        userData = DB._.GetUserCharaDataAsset(cate);
+        Debug.Log($"SetCharaDataAsset():: cate= {cate}");
 
         switch (cate)
         {
@@ -49,6 +40,27 @@ public class CharaCard : MonoBehaviour
                 break;
             // 여기에 추가
         }
+    }
+    
+    /// <summary>
+    /// 다음 등급업에 필요한 카드 수량 반환
+    /// </summary>
+    public int GetNextGradeCardCnt()
+    {
+        const int DEF = 10;
+        return DEF << (int)userData.grade; // grade가 0이면 10, 1이면 20, 2면 40, 3이면 80...
+    }
+
+    /// <summary>
+    /// 데이터 세팅 (초기화)
+    /// </summary>
+    /// <param name="cate">캐릭터 카테고리</param>
+    public void SetUp(CHR_CATE cate)
+    {
+        userData = DB._.GetUserCharaDataAsset(cate);
+
+        // 카테고리별 현재 캐릭터 등급별 에셋 설정
+        SetCharaDataAsset(cate);
     }
 
     public void UpdateUI()
@@ -67,16 +79,18 @@ public class CharaCard : MonoBehaviour
     /// <summary>
     /// 등급 업
     /// </summary>
-    public bool GradeUp()
+    public bool GradeUp(CHR_CATE cate)
     {
         if(GetCardCnt() >= GetNextGradeCardCnt())
         {
-            Util._.ShowUnderBarMessage("캐릭터 등급업 완료!");
             userData.grade++;
-            charaDataAsset = GM._.crm.archerDataAssetArr[(int)userData.grade];
 
+            // 카테고리별 현재 캐릭터 등급별 에셋 설정
+            SetCharaDataAsset(cate);
+
+            // 카드수량 감소
             userData.cardCnt -= GetNextGradeCardCnt();
-
+            // 캐릭터 오브젝트 반영
             GM._.crm.RemoveChara(this);
             GM._.crm.PlaceChara(this);
             GM._.crm.SelectChara(GM._.crm.curSelectedChara);
@@ -84,10 +98,7 @@ public class CharaCard : MonoBehaviour
             return true;
         }
         else
-        {
-            Util._.ShowErrorMessage("캐릭터카드가 부족합니다.");
             return false;
-        }
     }
 
     public CharaDataAsset GetCharaDataAsset() => charaDataAsset;

@@ -76,6 +76,8 @@ public abstract class Chara : MonoBehaviour
 #region FUNC
     public void Init(CharaDataAsset charaDataAsset, UserCharaData userData)
     {
+        Debug.Log("Init():: " + charaDataAsset + ", " + userData);
+
         const int SCALE_UNIT = 2; // 범위 원 스케일 단위
 
         // 저장 데이터 불러오기

@@ -49,10 +49,18 @@ public class CharaUpgradeUIManager : MonoBehaviour
     /// </summary>
     public void OnClickGradeUpBtn()
     {
-        int cardIdx = (int)GM._.crm.curSelectedChara.Cate;
-        var curCard = UI._.charaCltUI.charaCardArr[cardIdx];
-        if(curCard.GradeUp())
+        CHR_CATE cate = GM._.crm.curSelectedChara.Cate;
+        var curCard = UI._.charaCltUI.charaCardArr[(int)cate];
+
+        bool isSuccess = curCard.GradeUp(cate);
+
+        if (isSuccess)
+        {
+            Util._.ShowUnderBarMessage("캐릭터 등급업 완료!");
             UpdateUI(curCard);
+        }
+        else
+            Util._.ShowErrorMessage("캐릭터카드가 부족합니다.");
     }
 
     /// <summary>
