@@ -12,27 +12,30 @@ public class EffectPoolManager : MonoBehaviour
         SlashEF, // 베기
         PowerStrikeEF, // 강타
         DoubleAttackEF, // 이중공격
+        CheerUpEF, // 격려
+        RageAuraEF, // 격려받아 불타는 이펙트
     }
 
     // 오브젝트
-    public GameObject slashEF;
-    public GameObject powerStrikeEF;
-    public GameObject doubleAttackEF;
+    public GameObject SlashEF;
+    public GameObject PowerStrikeEF;
+    public GameObject DoubleAttackEF;
+    public GameObject CheerUpEF;
+    public GameObject RageAuraEF;
 
     // 오브젝트 풀링
     public Transform effectGroupTf;
     Dictionary<EF_IDX, IObjectPool<GameObject>> poolDics;     public Dictionary<EF_IDX, IObjectPool<GameObject>> PoolDics {get => poolDics;}
-    WaitForSeconds releaseWaitSec;
 
     void Awake()
     {
-        releaseWaitSec = new WaitForSeconds(1); // 오브젝트 회수 대기시간
-
         // 오브젝트 풀 등록
         poolDics = new Dictionary<EF_IDX, IObjectPool<GameObject>>();
-        poolDics.Add(EF_IDX.SlashEF, Init(slashEF.gameObject, 20));
-        poolDics.Add(EF_IDX.PowerStrikeEF, Init(powerStrikeEF.gameObject, 10));
-        poolDics.Add(EF_IDX.DoubleAttackEF, Init(doubleAttackEF.gameObject, 10));
+        poolDics.Add(EF_IDX.SlashEF, Init(SlashEF.gameObject, 20));
+        poolDics.Add(EF_IDX.PowerStrikeEF, Init(PowerStrikeEF.gameObject, 10));
+        poolDics.Add(EF_IDX.DoubleAttackEF, Init(DoubleAttackEF.gameObject, 10));
+        poolDics.Add(EF_IDX.CheerUpEF, Init(CheerUpEF.gameObject, 5));
+        poolDics.Add(EF_IDX.RageAuraEF, Init(RageAuraEF.gameObject, 5));
         // 여기에 추가
     }
 
@@ -51,13 +54,25 @@ public class EffectPoolManager : MonoBehaviour
     }
 
     /// <summary> 오브젝트 풀링리스트 생성 </summary>
-    public void SpawnPoolDics(EF_IDX enumIdx, Vector3 pos)
+    public void SpawnPoolDics(EF_IDX enumIdx, Vector3 pos, WaitForSeconds waitSec = null)
     {
         Debug.Log($"SpawnPoolDics():: {enumIdx}, {pos}");
         GameObject obj = poolDics[enumIdx].Get();
         obj.transform.position = pos;
 
-        StartCoroutine(CoReleasePoolDics(enumIdx, obj));
+        // 회수 대기시간 (Default : 1초)
+        if(waitSec == null)
+            waitSec = WFS_1;
+
+        StartCoroutine(CoReleasePoolDics(enumIdx, obj, waitSec));
+    }
+
+    /// <summary> 코루틴 오브젝트 풀링리스트 대기회수 </summary>
+    IEnumerator CoReleasePoolDics(EF_IDX enumIdx, GameObject obj, WaitForSeconds waitSec)
+    {
+        yield return waitSec;
+        poolDics[enumIdx].Release(obj);
+        Debug.Log($"CoReleasePoolDics():: {enumIdx}, {obj}, {waitSec}");
     }
 
     /// <summary> 코루틴 오브젝트 풀링리스트 대기생성 </summary>
@@ -70,13 +85,5 @@ public class EffectPoolManager : MonoBehaviour
 
     //     yield return CoReleasePoolDics(enumIdx, obj);
     // }
-
-    /// <summary> 코루틴 오브젝트 풀링리스트 대기회수 </summary>
-    IEnumerator CoReleasePoolDics(EF_IDX enumIdx, GameObject obj)
-    {
-        yield return releaseWaitSec;
-        poolDics[enumIdx].Release(obj);
-        Debug.Log($"CoReleasePoolDics():: {enumIdx}, {obj}");
-    }
 #endregion
 }

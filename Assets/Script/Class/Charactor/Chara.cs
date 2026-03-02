@@ -27,6 +27,7 @@ public abstract class Chara : MonoBehaviour
     public int[] SkillLvArr {get; private set;}
 
     // 데이터 에셋 DB 가져오기
+    public float BuffDmgPer {get; set;}
     public int Dmg {get; private set;}
     public virtual float AttackSpeed {get; private set;}
     public float Range {get; private set;}
@@ -152,9 +153,20 @@ public abstract class Chara : MonoBehaviour
     /// <returns>스킬레벨에 따른 데미지</returns>
     public int Skill1_Dmg()
     {
+        Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(Dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
+
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
         int damage = Dmg + Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
-        return Mathf.RoundToInt(damage);
+
+        // 버프 공격력
+        if(BuffDmgPer > 0)
+        {
+            int totalDmg = Mathf.RoundToInt(damage * (1 + BuffDmgPer));
+            // 퍼센티지가 낮아서 버프를 받아도 값이 같다면 +1이라도 보정해줌
+            damage = (damage == totalDmg)? damage + 1 : totalDmg;
+        }
+
+        return damage;
     }
 #endregion
 }

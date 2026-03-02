@@ -35711,9 +35711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3441020f00bbba4684445835ad2740a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectPoolManager
-  slashEF: {fileID: 7089556877889253151, guid: 4fd0b421ba35f17428e2d2ba91dc6059, type: 3}
-  powerStrikeEF: {fileID: 6864862304246900697, guid: 2b09cbff5d2662a44931ee8e59624728, type: 3}
-  doubleAttackEF: {fileID: 8204422506334540617, guid: a2334c7634e8cfb40950af5c2b396e4e, type: 3}
+  SlashEF: {fileID: 7089556877889253151, guid: 4fd0b421ba35f17428e2d2ba91dc6059, type: 3}
+  PowerStrikeEF: {fileID: 6864862304246900697, guid: 2b09cbff5d2662a44931ee8e59624728, type: 3}
+  DoubleAttackEF: {fileID: 8204422506334540617, guid: a2334c7634e8cfb40950af5c2b396e4e, type: 3}
+  CheerUpEF: {fileID: 2627590948150701927, guid: 767de5096be678a4495963ef5d2e8c82, type: 3}
+  RageAuraEF: {fileID: 8561933794521859418, guid: e54b769abc2774846bcf88ba41397c10, type: 3}
   effectGroupTf: {fileID: 1802811015}
 --- !u!4 &1925302458
 Transform:

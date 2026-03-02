@@ -12,13 +12,13 @@ public class Warrior : Chara
     [SerializeField] float powerStrikeTime = 0;
     bool IsPowerStrikeActive {get => powerStrikeTime > POWER_STRIKE_COOLTIME;} // 강타 활성화 트리거
     // 격려
-    const int WARCRY_COOLTIME = 0;
-    [SerializeField] float warCryTime = 0;
+    const int CHEERUP_COOLTIME = 31;
+    [SerializeField] float cheerUpTime = 0;
     // 휠윈드
-    const int WHIRLWIND_COOLTIME = 0;
+    const int WHIRLWIND_COOLTIME = 17;
     [SerializeField] float whirlWindTime = 0;
     // 충격파
-    const int SHOCKWAVE_COOLTIME = 0;
+    const int SHOCKWAVE_COOLTIME = 57;
     [SerializeField] float shockWaveTime = 0;
 
     public override float AttackSpeed
@@ -50,10 +50,10 @@ public class Warrior : Chara
 
         // 격려
         if(Grade >= CHR_GRADE.LEGEND) {
-            warCryTime += Time.deltaTime;
-            if(warCryTime >= WARCRY_COOLTIME) {
-                Skill5_WarCry();
-                warCryTime = 0;
+            cheerUpTime += Time.deltaTime;
+            if(cheerUpTime >= CHEERUP_COOLTIME) {
+                Skill5_CheerUp();
+                cheerUpTime = 0;
             }
         }
 
@@ -205,25 +205,54 @@ public class Warrior : Chara
         enemy.OnHit(damage, isCritical);
     }
 
-    /// <summary>
-    /// 격려
-    /// </summary>
-    private void Skill5_WarCry()
+    /// <summary> 격려 : 아군 공격력 % 증가 버프 </summary>
+    private void Skill5_CheerUp()
     {
-        
+        GM._.epm.SpawnPoolDics(EF_IDX.CheerUpEF, transform.position); 
+        StartCoroutine(CorCheerUp());
     }
 
-    /// <summary>
-    /// 휠윈드
-    /// </summary>
+    /// <summary> 격려 코루틴 처리 함수 </summary>
+    IEnumerator CorCheerUp()
+    {
+        const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 공격증가률 (백분률)
+
+        // 모든 캐릭터에게 버프 적용 및 이펙트 띄우기
+        foreach (Chara chara in GM._.crm.curCharaList)
+        {
+            if (chara != null && chara.gameObject.activeSelf) // 활성화된 캐릭터만
+            {
+                chara.BuffDmgPer += dmgPer; // += 로 해야 버프 중첩 시 꼬이지 않음
+                // 캐릭터 격려 버프 이펙트 띄우기
+                GM._.epm.SpawnPoolDics(EF_IDX.RageAuraEF, chara.transform.position, WFS_5);
+            }
+        }
+
+        yield return WFS_5;
+
+        // 모든 캐릭터 공격력 원래대로 되돌리기
+        foreach (Chara chara in GM._.crm.curCharaList)
+        {
+            // 🚨 [매우 중요] 5초 대기하는 동안 캐릭터가 합성되거나 팔려서 사라졌을 수 있으므로 null 체크 필수!
+            if (chara != null) 
+            {
+                chara.BuffDmgPer -= dmgPer;
+            }
+        }
+    }
+
+    /// <summary> 휠윈드 </summary>
     private void Skill6_WhirlWind()
     {
         
     }
 
-    /// <summary>
-    /// 충격파
-    /// </summary>
+    /// <summary> 충격파 </summary>
     private void Skill7_ShockWave()
     {
         

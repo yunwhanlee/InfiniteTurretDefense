@@ -127,7 +127,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
         // UI텍스트 최신화
         gradeTxt.text = $"{chara.Grade}";
-        dmgTxt.text = $"{chara.Dmg}";
+        dmgTxt.text = $"{chara.Skill1_Dmg()}";
         atkSpdTxt.text = $"{chara.AttackSpeed}";
         rangeTxt.text = $"{chara.Range}";
         critPerTxt.text = $"{chara.CritPer}";
@@ -177,7 +177,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
         // UI텍스트 최신화
         gradeTxt.text = $"{card.GetGrade()}";
-        dmgTxt.text = $"{data.baseDmg}";
+        dmgTxt.text = $"{data.baseDmg}"; //TODO: 카드표시는 어떻게 해야될지...
         atkSpdTxt.text = $"{data.baseAttackSpeed}";
         rangeTxt.text = $"{data.baseRange}";
         critPerTxt.text = $"{Chara.DEF_CRIT}%";
