@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
@@ -114,21 +115,27 @@ public class Warrior : Chara
             powerStrikeTime = 0;
             damage = Skill2_PowerStrike(damage); // 강타 데미지 추가 계산
             GM._.epm.SpawnPoolDics(EF_IDX.PowerStrikeEF, enemy.transform.position);
+            enemy.OnHit(damage, isCritical); // 타겟 공격
         }
         else
         {
-            // 일반공격 이펙트
-            GM._.epm.SpawnPoolDics(EF_IDX.SlashEF, enemy.transform.position);
+            // 스킬4. 이중공격 활성화 경우
+            if(Grade >= CHR_GRADE.UNIQUE && Skill4_DoubleAttack())
+            {
+                // 이중 공격 코루틴 실행
+                StartCoroutine(CorDoubleAttack(enemy, damage, isCritical));
+            }
+            // 일반공격
+            else
+            {
+                GM._.epm.SpawnPoolDics(EF_IDX.SlashEF, enemy.transform.position); // 일반공격 이펙트
+                enemy.OnHit(damage, isCritical); // 타겟 공격
+            }
         }
-
-        // 타겟 공격
-        enemy.OnHit(damage, isCritical);
     }
 
 #region SKILL
-    /// <summary>
-    /// 강타
-    /// </summary>
+    /// <summary> 강타 </summary>
     private int Skill2_PowerStrike(int dmg)
     {
         Debug.Log($"Skill2_PowerStrike():: dmg= {dmg}");
@@ -143,16 +150,14 @@ public class Warrior : Chara
         return damage;
     }
 
-    /// <summary>
-    /// 광전사 성벽HP가 10%씩 낮아질때마다 공격력, 공속 배로 증가 (합연산)
-    /// </summary>
+    /// <summary> 광전사 : 성벽HP가 10%씩 낮아질때마다 공격력, 공속 배로 증가 (합연산) </summary>
     private (int dmg, float atkSpd) Skill3_Berserker()
     {
         const int gradeIdx = (int)CHR_GRADE.EPIC;
         int skillLv = SkillLvArr[gradeIdx];
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def; // 10(%)
-        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit; // 1(%) 
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit; // 1(%)
         float extraPer = (defPer + unitPer * skillLv) * 0.01f;
 
         // 성벽 HP가 몇% 깎였는지 중첩횟수 게산
@@ -170,12 +175,34 @@ public class Warrior : Chara
         return (resDmg, resAtkSpd);
     }
 
-    /// <summary>
-    /// 이중 공격
-    /// </summary>
-    private void Skill4_DoubleAttack()
+    /// <summary> 이중공격 : 공격시 {0}%로 발동 트리거 </summary>
+    private bool Skill4_DoubleAttack()
     {
-        
+        const int gradeIdx = (int)CHR_GRADE.UNIQUE;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def; // 5(%)
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit; // 0.5(%)
+        float activePer = defPer + unitPer * skillLv;
+
+        int rand = Random.Range(0, 100);
+
+        // Debug.Log($"Skill4_DoubleAttack():: rand({rand}) <= activePer({activePer}) = {rand <= activePer}");
+        return rand <= activePer;
+    }
+
+    /// <summary> 이중공격 코루틴 처리 함수 </summary>
+    IEnumerator CorDoubleAttack(Enemy enemy, int damage, bool isCritical)
+    {
+        // 1타
+        GM._.epm.SpawnPoolDics(EF_IDX.DoubleAttackEF, enemy.transform.position);
+        enemy.OnHit(damage, isCritical);
+
+        // 대기
+        yield return WFS_0_2;
+
+        // 2타 (이미 죽었다면 텍스트만 띄우고 나머지 처리 자동으로 안함)
+        enemy.OnHit(damage, isCritical);
     }
 
     /// <summary>

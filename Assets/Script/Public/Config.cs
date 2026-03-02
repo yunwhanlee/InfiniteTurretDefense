@@ -2,6 +2,11 @@ using UnityEngine;
 
 public static class Config
 {
+    // 코루틴 대기시간 변수 선언
+    public readonly static WaitForSeconds WFS_0_2 = new(0.2f);
+    public readonly static WaitForSeconds WFS_0_5 = new(0.5f);
+    public readonly static WaitForSecondsRealtime WFS_RT_2 = new(2);
+
     /// <summary> 태그네임 </summary>
     public class TAG
     {

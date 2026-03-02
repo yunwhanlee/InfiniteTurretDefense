@@ -134,10 +134,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void OnHit(int dmg, bool isCritical)
     {
-        hp -= dmg;
+        // 이미 죽은상태라면 텍스트만 더 띄우고 종료
+        if(state == STATE.DEAD)
+        {
+            GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical);
+            return;
+        }
 
         // 데미지 텍스트 표시
         GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical);
+
+        hp -= dmg;
 
         Flash();
         hpSlider.value = (float)hp / maxHp;

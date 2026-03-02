@@ -2,14 +2,12 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using static Config;
 
 public class Util : MonoBehaviour
 {
     // 싱글톤
     static public Util _;
-
-    // 코루틴 대기시간 변수 선언
-    public WaitForSecondsRealtime WFS_RT_2SEC = new WaitForSecondsRealtime(2);
 
     // 토스트 메세지 팝업
     enum MSG_TYPE {ERROR, SUCCESS, INTERACTION}
@@ -55,7 +53,7 @@ public class Util : MonoBehaviour
     private IEnumerator CorShowMsg(GameObject msgPopup)
     {
         msgPopup.SetActive(true);
-        yield return WFS_RT_2SEC;
+        yield return WFS_RT_2;
         msgPopup.SetActive(false);
     }
 
