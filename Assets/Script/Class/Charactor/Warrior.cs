@@ -15,7 +15,7 @@ public class Warrior : Chara
     const int CHEERUP_COOLTIME = 31;
     [SerializeField] float cheerUpTime = 0;
     // 휠윈드
-    const float WHIRLWIND_RADIUS = 5;
+    const float WHIRLWIND_RADIUS = 3;
     const int WHIRLWIND_COOLTIME = 17;
     [SerializeField] float whirlWindTime = 0;
     // 충격파
@@ -70,7 +70,7 @@ public class Warrior : Chara
         if(Grade >= CHR_GRADE.PRIME) {
             shockWaveTime += Time.deltaTime;
             if(shockWaveTime >= SHOCKWAVE_COOLTIME) {
-                Skill7_ShockWave();
+                StartCoroutine(CorSkill7_ShockWave());
                 shockWaveTime = 0;
             }
         }
@@ -269,13 +269,40 @@ public class Warrior : Chara
             enemy.OnHit(Mathf.RoundToInt(Skill1_Dmg() * dmgPer), false);
         }
 
-        //TODO 이펙트
+        // 이펙트
+        GM._.epm.SpawnPoolDics(EF_IDX.WheelWindEF, transform.position);
     }
 
     /// <summary> 충격파 </summary>
-    private void Skill7_ShockWave()
+    IEnumerator CorSkill7_ShockWave()
     {
-        
+        const int gradeIdx = (int)CHR_GRADE.PRIME;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
+
+        // 데미지
+        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPer);
+
+        yield return WFS_1; // 이펙트 마법구현 대기시간
+
+        // 모든 적 공격
+        Transform enemyGroupTf = GM._.emm.enemyGroupTf;
+        for (int i = enemyGroupTf.childCount - 1; i >= 0; i--)
+        {
+            Transform child = enemyGroupTf.GetChild(i);
+            Enemy enemy = child.GetComponent<Enemy>();
+
+            if (enemy != null && enemy.IsAlive)
+            {
+                enemy.OnHit(damage, false);
+            }
+        }
+
+        // 이펙트 (3초뒤 회수)
+        GM._.epm.SpawnPoolDics(EF_IDX.ShockWaveEF, transform.position, deleteSec: WFS_3);
     }
 #endregion
 

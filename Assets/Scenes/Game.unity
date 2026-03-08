@@ -35716,6 +35716,8 @@ MonoBehaviour:
   DoubleAttackEF: {fileID: 8204422506334540617, guid: a2334c7634e8cfb40950af5c2b396e4e, type: 3}
   CheerUpEF: {fileID: 2627590948150701927, guid: 767de5096be678a4495963ef5d2e8c82, type: 3}
   RageAuraEF: {fileID: 8561933794521859418, guid: e54b769abc2774846bcf88ba41397c10, type: 3}
+  WheelWindEF: {fileID: 6977541631699194904, guid: 468faf2466967c845a594a3fbcf98437, type: 3}
+  ShockWaveEF: {fileID: 3696677730910816833, guid: 46572e5bcec85b744832250701ee2c80, type: 3}
   effectGroupTf: {fileID: 1802811015}
 --- !u!4 &1925302458
 Transform:

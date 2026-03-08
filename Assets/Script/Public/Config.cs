@@ -6,6 +6,7 @@ public static class Config
     public readonly static WaitForSeconds WFS_0_2 = new(0.2f);
     public readonly static WaitForSeconds WFS_0_5 = new(0.5f);
     public readonly static WaitForSeconds WFS_1 = new(1);
+    public readonly static WaitForSeconds WFS_3 = new(3);
     public readonly static WaitForSeconds WFS_5 = new(5);
     public readonly static WaitForSecondsRealtime WFS_RT_2 = new(2);
 

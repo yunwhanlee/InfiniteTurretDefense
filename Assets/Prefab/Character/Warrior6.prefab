@@ -119,7 +119,7 @@ MonoBehaviour:
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   powerStrikeTime: 0
-  warCryTime: 0
+  cheerUpTime: 0
   whirlWindTime: 0
   shockWaveTime: 0
 --- !u!114 &4527924225899619
@@ -135,9 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetFinder
   radius: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
   CurrentTarget: {fileID: 0}
 --- !u!95 &83279591892131207
 Animator:
