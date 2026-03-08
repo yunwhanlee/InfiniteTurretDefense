@@ -9,10 +9,15 @@ public static class Config
     public readonly static WaitForSeconds WFS_5 = new(5);
     public readonly static WaitForSecondsRealtime WFS_RT_2 = new(2);
 
+    public class Layer
+    {
+        public static LayerMask ENEMY = LayerMask.GetMask("Enemy");
+    }
+
     /// <summary> 태그네임 </summary>
     public class TAG
     {
-        public static readonly string Enemy = "Enemy";
+        public static readonly string ENEMY = "Enemy";
     }
 
     /// <summary> 캐릭터카드 인덱스 (UI Content에 배치 순서) </summary>

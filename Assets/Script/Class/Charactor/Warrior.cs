@@ -15,6 +15,7 @@ public class Warrior : Chara
     const int CHEERUP_COOLTIME = 31;
     [SerializeField] float cheerUpTime = 0;
     // 휠윈드
+    const float WHIRLWIND_RADIUS = 5;
     const int WHIRLWIND_COOLTIME = 17;
     [SerializeField] float whirlWindTime = 0;
     // 충격파
@@ -249,7 +250,26 @@ public class Warrior : Chara
     /// <summary> 휠윈드 </summary>
     private void Skill6_WhirlWind()
     {
-        
+        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 공격증가률 (백분률)
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            transform.position,
+            WHIRLWIND_RADIUS,
+            Layer.ENEMY
+        );
+
+        foreach(Collider2D hit in hits)
+        {
+            Enemy enemy = hit.GetComponent<Enemy>();
+            enemy.OnHit(Mathf.RoundToInt(Skill1_Dmg() * dmgPer), false);
+        }
+
+        //TODO 이펙트
     }
 
     /// <summary> 충격파 </summary>
@@ -258,4 +278,12 @@ public class Warrior : Chara
         
     }
 #endregion
+
+    // (기즈모) 휠윈드 공격범위 시각화
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, WHIRLWIND_RADIUS);
+    }
+
 }

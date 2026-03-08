@@ -81,7 +81,7 @@ public class PhoenixFireField : MonoBehaviour
 #region COLLIDE
 void OnTriggerEnter2D(Collider2D col) 
     {
-        if(col.gameObject.CompareTag(Config.TAG.Enemy))
+        if(col.gameObject.CompareTag(Config.TAG.ENEMY))
         {
             Enemy enemy = col.GetComponent<Enemy>();
             if (enemy != null && !enemyList.Contains(enemy))
@@ -93,7 +93,7 @@ void OnTriggerEnter2D(Collider2D col)
     
     void OnTriggerExit2D(Collider2D col) 
     {
-        if(col.gameObject.CompareTag(Config.TAG.Enemy))
+        if(col.gameObject.CompareTag(Config.TAG.ENEMY))
         {
             Enemy enemy = col.GetComponent<Enemy>();
             if (enemy != null && enemyList.Contains(enemy))

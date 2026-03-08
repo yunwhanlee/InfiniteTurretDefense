@@ -18,7 +18,7 @@ public class PhoenixArrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag(Config.TAG.Enemy))
+        if (col.gameObject.CompareTag(Config.TAG.ENEMY))
         {
             Enemy enemy = col.GetComponent<Enemy>();
 
