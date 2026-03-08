@@ -286,6 +286,9 @@ public class Warrior : Chara
         // 데미지
         int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPer);
 
+        // 이펙트
+        GM._.epm.SpawnPoolDics(EF_IDX.ShockWaveEF, transform.position, deleteSec: WFS_3);
+
         yield return WFS_1; // 이펙트 마법구현 대기시간
 
         // 모든 적 공격
@@ -298,11 +301,9 @@ public class Warrior : Chara
             if (enemy != null && enemy.IsAlive)
             {
                 enemy.OnHit(damage, false);
+                enemy.ApplyStun(2f); // 2초 스턴 적용
             }
         }
-
-        // 이펙트 (3초뒤 회수)
-        GM._.epm.SpawnPoolDics(EF_IDX.ShockWaveEF, transform.position, deleteSec: WFS_3);
     }
 #endregion
 

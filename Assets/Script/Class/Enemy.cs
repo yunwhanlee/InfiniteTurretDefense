@@ -27,8 +27,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] ENEMY_TYPE type;    public ENEMY_TYPE Type {get => type;}
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
+    // 공격속도
     [SerializeField] float time = 0;
     [SerializeField] float span = 1.0f;
+
+    [Header("상태이상 타이머")]
+    [SerializeField] float stunTime = 0; // 스턴
+    [SerializeField] float slowTime = 0; // 슬로우
+    [SerializeField] float dotTime = 0; // 지속딜
+
+    [Header("상태이상 상세 수치")]
+    public float slowRatio = 1f;   // 둔화율 (예: 0.5면 반토막)
+    public int dotDamage = 0;      // 초당 들어갈 도트 데미지
+    private float dotTickTimer = 0f; // 1초마다 데미지를 주기 위한 내부 틱 타이머
 
     // 컴포넌트
     SpriteRenderer sprRdr;
@@ -60,11 +71,29 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if(state == STATE.DEAD)
+            return;
+
+        // 스턴 (상태이상)
+        if(stunTime > 0)
+        {
+            stunTime -= Time.deltaTime;
+            if(stunTime <= 0)
+            {
+                // 스턴 해제
+                stunTime = 0;
+                sprRdr.color = Color.white; // 색상 원래대로
+                anim.speed = 1; // 애니메이션 재개
+            }
+            return;
+        }
+
+        // 이동
         if(state == STATE.MOVE)
         {
-            // 이동
             transform.position += moveSpeed * Time.deltaTime * direction;
         }
+        // 공격
         else if(state == STATE.ATTACK)
         {
             time += Time.deltaTime;
@@ -97,6 +126,11 @@ public class Enemy : MonoBehaviour
     public void Init(int maxHp, int dmg)
     {
         hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
+        sprRdr.color = Color.white;
+        time = 0;
+        stunTime = 0;
+        slowTime = 0;
+        dotTime = 0;
 
         this.maxHp = maxHp;
         this.dmg = dmg;
@@ -111,6 +145,17 @@ public class Enemy : MonoBehaviour
         // 방향에 따라 이미지 반전
         bool isFlip = (direction.x < 0)? true : false;
         sprRdr.flipX = isFlip;
+    }
+
+    /// <summary>
+    /// 스턴 상태이상 적용
+    /// </summary>
+    /// <param name="duration">스턴 지속시간</param>
+    public void ApplyStun(float duration)
+    {
+        stunTime = duration;
+        sprRdr.color = Color.gray;
+        anim.speed = 0; // 애니메이션 멈춤
     }
     
     /// <summary>
