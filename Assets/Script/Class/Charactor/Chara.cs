@@ -26,15 +26,21 @@ public abstract class Chara : MonoBehaviour
     public CHR_GRADE Grade {get; private set;}
     public int[] SkillLvArr {get; private set;}
 
-    // 데이터 에셋 DB 가져오기
+    // 공격력
+    int dmg;
     public float BuffDmgPer {get; set;}
-    public int Dmg {get; private set;}
-    public virtual float AttackSpeed {get; private set;}
-    public float Range {get; private set;}
-    public float CritPer {get; protected set;}
-    public float CritDmgPer {get; protected set;}
+    public int Dmg { get => Skill1_Dmg();}
     public float DmgUpgUnit {get; private set;} // 스킬1 업그레이드 공격력 단위 증가량
-    public CharaSkillAsset CharaSkill {get; private set;} // 스킬 데이터 에셋
+    // 공격속도
+    public virtual float AttackSpeed {get; private set;}
+    // 범위
+    public float Range {get; private set;}
+    // 크리티컬 확률
+    public float CritPer {get; protected set;}
+    // 크리티컬 데미지
+    public float CritDmgPer {get; protected set;}
+    // 스킬 데이터 에셋
+    public CharaSkillAsset CharaSkill {get; private set;}
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -87,7 +93,7 @@ public abstract class Chara : MonoBehaviour
         SkillLvArr = userData.skillLvArr;
 
         // 현재등급 에셋 데이터 불러오기 (DB)
-        Dmg = charaDataAsset.baseDmg;
+        dmg = charaDataAsset.baseDmg;
         DmgUpgUnit = charaDataAsset.dmgUpgUnit;
         AttackSpeed = charaDataAsset.baseAttackSpeed;
         Range = charaDataAsset.baseRange;
@@ -99,7 +105,7 @@ public abstract class Chara : MonoBehaviour
         targetFinder.radius = Range; // 범위 적용
         rangeCircle.transform.localScale = Vector3.one * SCALE_UNIT * Range; // 범위 스케일 조정
 
-        Debug.Log($"Init():: Dmg({Dmg}) = charaDataAsset.baseDmg({charaDataAsset.baseDmg})");
+        Debug.Log($"Init():: dmg({dmg}) = charaDataAsset.baseDmg({charaDataAsset.baseDmg})");
     }
 
     public virtual void Attack(Enemy enemy)
@@ -153,10 +159,10 @@ public abstract class Chara : MonoBehaviour
     /// <returns>스킬레벨에 따른 데미지</returns>
     public int Skill1_Dmg()
     {
-        Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(Dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
+        Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
 
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
-        int damage = Dmg + Mathf.RoundToInt(Dmg * DmgUpgUnit * skillLv);
+        int damage = dmg + Mathf.RoundToInt(dmg * DmgUpgUnit * skillLv);
 
         // 버프 공격력
         if(BuffDmgPer > 0)

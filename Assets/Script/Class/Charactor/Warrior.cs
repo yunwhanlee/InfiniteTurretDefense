@@ -91,7 +91,7 @@ public class Warrior : Chara
         // CritDmgPer += 
 
         // 등급에따른 공격력 업글당 증가비율 배열
-        int damage = Skill1_Dmg();
+        int damage = Dmg;
 
         // 치명타 확률 적용
         bool isCritical = false;
@@ -168,7 +168,7 @@ public class Warrior : Chara
         extraPer *= times;
 
         // 공격력 증가
-        int resDmg = Mathf.RoundToInt(Skill1_Dmg() * extraPer);
+        int resDmg = Mathf.RoundToInt(Dmg * extraPer);
         // 공격속도 증가 (100% => 1증가 방식)
         float resAtkSpd = (float)Math.Round(extraPer, 1);
 
@@ -266,7 +266,7 @@ public class Warrior : Chara
         foreach(Collider2D hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
-            enemy.OnHit(Mathf.RoundToInt(Skill1_Dmg() * dmgPer), false);
+            enemy.OnHit(Mathf.RoundToInt(Dmg * dmgPer), false);
         }
 
         // 이펙트
@@ -284,7 +284,7 @@ public class Warrior : Chara
         float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
 
         // 데미지
-        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
         // 이펙트
         GM._.epm.SpawnPoolDics(EF_IDX.ShockWaveEF, transform.position, deleteSec: WFS_3);

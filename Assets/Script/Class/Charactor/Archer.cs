@@ -62,7 +62,7 @@ public class Archer : Chara
         CritDmgPer += Skill5_CriticalDamage();
 
         // 등급에따른 공격력 업글당 증가비율 배열
-        int damage = Skill1_Dmg();
+        int damage = Dmg;
 
         // 치명타 확률 적용
         bool isCritical = false;
@@ -160,7 +160,7 @@ public class Archer : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        int damage = Mathf.RoundToInt(Skill1_Dmg() * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
         PassArrow passArrow = GM._.spm.SpawnPoolDics(SK_IDX.SK_PassArrow).GetComponent<PassArrow>();
@@ -198,8 +198,7 @@ public class Archer : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
 
-        int damage = Skill1_Dmg();
-        damage = Mathf.RoundToInt(damage * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
         ArrowRain arrowRain = GM._.spm.SpawnPoolDics(SK_IDX.SK_ArrowRain).GetComponent<ArrowRain>();
         arrowRain.Init(damage);
@@ -217,8 +216,7 @@ public class Archer : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float dmgPer = (float)Math.Round((defPer + unitPer * skillLv) * 0.01f, 1);
 
-        int damage = Skill1_Dmg();
-        damage = Mathf.RoundToInt(damage * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
         PhoenixArrow phoenix = GM._.spm.SpawnPoolDics(SK_IDX.SK_PhoenixArrow).GetComponent<PhoenixArrow>();
         phoenix.Init(transform.position, direction, damage);

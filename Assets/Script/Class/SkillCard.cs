@@ -67,7 +67,7 @@ public class SkillCard : MonoBehaviour
     }
 
     /// <summary>
-    /// 스킬1 상세내용 업그레이드 최신화 (고정 : 업그레이드시 공격력 증가)
+    /// (캐릭터카드) 스킬1 상세내용 업그레이드 최신화 (고정 : 업그레이드시 공격력 증가)
     /// </summary>
     /// <param name="skillLv">스킬레벨</param>
     /// <param name="msg">스킬내용</param>
@@ -76,6 +76,13 @@ public class SkillCard : MonoBehaviour
     public void UpdateDescUI_Normal(int skillLv, string msg, int dmg, float unit)
     {
         descTxt.text = string.Format(msg, dmg + skillLv * Mathf.Round(dmg * unit));
+    }
+    /// <summary>
+    /// (인게임 캐릭터 클릭) 스킬 1 상세내용 업그레이드 최신화
+    /// </summary>
+    public void UpdateDescUI_Normal(string msg, int dmg)
+    {
+        descTxt.text = string.Format(msg, dmg);
     }
 
     /// <summary>

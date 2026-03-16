@@ -149,7 +149,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
             switch(i)
             {
                 case (int)CHR_GRADE.NORMAL:
-                    skillcard.UpdateDescUI_Normal(lv, skillAst.Desc, chara.Dmg, chara.DmgUpgUnit);
+                    // skillcard.UpdateDescUI_Normal(lv, skillAst.Desc, chara.Dmg, chara.DmgUpgUnit);
+                    skillcard.UpdateDescUI_Normal(skillAst.Desc, chara.Dmg);
                     break;
                 case (int)CHR_GRADE.RARE:
                 case (int)CHR_GRADE.EPIC:
