@@ -2614,8 +2614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Padding: {x: 8, y: 8, z: 8, w: 8}
+  m_Softness: {x: 15, y: 15}
 --- !u!114 &110392315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6723,8 +6723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Padding: {x: 8, y: 8, z: 8, w: 8}
+  m_Softness: {x: 15, y: 15}
 --- !u!114 &273247764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7815,8 +7815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Padding: {x: 8, y: 8, z: 8, w: 8}
+  m_Softness: {x: 15, y: 15}
 --- !u!114 &351358477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12576,8 +12576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Padding: {x: 8, y: 8, z: 8, w: 8}
+  m_Softness: {x: 15, y: 15}
 --- !u!114 &685272713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36843,8 +36843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_Padding: {x: 8, y: 8, z: 8, w: 8}
+  m_Softness: {x: 15, y: 15}
 --- !u!114 &1985484774
 MonoBehaviour:
   m_ObjectHideFlags: 0

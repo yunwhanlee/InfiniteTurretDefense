@@ -217,8 +217,12 @@ public class TowerUpgradeUIManager : MonoBehaviour
     public void ShowPanel()
     {
         panelObj.SetActive(true);
+        UpdatePlaceUI();
     }
 
+    /// <summary>
+    /// 캐릭터 배치 UI 업데이트
+    /// </summary>
     public void UpdatePlaceUI()
     {
         for (int i = 0; i < charaPlaceBtnArr.Length; i++)
