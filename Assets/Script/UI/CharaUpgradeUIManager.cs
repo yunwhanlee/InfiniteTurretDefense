@@ -45,6 +45,21 @@ public class CharaUpgradeUIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 캐릭터 아이콘 클릭시 캐릭터 변경
+    /// </summary>
+    public void OnClickCharaIcon()
+    {
+        Util._.ShowConfirmPopup(
+            "캐릭터 변경", "캐릭터를 변경하시겠습니까?", "네",
+            () => {
+                int idx = (int)crm.curSelectedChara.Place;
+                UI._.towerUpgUI.OnClickPlaceBtn(idx);
+                UI._.charaUpgUI.panelObj.SetActive(false);
+            }
+        );
+    }
+
+    /// <summary>
     /// 등급업 버튼 클릭
     /// </summary>
     public void OnClickGradeUpBtn()

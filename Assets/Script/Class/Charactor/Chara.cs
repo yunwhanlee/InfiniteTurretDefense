@@ -16,12 +16,12 @@ public abstract class Chara : MonoBehaviour
 
     // Value (Read Only)
     public bool isLocked; // 잠김 여부
-    public CHR_PLACE place; // 배치 위치
     public GameObject rangeCircle; // 클릭시 보이는 공격범위 원
     public Sprite defaultSpr; // 캐릭터 아이콘 이미지
     public Vector3 direction;
 
     // 저장 데이터 로드
+    public CHR_PLACE Place; // 배치 위치
     public CHR_CATE Cate {get; private set;}
     public CHR_GRADE Grade {get; private set;}
     public int[] SkillLvArr {get; private set;}
@@ -90,6 +90,7 @@ public abstract class Chara : MonoBehaviour
         // 저장 데이터 불러오기
         Cate = userData.cate;
         Grade = userData.grade;
+        Place = userData.place;
         SkillLvArr = userData.skillLvArr;
 
         // 현재등급 에셋 데이터 불러오기 (DB)
