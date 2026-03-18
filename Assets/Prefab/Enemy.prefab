@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8124658118983439031}
   - component: {fileID: 3154171199258494688}
   - component: {fileID: 2535060057992120462}
+  - component: {fileID: 8702591538755232510}
+  - component: {fileID: 6186891354218718788}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -88,7 +90,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -631031158, guid: f31dcce30889fc64c99864fb656e2713, type: 3}
+  m_Sprite: {fileID: 461093690, guid: fd01fb3e6f803d044bc82b8dc349b9b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,6 +121,11 @@ MonoBehaviour:
   state: 0
   time: 0
   span: 1
+  stunTime: 0
+  slowTime: 0
+  dotTime: 0
+  slowRatio: 1
+  dotDamage: 0
   hpSlider: {fileID: 7256901569083789837}
 --- !u!61 &8124658118983439031
 BoxCollider2D:
@@ -215,6 +222,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8702591538755232510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167832338228929364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: d7c52f3ea7022034c806c4e9279d3857, type: 3}
+--- !u!114 &6186891354218718788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167832338228929364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
+  m_CategoryHash: 4.680744e-31
+  m_labelHash: 1.2079726e-29
+  m_SpriteKey: 0
+  m_SpriteHash: 686515536
 --- !u!1 &2617995332487527524
 GameObject:
   m_ObjectHideFlags: 0

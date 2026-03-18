@@ -238,10 +238,10 @@ MonoBehaviour:
   targetFinder: {fileID: 4527924225899619}
   missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
   isLocked: 0
-  place: -1
   rangeCircle: {fileID: 1902532493617669342}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  Place: 0
   shootTf: {fileID: 8255936985933046289}
   passArrowTime: 0
   arrowRainTime: 0
@@ -259,9 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetFinder
   radius: 5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
   CurrentTarget: {fileID: 0}
 --- !u!95 &83279591892131207
 Animator:
