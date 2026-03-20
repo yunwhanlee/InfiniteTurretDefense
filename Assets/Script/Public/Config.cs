@@ -21,6 +21,7 @@ public static class Config
         public static readonly string ENEMY = "Enemy";
     }
 
+#region ENUM
     /// <summary> 캐릭터카드 인덱스 (UI Content에 배치 순서) </summary>
     public enum CHR_CATE {
         ARCHER, WARRIOR,
@@ -34,3 +35,4 @@ public static class Config
         NONE = -1, CENTER, LEFT, RIGHT, TOP, BOTTOM
     }
 }
+#endregion

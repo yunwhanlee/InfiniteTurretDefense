@@ -13,7 +13,7 @@ public enum ENEMY_TYPE
 public class Enemy : MonoBehaviour
 {
     public enum STATE { MOVE, ATTACK, DEAD }
-    
+
     // 이벤트 액션
     public Action<Enemy> OnDeadEvent = (Enemy) => {};
 
