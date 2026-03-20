@@ -11,7 +11,6 @@ public class StageManager : MonoBehaviour
     // UI
     public TextMeshProUGUI stageTxt;
 
-
     void Start()
     {
         

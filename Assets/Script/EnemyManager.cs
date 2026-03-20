@@ -6,6 +6,8 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] int DEF_HP = 900; //5;
     [SerializeField] int DEF_DMG = 2;
+    const int ELITE_MONSTER_SPAN = 60;
+    const float INVITE_ELITE_SPAN = 1f / ELITE_MONSTER_SPAN;
 
     // 오브젝트 풀링
     public Transform enemyGroupTf;
@@ -15,6 +17,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] float time;
     [SerializeField] float span;
     [SerializeField] float spawnRadius; // 몬스터 생성 원 크기
+    [SerializeField] int eliteSpawnCount = 0;
+    [SerializeField] int prevEliteSpawnCount = 0;
+
     [SerializeField] Enemy enemyPref; // 몬스터 프리팹
 
     [SerializeField] int killCnt;   public int KillCnt
@@ -68,6 +73,13 @@ public class EnemyManager : MonoBehaviour
     {
         totalTime += Time.deltaTime;
         time += Time.deltaTime;
+
+        int expectedEliteCount = (int)(totalTime * INVITE_ELITE_SPAN);
+        if(totalTime > INVITE_ELITE_SPAN)
+        {
+            // 엘리트 몬스터 소환
+            eliteSpawnCount += ELITE_MONSTER_SPAN;
+        }
 
         if(time > span)
         {
