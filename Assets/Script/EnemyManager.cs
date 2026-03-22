@@ -6,8 +6,13 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] int DEF_HP = 900; // 5;
     [SerializeField] int DEF_DMG = 2;
-    [SerializeField] int SPAN = 1; // 일반몬스터 소환주기
-    [SerializeField] int ELITE_MONSTER_SPAN = 10; // 엘리트몬스터 소환주기
+    [SerializeField] int MONSTER_SPAN = 1; // 일반몬스터 소환주기
+    const int ELITE_SPAN = 20; // 엘리트몬스터 소환주기
+    const int BOSS_SPAN = ELITE_SPAN * 10; // 엘리트몬스터 소환주기
+
+    [Header("적 체력 및 공격력 증가 시간단위")]
+    [SerializeField] float upHpSpan = 2.5f;
+    [SerializeField] int upDmgSpan = 10;
 
     // 오브젝트 풀링
     public Transform enemyGroupTf;
@@ -16,7 +21,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] float totalTime;
     [SerializeField] float time;
     [SerializeField] float eliteTime;
-
     [SerializeField] float spawnRadius; // 몬스터 생성 원 크기
 
     [SerializeField] Enemy enemyPref; // 몬스터 프리팹
@@ -58,13 +62,13 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        const int OFFSET_SEC = 15;
+
         stm = GM._.stm;
+        pool = new ObjectPool<Enemy>(Create, OnGet, OnRelease, OnDelete, maxSize: 20);
 
-        pool = new ObjectPool<Enemy>(
-            Create, OnGet, OnRelease, OnDelete, maxSize: 20
-        );
-
-        time = SPAN;
+        totalTime = 0 - OFFSET_SEC;
+        time = MONSTER_SPAN;
 
         KillCnt = 0;
         EnemyCnt = 0;
@@ -79,33 +83,49 @@ public class EnemyManager : MonoBehaviour
         time += deltaTime;
         eliteTime += deltaTime;
 
+        // 몬스터 소환
+        if(time > MONSTER_SPAN)
+        {
+            time = 0;
+
+            if(totalTime >= 0)
+            {
+                // 적 체력 및 공격력 업데이트
+                EnemyHp = DEF_HP + (int)(totalTime / upHpSpan);
+                EnemyDmg = DEF_DMG + (int)(totalTime / upDmgSpan);
+            }
+
+            // 적 생성
+            Enemy enemy = SpawnEnemy(enemyHp, enemyDmg);
+            enemy.moveSpeed = 1;
+            enemy.transform.localScale = new Vector3(1,1,1);
+            enemy.SetSprLibAst(stm.stage1_MonsterSprLibAstArr);
+            // 카운트 증가
+            EnemyCnt++;
+            // (이벤트 구독) 죽었을시 오브젝트풀링 회수 
+            enemy.OnDeadEvent = (enemy) => {
+                pool.Release(enemy);
+            };
+        }
         // 엘리트 몬스터 소환
-        if(eliteTime > ELITE_MONSTER_SPAN)
+        else if(eliteTime > ELITE_SPAN)
         {
             Debug.Log("엘리트 몬스터 소환");
             eliteTime = 0;
             time = 0; // 몬스터 소환도 한 주기 안되도록
 
-        }
-        // 몬스터 소환
-        else if(time > SPAN)
-        {
-            const int OFFSET_SEC = 10;
-            time = 0;
+            // 적 체력 및 공격력 업데이트
+            EnemyHp = DEF_HP + (int)(totalTime / upHpSpan);
+            EnemyDmg = DEF_DMG + (int)(totalTime / upDmgSpan);
 
-            if(totalTime >= OFFSET_SEC)
-            {
-                float calTime = totalTime - OFFSET_SEC;
-                // 적 체력 및 공격력 업데이트
-                EnemyHp = DEF_HP + (int)(calTime / 2.5f);
-                EnemyDmg = DEF_DMG + (int)(calTime / OFFSET_SEC);
-            }
+            const int ELITE_UNIT = 8;
 
-            // 적 생성
-            Enemy enemy = SpawnEnemy(enemyHp, enemyDmg);
-            enemy.SetSprLibAst(stm.stage1_MonsterSprLibAstArr);
-            // 카운트 증가
-            EnemyCnt++;
+            // 적 체력 및 공격력 업데이트
+            Enemy enemy = SpawnEnemy(enemyHp * ELITE_UNIT, enemyDmg * ELITE_UNIT / 4);
+            enemy.moveSpeed = 0.5f;
+            enemy.transform.localScale = new Vector3(3,3,3);
+            enemy.SetSprLibAst(stm.stage1_BossSprLibAstArr);
+
             // (이벤트 구독) 죽었을시 오브젝트풀링 회수 
             enemy.OnDeadEvent = (enemy) => {
                 pool.Release(enemy);

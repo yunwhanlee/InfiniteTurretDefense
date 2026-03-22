@@ -19,6 +19,6 @@ MonoBehaviour:
   charaPrefab: {fileID: 3544792553527042751, guid: 400334e646c3c5b4db6d6b634b85f0d9, type: 3}
   baseDmg: 23
   baseAttackSpeed: 1.1
-  baseRange: 1.5
+  baseRange: 3.5
   dmgUpgUnit: 0
   charaSkillAsset: {fileID: 11400000, guid: 36a96b3188955f6479e144359890bd88, type: 2}
