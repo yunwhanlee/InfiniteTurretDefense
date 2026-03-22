@@ -11078,6 +11078,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5284d4213af9cf9478e9f1eb9c9ca75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
+  stage: 0
+  stageLv: 0
+  stage1_MonsterSprLibAstArr:
+  - {fileID: 7108339969198208228, guid: 5abfb59553c90a4439731c86a29f573b, type: 3}
+  - {fileID: 7108339969198208228, guid: 12a8005fca625ae4dbe39a9c0808f384, type: 3}
+  - {fileID: 7108339969198208228, guid: 33d34531351da624da51abd897a8c865, type: 3}
+  - {fileID: 7108339969198208228, guid: d7c52f3ea7022034c806c4e9279d3857, type: 3}
+  - {fileID: 7108339969198208228, guid: 7457a0a29403bab4c8abe0fdfe8c5e6d, type: 3}
+  - {fileID: 7108339969198208228, guid: 54770e4ed0270814ca2b18f2e69208a4, type: 3}
+  - {fileID: 7108339969198208228, guid: 32f715bdf44010c438aeb161e6534d7c, type: 3}
+  - {fileID: 7108339969198208228, guid: e7a32d21c333e4a46a56696c8c426d83, type: 3}
+  - {fileID: 7108339969198208228, guid: 3c54d9c1ae704f9448ef5e1e062f579a, type: 3}
+  - {fileID: 7108339969198208228, guid: a6600dfbb3316104485fa42f6d0bc2ae, type: 3}
+  stage1_BossSprLibAstArr:
+  - {fileID: 7108339969198208228, guid: 04c776d43eb80b046876c41b87c6f284, type: 3}
+  - {fileID: 7108339969198208228, guid: 2251985e06419fd4f817eda3a700b859, type: 3}
+  - {fileID: 7108339969198208228, guid: 8570bf1b6a8aab444aaeff8046f1b9a8, type: 3}
+  - {fileID: 7108339969198208228, guid: 22ce563487f191143ac1533cc55952a9, type: 3}
+  - {fileID: 7108339969198208228, guid: c2c54c5f1d2fe464a92982b0ece09420, type: 3}
+  stageTxt: {fileID: 0}
 --- !u!4 &587125652
 Transform:
   m_ObjectHideFlags: 0
@@ -16486,15 +16506,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4882299640761530, guid: d2b0b34eecf79184280c88ebcaecfbb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1450.7628
+      value: 4.13
       objectReference: {fileID: 0}
     - target: {fileID: 4882299640761530, guid: d2b0b34eecf79184280c88ebcaecfbb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 712.32513
+      value: 8.910001
       objectReference: {fileID: 0}
     - target: {fileID: 4882299640761530, guid: d2b0b34eecf79184280c88ebcaecfbb8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4882299640761530, guid: d2b0b34eecf79184280c88ebcaecfbb8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17726,15 +17746,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 406048, guid: e83fb83871ed1ac4d978b22b0f2a4d71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1450.7628
+      value: 4.02
       objectReference: {fileID: 0}
     - target: {fileID: 406048, guid: e83fb83871ed1ac4d978b22b0f2a4d71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 712.32513
+      value: 6.38
       objectReference: {fileID: 0}
     - target: {fileID: 406048, guid: e83fb83871ed1ac4d978b22b0f2a4d71, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 406048, guid: e83fb83871ed1ac4d978b22b0f2a4d71, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19768,10 +19788,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   DEF_HP: 20
   DEF_DMG: 2
+  SPAN: 1
+  ELITE_MONSTER_SPAN: 10
   enemyGroupTf: {fileID: 858433424}
   totalTime: 0
   time: 0
-  span: 1
+  eliteTime: 0
   spawnRadius: 5
   enemyPref: {fileID: 6987808597734571069, guid: d94db3498a2e39d45836919f969c0996, type: 3}
   killCnt: 0
@@ -20827,6 +20849,7 @@ MonoBehaviour:
   tower: {fileID: 0}
   crm: {fileID: 0}
   emm: {fileID: 0}
+  stm: {fileID: 0}
   mpm: {fileID: 0}
   epm: {fileID: 0}
   spm: {fileID: 0}
@@ -36695,11 +36718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4874462722565546, guid: cce10091b8ba17a4085fdc29675497a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1450.7628
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 4874462722565546, guid: cce10091b8ba17a4085fdc29675497a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 712.32513
+      value: 9.27
       objectReference: {fileID: 0}
     - target: {fileID: 4874462722565546, guid: cce10091b8ba17a4085fdc29675497a0, type: 3}
       propertyPath: m_LocalPosition.z

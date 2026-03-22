@@ -160,7 +160,7 @@ public abstract class Chara : MonoBehaviour
     /// <returns>스킬레벨에 따른 데미지</returns>
     public int Skill1_Dmg()
     {
-        Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
+        // Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
 
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
         int damage = dmg + Mathf.RoundToInt(dmg * DmgUpgUnit * skillLv);

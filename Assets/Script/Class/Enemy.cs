@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum ENEMY_TYPE
 {
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
     // 컴포넌트
     SpriteRenderer sprRdr;
     Animator anim;
+    SpriteLibrary sprLib;
 
     // UI
     public Slider hpSlider;
@@ -65,6 +68,7 @@ public class Enemy : MonoBehaviour
         // 게임 시작이후 한번만 실행될 것
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        sprLib = GetComponent<SpriteLibrary>();
         propBlock = new MaterialPropertyBlock();
         playerPos = Vector3.zero;
     }
@@ -251,6 +255,13 @@ public class Enemy : MonoBehaviour
         sprRdr.GetPropertyBlock(propBlock);
         propBlock.SetFloat(hitFlashMat_IsHit, ORIGIN_COLOR);
         sprRdr.SetPropertyBlock(propBlock);
+    }
+
+    public void SetSprLibAst(SpriteLibraryAsset[] sprLibAstArr)
+    {
+        int len = sprLibAstArr.Length;
+        int randIdx = Random.Range(0, len);
+        sprLib.spriteLibraryAsset = sprLibAstArr[randIdx];
     }
 
 #endregion
