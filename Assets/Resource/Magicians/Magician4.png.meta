@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: a3f73a7a4463f184291c7bb9d4e9b828
+guid: a6bae77b2b0d8d24bad6aaf82c945706
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2278049604221074124
+    second: Magician4_0
+  - first:
+      213: 2810984688730154773
+    second: Magician4_1
+  - first:
+      213: -5298353353327615803
+    second: Magician4_2
+  - first:
+      213: -4320222424725453914
+    second: Magician4_3
+  - first:
+      213: -1488726270885294357
+    second: Magician4_4
+  - first:
+      213: 7898318596393048979
+    second: Magician4_5
+  - first:
+      213: 2096917581691254899
+    second: Magician4_6
+  - first:
+      213: -8009685069364519904
+    second: Magician4_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,7 +95,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -95,14 +119,14 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -123,10 +147,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a21343a0211a8dd48b25e58200b5df72
-      internalID: 973316648
+      spriteID: ccaf050ab024d9f10800000000000000
+      internalID: 2278049604221074124
       vertices: []
       indices: 
       edges: []
@@ -145,10 +169,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 64e905e1937124a45916cdba11033c5e
-      internalID: -509052201
+      spriteID: 517a2d06eaf920720800000000000000
+      internalID: 2810984688730154773
       vertices: []
       indices: 
       edges: []
@@ -167,10 +191,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 519746c72b4bde24eb2b9495152152df
-      internalID: 1223286132
+      spriteID: 5c0686072b77876b0800000000000000
+      internalID: -5298353353327615803
       vertices: []
       indices: 
       edges: []
@@ -189,10 +213,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f6920cecc459d43469fafb0d01eaa134
-      internalID: 999900577
+      spriteID: 6a3009f189c7b04c0800000000000000
+      internalID: -4320222424725453914
       vertices: []
       indices: 
       edges: []
@@ -211,10 +235,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 64d6b377f2018b84eb8cd15b3cc9fd1c
-      internalID: -1099899980
+      spriteID: bee0710285bf65be0800000000000000
+      internalID: -1488726270885294357
       vertices: []
       indices: 
       edges: []
@@ -233,10 +257,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 14b045a97f551d1458ad2582623a6905
-      internalID: -946105683
+      spriteID: 39b9ed49ae67c9d60800000000000000
+      internalID: 7898318596393048979
       vertices: []
       indices: 
       edges: []
@@ -255,10 +279,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4d27287f3acd51e4b8d39c6e1071c92a
-      internalID: -674871951
+      spriteID: 3787afb3e6fb91d10800000000000000
+      internalID: 2096917581691254899
       vertices: []
       indices: 
       edges: []
@@ -277,10 +301,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 602ab515ec98d51418e3e8adccb99e00
-      internalID: 1645945921
+      spriteID: 02c17c5ddd1e7d090800000000000000
+      internalID: -8009685069364519904
       vertices: []
       indices: 
       edges: []
@@ -289,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 13a66d8c6b57d8d4b9f66db0f5385177
     internalID: 0
     vertices: []
     indices: 
@@ -297,16 +321,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Magician4_0: 973316648
-      Magician4_1: -509052201
-      Magician4_2: 1223286132
-      Magician4_3: 999900577
-      Magician4_4: -1099899980
-      Magician4_5: -946105683
-      Magician4_6: -674871951
-      Magician4_7: 1645945921
+      Magician4_0: 2278049604221074124
+      Magician4_1: 2810984688730154773
+      Magician4_2: -5298353353327615803
+      Magician4_3: -4320222424725453914
+      Magician4_4: -1488726270885294357
+      Magician4_5: 7898318596393048979
+      Magician4_6: 2096917581691254899
+      Magician4_7: -8009685069364519904
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

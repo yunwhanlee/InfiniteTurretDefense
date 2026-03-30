@@ -24,7 +24,7 @@ public static class Config
 #region ENUM
     /// <summary> 캐릭터카드 인덱스 (UI Content에 배치 순서) </summary>
     public enum CHR_CATE {
-        ARCHER, WARRIOR,
+        ARCHER, WARRIOR, MAGICIAN
     }
     /// <summary> 캐릭터 등급 </summary>
     public enum CHR_GRADE {

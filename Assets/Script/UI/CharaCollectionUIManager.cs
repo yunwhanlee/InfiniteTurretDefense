@@ -14,6 +14,7 @@ public class CharaCollectionUIManager : MonoBehaviour
         // DB 캐릭터 데이터 에셋 적용
         charaCardArr[(int)CHR_CATE.ARCHER].SetUp(CHR_CATE.ARCHER);
         charaCardArr[(int)CHR_CATE.WARRIOR].SetUp(CHR_CATE.WARRIOR);
+        charaCardArr[(int)CHR_CATE.MAGICIAN].SetUp(CHR_CATE.MAGICIAN);
     }
 
     void Start()
@@ -94,6 +95,7 @@ public class CharaCollectionUIManager : MonoBehaviour
     {
         charaCardArr[(int)CHR_CATE.ARCHER].UpdateUI();
         charaCardArr[(int)CHR_CATE.WARRIOR].UpdateUI();
+        charaCardArr[(int)CHR_CATE.MAGICIAN].UpdateUI();
         //* 캐릭터카드 추가시 여기에 추가
     }
 

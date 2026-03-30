@@ -8,7 +8,7 @@ public class EffectPoolManager : MonoBehaviour
 {
     public enum EF_IDX
     {
-        //* 전사스킬
+        //* 전사 스킬
         SlashEF, // 베기
         PowerStrikeEF, // 강타
         DoubleAttackEF, // 이중공격
@@ -16,9 +16,12 @@ public class EffectPoolManager : MonoBehaviour
         RageAuraEF, // 격려받아 불타는 이펙트
         WheelWindEF, // 휠윈드
         ShockWaveEF, // 충격파
+        //* 법사 스킬
+        FireBallExplosionEF,
     }
 
     // 오브젝트
+    [Header("전사 스킬 이펙트")]
     public GameObject SlashEF;
     public GameObject PowerStrikeEF;
     public GameObject DoubleAttackEF;
@@ -26,6 +29,8 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject RageAuraEF;
     public GameObject WheelWindEF;
     public GameObject ShockWaveEF;
+    [Header("법사 스킬 이펙트")]
+    public GameObject FireBallExplosionEF;
 
     // 오브젝트 풀링
     public Transform effectGroupTf;
@@ -42,6 +47,7 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.RageAuraEF, Init(RageAuraEF.gameObject, 5));
         poolDics.Add(EF_IDX.WheelWindEF, Init(WheelWindEF.gameObject, 5));
         poolDics.Add(EF_IDX.ShockWaveEF, Init(ShockWaveEF.gameObject, 5));
+        poolDics.Add(EF_IDX.FireBallExplosionEF, Init(FireBallExplosionEF.gameObject, 3));
         // 여기에 추가
     }
 

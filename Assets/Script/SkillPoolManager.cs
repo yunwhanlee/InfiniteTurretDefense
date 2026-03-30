@@ -6,21 +6,25 @@ public class SkillPoolManager : MonoBehaviour
 {
     public enum SK_IDX
     {
-        // 궁수 스킬
+        //* 궁수 스킬
         SK_PassArrow, // 관통샷
         SK_ArrowRain, // 화살비
         SK_PhoenixArrow, // 피닉스화살
         SK_PhoenixFireField, // 피닉스 불장판
+        //* 법사 스킬
+        SK_FireBall, // 파이어볼
     }
 
     // 오브젝트 풀링
     public Transform skillGroupTf;
     Dictionary<SK_IDX, IObjectPool<GameObject>> poolDics;     public Dictionary<SK_IDX, IObjectPool<GameObject>> PoolDics {get => poolDics;}
-
+    [Header("궁수 스킬")]
     public PassArrow passArrowPf;
     public ArrowRain arrowRainPf;
     public PhoenixArrow phoenixArrowPf;
     public PhoenixFireField phoenixFireField;
+    [Header("법사 스킬")]
+    public FireBall fireBallPf;
 
     void Awake()
     {
@@ -29,6 +33,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_ArrowRain, Init(arrowRainPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_PhoenixArrow, Init(phoenixArrowPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_PhoenixFireField, Init(phoenixFireField.gameObject, 2));
+        poolDics.Add(SK_IDX.SK_FireBall, Init(fireBallPf.gameObject, 2));
     }
 
 #region POOL

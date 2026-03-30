@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b42bd1d221c5e4eb17bb3ba1c0b4e7, type: 3}
+  m_Name: Magician7
+  m_EditorClassIdentifier: Assembly-CSharp::CharaBaseData
+  cardIdx: 2
+  grade: 6
+  charaName: "\uB9C8\uBC95\uC0AC7"
+  icon: {fileID: -6451771748863001407, guid: 3d6466b078fd0f349a03e68e02961d66, type: 3}
+  charaPrefab: {fileID: 3544792553527042751, guid: c9a7eed8d4d87734aa2756304cd652df, type: 3}
+  baseDmg: 4626
+  baseAttackSpeed: 2.25
+  baseRange: 6.5
+  dmgUpgUnit: 0
+  charaSkillAsset: {fileID: 11400000, guid: b9186a6b0bbfab54a905558dc21a7b36, type: 2}

@@ -53,7 +53,7 @@ public class Archer : Chara
 
     public override void Attack(Enemy enemy)
     {
-        base.Attack(enemy);
+        base.Attack(enemy); // 공격 모션
 
         // 치명타 및 데미지 확률 설정
         CritPer = 0;
@@ -96,7 +96,7 @@ public class Archer : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit; // 0.5%
 
         float percent = defPer + unitPer * skillLv;
-        percent *= 10; // 소수점단위 정수로 올리기
+        percent *= 10; // unit 소수점단위 정수로 올리기
 
         int random = Random.Range(0, 1000);
         if(random < percent)

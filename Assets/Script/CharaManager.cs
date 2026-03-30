@@ -11,6 +11,7 @@ public class CharaManager : MonoBehaviour
     [Header("모든 캐릭터 데이터 에셋 배열")]
     public CharaDataAsset[] archerDataAssetArr;
     public CharaDataAsset[] warriorDataAssetArr;
+    public CharaDataAsset[] magicianDataAssetArr;
 
     [Header("실제 및 배치 생성된 캐릭터 리스트")]
     public List<Chara> curCharaList;

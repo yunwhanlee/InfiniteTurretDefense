@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] int DEF_HP = 900; // 5;
     [SerializeField] int DEF_DMG = 2;
-    [SerializeField] int MONSTER_SPAN = 1; // 일반몬스터 소환주기
+    [SerializeField] float MONSTER_SPAN = 1; // 일반몬스터 소환주기
     const int ELITE_SPAN = 20; // 엘리트몬스터 소환주기
     const int BOSS_SPAN = ELITE_SPAN * 10; // 엘리트몬스터 소환주기
 
