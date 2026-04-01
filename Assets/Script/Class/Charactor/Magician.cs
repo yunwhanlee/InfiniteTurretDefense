@@ -4,7 +4,9 @@ using static SkillPoolManager;
 
 public class Magician : Chara
 {
+    [Header("자식 변수")]
     public Transform shootTf;
+    public Sprite missileSpr;
 
     protected void Update()
     {
@@ -41,7 +43,7 @@ public class Magician : Chara
         if(!isFireBallActive)
         {
             // 투사체 발사
-            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
         }
     }
 

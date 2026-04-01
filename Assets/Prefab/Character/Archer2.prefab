@@ -235,13 +235,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Archer
   targetFinder: {fileID: 4527924225899619}
-  missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
   isLocked: 0
-  place: -1
   rangeCircle: {fileID: 920408537845552026}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  Place: 0
   shootTf: {fileID: 2227978962426412994}
+  missileSpr: {fileID: 8771477403764231445, guid: 29e95eef1cbe708499c3b2107d9333e6, type: 3}
   passArrowTime: 0
   arrowRainTime: 0
   phoenixArrowTime: 0
@@ -258,9 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetFinder
   radius: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
   CurrentTarget: {fileID: 0}
 --- !u!95 &83279591892131207
 Animator:
@@ -352,7 +349,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.125}
-    oldSize: {x: 2.1333334, y: 2.1333334}
+    oldSize: {x: 2.4615386, y: 2.4615386}
     newSize: {x: 3.5555556, y: 3.5555556}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

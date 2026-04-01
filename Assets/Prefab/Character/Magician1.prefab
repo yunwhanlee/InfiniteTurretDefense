@@ -236,13 +236,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Magician
   targetFinder: {fileID: 4527924225899619}
-  missile: {fileID: 8133444922045896958, guid: 606dbb5c5041ce84f97b059d4ecbbfc4, type: 3}
   isLocked: 0
   rangeCircle: {fileID: 1902532493617669342}
   defaultSpr: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   Place: 0
   shootTf: {fileID: 8255936985933046289}
+  missileSpr: {fileID: 6771521017701282519, guid: 97fea5047b075da429063a73389a8d63, type: 3}
 --- !u!114 &4527924225899619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.125}
-    oldSize: {x: 2.1333334, y: 2.1333334}
+    oldSize: {x: 2.4615386, y: 2.4615386}
     newSize: {x: 3.5555556, y: 3.5555556}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

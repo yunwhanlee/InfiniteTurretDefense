@@ -12,7 +12,6 @@ public abstract class Chara : MonoBehaviour
 
     // 외부 클래스
     public TargetFinder targetFinder;
-    public Missile missile;
 
     // Value (Read Only)
     public bool isLocked; // 잠김 여부

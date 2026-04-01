@@ -3,11 +3,12 @@ using UnityEngine;
 using static Config;
 using Random = UnityEngine.Random;
 using static SkillPoolManager;
-using System.Collections;
 
 public class Archer : Chara
 {
+    [Header("자식 변수")]
     public Transform shootTf;
+    public Sprite missileSpr;
 
     // 관통샷
     const int PASS_ARROW_COOLTIME = 10;
@@ -75,7 +76,7 @@ public class Archer : Chara
         }
 
         // 투사체 발사
-        GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, isCritical);
+        GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
         Skill2_MultiShot(damage, isCritical);
     }
 
@@ -107,24 +108,24 @@ public class Archer : Chara
             {
                 case CHR_GRADE.RARE:
                 case CHR_GRADE.EPIC:
-                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, missileSpr, isCritical);
                     break;
                 case CHR_GRADE.UNIQUE:
                 case CHR_GRADE.LEGEND:
-                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, -45, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +45, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -45, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +45, missileSpr, isCritical);
                     break;
                 case CHR_GRADE.MYTHIC:
                 case CHR_GRADE.PRIME:
-                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, -45, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +45, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, -67.5f, isCritical);
-                    GM._.mpm.SpawnPool(pos, direction, damage, +67.5f, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -22.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +22.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -45, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +45, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, -67.5f, missileSpr, isCritical);
+                    GM._.mpm.SpawnPool(pos, direction, damage, +67.5f, missileSpr, isCritical);
                     break;
             }
         }

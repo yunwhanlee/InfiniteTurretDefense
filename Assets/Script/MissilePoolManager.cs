@@ -35,10 +35,10 @@ public class MissilePoolManager : MonoBehaviour
     }
 
     /// <summary> 오브젝트 풀링 생성 </summary>
-    public void SpawnPool(Vector3 pos, Vector3 dir, int dmg, float angleOffset, bool isCritical)
+    public void SpawnPool(Vector3 pos, Vector3 dir, int dmg, float angleOffset, Sprite missileSpr, bool isCritical)
     {
         Missile missile = pool.Get();
-        missile.Init(pos, dir, angleOffset);
+        missile.Init(pos, dir, angleOffset, missileSpr);
         missile.Dmg = dmg;
         missile.IsCritical = isCritical;
     }
