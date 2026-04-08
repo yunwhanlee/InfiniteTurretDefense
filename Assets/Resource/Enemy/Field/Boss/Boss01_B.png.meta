@@ -143,1057 +143,1057 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_01_B_0
+      name: Boss01_B_0
       rect:
         serializedVersion: 2
         x: 0
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7ca8966954df984ca42b88ab4c510bd
-      internalID: 1844570999
+      spriteID: 9ce40e01834363148ae297edbd589c32
+      internalID: 1634597718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_1
+      name: Boss01_B_1
       rect:
         serializedVersion: 2
         x: 80
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89dbb68b48e26e645a442bf1c7c52b57
-      internalID: -1588799127
+      spriteID: 18caf8db4c206744aad26cccc9f360d5
+      internalID: 1256654735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_2
+      name: Boss01_B_2
       rect:
         serializedVersion: 2
         x: 160
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cc55eb215f69b443af1521c227aed1e
-      internalID: 637650127
+      spriteID: ad2b1d9088ec7464a8acf0f4e9083aec
+      internalID: 966947558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_3
+      name: Boss01_B_3
       rect:
         serializedVersion: 2
         x: 240
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa68f2d18bc051b4f9ffd7296a664b28
-      internalID: 1297285455
+      spriteID: f9cad379169b4114e97c6d987ae65ced
+      internalID: -1058047133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_4
+      name: Boss01_B_4
       rect:
         serializedVersion: 2
         x: 320
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b13f7d97880e97f429bc00bbc20203e4
-      internalID: -2042977143
+      spriteID: 811881aeadd1520499bc6083f52fd479
+      internalID: 91066456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_5
+      name: Boss01_B_5
       rect:
         serializedVersion: 2
         x: 400
         y: 560
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a8b594f0103b9b4f9e8e88319ca454e
-      internalID: 1548787198
+      spriteID: 3e9e86d907d2ced49a78ff512adf30eb
+      internalID: 669762072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_6
+      name: Boss01_B_6
       rect:
         serializedVersion: 2
         x: 0
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 420bbbbe0217a414f9fcbabac2ec1d56
-      internalID: 946732563
+      spriteID: 831acf8dafc415d47bd88cab3a31361b
+      internalID: -1375726198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_7
+      name: Boss01_B_7
       rect:
         serializedVersion: 2
         x: 80
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02caf4b2541dc15459a6a728f4ac5dd9
-      internalID: -1358949781
+      spriteID: 2cb9494a09364d94b9203edf63efdc06
+      internalID: -2145870797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_8
+      name: Boss01_B_8
       rect:
         serializedVersion: 2
         x: 160
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 274b6dd47d009ac459398f8e29da0456
-      internalID: -629767186
+      spriteID: 5e35a14b0aac8274ba4d5cdc0d7e5a0e
+      internalID: 750385854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_9
+      name: Boss01_B_9
       rect:
         serializedVersion: 2
         x: 240
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2eed99fc52947a40b52c496c4d5cae8
-      internalID: 651683218
+      spriteID: 277283bbe8a8f864d9a9fe7e1fefdfea
+      internalID: 31226788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_10
+      name: Boss01_B_10
       rect:
         serializedVersion: 2
         x: 320
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b1ac19d3ef55d4ab986727cf68b27a
-      internalID: -1633777690
+      spriteID: a2d253fbdacd2824fa2746b493eba06b
+      internalID: -197664187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_11
+      name: Boss01_B_11
       rect:
         serializedVersion: 2
         x: 400
         y: 480
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6f0040b75200a7478a046f78045b3c2
-      internalID: 1885085403
+      spriteID: 5169d29b6d28d8240bbe2993646efdfe
+      internalID: 2063532137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_12
+      name: Boss01_B_12
       rect:
         serializedVersion: 2
         x: 0
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd61006ccd200124e8bd1922beb8f783
-      internalID: -1329095160
+      spriteID: f0d5cd28b425a4c4298646b2add8c5db
+      internalID: 1002959976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_13
+      name: Boss01_B_13
       rect:
         serializedVersion: 2
         x: 80
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01db79b38bac5ae4795b1daa6e050e3e
-      internalID: -1587512779
+      spriteID: ad56a1c804f47464ca2abe8c57c53c90
+      internalID: -740116293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_14
+      name: Boss01_B_14
       rect:
         serializedVersion: 2
         x: 160
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4837afeb36021b740bf6464a4df18af6
-      internalID: -1852658357
+      spriteID: d65a7fb7666d1b04aa79c29bed644ea9
+      internalID: 183407019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_15
+      name: Boss01_B_15
       rect:
         serializedVersion: 2
         x: 240
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf8227374de15fa458d5b55b249ecc4c
-      internalID: 2091107419
+      spriteID: 88d5e7d94bec08941b0ccebfc2e8d25a
+      internalID: 1056154069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_16
+      name: Boss01_B_16
       rect:
         serializedVersion: 2
         x: 320
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3533cdfb12dcbf74aab68dea46110c35
-      internalID: 253672640
+      spriteID: dc353c827fec98446ba6798cc7ed9c8c
+      internalID: -867511796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_17
+      name: Boss01_B_17
       rect:
         serializedVersion: 2
         x: 400
         y: 400
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 974179e04dd066e4ab4041f3225e18ea
-      internalID: -803729543
+      spriteID: 77515263f13baa645988e204a31313a2
+      internalID: -312796057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_18
+      name: Boss01_B_18
       rect:
         serializedVersion: 2
         x: 0
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac09915a5a932fc4ba038decb4e61503
-      internalID: 1532060443
+      spriteID: e9052e3886ae7ae4eb2707610cd2c217
+      internalID: 2048187592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_19
+      name: Boss01_B_19
       rect:
         serializedVersion: 2
         x: 80
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32b63148d78db134bb12d3ff2f4c55b0
-      internalID: -1375294265
+      spriteID: c98ca9f6aab2c5e4f8ec076f374d9915
+      internalID: -1468723714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_20
+      name: Boss01_B_20
       rect:
         serializedVersion: 2
         x: 160
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26be5f9268b0848428eba4332aabf105
-      internalID: 1170182356
+      spriteID: f29d392de6e670442967c0e3182611f2
+      internalID: 1499178238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_21
+      name: Boss01_B_21
       rect:
         serializedVersion: 2
         x: 240
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d6c3594e3be47e4fbd701e216c27621
-      internalID: -946334436
+      spriteID: 66250526c1066f54280e05665bf8cf90
+      internalID: 982233821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_22
+      name: Boss01_B_22
       rect:
         serializedVersion: 2
         x: 320
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8c38061d4048764c9b6dd2bd9b45d2e
-      internalID: 521966143
+      spriteID: c1460ba4419198f419be0506f5c95b89
+      internalID: 1402742570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_23
+      name: Boss01_B_23
       rect:
         serializedVersion: 2
         x: 400
         y: 320
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7f17b30d8074e14583d28b94e96c963
-      internalID: 1978254759
+      spriteID: ee657a532d408444c9bee958ccd9f0b8
+      internalID: 951627652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_24
+      name: Boss01_B_24
       rect:
         serializedVersion: 2
         x: 0
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5caf740aecc12848871225ba8410c5a
-      internalID: -1168586877
+      spriteID: 5b7ec3d613e275d47b88e8ba7c6a70d8
+      internalID: 1868277388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_25
+      name: Boss01_B_25
       rect:
         serializedVersion: 2
         x: 80
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aabb356d15b2fa349ad4d2325a525df5
-      internalID: 1592883907
+      spriteID: 3ff0e8a22ddc29f4db22cb31dafb13c9
+      internalID: 2090960097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_26
+      name: Boss01_B_26
       rect:
         serializedVersion: 2
         x: 160
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a51c8515926404fa56c94484504f71
-      internalID: -1309447183
+      spriteID: f13906190b0111241b0f6e514b380d34
+      internalID: -1959198134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_27
+      name: Boss01_B_27
       rect:
         serializedVersion: 2
         x: 240
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 295f9e48d46ba3843bc68cd333da7675
-      internalID: -98755045
+      spriteID: 7508709dd432a274c92ee9bb2a2f07a6
+      internalID: 253953512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_28
+      name: Boss01_B_28
       rect:
         serializedVersion: 2
         x: 320
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 687110b7efd29db4d95b9ee2c74457d0
-      internalID: -859788299
+      spriteID: 1da7fd05ad3da0f4684116489282adaf
+      internalID: 626299344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_29
+      name: Boss01_B_29
       rect:
         serializedVersion: 2
         x: 400
         y: 240
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e77b1f1513db341a74d4292a6800b1
-      internalID: -1350784049
+      spriteID: b89aa9d857ac4ca46b3220afc5ef5e6f
+      internalID: 499437160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_30
+      name: Boss01_B_30
       rect:
         serializedVersion: 2
         x: 0
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d66b101ee11bd4a94e1a9356bfb90f
-      internalID: -1025093885
+      spriteID: c8d689062fad4964b83bcf953b2253a5
+      internalID: -822048822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_31
+      name: Boss01_B_31
       rect:
         serializedVersion: 2
         x: 80
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dbb9fd22268bf443825dd937e1b7a2f
-      internalID: -1146448883
+      spriteID: 4c0c5fc825314ce4eb98667737e2b956
+      internalID: -1074947869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_32
+      name: Boss01_B_32
       rect:
         serializedVersion: 2
         x: 160
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d23bf72b46ea33c4880cb37a1ae85b24
-      internalID: -158873620
+      spriteID: 7eafbb40761b89e41b16028315ac422c
+      internalID: -143405912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_33
+      name: Boss01_B_33
       rect:
         serializedVersion: 2
         x: 240
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f3c8d1f0d620ed4c8f52bf33e3b9441
-      internalID: 1661832503
+      spriteID: 943e8d816fb8ac2479bdff1d2e53dfd3
+      internalID: -1295675438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_34
+      name: Boss01_B_34
       rect:
         serializedVersion: 2
         x: 320
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56ab0d6f28714b34f8f6bee2f4d7ed79
-      internalID: 1096599399
+      spriteID: 9e8f098089a2b9947a95be31f022d3d1
+      internalID: 1932332025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_35
+      name: Boss01_B_35
       rect:
         serializedVersion: 2
         x: 400
         y: 160
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddb77cbf3ad9904a97088826790366e
-      internalID: -536853456
+      spriteID: 9a31630eea5978d47bb8260847297f55
+      internalID: -1840317476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_36
+      name: Boss01_B_36
       rect:
         serializedVersion: 2
         x: 0
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dd42f987e30b664b84212f09fd89f2f
-      internalID: -1979851355
+      spriteID: ff29ae9463e61f74a92cd5e69c5d15e2
+      internalID: -1617719914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_37
+      name: Boss01_B_37
       rect:
         serializedVersion: 2
         x: 80
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64c9118f2d433da4ca8d4be1778866b5
-      internalID: 2088968823
+      spriteID: 3d042fd99ed54e34e97f4a8155109053
+      internalID: -1082603859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_38
+      name: Boss01_B_38
       rect:
         serializedVersion: 2
         x: 160
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad2ac239963c8394eaa2ffbe0ccd8181
-      internalID: -2025663075
+      spriteID: 9d74ccd1fab453248be95ecc0730a843
+      internalID: -913972574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_39
+      name: Boss01_B_39
       rect:
         serializedVersion: 2
         x: 240
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ea052806e13a8a4ca2f8a2eb0335bcd
-      internalID: 1067924799
+      spriteID: e08cb4b8db9f94e4da2bdcbcdb576610
+      internalID: 143635335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_40
+      name: Boss01_B_40
       rect:
         serializedVersion: 2
         x: 320
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 588887d4b13cfdd4d80d370790b2b011
-      internalID: 2104313626
+      spriteID: 7c10f9c45e739374a8afdb1781bce2ee
+      internalID: -1605326876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_41
+      name: Boss01_B_41
       rect:
         serializedVersion: 2
         x: 400
         y: 80
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6f3c42062e4e0446ba1d4bdae68be62
-      internalID: -1498324124
+      spriteID: 556402b642deaef429f349760f941649
+      internalID: -842729353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_42
+      name: Boss01_B_42
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f30f52c4920b9c047a453f1e2250e0ab
-      internalID: 1933327699
+      spriteID: dda714fe7a833d14bb3a98b4dbfacd81
+      internalID: -352724956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_43
+      name: Boss01_B_43
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 475663e93470bdd44adfb8ff00d043a5
-      internalID: 626526803
+      spriteID: ccf814f580355fc47aa56c7d8358b928
+      internalID: -740495041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_44
+      name: Boss01_B_44
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de0cae6432a9d3d4c9ed8ce0d45d2b24
-      internalID: -539403413
+      spriteID: 08696b820c134fa49abfaf3ddd727d61
+      internalID: 2144881544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_45
+      name: Boss01_B_45
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1dc630eb76581f4fa68d08af991ffdd
-      internalID: 65931694
+      spriteID: 8abfb5e2388839048aaae82fc0e1d702
+      internalID: 1762450167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_46
+      name: Boss01_B_46
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ce962aea7ac0d74b80019af7123e41b
-      internalID: 828807694
+      spriteID: ca65823cded22024e91951538ca07855
+      internalID: 1163636079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_01_B_47
+      name: Boss01_B_47
       rect:
         serializedVersion: 2
         x: 400
         y: 0
         width: 80
         height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a77265df63c3648af4f96454d11e66
-      internalID: 665824055
+      spriteID: b0975c90364d0f444825c634688cec8f
+      internalID: -1778606306
       vertices: []
       indices: 
       edges: []
@@ -1210,56 +1210,58 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Boss_01_B_0: 1844570999
-      Boss_01_B_1: -1588799127
-      Boss_01_B_10: -1633777690
-      Boss_01_B_11: 1885085403
-      Boss_01_B_12: -1329095160
-      Boss_01_B_13: -1587512779
-      Boss_01_B_14: -1852658357
-      Boss_01_B_15: 2091107419
-      Boss_01_B_16: 253672640
-      Boss_01_B_17: -803729543
-      Boss_01_B_18: 1532060443
-      Boss_01_B_19: -1375294265
-      Boss_01_B_2: 637650127
-      Boss_01_B_20: 1170182356
-      Boss_01_B_21: -946334436
-      Boss_01_B_22: 521966143
-      Boss_01_B_23: 1978254759
-      Boss_01_B_24: -1168586877
-      Boss_01_B_25: 1592883907
-      Boss_01_B_26: -1309447183
-      Boss_01_B_27: -98755045
-      Boss_01_B_28: -859788299
-      Boss_01_B_29: -1350784049
-      Boss_01_B_3: 1297285455
-      Boss_01_B_30: -1025093885
-      Boss_01_B_31: -1146448883
-      Boss_01_B_32: -158873620
-      Boss_01_B_33: 1661832503
-      Boss_01_B_34: 1096599399
-      Boss_01_B_35: -536853456
-      Boss_01_B_36: -1979851355
-      Boss_01_B_37: 2088968823
-      Boss_01_B_38: -2025663075
-      Boss_01_B_39: 1067924799
-      Boss_01_B_4: -2042977143
-      Boss_01_B_40: 2104313626
-      Boss_01_B_41: -1498324124
-      Boss_01_B_42: 1933327699
-      Boss_01_B_43: 626526803
-      Boss_01_B_44: -539403413
-      Boss_01_B_45: 65931694
-      Boss_01_B_46: 828807694
-      Boss_01_B_47: 665824055
-      Boss_01_B_5: 1548787198
-      Boss_01_B_6: 946732563
-      Boss_01_B_7: -1358949781
-      Boss_01_B_8: -629767186
-      Boss_01_B_9: 651683218
+      Boss01_B_0: 1634597718
+      Boss01_B_1: 1256654735
+      Boss01_B_10: -197664187
+      Boss01_B_11: 2063532137
+      Boss01_B_12: 1002959976
+      Boss01_B_13: -740116293
+      Boss01_B_14: 183407019
+      Boss01_B_15: 1056154069
+      Boss01_B_16: -867511796
+      Boss01_B_17: -312796057
+      Boss01_B_18: 2048187592
+      Boss01_B_19: -1468723714
+      Boss01_B_2: 966947558
+      Boss01_B_20: 1499178238
+      Boss01_B_21: 982233821
+      Boss01_B_22: 1402742570
+      Boss01_B_23: 951627652
+      Boss01_B_24: 1868277388
+      Boss01_B_25: 2090960097
+      Boss01_B_26: -1959198134
+      Boss01_B_27: 253953512
+      Boss01_B_28: 626299344
+      Boss01_B_29: 499437160
+      Boss01_B_3: -1058047133
+      Boss01_B_30: -822048822
+      Boss01_B_31: -1074947869
+      Boss01_B_32: -143405912
+      Boss01_B_33: -1295675438
+      Boss01_B_34: 1932332025
+      Boss01_B_35: -1840317476
+      Boss01_B_36: -1617719914
+      Boss01_B_37: -1082603859
+      Boss01_B_38: -913972574
+      Boss01_B_39: 143635335
+      Boss01_B_4: 91066456
+      Boss01_B_40: -1605326876
+      Boss01_B_41: -842729353
+      Boss01_B_42: -352724956
+      Boss01_B_43: -740495041
+      Boss01_B_44: 2144881544
+      Boss01_B_45: 1762450167
+      Boss01_B_46: 1163636079
+      Boss01_B_47: -1778606306
+      Boss01_B_5: 669762072
+      Boss01_B_6: -1375726198
+      Boss01_B_7: -2145870797
+      Boss01_B_8: 750385854
+      Boss01_B_9: 31226788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

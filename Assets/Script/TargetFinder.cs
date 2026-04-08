@@ -27,7 +27,7 @@ public class TargetFinder : MonoBehaviour
 
     Enemy FindNearestTarget()
     {
-        Debug.Log("Finding nearest target...");
+        // Debug.Log("Finding nearest target...");
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             transform.position,
