@@ -134,6 +134,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
     /// <summary> 인게임에서 캐릭터 선택시 업데이트 </summary>
     public void UpdateUI(Chara chara)
     {
+        Debug.Log("UpdateUI(chara):: chara=" + chara.name);
+
         // 배치중 아이콘 표시
         placedNoticeIcon.SetActive(true); //isPlaced);
 
@@ -142,7 +144,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
 
         // UI텍스트 최신화
         gradeTxt.text = $"{chara.Grade}";
-        dmgTxt.text = $"{chara.Skill1_Dmg()}";
+        dmgTxt.text = $"{chara.Dmg}";
         atkSpdTxt.text = $"{chara.AttackSpeed}";
         rangeTxt.text = $"{chara.Range}";
         critPerTxt.text = $"{chara.CritPer}";
@@ -182,6 +184,8 @@ public class CharaUpgradeUIManager : MonoBehaviour
     /// <summary> 콜렉션에서 캐릭터카드 선택시 업데이트 </summary>
     public void UpdateUI(CharaCard card)
     {
+        Debug.Log("UpdateUI(CharaCard card)");
+
         CharaDataAsset data = card.GetCharaDataAsset();
 
         // 배치중 아이콘 표시

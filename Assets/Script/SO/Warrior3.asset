@@ -20,5 +20,5 @@ MonoBehaviour:
   baseDmg: 74
   baseAttackSpeed: 1.2
   baseRange: 4
-  dmgUpgUnit: 0
+  dmgUpgUnit: 0.15
   charaSkillAsset: {fileID: 11400000, guid: 36a96b3188955f6479e144359890bd88, type: 2}

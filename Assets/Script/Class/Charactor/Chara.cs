@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine; // MAIN_BUTA
 using static Config;
 
@@ -23,7 +24,7 @@ public abstract class Chara : MonoBehaviour
     public CHR_PLACE Place; // 배치 위치
     public CHR_CATE Cate {get; private set;}
     public CHR_GRADE Grade {get; private set;}
-    public int[] SkillLvArr {get; private set;}
+    [field: SerializeField] public int[] SkillLvArr {get; private set;}
 
     // 공격력
     int dmg;
@@ -39,7 +40,7 @@ public abstract class Chara : MonoBehaviour
     // 크리티컬 데미지
     public float CritDmgPer {get; protected set;}
     // 스킬 데이터 에셋
-    public CharaSkillAsset CharaSkill {get; private set;}
+    [field: SerializeField] public CharaSkillAsset CharaSkill {get; private set;}
 
     float time = 0;
     SpriteRenderer sprRdr;
@@ -159,7 +160,7 @@ public abstract class Chara : MonoBehaviour
     /// <returns>스킬레벨에 따른 데미지</returns>
     public int Skill1_Dmg()
     {
-        // Debug.Log($"Skill1_Dmg():: {Mathf.RoundToInt(dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
+        Debug.Log($"Skill1_Dmg():: dmg({dmg}) * DmgUpgUnit({DmgUpgUnit}) * SkillLvArr[0]({SkillLvArr[(int)CHR_GRADE.NORMAL]}) => {Mathf.RoundToInt(dmg * DmgUpgUnit * SkillLvArr[(int)CHR_GRADE.NORMAL])}");
 
         int skillLv = SkillLvArr[(int)CHR_GRADE.NORMAL];
         int damage = dmg + Mathf.RoundToInt(dmg * DmgUpgUnit * skillLv);
