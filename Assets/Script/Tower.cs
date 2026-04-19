@@ -17,6 +17,8 @@ public class Tower : MonoBehaviour
     public event Action<int, int> OnHpChanged; // 현재 체력, 최대 체력
     public event Action<int> OnArmorChanged; // 방어력
 
+    public SpriteRenderer towerUpSideSprRdr; // 성벽 위쪽 스프라이트 랜더러
+
     [SerializeField] float blinkTime = 0f; // 현재 색이 흰색인지 체크하는 변수
     [SerializeField] bool isBlink = false;
 
@@ -95,8 +97,11 @@ public class Tower : MonoBehaviour
         int val = isEnable ? 1 : 0;
 
         sprRdr.GetPropertyBlock(propBlock);
+        towerUpSideSprRdr.GetPropertyBlock(propBlock);
+
         propBlock.SetFloat(hitFlashMat_IsHit, val);
         sprRdr.SetPropertyBlock(propBlock);
+        towerUpSideSprRdr.SetPropertyBlock(propBlock);
     }
 
     /// <summary>
