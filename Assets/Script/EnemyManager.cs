@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -170,6 +171,27 @@ public class EnemyManager : MonoBehaviour
         );
 
         return Vector3.zero + dir * radius;
+    }
+
+    /// <summary>
+    /// 현재 필드의 모든 적 리스트 반환
+    /// </summary>
+    public List<Enemy> GetAllEnemies()
+    {
+        List<Enemy> enemyList = new List<Enemy>();
+
+        for (int i = enemyGroupTf.childCount - 1; i >= 0; i--)
+        {
+            Transform child = enemyGroupTf.GetChild(i);
+            Enemy enemy = child.GetComponent<Enemy>();
+
+            if (enemy != null && enemy.IsAlive)
+            {
+                enemyList.Add(enemy);
+            }
+        }
+
+        return enemyList;
     }
 #endregion
 #region GIZMOS

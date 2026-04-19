@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
@@ -292,18 +293,12 @@ public class Warrior : Chara
         yield return WFS_1; // 이펙트 마법구현 대기시간
 
         // 모든 적 공격
-        Transform enemyGroupTf = GM._.emm.enemyGroupTf;
-        for (int i = enemyGroupTf.childCount - 1; i >= 0; i--)
+        List<Enemy> enemyList = GM._.emm.GetAllEnemies();
+        enemyList.ForEach(enemy =>
         {
-            Transform child = enemyGroupTf.GetChild(i);
-            Enemy enemy = child.GetComponent<Enemy>();
-
-            if (enemy != null && enemy.IsAlive)
-            {
-                enemy.OnHit(damage, false);
-                enemy.ApplyStun(2f); // 2초 스턴 적용
-            }
-        }
+            enemy.OnHit(damage, false);
+            enemy.Stun(2f); // 2초 스턴 적용
+        });
     }
 #endregion
 

@@ -6,7 +6,7 @@ using static SkillPoolManager;
 public class FireBall : MonoBehaviour
 {
     public float moveSpeed = 10;
-    [SerializeField] float radius = 2;
+    [SerializeField] float radius;
     Vector3 dir;
     int dmg;
 
@@ -55,7 +55,7 @@ public class FireBall : MonoBehaviour
     }
 #endregion
 
-        // (기즈모) 휠윈드 공격범위 시각화
+        // (기즈모) 공격범위 시각화
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

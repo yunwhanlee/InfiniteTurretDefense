@@ -8,9 +8,22 @@ public class Magician : Chara
     public Transform shootTf;
     public Sprite missileSpr;
 
+    // 슬로우
+    const int SLOW_COOLTIME = 23;
+    [SerializeField] float slowTime;
+
     protected void Update()
     {
         base.Update();
+
+        if(Grade >= CHR_GRADE.EPIC) {
+            slowTime += Time.deltaTime;
+            if(slowTime >= SLOW_COOLTIME) {
+                Skill3_Slow();
+                slowTime = 0;
+            }
+        }
+
     }
 
     public override void Attack(Enemy enemy)
@@ -85,6 +98,18 @@ public class Magician : Chara
         }
 
         return isActive;
+    }
+
+    private void Skill3_Slow()
+    {
+        const int gradeIdx = (int)CHR_GRADE.RARE;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float time = defPer + unitPer * skillLv; // 슬로우 초단위
+
+        
     }
 #endregion
 }

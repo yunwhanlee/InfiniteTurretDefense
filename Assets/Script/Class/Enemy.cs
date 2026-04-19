@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     public int maxHp;
     public int hp;
+    private float originMoveSpeed;
     public float moveSpeed;
     public int dmg;
     public bool IsAlive => hp > 0;
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float dotTime = 0; // 지속딜
 
     [Header("상태이상 상세 수치")]
-    public float slowRatio = 1f;   // 둔화율 (예: 0.5면 반토막)
+    const float SLOW_RATIO = 0.5f;   // 둔화율 (예: 0.5면 반토막)
     public int dotDamage = 0;      // 초당 들어갈 도트 데미지
     private float dotTickTimer = 0f; // 1초마다 데미지를 주기 위한 내부 틱 타이머
 
@@ -77,21 +78,34 @@ public class Enemy : MonoBehaviour
     {
         if(state == STATE.DEAD)
             return;
-
+#region 상태이상
         // 스턴 (상태이상)
         if(stunTime > 0)
         {
             stunTime -= Time.deltaTime;
+            // 원상복귀
             if(stunTime <= 0)
             {
-                // 스턴 해제
                 stunTime = 0;
-                sprRdr.color = Color.white; // 색상 원래대로
+                sprRdr.color = Color.white;
                 anim.speed = 1; // 애니메이션 재개
             }
             return;
         }
 
+        // 슬로우
+        if(slowTime > 0)
+        {
+            slowTime -= Time.deltaTime;
+            // 원상복귀
+            if(slowTime <= 0)
+            {
+                slowTime = 0;
+                sprRdr.color = Color.white;
+                moveSpeed = originMoveSpeed;
+            }
+        }
+#endregion
         // 이동
         if(state == STATE.MOVE)
         {
@@ -141,6 +155,8 @@ public class Enemy : MonoBehaviour
 
         state = STATE.MOVE;
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
+        anim.speed = 1;
+        originMoveSpeed = moveSpeed;
         hp = maxHp;
         hpSlider.value = (float)hp / maxHp;
 
@@ -154,14 +170,31 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 스턴 상태이상 적용
     /// </summary>
-    /// <param name="duration">스턴 지속시간</param>
-    public void ApplyStun(float duration)
-    {
+    /// <param name="duration">지속시간</param>
+    public void Stun(float duration)
+    {   
+        if(state == STATE.DEAD)
+            return;
+
         stunTime = duration;
         sprRdr.color = Color.gray;
         anim.speed = 0; // 애니메이션 멈춤
     }
-    
+
+    /// <summary>
+    /// 슬로우
+    /// </summary>
+    /// <param name="duration">지속시간</param>
+    public void Slow(float duration)
+    {
+        if(state == STATE.DEAD)
+            return;
+
+        slowTime = duration;
+        sprRdr.color = Color.brown;
+        moveSpeed = originMoveSpeed * SLOW_RATIO;
+    }
+
     /// <summary>
     /// 플레이어를 공격
     /// </summary>
