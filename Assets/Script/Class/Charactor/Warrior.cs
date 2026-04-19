@@ -293,8 +293,7 @@ public class Warrior : Chara
         yield return WFS_1; // 이펙트 마법구현 대기시간
 
         // 모든 적 공격
-        List<Enemy> enemyList = GM._.emm.GetAllEnemies();
-        enemyList.ForEach(enemy =>
+        GM._.emm.GetAllEnemies().ForEach(enemy =>
         {
             enemy.OnHit(damage, false);
             enemy.Stun(2f); // 2초 스턴 적용

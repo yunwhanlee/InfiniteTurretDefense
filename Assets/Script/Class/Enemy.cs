@@ -191,7 +191,7 @@ public class Enemy : MonoBehaviour
             return;
 
         slowTime = duration;
-        sprRdr.color = Color.brown;
+        sprRdr.color = Color.blue;
         moveSpeed = originMoveSpeed * SLOW_RATIO;
     }
 

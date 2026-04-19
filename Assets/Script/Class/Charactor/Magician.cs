@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Config;
+using static EffectPoolManager;
 using static SkillPoolManager;
 
 public class Magician : Chara
@@ -109,7 +110,12 @@ public class Magician : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float time = defPer + unitPer * skillLv; // 슬로우 초단위
 
-        
+        // 슬로우 영창 이펙트
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        GM._.epm.SpawnPoolDics(EF_IDX.SlowMagicEF, pos);
+
+        // 모든적 슬로우
+        GM._.emm.GetAllEnemies().ForEach(enemy => enemy.Slow(time));
     }
 #endregion
 }
