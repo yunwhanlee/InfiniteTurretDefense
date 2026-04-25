@@ -18,7 +18,8 @@ MonoBehaviour:
     Img: {fileID: 7450870849948873471, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
     Desc: "{0}\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801\uC744 \uACF5\uACA9."
     ValueList:
-    - def: 0
+    - type: 0
+      def: 0
       unit: 0
     MaxLv: 1000
     PriceUnit: 1000
@@ -27,9 +28,11 @@ MonoBehaviour:
     Img: {fileID: 140729979, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
     Desc: "{0}% \uD655\uB960\uB85C, \uACF5\uACA9\uB825 {0}% \uBC94\uC704\uACF5\uACA9."
     ValueList:
-    - def: 15
+    - type: 0
+      def: 15
       unit: 0.5
-    - def: 120
+    - type: 0
+      def: 120
       unit: 3
     MaxLv: 90
     PriceUnit: 2500
@@ -39,18 +42,22 @@ MonoBehaviour:
     Desc: "39\uCD08\uB9C8\uB2E4, {0}\uCD08\uB3D9\uC548 \uC801\uC758 \uACF5\uACA9\uB825\uACFC
       \uC774\uB3D9\uC18D\uB3C4 \uAC10\uC18C"
     ValueList:
-    - def: 3
+    - type: 0
+      def: 3
       unit: 0.1
     MaxLv: 50
     PriceUnit: 4000
   - Name: "\uCE7C\uB0A0\uC5BC\uC74C"
     Grade: 3
     Img: {fileID: -1465441008, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "14\uCD08\uB9C8\uB2E4, \uACF5\uACA9\uB825 {0}% {1}\uAC1C \uC5BC\uC74C\uCE7C\uB0A0
-      \uBE59\uACB0\uACF5\uACA9 (\uB4F1\uAE09\uC5C5\uC2DC +\uBC1C\uC0AC\uCCB4 2\uAC1C)"
+    Desc: "14\uCD08\uB9C8\uB2E4, \uACF5\uACA9\uB825 {0}% {1}\uAC1C \uBE59\uACB0\uACF5\uACA9"
     ValueList:
-    - def: 70
+    - type: 0
+      def: 70
       unit: 1
+    - type: 1
+      def: 5
+      unit: 2
     MaxLv: 500
     PriceUnit: 6000
   - Name: "\uD1A0\uB124\uC774\uB3C4"
@@ -60,7 +67,8 @@ MonoBehaviour:
       \uB098\uC544\uAC00\uB294 \uD68C\uC624\uB9AC\uB97C \uC18C\uD658. \uACF5\uACA9\uBC1B\uC740
       \uC801\uC774 \uBC00\uB824\uB0A8"
     ValueList:
-    - def: 140
+    - type: 0
+      def: 140
       unit: 2
     MaxLv: 250
     PriceUnit: 8500
@@ -70,7 +78,8 @@ MonoBehaviour:
     Desc: "9\uCD08\uB9C8\uB2E4 \uACF5\uACA9\uB825 {0}% \uB79C\uB364 \uBC94\uC704\uACF5\uACA9
       2\uCD08 \uAE30\uC808"
     ValueList:
-    - def: 120
+    - type: 0
+      def: 120
       unit: 2
     MaxLv: 500
     PriceUnit: 12000
@@ -80,7 +89,8 @@ MonoBehaviour:
     Desc: "67\uCD08\uB9C8\uB2E4, \uBAA8\uB4E0\uC801\uC5D0\uAC8C \uACF5\uACA9\uB825
       {0}% \uBE59\uACB0\uACF5\uACA9"
     ValueList:
-    - def: 500
+    - type: 0
+      def: 500
       unit: 3
     MaxLv: 500
     PriceUnit: 25000

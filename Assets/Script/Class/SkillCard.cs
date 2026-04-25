@@ -86,32 +86,39 @@ public class SkillCard : MonoBehaviour
     }
 
     /// <summary>
-    /// 스킬 상세내용 업그레이드 최신화
+    /// 스킬 상세내용 업데이트 (데이터 기반 만능 함수)
     /// </summary>
-    /// <param name="skillLv">스킬레벨</param>
-    /// <param name="msg">스킬내용</param>
-    /// <param name="skillValList">스킬 <초기값, 단위증가량> 리스트</param>
-    public void UpdateDescUI(int skillLv, string msg, List<SkillValue> skillValList)
+    public void UpdateDescUI(int skillLv, CHR_GRADE curGrade, SkillAsset skillAsset)
     {
         try
         {
-            if(skillValList.Count == 1)
+            // 스킬 값의 개수만큼 배열 생성 (string.Format에 넣을 용도)
+            object[] args = new object[skillAsset.ValueList.Count];
+
+            for (int i = 0; i < skillAsset.ValueList.Count; i++)
             {
-                descTxt.text = string.Format(
-                    msg,
-                    skillValList[0].def + skillLv * skillValList[0].unit
-                );
+                SkillValue val = skillAsset.ValueList[i];
+                float finalValue = 0;
+
+                if (val.type == SkillValue.Type.SkillLv)
+                {
+                    // 1. 스킬 레벨 비례 수치
+                    finalValue = val.def + (skillLv * val.unit);
+                }
+                else if (val.type == SkillValue.Type.GradeLv)
+                {
+                    // 2. 캐릭터 등급 비례 수치 (현재 등급 - 스킬 해금 등급)
+                    int gradeDiff = Mathf.Max(0, (int)curGrade - (int)skillAsset.Grade);
+                    finalValue = val.def + (gradeDiff * val.unit);
+                }
+
+                args[i] = finalValue;
             }
-            else if(skillValList.Count == 2)
-            {
-                descTxt.text = string.Format(
-                    msg,
-                    skillValList[0].def + skillLv * skillValList[0].unit,
-                    skillValList[1].def + skillLv * skillValList[1].unit
-                );
-            }
+
+            // {0}, {1}, {2} ... 등 데이터 개수에 상관없이 알아서 텍스트 매핑
+            descTxt.text = string.Format(skillAsset.Desc, args);
         }
-        catch(Exception err)
+        catch(System.Exception err)
         {
             Debug.LogError(err);
         }

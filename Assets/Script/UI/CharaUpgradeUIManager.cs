@@ -175,7 +175,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
                 case (int)CHR_GRADE.LEGEND:
                 case (int)CHR_GRADE.MYTHIC:
                 case (int)CHR_GRADE.PRIME:
-                    skillcard.UpdateDescUI(lv, skillAst.Desc, skillAst.ValueList);
+                    skillcard.UpdateDescUI(lv, chara.Grade, skillAst);
                     break;
             }
         }
@@ -233,7 +233,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
                 case (int)CHR_GRADE.LEGEND:
                 case (int)CHR_GRADE.MYTHIC:
                 case (int)CHR_GRADE.PRIME:
-                    skillcard.UpdateDescUI(lv, skillAst.Desc, skillAst.ValueList);
+                    skillcard.UpdateDescUI(lv, card.GetGrade(), skillAst);
                     break;
             }
         }

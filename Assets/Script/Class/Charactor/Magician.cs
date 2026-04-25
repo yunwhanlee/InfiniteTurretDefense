@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
@@ -12,16 +14,29 @@ public class Magician : Chara
     // 슬로우
     const int SLOW_COOLTIME = 23;
     [SerializeField] float slowTime;
+    // 칼날얼음
+    const int ICEBLADE_TIME = 14;
+    [SerializeField] float iceBladeTime;
 
     protected void Update()
     {
         base.Update();
 
+        // 슬로우
         if(Grade >= CHR_GRADE.EPIC) {
             slowTime += Time.deltaTime;
             if(slowTime >= SLOW_COOLTIME) {
                 Skill3_Slow();
                 slowTime = 0;
+            }
+        }
+
+        // 칼날얼음
+        if(Grade >= CHR_GRADE.EPIC) {
+            iceBladeTime += Time.deltaTime;
+            if(iceBladeTime >= ICEBLADE_TIME) {
+                StartCoroutine(CorSkill4_IceBlade());
+                iceBladeTime = 0;
             }
         }
 
@@ -91,11 +106,11 @@ public class Magician : Chara
             unitPer = skillValList[DMG].unit;
             float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
-            int damage = Mathf.RoundToInt(Dmg * dmgPer);
+            int dmg = Mathf.RoundToInt(Dmg * dmgPer);
 
             // 오브젝트 풀링리스트 관통샷 생성 및 초기화
             FireBall fireBall = GM._.spm.SpawnPoolDics(SK_IDX.SK_FireBall).GetComponent<FireBall>();
-            fireBall.Init(shootTf.position, direction, damage);
+            fireBall.Init(shootTf.position, direction, dmg);
         }
 
         return isActive;
@@ -103,7 +118,7 @@ public class Magician : Chara
 
     private void Skill3_Slow()
     {
-        const int gradeIdx = (int)CHR_GRADE.RARE;
+        const int gradeIdx = (int)CHR_GRADE.EPIC;
         int skillLv = SkillLvArr[gradeIdx];
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
@@ -116,6 +131,50 @@ public class Magician : Chara
 
         // 모든적 슬로우
         GM._.emm.GetAllEnemies().ForEach(enemy => enemy.Slow(time));
+    }
+
+    IEnumerator CorSkill4_IceBlade()
+    {
+        const int gradeIdx = (int)CHR_GRADE.UNIQUE;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        // 현재 등급의 스킬 데이터 에셋 가져오기
+        SkillAsset skillAsset = CharaSkill.skillAssetArr[gradeIdx];
+
+        float dmgPer = 0;
+        int bladeCount = 0;
+
+        // 인스펙터에 세팅된 ValueList를 순회하며 타입별로 값 가져오기
+        foreach (var val in skillAsset.ValueList)
+        {
+            if (val.type == SkillValue.Type.SkillLv)
+            {
+                dmgPer = (val.def + val.unit * skillLv) * 0.01f;
+            }
+            else if (val.type == SkillValue.Type.GradeLv)
+            {
+                int gradeDiff = (int)Grade - (int)skillAsset.Grade;
+                bladeCount = Mathf.RoundToInt(val.def + gradeDiff * val.unit);
+            }
+        }
+
+        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
+        Vector3 pos = shootTf.position;
+
+        // 발사 간격 및 각도 계산
+        const float angleInterval = 15f; 
+        float startAngle = -((bladeCount - 1) * angleInterval / 2f);
+
+        // 칼날얼음 순차적 생성
+        for(int i = 0; i < bladeCount; i++)
+        {
+            float currentAngle = startAngle + (angleInterval * i);
+
+            IceBlade iceBlade = GM._.spm.SpawnPoolDics(SK_IDX.SK_IceBlade).GetComponent<IceBlade>();
+            iceBlade.Init(pos, direction, dmg, currentAngle);
+            
+            yield return WFS_0_1;
+        }
     }
 #endregion
 }

@@ -31277,7 +31277,6 @@ MonoBehaviour:
   phoenixArrowPf: {fileID: 1505174479506520233, guid: d2a7e64f70b43df44b790b923daf4f0b, type: 3}
   phoenixFireField: {fileID: 7741586878106582119, guid: cc35cbcc66ac2164cbadce240d659ce0, type: 3}
   fireBallPf: {fileID: 5290811608803825050, guid: c0958c303d10a904d9b836e5e6527376, type: 3}
-  iceBladePf: {fileID: 1561386537401476594, guid: b41dba4e515985e438acb5aa5d0e7973, type: 3}
 --- !u!4 &1682242765
 Transform:
   m_ObjectHideFlags: 0

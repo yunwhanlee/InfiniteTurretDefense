@@ -13,6 +13,7 @@ public class SkillPoolManager : MonoBehaviour
         SK_PhoenixFireField, // 피닉스 불장판
         //* 법사 스킬
         SK_FireBall, // 파이어볼
+        SK_IceBlade, // 칼날얼음
     }
 
     // 오브젝트 풀링
@@ -25,6 +26,7 @@ public class SkillPoolManager : MonoBehaviour
     public PhoenixFireField phoenixFireField;
     [Header("법사 스킬")]
     public FireBall fireBallPf;
+    public IceBlade iceBladePf;
 
     void Awake()
     {
@@ -34,6 +36,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_PhoenixArrow, Init(phoenixArrowPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_PhoenixFireField, Init(phoenixFireField.gameObject, 2));
         poolDics.Add(SK_IDX.SK_FireBall, Init(fireBallPf.gameObject, 2));
+        poolDics.Add(SK_IDX.SK_IceBlade, Init(iceBladePf.gameObject, 14));
     }
 
 #region POOL

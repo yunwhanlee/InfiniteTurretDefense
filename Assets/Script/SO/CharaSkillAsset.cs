@@ -8,6 +8,8 @@ using static Config;
 [System.Serializable]
 public struct SkillValue
 {
+    public enum Type {SkillLv, GradeLv}
+    public Type type; // 타입: 스킬레벨 또는 등급레벨
     public float def; // 초기 수치
     public float unit; // 업그레이드 단위 증가량
 }
