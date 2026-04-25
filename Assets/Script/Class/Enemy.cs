@@ -14,7 +14,7 @@ public enum ENEMY_TYPE
 [RequireComponent(typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
-    public enum STATE { MOVE, ATTACK, DEAD }
+    public enum STATE { MOVE, ATTACK, DEAD, KNOCKBACK }
 
     // 이벤트 액션
     public Action<Enemy> OnDeadEvent = (Enemy) => {};
@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float time = 0;
     [SerializeField] float span = 1.0f;
 
+    [SerializeField] float knockbackPower; // 넉백 파워
+    [SerializeField] Vector3 knockbackDir; // 넉백 방향
+
     [Header("상태이상 타이머")]
     [SerializeField] float stunTime = 0; // 스턴
     [SerializeField] float slowTime = 0; // 슬로우
@@ -48,6 +51,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sprRdr;
     Animator anim;
     SpriteLibrary sprLib;
+    public Rigidbody2D rigid;
 
     // UI
     public Slider hpSlider;
@@ -70,6 +74,7 @@ public class Enemy : MonoBehaviour
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         sprLib = GetComponent<SpriteLibrary>();
+        rigid = GetComponent<Rigidbody2D>();
         propBlock = new MaterialPropertyBlock();
         playerPos = Vector3.zero;
     }
@@ -111,6 +116,24 @@ public class Enemy : MonoBehaviour
         {
             transform.position += moveSpeed * Time.deltaTime * direction;
         }
+        // 넉백
+        else if(state == STATE.KNOCKBACK)
+        {
+            if(knockbackPower > 0)
+            {
+                transform.position += knockbackPower * Time.deltaTime * knockbackDir;
+                knockbackPower -= Time.deltaTime * 4;
+            }
+            else
+            {
+                state = STATE.MOVE;
+                anim.SetTrigger(ANIM_TRG_IS_MOVE);
+                knockbackPower = 0;
+                knockbackDir = Vector3.zero;
+                direction = (playerPos - transform.position).normalized;
+                sprRdr.flipX = direction.x < 0? true : false;;
+            }
+        }
         // 공격
         else if(state == STATE.ATTACK)
         {
@@ -149,6 +172,8 @@ public class Enemy : MonoBehaviour
         stunTime = 0;
         slowTime = 0;
         dotTime = 0;
+        knockbackPower = 0;
+        knockbackDir = Vector3.zero;
 
         this.maxHp = maxHp;
         this.dmg = dmg;
@@ -193,6 +218,17 @@ public class Enemy : MonoBehaviour
         slowTime = duration;
         sprRdr.color = Color.blue;
         moveSpeed = originMoveSpeed * SLOW_RATIO;
+    }
+
+    public void KnockBack(float power, Vector3 dir)
+    {
+        if(state == STATE.DEAD)
+            return;
+
+        state = STATE.KNOCKBACK;
+        anim.SetTrigger(ANIM_TRG_IS_MOVE);
+        knockbackPower = power;
+        knockbackDir = dir;
     }
 
     /// <summary>

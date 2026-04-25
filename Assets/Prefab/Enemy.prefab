@@ -121,11 +121,14 @@ MonoBehaviour:
   state: 0
   time: 0
   span: 1
+  isKnockbacked: 0
+  knockbackPower: 0
+  knockbackDir: {x: 0, y: 0, z: 0}
   stunTime: 0
   slowTime: 0
   dotTime: 0
-  slowRatio: 1
   dotDamage: 0
+  rigid: {fileID: 0}
   hpSlider: {fileID: 7256901569083789837}
 --- !u!61 &8124658118983439031
 BoxCollider2D:
@@ -157,7 +160,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -188,7 +191,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -199,7 +202,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &2535060057992120462
 Animator:
   serializedVersion: 7

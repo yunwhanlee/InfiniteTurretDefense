@@ -14,6 +14,7 @@ public class SkillPoolManager : MonoBehaviour
         //* 법사 스킬
         SK_FireBall, // 파이어볼
         SK_IceBlade, // 칼날얼음
+        SK_Tornado, // 토네이도
     }
 
     // 오브젝트 풀링
@@ -27,6 +28,7 @@ public class SkillPoolManager : MonoBehaviour
     [Header("법사 스킬")]
     public FireBall fireBallPf;
     public IceBlade iceBladePf;
+    public Tornado tornadoPf;
 
     void Awake()
     {
@@ -37,6 +39,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_PhoenixFireField, Init(phoenixFireField.gameObject, 2));
         poolDics.Add(SK_IDX.SK_FireBall, Init(fireBallPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_IceBlade, Init(iceBladePf.gameObject, 14));
+        poolDics.Add(SK_IDX.SK_Tornado, Init(tornadoPf.gameObject, 2));
     }
 
 #region POOL

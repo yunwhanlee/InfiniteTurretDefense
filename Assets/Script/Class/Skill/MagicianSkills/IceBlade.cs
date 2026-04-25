@@ -11,7 +11,7 @@ public class IceBlade : MonoBehaviour
         transform.position += moveSpeed * Time.deltaTime * dir;
     }
 
-    void OTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         Enemy enemy = col.GetComponent<Enemy>();
         if(enemy.State == Enemy.STATE.DEAD)

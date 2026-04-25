@@ -17,6 +17,9 @@ public class Magician : Chara
     // 칼날얼음
     const int ICEBLADE_TIME = 14;
     [SerializeField] float iceBladeTime;
+    // 토네이도
+    const int TORNADO_TIME = 32;
+    [SerializeField] float tornadoTime;
 
     protected void Update()
     {
@@ -32,11 +35,20 @@ public class Magician : Chara
         }
 
         // 칼날얼음
-        if(Grade >= CHR_GRADE.EPIC) {
+        if(Grade >= CHR_GRADE.UNIQUE) {
             iceBladeTime += Time.deltaTime;
             if(iceBladeTime >= ICEBLADE_TIME) {
                 StartCoroutine(CorSkill4_IceBlade());
                 iceBladeTime = 0;
+            }
+        }
+
+        // 토네이도
+        if(Grade >= CHR_GRADE.LEGEND) {
+            tornadoTime += Time.deltaTime;
+            if(tornadoTime >= TORNADO_TIME) {
+                Skill5_Tornado();
+                tornadoTime = 0;
             }
         }
 
@@ -159,7 +171,6 @@ public class Magician : Chara
         }
 
         int dmg = Mathf.RoundToInt(Dmg * dmgPer);
-        Vector3 pos = shootTf.position;
 
         // 발사 간격 및 각도 계산
         const float angleInterval = 15f; 
@@ -171,10 +182,25 @@ public class Magician : Chara
             float currentAngle = startAngle + (angleInterval * i);
 
             IceBlade iceBlade = GM._.spm.SpawnPoolDics(SK_IDX.SK_IceBlade).GetComponent<IceBlade>();
-            iceBlade.Init(pos, direction, dmg, currentAngle);
+            iceBlade.Init(shootTf.position, direction, dmg, currentAngle);
             
             yield return WFS_0_1;
         }
+    }
+
+    private void Skill5_Tornado()
+    {
+        const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+
+        Tornado tornado = GM._.spm.SpawnPoolDics(SK_IDX.SK_Tornado).GetComponent<Tornado>();
+        tornado.Init(shootTf.position, direction, damage);
     }
 #endregion
 }
