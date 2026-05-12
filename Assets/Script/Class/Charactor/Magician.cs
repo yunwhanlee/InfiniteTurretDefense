@@ -20,6 +20,12 @@ public class Magician : Chara
     // 토네이도
     const int TORNADO_TIME = 32;
     [SerializeField] float tornadoTime;
+    // 천둥번개
+    const int THUNDER_TIME = 11;
+    [SerializeField] float thunderTime;
+    // 블리자드
+    const int BLIZZARD_TIME = 67;
+    [SerializeField] float blizzardTime;
 
     protected void Update()
     {
@@ -49,6 +55,24 @@ public class Magician : Chara
             if(tornadoTime >= TORNADO_TIME) {
                 Skill5_Tornado();
                 tornadoTime = 0;
+            }
+        }
+
+        // 천둥번개
+        if(Grade >= CHR_GRADE.MYTHIC) {
+            thunderTime += Time.deltaTime;
+            if(thunderTime >= THUNDER_TIME) {
+                // Skill6_Thunder();
+                thunderTime = 0;
+            }
+        }
+
+        // 블리자드
+        if(Grade >= CHR_GRADE.PRIME) {
+            blizzardTime += Time.deltaTime;
+            if(blizzardTime >= BLIZZARD_TIME) {
+                // Skill7_Blizzard();
+                blizzardTime = 0;
             }
         }
 

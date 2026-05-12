@@ -19,6 +19,7 @@ public class EffectPoolManager : MonoBehaviour
         //* 법사 스킬
         FireBallExplosionEF,
         SlowMagicEF,
+        BlizzardEF,
     }
 
     // 오브젝트
@@ -33,7 +34,7 @@ public class EffectPoolManager : MonoBehaviour
     [Header("법사 스킬 이펙트")]
     public GameObject FireBallExplosionEF;
     public GameObject SlowMagicEF;
-
+    public GameObject BlizzardEF;
     // 오브젝트 풀링
     public Transform effectGroupTf;
     Dictionary<EF_IDX, IObjectPool<GameObject>> poolDics;     public Dictionary<EF_IDX, IObjectPool<GameObject>> PoolDics {get => poolDics;}
@@ -51,6 +52,7 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.ShockWaveEF, Init(ShockWaveEF.gameObject, 5));
         poolDics.Add(EF_IDX.FireBallExplosionEF, Init(FireBallExplosionEF.gameObject, 3));
         poolDics.Add(EF_IDX.SlowMagicEF, Init(SlowMagicEF.gameObject, 1));
+        poolDics.Add(EF_IDX.BlizzardEF, Init(BlizzardEF.gameObject, 1));
         // 여기에 추가
     }
 
