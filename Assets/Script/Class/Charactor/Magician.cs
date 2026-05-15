@@ -62,7 +62,7 @@ public class Magician : Chara
         if(Grade >= CHR_GRADE.MYTHIC) {
             thunderTime += Time.deltaTime;
             if(thunderTime >= THUNDER_TIME) {
-                // Skill6_Thunder();
+                Skill6_Thunder();
                 thunderTime = 0;
             }
         }
@@ -71,7 +71,7 @@ public class Magician : Chara
         if(Grade >= CHR_GRADE.PRIME) {
             blizzardTime += Time.deltaTime;
             if(blizzardTime >= BLIZZARD_TIME) {
-                // Skill7_Blizzard();
+                Skill7_Blizzard();
                 blizzardTime = 0;
             }
         }
@@ -225,6 +225,41 @@ public class Magician : Chara
 
         Tornado tornado = GM._.spm.SpawnPoolDics(SK_IDX.SK_Tornado).GetComponent<Tornado>();
         tornado.Init(shootTf.position, direction, damage);
+    }
+
+    private void Skill6_Thunder()
+    {
+        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+
+        //TODO 천둥번개 스킬 구현 : Thunder 클래스 작성하기!
+        // Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
+        // thunder.Init(shootTf.position, direction, damage);
+    }
+
+    private void Skill7_Blizzard()
+    {
+        const int gradeIdx = (int)CHR_GRADE.PRIME;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+
+        // 모든 적 공격
+        GM._.emm.GetAllEnemies().ForEach(enemy =>
+        {
+            enemy.OnHit(damage, false);
+            enemy.Slow(5f); // 5초간 빙결 (슬로우)
+        });
     }
 #endregion
 }
