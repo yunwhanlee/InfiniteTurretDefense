@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using static SkillPoolManager;
 
 public class Tornado : MonoBehaviour
 {
@@ -26,16 +28,20 @@ public class Tornado : MonoBehaviour
                 enemy.KnockBack(5, dir);
         }
     }
+
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg)
     {
         transform.position = pos;
         this.dir = dir;
         this.dmg = dmg;
+        StartCoroutine(CoRelease());
+    }
 
-        // 발사 방향(각도)
-        // float angle = Mathf.Atan2(this.dir.y, this.dir.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
+    IEnumerator CoRelease()
+    {
+        yield return Config.WFS_5;
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_Tornado, gameObject);
     }
 #endregion
 }

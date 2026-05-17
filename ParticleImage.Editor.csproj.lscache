@@ -62,7 +62,7 @@ Assets/AssetKits/ParticleImage/Editor/
 Temp/obj/ParticleImage.Editor/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]
-../../Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Managed/
+C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Managed/
  UnityEditor.Graphs.dll
  UnityEngine/
   UnityEditor.AccessibilityModule.dll
@@ -202,7 +202,11 @@ Temp/obj/ParticleImage.Editor/.NETStandard,Version=v2.1.AssemblyAttributes.cs
   UnityEngine.VRModule.dll
   UnityEngine.WindModule.dll
   UnityEngine.XRModule.dll
-../../Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/
+C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/
+ Unity.Android.Gradle.dll
+ Unity.Android.Types.dll
+ UnityEditor.Android.Extensions.dll
+C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/
  PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
  UnityReferenceAssemblies/unity-4.8-api/Facades/
   Microsoft.Win32.Primitives.dll
@@ -351,22 +355,20 @@ Library/PackageCache/
  com.unity.visualscripting@191c0d7e3b69/
   Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll
   Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll
-Temp/bin/Debug/
- ParticleImage.dll
- Unity.Burst.dll
+Library/ScriptAssemblies/
  Unity.Collections.dll
- Unity.Mathematics.dll
  UnityEditor.TestRunner.dll
  UnityEditor.UI.dll
  UnityEngine.TestRunner.dll
  UnityEngine.UI.dll
+Temp/bin/Debug/ParticleImage.dll
 
 [analyzerReferences]
-../../Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/
+C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/
  Unity.Properties.SourceGenerator.dll
  Unity.SourceGenerators.dll
  Unity.UIToolkit.SourceGenerator.dll
-../../Users/HP/.vscode/extensions/visualstudiotoolsforunity.vstuc-1.2.2/Analyzers/Microsoft.Unity.Analyzers.dll
+C:/Users/yunwhanLee/.vscode/extensions/visualstudiotoolsforunity.vstuc-1.2.2/Analyzers/Microsoft.Unity.Analyzers.dll
 
 [analyzerConfigFiles]
 Temp/obj/ParticleImage.Editor/ParticleImage.Editor.GeneratedMSBuildEditorConfig.editorconfig

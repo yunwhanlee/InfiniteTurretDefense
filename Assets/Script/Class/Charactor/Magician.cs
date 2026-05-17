@@ -21,7 +21,7 @@ public class Magician : Chara
     const int TORNADO_TIME = 32;
     [SerializeField] float tornadoTime;
     // 천둥번개
-    const int THUNDER_TIME = 11;
+    const int THUNDER_TIME = 9;
     [SerializeField] float thunderTime;
     // 블리자드
     const int BLIZZARD_TIME = 67;
@@ -199,6 +199,7 @@ public class Magician : Chara
         // 발사 간격 및 각도 계산
         const float angleInterval = 15f; 
         float startAngle = -((bladeCount - 1) * angleInterval / 2f);
+        Vector3 dir = direction; // 방향이 바뀌지 않도록 발사시 방향 변수에 저장
 
         // 칼날얼음 순차적 생성
         for(int i = 0; i < bladeCount; i++)
@@ -206,7 +207,7 @@ public class Magician : Chara
             float currentAngle = startAngle + (angleInterval * i);
 
             IceBlade iceBlade = GM._.spm.SpawnPoolDics(SK_IDX.SK_IceBlade).GetComponent<IceBlade>();
-            iceBlade.Init(shootTf.position, direction, dmg, currentAngle);
+            iceBlade.Init(shootTf.position, dir, dmg, currentAngle);
             
             yield return WFS_0_1;
         }
@@ -238,9 +239,9 @@ public class Magician : Chara
 
         int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        //TODO 천둥번개 스킬 구현 : Thunder 클래스 작성하기!
-        // Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
-        // thunder.Init(shootTf.position, direction, damage);
+        Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
+        Vector3 pos = GetCurrentTargetEnemy().transform.position;
+        thunder.Init(pos, damage);
     }
 
     private void Skill7_Blizzard()
@@ -254,9 +255,18 @@ public class Magician : Chara
 
         int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
+        // 이펙트
+        GM._.epm.SpawnPoolDics(EF_IDX.BlizzardEF, transform.position, WFS_3);
+
         // 모든 적 공격
-        GM._.emm.GetAllEnemies().ForEach(enemy =>
-        {
+        StartCoroutine(CoBlizzardAttack(damage));
+    }
+
+    IEnumerator CoBlizzardAttack(int damage)
+    {
+        yield return WFS_1;
+
+        GM._.emm.GetAllEnemies().ForEach(enemy => {
             enemy.OnHit(damage, false);
             enemy.Slow(5f); // 5초간 빙결 (슬로우)
         });

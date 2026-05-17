@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Pool;
 using static Config;
 
+/// <summary>
+/// 모든 이펙트 매니저
+/// </summary>
 public class EffectPoolManager : MonoBehaviour
 {
     public enum EF_IDX
@@ -17,9 +20,9 @@ public class EffectPoolManager : MonoBehaviour
         WheelWindEF, // 휠윈드
         ShockWaveEF, // 충격파
         //* 법사 스킬
-        FireBallExplosionEF,
-        SlowMagicEF,
-        BlizzardEF,
+        FireBallExplosionEF, // 파이어볼 폭발
+        SlowMagicEF, // 슬로우
+        BlizzardEF, // 블리자드
     }
 
     // 오브젝트
@@ -70,7 +73,12 @@ public class EffectPoolManager : MonoBehaviour
         );
     }
 
-    /// <summary> 오브젝트 풀링리스트 생성 </summary>
+    /// <summary>
+    /// 오브젝트 풀링리스트 생성
+    /// </summary>
+    /// <param name="enumIdx">EF_IDX</param>
+    /// <param name="pos">위치</param>
+    /// <param name="deleteSec">회수 대기시간</param>
     public void SpawnPoolDics(EF_IDX enumIdx, Vector3 pos, WaitForSeconds deleteSec = null)
     {
         Debug.Log($"SpawnPoolDics():: {enumIdx}, {pos}");

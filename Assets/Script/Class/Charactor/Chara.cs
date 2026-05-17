@@ -144,6 +144,14 @@ public abstract class Chara : MonoBehaviour
         // 변경된 블록을 렌더러에 다시 반영
         sprRdr.SetPropertyBlock(mtPropBlock);
     }
+
+    /// <summary>
+    /// 현재 타겟중인 적 반환
+    /// </summary>
+    public Enemy GetCurrentTargetEnemy()
+    {
+        return targetFinder.CurrentTarget;
+    }
 #endregion
 #region SKILL
     /// <summary>

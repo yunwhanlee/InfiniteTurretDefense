@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+/// <summary>
+/// 오브젝트 클래스로 생성되는 스킬 매니저
+/// </summary>
 public class SkillPoolManager : MonoBehaviour
 {
     public enum SK_IDX
@@ -14,6 +17,7 @@ public class SkillPoolManager : MonoBehaviour
         //* 법사 스킬
         SK_FireBall, // 파이어볼
         SK_IceBlade, // 칼날얼음
+        SK_Thunder, // 천둥번개
         SK_Tornado, // 토네이도
     }
 
@@ -28,6 +32,7 @@ public class SkillPoolManager : MonoBehaviour
     [Header("법사 스킬")]
     public FireBall fireBallPf;
     public IceBlade iceBladePf;
+    public Thunder thunderPf;
     public Tornado tornadoPf;
 
     void Awake()
@@ -39,6 +44,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_PhoenixFireField, Init(phoenixFireField.gameObject, 2));
         poolDics.Add(SK_IDX.SK_FireBall, Init(fireBallPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_IceBlade, Init(iceBladePf.gameObject, 14));
+        poolDics.Add(SK_IDX.SK_Thunder, Init(thunderPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_Tornado, Init(tornadoPf.gameObject, 2));
     }
 

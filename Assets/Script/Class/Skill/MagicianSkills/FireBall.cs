@@ -17,25 +17,28 @@ public class FireBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        // 적과 충돌
         if (col.gameObject.CompareTag(Config.TAG.ENEMY))
         {
-            Enemy hitEnemy = col.GetComponent<Enemy>();
-            if(hitEnemy.State == Enemy.STATE.DEAD)
+            Enemy enemy = col.GetComponent<Enemy>();
+            if(enemy.State == Enemy.STATE.DEAD)
                 return;
 
             // 이펙트
             GM._.epm.SpawnPoolDics(EF_IDX.FireBallExplosionEF, transform.position);
 
+            // 구 범위 충돌
             Collider2D[] hits = Physics2D.OverlapCircleAll(
                 transform.position,
                 radius,
                 Config.Layer.ENEMY
             );
 
+            // 범위 피해
             foreach(Collider2D hit in hits)
             {
-                Enemy enemy = hit.GetComponent<Enemy>();
-                enemy.OnHit(dmg, isCritical: false);
+                Enemy hitEnemy = hit.GetComponent<Enemy>();
+                hitEnemy.OnHit(dmg, isCritical: false);
             }
 
             GM._.spm.ReleasePoolDics(SK_IDX.SK_FireBall, gameObject);
@@ -55,7 +58,7 @@ public class FireBall : MonoBehaviour
     }
 #endregion
 
-        // (기즈모) 공격범위 시각화
+    // (기즈모) 공격범위 시각화
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
