@@ -66,11 +66,11 @@ public abstract class Chara : MonoBehaviour
 
     protected void Update()
     {
+        time += Time.deltaTime;
+
         Enemy target = targetFinder.CurrentTarget;
         if(target == null)
             return;
-
-        time += Time.deltaTime;
 
         // 공격
         if(time > GetAttackPerSecond(AttackSpeed))

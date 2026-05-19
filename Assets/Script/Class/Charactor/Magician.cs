@@ -11,9 +11,9 @@ public class Magician : Chara
     public Transform shootTf;
     public Sprite missileSpr;
 
-    // 슬로우
-    const int SLOW_COOLTIME = 23;
-    [SerializeField] float slowTime;
+    // 매직오브
+    const int MAGICORB_TIME = 30;
+    [SerializeField] float magicOrbTime;
     // 칼날얼음
     const int ICEBLADE_TIME = 14;
     [SerializeField] float iceBladeTime;
@@ -31,12 +31,12 @@ public class Magician : Chara
     {
         base.Update();
 
-        // 슬로우
+        // 매직오브
         if(Grade >= CHR_GRADE.EPIC) {
-            slowTime += Time.deltaTime;
-            if(slowTime >= SLOW_COOLTIME) {
-                Skill3_Slow();
-                slowTime = 0;
+            magicOrbTime += Time.deltaTime;
+            if(magicOrbTime >= MAGICORB_TIME) {
+                Skill3_MagicOrb();
+                magicOrbTime = 0;
             }
         }
 
@@ -152,21 +152,24 @@ public class Magician : Chara
         return isActive;
     }
 
-    private void Skill3_Slow()
+    private void Skill3_MagicOrb()
     {
         const int gradeIdx = (int)CHR_GRADE.EPIC;
         int skillLv = SkillLvArr[gradeIdx];
 
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        float time = defPer + unitPer * skillLv; // 슬로우 초단위
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
-        // 슬로우 영창 이펙트
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        GM._.epm.SpawnPoolDics(EF_IDX.SlowMagicEF, pos);
+        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
 
-        // 모든적 슬로우
-        GM._.emm.GetAllEnemies().ForEach(enemy => enemy.Slow(time));
+        // 매직오브 소환 이펙트
+        Vector3 pos = new Vector3(transform.position.x + 0.35f, transform.position.y + 0.6f, transform.position.z);
+        GM._.epm.SpawnPoolDics(EF_IDX.MagicOrbSpawnEF, pos);
+
+        // 매직오브 소환
+        MagicOrb magicOrb = GM._.spm.SpawnPoolDics(SK_IDX.SK_MagicOrb).GetComponent<MagicOrb>();
+        magicOrb.Init(dmg, pos);
     }
 
     IEnumerator CorSkill4_IceBlade()

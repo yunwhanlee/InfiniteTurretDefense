@@ -36,15 +36,15 @@ MonoBehaviour:
       unit: 3
     MaxLv: 90
     PriceUnit: 2500
-  - Name: "\uC2AC\uB85C\uC6B0"
+  - Name: "\uB9E4\uC9C1\uC624\uBE0C"
     Grade: 2
     Img: {fileID: 2004552407, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "39\uCD08\uB9C8\uB2E4, {0}\uCD08\uB3D9\uC548 \uC801\uC758 \uACF5\uACA9\uB825\uACFC
-      \uC774\uB3D9\uC18D\uB3C4 \uAC10\uC18C"
+    Desc: "30\uCD08\uB9C8\uB2E4, 20\uCD08\uB3D9\uC548 \uACF5\uACA9\uB825 {0}%\uC758
+      \uC624\uBE0C\uB97C \uC18C\uD658"
     ValueList:
     - type: 0
-      def: 3
-      unit: 0.1
+      def: 10
+      unit: 0.5
     MaxLv: 50
     PriceUnit: 4000
   - Name: "\uCE7C\uB0A0\uC5BC\uC74C"
