@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 9f849dde5616b8248bf9f81c731dd1dd
+guid: 8f87e35d3a9e3de4bb3def89df41a21b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7539730846150177898
-    second: _HolyKnight1_0
+      213: 6917527403556305843
+    second: _HolyKnight6_0
   - first:
-      213: 3056256095089525605
-    second: _HolyKnight1_1
+      213: 1916682942201655681
+    second: _HolyKnight6_1
   - first:
-      213: 4981530606934876910
-    second: _HolyKnight1_2
+      213: -2606013173365184358
+    second: _HolyKnight6_2
   - first:
-      213: 559840491029871235
-    second: _HolyKnight1_3
+      213: -3089561631069706279
+    second: _HolyKnight6_3
   - first:
-      213: -3143048118751490837
-    second: _HolyKnight1_4
+      213: -5866057799152018715
+    second: _HolyKnight6_4
   - first:
-      213: -6888352237964928295
-    second: _HolyKnight1_5
+      213: -7543607561823591573
+    second: _HolyKnight6_5
   - first:
-      213: 8033655290634336098
-    second: _HolyKnight1_6
+      213: -4916132939348647602
+    second: _HolyKnight6_6
   - first:
-      213: 3632136718351498623
-    second: _HolyKnight1_7
+      213: -2566051715539439893
+    second: _HolyKnight6_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HolyKnight1_0
+      name: HolyKnight6_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79f8f9aae73114e4dba29291a4d175d2
-      internalID: -1526967498
+      spriteID: 580ffbe2212249e4d9fc2c9b60ba02de
+      internalID: -1622187228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_1
+      name: HolyKnight6_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 203713b7481c5974abfca299c4a866aa
-      internalID: 834668736
+      spriteID: 21329c637ffaa2c4eb1d20a28d08cc9a
+      internalID: -43392317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_2
+      name: HolyKnight6_2
       rect:
         serializedVersion: 2
         x: 128
@@ -180,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7697815e35f46474097e220d6001cca6
-      internalID: -187992706
+      spriteID: 37abb8a379b9e5446810788235e3be16
+      internalID: -66872355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_3
+      name: HolyKnight6_3
       rect:
         serializedVersion: 2
         x: 0
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc337d39c5b01ff4182811163cb1e0a5
-      internalID: -1042490819
+      spriteID: c35aefcd04cd1a94aa4f2415131b388c
+      internalID: 975840463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_4
+      name: HolyKnight6_4
       rect:
         serializedVersion: 2
         x: 64
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9619324ca5aaeab458428060509709b2
-      internalID: -822306933
+      spriteID: a3e01e1f0d6b62b4d86501e0907b34a2
+      internalID: 1317629762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_5
+      name: HolyKnight6_5
       rect:
         serializedVersion: 2
         x: 128
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e755144737df9504791b7b907c766e1e
-      internalID: -714859895
+      spriteID: d7e3d521fef1a0043a21957d67c69e86
+      internalID: 540097935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_6
+      name: HolyKnight6_6
       rect:
         serializedVersion: 2
         x: 0
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcb67dca867214b4b98129049196a294
-      internalID: -194912775
+      spriteID: 4cbbc57acfbb4de45af5768a8128dc15
+      internalID: 1775834609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight1_7
+      name: HolyKnight6_7
       rect:
         serializedVersion: 2
         x: 64
@@ -290,8 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5095fe3042a77e3418f868891d4425ce
-      internalID: -1007924495
+      spriteID: 4ebf444ba93832443ba5a1ed8820c5c0
+      internalID: -638953655
       vertices: []
       indices: 
       edges: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 16c8405d3806a2b41bda136189b43e46
+    spriteID: 51b5034a56e8d2646a3fe34cbca393c3
     internalID: 0
     vertices: []
     indices: 
@@ -312,14 +312,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      HolyKnight1_0: -1526967498
-      HolyKnight1_1: 834668736
-      HolyKnight1_2: -187992706
-      HolyKnight1_3: -1042490819
-      HolyKnight1_4: -822306933
-      HolyKnight1_5: -714859895
-      HolyKnight1_6: -194912775
-      HolyKnight1_7: -1007924495
+      HolyKnight6_0: -1622187228
+      HolyKnight6_1: -43392317
+      HolyKnight6_2: -66872355
+      HolyKnight6_3: 975840463
+      HolyKnight6_4: 1317629762
+      HolyKnight6_5: 540097935
+      HolyKnight6_6: 1775834609
+      HolyKnight6_7: -638953655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
