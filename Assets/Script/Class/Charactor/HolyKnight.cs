@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
@@ -115,7 +116,7 @@ public class HolyKnight : Chara
             holyAuraTime += Time.deltaTime;
             if(holyAuraTime >= HOLY_AURA_COOLTIME)
             {
-                //TODO Skill5_HolyAura();
+                Skill5_HolyAura();
                 holyAuraTime = 0;
             }
         }
@@ -209,8 +210,28 @@ public class HolyKnight : Chara
     /// 빛의아우라
     /// </summary>
     private void Skill5_HolyAura() {
-        
+        const int SEC = 0;
+        const int DEC_PER = 1;
+
+        const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        int skillLv = SkillLvArr[gradeIdx];
+        var skillValList = CharaSkill.skillAssetArr[gradeIdx].ValueList;
+
+        // {0} 지속시간
+        float defPer = skillValList[SEC].def;
+        float unitPer = skillValList[SEC].unit;
+        float duration = defPer + unitPer * skillLv;
+
+        // {1} 적 공격력, 공격속도 감소 %
+        float defPer2 = skillValList[DEC_PER].def;
+        float unitPer2 = skillValList[DEC_PER].unit;
+        float decPer = (defPer2 + unitPer2 * skillLv) * 0.01f; // 백분률
+
+        HolyAura holyAura = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyAura).GetComponent<HolyAura>();
+        Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y - 0.75f, tower.transform.position.z);
+        holyAura.Init(pos, duration, decPer);
     }
+
     /// <summary>
     /// 빛의기둥
     /// </summary>

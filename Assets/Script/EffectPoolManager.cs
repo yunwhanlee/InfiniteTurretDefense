@@ -27,9 +27,9 @@ public class EffectPoolManager : MonoBehaviour
         SmashEF, // 내려치기
         HolyGuardIconEF, // 빛의보호막 아이콘
         HolyGuardEF_Object, // 빛의보호막
-        HolyBurstEF, // 빛폭발
+        //? HolyBurstEF => SkillPoolManager 관리
         HolyHealEF, // 빛의치유
-        HolyAuraEF, // 빛의아우라
+        //? HolyAuraEF, // 빛의아우라 => SkillPoolManager 관리
         //? HolyBeamEF => SkillPoolManager 관리
         //? HolySmiteEF => SkillPoolManager 관리
     }
@@ -51,9 +51,7 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject SmashEF;
     public GameObject HolyGuardIconEF;
     public GameObject HolyGuardEF_Object; // 미리 오브젝트 GroupTf에 생성 비/활성화 관리
-    public GameObject HolyBurstEF;
     public GameObject HolyHealEF;
-    public GameObject HolyAuraEF;
     [Space(5)]
     // 오브젝트 풀링
     public Transform effectGroupTf;
@@ -79,9 +77,7 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.SmashEF, Init(SmashEF.gameObject, 1));
         poolDics.Add(EF_IDX.HolyGuardIconEF, Init(HolyGuardIconEF.gameObject, 1));
         HolyGuardEF_Object.SetActive(false); // 오브젝트 비활성화 초기화
-        poolDics.Add(EF_IDX.HolyBurstEF, Init(HolyBurstEF.gameObject, 1));
         poolDics.Add(EF_IDX.HolyHealEF, Init(HolyHealEF.gameObject, 1));
-        poolDics.Add(EF_IDX.HolyAuraEF, Init(HolyAuraEF.gameObject, 1));
         // 여기에 추가
     }
 

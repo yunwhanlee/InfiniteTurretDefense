@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using Random = UnityEngine.Random;
 
 public enum ENEMY_TYPE
@@ -21,9 +22,20 @@ public class Enemy : MonoBehaviour
 
     public int maxHp;
     public int hp;
+
     private float originMoveSpeed;
     public float moveSpeed;
-    public int dmg;
+
+    public int ExtraDmg;
+    [SerializeField] int dmg;   public int Dmg
+    {
+        get => dmg;
+        set
+        {
+            dmg = ExtraDmg + value;
+        }
+    }
+
     public bool IsAlive => hp > 0;
     public Transform targetSpotTf;
 
@@ -176,7 +188,8 @@ public class Enemy : MonoBehaviour
         knockbackDir = Vector3.zero;
 
         this.maxHp = maxHp;
-        this.dmg = dmg;
+        Dmg = dmg;
+        ExtraDmg = 0;
 
         state = STATE.MOVE;
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
@@ -243,7 +256,7 @@ public class Enemy : MonoBehaviour
     IEnumerator CorAttack(Tower tower)
     {
         anim.SetTrigger(ANIM_TRG_IS_ATTACK);
-        tower.OnHit(dmg);
+        tower.OnHit(Dmg);
         yield return new WaitForSeconds(1);
     }
 

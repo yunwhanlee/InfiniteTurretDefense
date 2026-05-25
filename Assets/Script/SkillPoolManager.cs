@@ -22,6 +22,7 @@ public class SkillPoolManager : MonoBehaviour
         SK_Tornado, // 토네이도
         //* 성기사 스킬
         SK_HolyBurst, // 빛폭발
+        SK_HolyAura, // 빛의아우라
     }
 
     // 오브젝트 풀링
@@ -40,6 +41,7 @@ public class SkillPoolManager : MonoBehaviour
     public Tornado tornadoPf;
     [Header("성기사 스킬")]
     public HolyBurst holyBurst;
+    public HolyAura holyAura;
 
     void Awake()
     {
@@ -57,6 +59,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_Tornado, Init(tornadoPf.gameObject, 2));
         // 성기사
         poolDics.Add(SK_IDX.SK_HolyBurst, Init(holyBurst.gameObject, 1));
+        poolDics.Add(SK_IDX.SK_HolyAura, Init(holyAura.gameObject, 1));
     }
 
 #region POOL
