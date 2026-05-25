@@ -139,7 +139,6 @@ public class Warrior : Chara
     /// <summary> 강타 </summary>
     private int Skill2_PowerStrike(int dmg)
     {
-        Debug.Log($"Skill2_PowerStrike():: dmg= {dmg}");
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 

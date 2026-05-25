@@ -14,8 +14,9 @@ public class Tower : MonoBehaviour
     [SerializeField] STATE state;    public STATE State { get => state; set => state = value; }
 
     //* 이벤트
-    public event Action<int, int> OnHpChanged; // 현재 체력, 최대 체력
     public event Action<int> OnArmorChanged; // 방어력
+    public event Action<int, int> OnHpChanged; // 현재 체력, 최대 체력
+    public event Action<int, int> OnSheildChanged; // 현재 쉴드, 최대 쉴드
 
     public SpriteRenderer towerUpSideSprRdr; // 성벽 위쪽 스프라이트 랜더러
 
@@ -23,26 +24,55 @@ public class Tower : MonoBehaviour
     [SerializeField] bool isBlink = false;
 
     [SerializeField] float healTime = 0f;
-    [SerializeField] int healVal = 0;  public int HealVal { get => healVal; set { healVal = value; } }
+    [SerializeField] int healVal = 0;  public int HealVal
+    {
+        get => healVal;
+        set => healVal = value;
+    }
+
+    [SerializeField] int armor; public int Armor
+    {
+        get => armor;
+        set{
+            armor = value;
+            OnArmorChanged?.Invoke(armor); // 이벤트 호출
+        }
+    }
 
     [SerializeField] int maxHp; public int MaxHp { get => maxHp;}
-    [SerializeField] int armor; public int Armor
-        {
-            get => armor;
-            set{
-                armor = value;
-                OnArmorChanged?.Invoke(armor); // 이벤트 호출
-            }
-        }
     [SerializeField] int hp;    public int Hp
-        {
-            get => hp;
-            set{
-                // 체력 변경시
-                hp = Mathf.Clamp(value, 0, maxHp);
-                OnHpChanged?.Invoke(hp, maxHp); // 이벤트 호출
-            }
+    {
+        get => hp;
+        set{
+            // 체력 변경시
+            hp = Mathf.Clamp(value, 0, maxHp);
+            OnHpChanged?.Invoke(hp, maxHp); // 이벤트 호출
         }
+    }
+
+    [SerializeField] int maxShield; public int MaxSheild {get => maxShield;}
+    [SerializeField] int shield; public int Sheild
+    {
+        get => shield;
+        set
+        {
+            shield = Mathf.Clamp(value, 0, maxShield);
+
+            // 쉴드가 다 깎였을때 초기화
+            if(shield <= 0)
+            {
+                shield = 0;
+                maxShield = 0;
+            }
+            // 쉴드 최대량 업데이트
+            else if(maxShield < shield)
+            {
+                maxShield = value;
+            }
+
+            OnSheildChanged?.Invoke(shield, maxShield); // 이벤트 호출
+        } 
+    }
 
     Coroutine corBlinkID;
     WaitForSeconds waitSec;
@@ -57,13 +87,16 @@ public class Tower : MonoBehaviour
         waitSec = new WaitForSeconds(BLINK_TIME);
 
         state = STATE.IDLE;
+        shield = 0;
         Armor = 0;
         Hp = maxHp = DEF_HP;
 
-        // (이벤트 등록) 체력 변경시 UI 업데이트
-        OnHpChanged += (_hp, _maxHp) => UI._.SetTowerHpSlider(_hp, _maxHp);
         // (이벤트 등록) 방어력 변경시 UI 업데이트
         OnArmorChanged += (_armor) => UI._.SetTowerArmorTxt(_armor);
+        // (이벤트 등록) 체력 변경시 UI 업데이트
+        OnHpChanged += (_hp, _maxHp) => UI._.SetTowerHpSlider(_hp, _maxHp);
+        // (이벤트 등록) 쉴드 변경시 UI 업데이트
+        OnSheildChanged += (_sheild, _maxSheild) => UI._.SetSheildHpSlider(_sheild, _maxSheild);
     }
     
     void Update(){
@@ -112,11 +145,30 @@ public class Tower : MonoBehaviour
         if(state == STATE.DEAD) return;
 
         dmg = armor >= dmg ? 1 : dmg - armor;
-        Hp -= dmg;
+
+        // 쉴드
+        if(shield > 0)
+        {
+            if(shield >= dmg)
+            {
+                Sheild -= dmg;
+            }
+            // 데미지가 쉴드를 초과할시
+            else
+            {
+                int overDmg = dmg - shield;
+                Sheild = 0;
+                Hp -= overDmg; // 초과부분 체력 감소
+            }
+        }
+        // 체력
+        else
+        {
+            Hp -= dmg;
+        }
 
         if(hp > 0)
         {
-
             // 블링크
             if(corBlinkID == null)
             {

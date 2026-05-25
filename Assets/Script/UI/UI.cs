@@ -24,13 +24,15 @@ public class UI : MonoBehaviour
 
     //* BOTTOM
     public Slider towerHpSlider;
+    public Slider towerSheildSlider;
     public TextMeshProUGUI towerHpTxt;
     public TextMeshProUGUI towerArmorTxt;
+    public TextMeshProUGUI towerSheildTxt;
 
     //* 외부 컴포넌트
-    public TowerUpgradeUIManager towerUpgUI; // 타워 업그레이드 UI 매니저
-    public CharaUpgradeUIManager charaUpgUI; // 캐릭터 업그레이드 UI 매니저
-    public CharaCollectionUIManager charaCltUI; // 캐릭터 카드콜레션 UI 매니저
+    [HideInInspector] public TowerUpgradeUIManager towerUpgUI; // 타워 업그레이드 UI 매니저
+    [HideInInspector] public CharaUpgradeUIManager charaUpgUI; // 캐릭터 업그레이드 UI 매니저
+    [HideInInspector] public CharaCollectionUIManager charaCltUI; // 캐릭터 카드콜레션 UI 매니저
 
     void Awake()
     {
@@ -43,6 +45,7 @@ public class UI : MonoBehaviour
     void Start()
     {
         menuPanel.SetActive(false);
+        towerSheildSlider.gameObject.SetActive(false);
     }
 
 #region EVENT
@@ -67,7 +70,7 @@ public class UI : MonoBehaviour
 #endregion
 #region FUNC
     /// <summary>
-    /// 타워 체력 슬라이더 UI 설정
+    /// 타워 체력 슬라이더 UI 업데이트
     /// </summary>
     public void SetTowerHpSlider(int hp, int maxHp)
     {
@@ -75,6 +78,29 @@ public class UI : MonoBehaviour
         towerHpSlider.value = (float)hp / maxHp;
     }
 
+    /// <summary>
+    /// 타워 쉴드 슬라이더 UI 업데이트
+    /// </summary>
+    public void SetSheildHpSlider(int shield, int maxShield)
+    {
+        if(shield > 0)
+        {
+            towerSheildSlider.gameObject.SetActive(true);
+        }
+        else
+        {
+            towerSheildSlider.gameObject.SetActive(false);
+            return;
+        }
+
+        towerSheildSlider.maxValue = maxShield;
+        towerSheildTxt.text = $"{shield} / {maxShield}";
+        towerSheildSlider.value = (float)shield / maxShield;
+    }
+
+    /// <summary>
+    /// 방어력 업데이트
+    /// </summary>
     public void SetTowerArmorTxt(int armor)
     {
         towerArmorTxt.text = armor.ToString();

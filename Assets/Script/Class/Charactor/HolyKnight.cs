@@ -8,7 +8,7 @@ using static EffectPoolManager;
 public class HolyKnight : Chara
 {
     // 빛의보호막
-    const int HOLY_GUARD_COOLTIME = 26;
+    const int HOLY_GUARD_COOLTIME = 5;
     [SerializeField] float holyGuardTime = 0;
 
     // 빛폭발
@@ -67,13 +67,13 @@ public class HolyKnight : Chara
     {
         base.Update();
 
-        // 빛의 가호
+        // 빛의 보호막
         if(Grade >= CHR_GRADE.RARE)
         {
             holyGuardTime += Time.deltaTime;
             if(holyGuardTime >= HOLY_GUARD_COOLTIME)
             {
-                //TODO Skill2_HolyGuard();
+                Skill2_HolyGuard(GM._.tower.HealVal);
                 holyGuardTime = 0;
             }
         }
@@ -133,8 +133,17 @@ public class HolyKnight : Chara
     /// <summary>
     /// 빛의보호막
     /// </summary>
-    private void Skill2_HolyGuard() {
-        
+    /// <param name="healVal">성벽 회복량</param>
+    private void Skill2_HolyGuard(int healVal) {
+        const int gradeIdx = (int)CHR_GRADE.RARE;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+
+        int sheild = Mathf.RoundToInt(healVal * healPer);
+        GM._.tower.Sheild += sheild;
     }
     /// <summary>
     /// 빛폭발
