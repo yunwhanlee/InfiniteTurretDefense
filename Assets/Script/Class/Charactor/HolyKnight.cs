@@ -3,7 +3,7 @@ using static Config;
 
 public class HolyKnight : Chara
 {
-    // 빛의 가호
+    // 빛의 보호막
     const int HOLY_GUARD_COOLTIME = 26;
     [SerializeField] float holyGuardTime = 0;
 
@@ -15,7 +15,7 @@ public class HolyKnight : Chara
     const int HOLY_HEAL_COOLTIME = 23;
     [SerializeField] float holyHealTime = 0;
 
-    // 빛의 장막
+    // 빛의 아우라
     const int HOLY_AURA_COOLTIME = 47;
     [SerializeField] float holyAuraTime = 0;
 

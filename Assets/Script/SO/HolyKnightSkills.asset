@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90362b8be2b4765429f85156e66b67ad, type: 3}
+  m_Name: HolyKnightSkills
+  m_EditorClassIdentifier: Assembly-CSharp::CharaSkillAsset
+  skillAssetArr:
+  - Name: "\uB0B4\uB824\uCE58\uAE30"
+    Grade: 0
+    Img: {fileID: 0}
+    Desc: "{0}\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801\uC744 \uACF5\uACA9. ({1}% \uAE30\uC808)"
+    ValueList:
+    - type: 0
+      def: 0
+      unit: 0
+    - type: 1
+      def: 5
+      unit: 1
+    MaxLv: 1000
+    PriceUnit: 1000
+  - Name: "\uBE5B\uC758\uBCF4\uD638\uB9C9"
+    Grade: 1
+    Img: {fileID: 0}
+    Desc: "26\uCD08\uB9C8\uB2E4 \uC131\uBCBD \uD68C\uBCF5\uB825 {0}%\uB85C \uBCF4\uD638\uB9C9
+      \uC0DD\uC131"
+    ValueList:
+    - type: 0
+      def: 100
+      unit: 5
+    MaxLv: 150
+    PriceUnit: 2500
+  - Name: "\uBE5B\uD3ED\uBC1C"
+    Grade: 2
+    Img: {fileID: 0}
+    Desc: "14\uCD08\uB9C8\uB2E4 \uACF5\uACA9\uB825 {0}%\uB85C \uD3ED\uBC1C \uBC94\uC704\uD53C\uD574
+      \uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 60
+      unit: 3
+    MaxLv: 200
+    PriceUnit: 4000
+  - Name: "\uBE5B\uC758\uCE58\uC720"
+    Grade: 3
+    Img: {fileID: 0}
+    Desc: "9\uCD08\uB9C8\uB2E4 \uC131\uBCBD \uD68C\uBCF5\uB825 {0}%\uB85C \uC131\uBCBD\uCCB4\uB825
+      \uD68C\uBCF5"
+    ValueList:
+    - type: 0
+      def: 120
+      unit: 4
+    MaxLv: 120
+    PriceUnit: 6000
+  - Name: "\uBE5B\uC758\uC544\uC6B0\uB77C"
+    Grade: 4
+    Img: {fileID: 0}
+    Desc: "47\uCD08\uB9C8\uB2E4 {0}\uCD08\uAC04 \uC801 \uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC18D\uB3C4\uB97C
+      {1}% \uB0AE\uCDA4"
+    ValueList:
+    - type: 0
+      def: 5
+      unit: 0.5
+    - type: 1
+      def: 20
+      unit: 2
+    MaxLv: 80
+    PriceUnit: 8500
+  - Name: "\uBE5B\uC758\uAE30\uB465"
+    Grade: 5
+    Img: {fileID: 0}
+    Desc: "39\uCD08\uB9C8\uB2E4 7\uCD08\uAC04 \uC801\uC744 \uCAD2\uB294 \uACF5\uACA9\uB825
+      {0}% \uBE5B\uC758\uAE30\uB465 \uC18C\uD658"
+    ValueList:
+    - type: 0
+      def: 30
+      unit: 1
+    MaxLv: 500
+    PriceUnit: 14000
+  - Name: "\uC2E0\uC758\uC2EC\uD310"
+    Grade: 6
+    Img: {fileID: 0}
+    Desc: "69\uCD08\uB9C8\uB2E4 \uACF5\uACA9\uB825 {0}%\uB85C \uB2E4\uC218\uC758
+      \uD68C\uC804 \uBE5B\uC758\uAE30\uB465 \uC18C\uD658"
+    ValueList:
+    - type: 0
+      def: 50
+      unit: 2
+    MaxLv: 500
+    PriceUnit: 25000
