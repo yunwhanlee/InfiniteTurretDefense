@@ -23,6 +23,14 @@ public class EffectPoolManager : MonoBehaviour
         FireBallExplosionEF, // 파이어볼 폭발
         MagicOrbSpawnEF, // 슬로우
         BlizzardEF, // 블리자드
+        //* 성기사 스킬
+        SmashEF, // 내려치기
+        HolyGuardEF, // 빛의보호막
+        HolyBurstEF, // 빛폭발
+        HolyHealEF, // 빛의치유
+        HolyAuraEF, // 빛의아우라
+        //? HolyBeamEF => SkillPoolManager 관리
+        //? HolySmiteEF => SkillPoolManager 관리
     }
 
     // 오브젝트
@@ -38,6 +46,13 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject FireBallExplosionEF;
     public GameObject MagicOrbSpawnEF;
     public GameObject BlizzardEF;
+    [Header("성기사 스킬 이펙트")]
+    public GameObject SmashEF;
+    public GameObject HolyGuardEF;
+    public GameObject HolyBurstEF;
+    public GameObject HolyHealEF;
+    public GameObject HolyAuraEF;
+    [Space(5)]
     // 오브젝트 풀링
     public Transform effectGroupTf;
     Dictionary<EF_IDX, IObjectPool<GameObject>> poolDics;     public Dictionary<EF_IDX, IObjectPool<GameObject>> PoolDics {get => poolDics;}
@@ -46,6 +61,7 @@ public class EffectPoolManager : MonoBehaviour
     {
         // 오브젝트 풀 등록
         poolDics = new Dictionary<EF_IDX, IObjectPool<GameObject>>();
+        // 전사 스킬 이펙트
         poolDics.Add(EF_IDX.SlashEF, Init(SlashEF.gameObject, 20));
         poolDics.Add(EF_IDX.PowerStrikeEF, Init(PowerStrikeEF.gameObject, 10));
         poolDics.Add(EF_IDX.DoubleAttackEF, Init(DoubleAttackEF.gameObject, 10));
@@ -53,9 +69,16 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.RageAuraEF, Init(RageAuraEF.gameObject, 5));
         poolDics.Add(EF_IDX.WheelWindEF, Init(WheelWindEF.gameObject, 5));
         poolDics.Add(EF_IDX.ShockWaveEF, Init(ShockWaveEF.gameObject, 5));
+        // 법사 스킬 이펙트
         poolDics.Add(EF_IDX.FireBallExplosionEF, Init(FireBallExplosionEF.gameObject, 3));
         poolDics.Add(EF_IDX.MagicOrbSpawnEF, Init(MagicOrbSpawnEF.gameObject, 1));
         poolDics.Add(EF_IDX.BlizzardEF, Init(BlizzardEF.gameObject, 1));
+        // 성기사 스킬 이펙트
+        poolDics.Add(EF_IDX.SmashEF, Init(SmashEF.gameObject, 1));
+        poolDics.Add(EF_IDX.HolyGuardEF, Init(HolyGuardEF.gameObject, 1));
+        poolDics.Add(EF_IDX.HolyBurstEF, Init(HolyBurstEF.gameObject, 1));
+        poolDics.Add(EF_IDX.HolyHealEF, Init(HolyHealEF.gameObject, 1));
+        poolDics.Add(EF_IDX.HolyAuraEF, Init(HolyAuraEF.gameObject, 1));
         // 여기에 추가
     }
 

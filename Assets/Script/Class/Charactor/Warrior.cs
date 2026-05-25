@@ -41,51 +41,15 @@ public class Warrior : Chara
         }
     }
 
-
-    protected void Update()
-    {
-        base.Update();
-
-        // 강타 카운트팅만 => 처리는 Attack()에서
-        if(Grade >= CHR_GRADE.RARE)
-            powerStrikeTime += Time.deltaTime;
-
-        // 격려
-        if(Grade >= CHR_GRADE.LEGEND) {
-            cheerUpTime += Time.deltaTime;
-            if(cheerUpTime >= CHEERUP_COOLTIME) {
-                Skill5_CheerUp();
-                cheerUpTime = 0;
-            }
-        }
-
-        // 휠원드
-        if(Grade >= CHR_GRADE.MYTHIC) {
-            whirlWindTime += Time.deltaTime;
-            if(whirlWindTime >= WHIRLWIND_COOLTIME) {
-                Skill6_WhirlWind();
-                whirlWindTime = 0;
-            }
-        }
-        // 충격파
-        if(Grade >= CHR_GRADE.PRIME) {
-            shockWaveTime += Time.deltaTime;
-            if(shockWaveTime >= SHOCKWAVE_COOLTIME) {
-                StartCoroutine(CorSkill7_ShockWave());
-                shockWaveTime = 0;
-            }
-        }
-    }
-
     public override void Attack(Enemy enemy)
     {
         base.Attack(enemy); // 공격 모션
 
-        // 전사는 근접이라서 투사체 X 바로 타겟 공격
+        // 근접이라서 투사체 X 바로 타겟 공격
         if(enemy.State == Enemy.STATE.DEAD)
             return;
 
-        // 치명타 및 데미지 확률 설정
+        //TODO 치명타 및 데미지 확률 설정
         CritPer = 0;
         // CritPer += 
         CritDmgPer = 1.5f;
@@ -127,11 +91,46 @@ public class Warrior : Chara
                 // 이중 공격 코루틴 실행
                 StartCoroutine(CorDoubleAttack(enemy, damage, isCritical));
             }
-            // 일반공격
+            //* 일반공격
             else
             {
                 GM._.epm.SpawnPoolDics(EF_IDX.SlashEF, enemy.transform.position); // 일반공격 이펙트
                 enemy.OnHit(damage, isCritical); // 타겟 공격
+            }
+        }
+    }
+
+    protected void Update()
+    {
+        base.Update();
+
+        // 강타 카운트팅만 => 처리는 Attack()에서
+        if(Grade >= CHR_GRADE.RARE)
+            powerStrikeTime += Time.deltaTime;
+
+        // 격려
+        if(Grade >= CHR_GRADE.LEGEND) {
+            cheerUpTime += Time.deltaTime;
+            if(cheerUpTime >= CHEERUP_COOLTIME) {
+                Skill5_CheerUp();
+                cheerUpTime = 0;
+            }
+        }
+
+        // 휠원드
+        if(Grade >= CHR_GRADE.MYTHIC) {
+            whirlWindTime += Time.deltaTime;
+            if(whirlWindTime >= WHIRLWIND_COOLTIME) {
+                Skill6_WhirlWind();
+                whirlWindTime = 0;
+            }
+        }
+        // 충격파
+        if(Grade >= CHR_GRADE.PRIME) {
+            shockWaveTime += Time.deltaTime;
+            if(shockWaveTime >= SHOCKWAVE_COOLTIME) {
+                StartCoroutine(CorSkill7_ShockWave());
+                shockWaveTime = 0;
             }
         }
     }
