@@ -140,6 +140,7 @@ public class HolyKnight : Chara
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 
+        // {0} 성벽 회복량
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률

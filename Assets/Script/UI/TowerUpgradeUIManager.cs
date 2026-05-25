@@ -169,6 +169,9 @@ public class TowerUpgradeUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 타워 체력 증가 업그레이드 버튼
+    /// </summary>
     public void OnClickUpgradeHpBtn()
     {
         Debug.Log("Upgrade HP");
@@ -181,6 +184,9 @@ public class TowerUpgradeUIManager : MonoBehaviour
         upgradeBtnArr[(int)UPG_IDX.HP].UpdateHpCardUI(upgradeHpLv);
     }
 
+    /// <summary>
+    /// 타워 방어력 증가 업그레이드 버튼
+    /// </summary>
     public void OnClickUpgradeArmorBtn()
     {
         Debug.Log("Upgrade Armor");
@@ -191,6 +197,9 @@ public class TowerUpgradeUIManager : MonoBehaviour
         upgradeBtnArr[(int)UPG_IDX.ARMOR].UpdateArmorCardUI(upgradeArmorLv);
     }
 
+    /// <summary>
+    /// 타워 회복력 증가 업그레이드 버튼
+    /// </summary>
     public void OnClickUpgradeHealBtn()
     {
         Debug.Log("Upgrade Heal");

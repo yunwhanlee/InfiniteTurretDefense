@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
 {
     const float BLINK_TIME = 0.05f; // 피격시 플래시 지속시간
     const int DEF_HP = 500;             // 기본 체력
-    const int HEAL_SPAN_SEC = 1;        // 자동 회복 간격(초)
+    const int HEAL_SPAN_SEC = 5;        // 자동 회복 간격(초)
 
     public enum STATE {IDLE, DEAD}
     [SerializeField] STATE state;    public STATE State { get => state; set => state = value; }
@@ -23,13 +23,14 @@ public class Tower : MonoBehaviour
     [SerializeField] float blinkTime = 0f; // 현재 색이 흰색인지 체크하는 변수
     [SerializeField] bool isBlink = false;
 
+    // 회복력
     [SerializeField] float healTime = 0f;
-    [SerializeField] int healVal = 0;  public int HealVal
+    [SerializeField] int healVal;  public int HealVal
     {
         get => healVal;
         set => healVal = value;
     }
-
+    // 방어력
     [SerializeField] int armor; public int Armor
     {
         get => armor;
@@ -38,7 +39,7 @@ public class Tower : MonoBehaviour
             OnArmorChanged?.Invoke(armor); // 이벤트 호출
         }
     }
-
+    // 체력
     [SerializeField] int maxHp; public int MaxHp { get => maxHp;}
     [SerializeField] int hp;    public int Hp
     {
@@ -49,7 +50,7 @@ public class Tower : MonoBehaviour
             OnHpChanged?.Invoke(hp, maxHp); // 이벤트 호출
         }
     }
-
+    // 쉴드
     [SerializeField] int maxShield; public int MaxSheild {get => maxShield;}
     [SerializeField] int shield; public int Sheild
     {
@@ -87,9 +88,10 @@ public class Tower : MonoBehaviour
         waitSec = new WaitForSeconds(BLINK_TIME);
 
         state = STATE.IDLE;
-        shield = 0;
-        Armor = 0;
-        Hp = maxHp = DEF_HP;
+        healVal = 1; // 회복력
+        shield = 0; // 쉴드
+        Armor = 0; // 방어력
+        Hp = maxHp = DEF_HP; // 체력
 
         // (이벤트 등록) 방어력 변경시 UI 업데이트
         OnArmorChanged += (_armor) => UI._.SetTowerArmorTxt(_armor);
