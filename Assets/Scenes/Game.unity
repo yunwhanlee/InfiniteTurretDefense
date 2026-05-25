@@ -36327,6 +36327,7 @@ MonoBehaviour:
   MagicOrbSpawnEF: {fileID: 8380006732928817250, guid: 87304fd3322c0264f83825007da34edb, type: 3}
   BlizzardEF: {fileID: 2344229793533240020, guid: fd6feec5fbfd358458c3121fc38a687e, type: 3}
   SmashEF: {fileID: 7470096130390055552, guid: 4cd24a2728b9cda4b82ac9d697d11715, type: 3}
+  HolyGuardIconEF: {fileID: 2742452666599769196, guid: b8e57951979485946920fd678438df96, type: 3}
   HolyGuardEF_Object: {fileID: 1716953318}
   HolyBurstEF: {fileID: 481989827561164378, guid: 09c4904a6e6136d40b69eda06b6d4499, type: 3}
   HolyHealEF: {fileID: 6825776657681570177, guid: b518bac3824c5604584a0202856c159c, type: 3}

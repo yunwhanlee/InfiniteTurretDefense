@@ -25,6 +25,7 @@ public class EffectPoolManager : MonoBehaviour
         BlizzardEF, // 블리자드
         //* 성기사 스킬
         SmashEF, // 내려치기
+        HolyGuardIconEF, // 빛의보호막 아이콘
         HolyGuardEF_Object, // 빛의보호막
         HolyBurstEF, // 빛폭발
         HolyHealEF, // 빛의치유
@@ -48,6 +49,7 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject BlizzardEF;
     [Header("성기사 스킬 이펙트")]
     public GameObject SmashEF;
+    public GameObject HolyGuardIconEF;
     public GameObject HolyGuardEF_Object; // 미리 오브젝트 GroupTf에 생성 비/활성화 관리
     public GameObject HolyBurstEF;
     public GameObject HolyHealEF;
@@ -75,6 +77,7 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.BlizzardEF, Init(BlizzardEF.gameObject, 1));
         // 성기사 스킬 이펙트
         poolDics.Add(EF_IDX.SmashEF, Init(SmashEF.gameObject, 1));
+        poolDics.Add(EF_IDX.HolyGuardIconEF, Init(HolyGuardIconEF.gameObject, 1));
         HolyGuardEF_Object.SetActive(false); // 오브젝트 비활성화 초기화
         poolDics.Add(EF_IDX.HolyBurstEF, Init(HolyBurstEF.gameObject, 1));
         poolDics.Add(EF_IDX.HolyHealEF, Init(HolyHealEF.gameObject, 1));

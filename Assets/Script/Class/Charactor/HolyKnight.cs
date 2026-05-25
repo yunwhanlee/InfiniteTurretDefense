@@ -145,8 +145,13 @@ public class HolyKnight : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
+        // 쉴드 추가
         int sheild = Mathf.RoundToInt(healVal * healPer);
         GM._.tower.Sheild = sheild;
+
+        // 이펙트
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        GM._.epm.SpawnPoolDics(EF_IDX.HolyGuardIconEF, pos);
     }
     /// <summary>
     /// 빛폭발
