@@ -243,8 +243,8 @@ public class Magician : Chara
         int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
         Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
-        Vector3 pos = GetCurrentTargetEnemy().transform.position;
-        thunder.Init(pos, damage);
+        Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+        thunder.Init(enemyPos, damage);
     }
 
     private void Skill7_Blizzard()

@@ -20,6 +20,8 @@ public class SkillPoolManager : MonoBehaviour
         SK_IceBlade, // 칼날얼음
         SK_Thunder, // 천둥번개
         SK_Tornado, // 토네이도
+        //* 성기사 스킬
+        SK_HolyBurst, // 빛폭발
     }
 
     // 오브젝트 풀링
@@ -36,20 +38,25 @@ public class SkillPoolManager : MonoBehaviour
     public IceBlade iceBladePf;
     public Thunder thunderPf;
     public Tornado tornadoPf;
+    [Header("성기사 스킬")]
+    public HolyBurst holyBurst;
 
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
+        // 전사
         poolDics.Add(SK_IDX.SK_PassArrow, Init(passArrowPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_ArrowRain, Init(arrowRainPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_PhoenixArrow, Init(phoenixArrowPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_PhoenixFireField, Init(phoenixFireField.gameObject, 2));
-
+        // 마법사
         poolDics.Add(SK_IDX.SK_FireBall, Init(fireBallPf.gameObject, 3));
         poolDics.Add(SK_IDX.SK_MagicOrb, Init(magicOrbPf.gameObject, 1));
         poolDics.Add(SK_IDX.SK_IceBlade, Init(iceBladePf.gameObject, 14));
         poolDics.Add(SK_IDX.SK_Thunder, Init(thunderPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_Tornado, Init(tornadoPf.gameObject, 2));
+        // 성기사
+        poolDics.Add(SK_IDX.SK_HolyBurst, Init(holyBurst.gameObject, 1));
     }
 
 #region POOL

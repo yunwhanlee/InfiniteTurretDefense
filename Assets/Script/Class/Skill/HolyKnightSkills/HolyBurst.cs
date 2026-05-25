@@ -3,9 +3,9 @@ using UnityEngine;
 using static SkillPoolManager;
 
 /// <summary>
-/// 마법사 : 천둥번개 스킬
+/// 성기사 : 빛폭발 스킬
 /// </summary>
-public class Thunder : MonoBehaviour
+public class HolyBurst : MonoBehaviour
 {
     int dmg;
 
@@ -19,7 +19,6 @@ public class Thunder : MonoBehaviour
                 return;
 
             enemy.OnHit(dmg, isCritical: false);
-            enemy.Stun(2);
         }
     }
 
@@ -40,8 +39,8 @@ public class Thunder : MonoBehaviour
     /// </summary>
     IEnumerator CoRelease()
     {
-        yield return Config.WFS_1;
-        GM._.spm.ReleasePoolDics(SK_IDX.SK_Thunder, gameObject);
+        yield return Config.WFS_2;
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_HolyBurst, gameObject);
     }
 #endregion
 }

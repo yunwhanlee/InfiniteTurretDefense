@@ -1,6 +1,7 @@
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
+using static SkillPoolManager;
 
 /// <summary>
 /// 성기사
@@ -12,7 +13,7 @@ public class HolyKnight : Chara
     [SerializeField] float holyGuardTime = 0;
 
     // 빛폭발
-    const int HOLY_BURST_COOLTIME = 26;
+    const int HOLY_BURST_COOLTIME = 19;
     [SerializeField] float holyBurstTime = 0;
 
     // 빛의치유
@@ -30,6 +31,13 @@ public class HolyKnight : Chara
     // 신의심판
     const int HOLY_SMITE_COOLTIME = 69;
     [SerializeField] float holySmiteTime = 0;
+
+    Tower tower;
+
+    void Start()
+    {
+        tower = GameObject.Find("Tower").GetComponent<Tower>();
+    }
 
     public override void Attack(Enemy enemy)
     {
@@ -58,6 +66,14 @@ public class HolyKnight : Chara
                 damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
 
+        //* 빛폭발
+        if(holyBurstTime >= HOLY_BURST_COOLTIME)
+        {
+            Skill3_HolyBurst(damage);
+            holyBurstTime = 0;
+            return;
+        }
+
         //* 일반공격
         GM._.epm.SpawnPoolDics(EF_IDX.SmashEF, enemy.transform.position); // 일반공격 이펙트
         enemy.OnHit(damage, isCritical); // 타겟 공격
@@ -73,7 +89,7 @@ public class HolyKnight : Chara
             holyGuardTime += Time.deltaTime;
             if(holyGuardTime >= HOLY_GUARD_COOLTIME)
             {
-                Skill2_HolyGuard(GM._.tower.HealVal);
+                Skill2_HolyGuard(tower.HealVal);
                 holyGuardTime = 0;
             }
         }
@@ -81,11 +97,7 @@ public class HolyKnight : Chara
         if(Grade >= CHR_GRADE.EPIC)
         {
             holyBurstTime += Time.deltaTime;
-            if(holyBurstTime >= HOLY_BURST_COOLTIME)
-            {
-                //TODO Skill3_HolyBurst();
-                holyBurstTime = 0;
-            }
+            //? Attack()에서 처리
         }
         // 빛의 치유
         if(Grade >= CHR_GRADE.UNIQUE)
@@ -93,7 +105,7 @@ public class HolyKnight : Chara
             holyHealTime += Time.deltaTime;
             if(holyHealTime >= HOLY_HEAL_COOLTIME)
             {
-                //TODO Skill4_HolyHeal();
+                Skill4_HolyHeal(tower.HealVal);
                 holyHealTime = 0;
             }
         }
@@ -140,30 +152,58 @@ public class HolyKnight : Chara
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 
-        // {0} 성벽 회복량
+        // {0} 성벽 회복력
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
         // 쉴드 추가
-        int sheild = Mathf.RoundToInt(healVal * healPer);
-        GM._.tower.Sheild = sheild;
+        int val = Mathf.RoundToInt(healVal * healPer);
+        GM._.tower.Sheild = val;
 
         // 이펙트
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         GM._.epm.SpawnPoolDics(EF_IDX.HolyGuardIconEF, pos);
     }
+
     /// <summary>
     /// 빛폭발
     /// </summary>
-    private void Skill3_HolyBurst() {
-        
+    private void Skill3_HolyBurst(int damage) {
+        const int gradeIdx = (int)CHR_GRADE.EPIC;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        // {0} 공격력 %
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+
+        int dmg = Mathf.RoundToInt(damage * dmgPer);
+
+        HolyBurst holyBurst = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyBurst).GetComponent<HolyBurst>();
+        Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+        holyBurst.Init(enemyPos, dmg);
     }
+
     /// <summary>
     /// 빛의치유
     /// </summary>
-    private void Skill4_HolyHeal() {
-        
+    private void Skill4_HolyHeal(int healVal) {
+        const int gradeIdx = (int)CHR_GRADE.UNIQUE;
+        int skillLv = SkillLvArr[gradeIdx];
+
+        // {0} 성벽 회복력
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+
+        // 체력 회복
+        int val = Mathf.RoundToInt(healVal * healPer);
+        tower.Hp += val;
+
+        // 이펙트
+        GM._.epm.SpawnPoolDics(EF_IDX.HolyHealEF, tower.transform.position, WFS_2);
+
     }
     /// <summary>
     /// 빛의아우라
