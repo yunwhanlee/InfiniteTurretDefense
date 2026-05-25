@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour
         get => shield;
         set
         {
-            shield = Mathf.Clamp(value, 0, maxShield);
+            shield = value;
 
             // 쉴드가 다 깎였을때 초기화
             if(shield <= 0)

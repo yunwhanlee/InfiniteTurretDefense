@@ -86,14 +86,15 @@ public class UI : MonoBehaviour
         if(shield > 0)
         {
             towerSheildSlider.gameObject.SetActive(true);
+            GM._.epm.ActiveObject(EffectPoolManager.EF_IDX.HolyGuardEF_Object, true);
         }
         else
         {
             towerSheildSlider.gameObject.SetActive(false);
+            GM._.epm.ActiveObject(EffectPoolManager.EF_IDX.HolyGuardEF_Object, false);
             return;
         }
 
-        towerSheildSlider.maxValue = maxShield;
         towerSheildTxt.text = $"{shield} / {maxShield}";
         towerSheildSlider.value = (float)shield / maxShield;
     }

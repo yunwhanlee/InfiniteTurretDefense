@@ -25,7 +25,7 @@ public class EffectPoolManager : MonoBehaviour
         BlizzardEF, // 블리자드
         //* 성기사 스킬
         SmashEF, // 내려치기
-        HolyGuardEF, // 빛의보호막
+        HolyGuardEF_Object, // 빛의보호막
         HolyBurstEF, // 빛폭발
         HolyHealEF, // 빛의치유
         HolyAuraEF, // 빛의아우라
@@ -48,7 +48,7 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject BlizzardEF;
     [Header("성기사 스킬 이펙트")]
     public GameObject SmashEF;
-    public GameObject HolyGuardEF;
+    public GameObject HolyGuardEF_Object; // 미리 오브젝트 GroupTf에 생성 비/활성화 관리
     public GameObject HolyBurstEF;
     public GameObject HolyHealEF;
     public GameObject HolyAuraEF;
@@ -75,12 +75,14 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.BlizzardEF, Init(BlizzardEF.gameObject, 1));
         // 성기사 스킬 이펙트
         poolDics.Add(EF_IDX.SmashEF, Init(SmashEF.gameObject, 1));
-        poolDics.Add(EF_IDX.HolyGuardEF, Init(HolyGuardEF.gameObject, 1));
+        HolyGuardEF_Object.SetActive(false); // 오브젝트 비활성화 초기화
         poolDics.Add(EF_IDX.HolyBurstEF, Init(HolyBurstEF.gameObject, 1));
         poolDics.Add(EF_IDX.HolyHealEF, Init(HolyHealEF.gameObject, 1));
         poolDics.Add(EF_IDX.HolyAuraEF, Init(HolyAuraEF.gameObject, 1));
         // 여기에 추가
     }
+
+    
 
 #region POOL
     GameObject Create(GameObject obj) => Instantiate(obj, effectGroupTf);
@@ -104,7 +106,7 @@ public class EffectPoolManager : MonoBehaviour
     /// <param name="deleteSec">회수 대기시간</param>
     public void SpawnPoolDics(EF_IDX enumIdx, Vector3 pos, WaitForSeconds deleteSec = null)
     {
-        Debug.Log($"SpawnPoolDics():: {enumIdx}, {pos}");
+        Debug.Log($"SpawnPoolDics():: {enumIdx}, {pos}, deleteSec= {deleteSec}");
         GameObject obj = poolDics[enumIdx].Get();
         obj.transform.position = pos;
 
@@ -121,6 +123,23 @@ public class EffectPoolManager : MonoBehaviour
         yield return deleteSec;
         poolDics[enumIdx].Release(obj);
         Debug.Log($"CoReleasePoolDics():: {enumIdx}, {obj}, {deleteSec}");
+    }
+
+    /// <summary>
+    /// 오브젝트 (비)활성화
+    /// </summary>
+    public void ActiveObject(EF_IDX enumIdx, bool isActive)
+    {
+        switch (enumIdx)
+        {
+            case EF_IDX.HolyGuardEF_Object:
+            HolyGuardEF_Object.SetActive(isActive);
+                break;
+            // 여기에 추가
+            default:
+                Debug.LogError("EF_IDX에 오브젝트 형태로 등록되지않은 것입니다.");
+                break;
+        }
     }
 #endregion
 }

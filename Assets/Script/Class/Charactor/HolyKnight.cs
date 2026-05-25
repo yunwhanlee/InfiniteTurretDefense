@@ -135,6 +135,8 @@ public class HolyKnight : Chara
     /// </summary>
     /// <param name="healVal">성벽 회복량</param>
     private void Skill2_HolyGuard(int healVal) {
+        Debug.Log("Skill2_HolyGuard():: healVal= " + healVal);
+
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 
@@ -143,7 +145,7 @@ public class HolyKnight : Chara
         float healPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
         int sheild = Mathf.RoundToInt(healVal * healPer);
-        GM._.tower.Sheild += sheild;
+        GM._.tower.Sheild = sheild;
     }
     /// <summary>
     /// 빛폭발
