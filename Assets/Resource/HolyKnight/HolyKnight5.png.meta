@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior5_0
+      name: HolyKnight5_0
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_1
+      name: HolyKnight5_1
       rect:
         serializedVersion: 2
         x: 64
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_2
+      name: HolyKnight5_2
       rect:
         serializedVersion: 2
         x: 128
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_3
+      name: HolyKnight5_3
       rect:
         serializedVersion: 2
         x: 0
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_4
+      name: HolyKnight5_4
       rect:
         serializedVersion: 2
         x: 64
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_5
+      name: HolyKnight5_5
       rect:
         serializedVersion: 2
         x: 128
@@ -242,7 +242,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_6
+      name: HolyKnight5_6
       rect:
         serializedVersion: 2
         x: 0
@@ -264,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior5_7
+      name: HolyKnight5_7
       rect:
         serializedVersion: 2
         x: 64
@@ -299,14 +299,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Warrior5_0: -704328674
-      Warrior5_1: -1723113716
-      Warrior5_2: 986802782
-      Warrior5_3: -979210573
-      Warrior5_4: -566310106
-      Warrior5_5: -817855553
-      Warrior5_6: -836924285
-      Warrior5_7: -1311741449
+      HolyKnight5_0: -704328674
+      HolyKnight5_1: -1723113716
+      HolyKnight5_2: 986802782
+      HolyKnight5_3: -979210573
+      HolyKnight5_4: -566310106
+      HolyKnight5_5: -817855553
+      HolyKnight5_6: -836924285
+      HolyKnight5_7: -1311741449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

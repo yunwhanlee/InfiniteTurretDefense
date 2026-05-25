@@ -41,6 +41,9 @@ public class CharaCard : MonoBehaviour
             case CHR_CATE.MAGICIAN:
                 charaDataAsset = GM._.crm.magicianDataAssetArr[(int)userData.grade];
                 break;
+            case CHR_CATE.HOLYKNIGHT:
+                charaDataAsset = GM._.crm.holyKnightDataAssetArr[(int)userData.grade];
+                break;
             // 여기에 추가
         }
     }

@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior4_0
+      name: HolyKnight4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_1
+      name: HolyKnight4_1
       rect:
         serializedVersion: 2
         x: 64
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_2
+      name: HolyKnight4_2
       rect:
         serializedVersion: 2
         x: 128
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_3
+      name: HolyKnight4_3
       rect:
         serializedVersion: 2
         x: 0
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_4
+      name: HolyKnight4_4
       rect:
         serializedVersion: 2
         x: 64
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_5
+      name: HolyKnight4_5
       rect:
         serializedVersion: 2
         x: 128
@@ -242,7 +242,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_6
+      name: HolyKnight4_6
       rect:
         serializedVersion: 2
         x: 0
@@ -264,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior4_7
+      name: HolyKnight4_7
       rect:
         serializedVersion: 2
         x: 64
@@ -299,14 +299,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Warrior4_0: -1597497579
-      Warrior4_1: -353451062
-      Warrior4_2: -407497531
-      Warrior4_3: 598786657
-      Warrior4_4: -1888026608
-      Warrior4_5: -1339480916
-      Warrior4_6: -1167399107
-      Warrior4_7: 272422280
+      HolyKnight4_0: -1597497579
+      HolyKnight4_1: -353451062
+      HolyKnight4_2: -407497531
+      HolyKnight4_3: 598786657
+      HolyKnight4_4: -1888026608
+      HolyKnight4_5: -1339480916
+      HolyKnight4_6: -1167399107
+      HolyKnight4_7: 272422280
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

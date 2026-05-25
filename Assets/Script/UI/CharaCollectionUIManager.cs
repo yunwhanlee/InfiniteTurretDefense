@@ -12,9 +12,10 @@ public class CharaCollectionUIManager : MonoBehaviour
     void Awake()
     {
         // DB 캐릭터 데이터 에셋 적용
-        charaCardArr[(int)CHR_CATE.ARCHER].SetUp(CHR_CATE.ARCHER);
-        charaCardArr[(int)CHR_CATE.WARRIOR].SetUp(CHR_CATE.WARRIOR);
-        charaCardArr[(int)CHR_CATE.MAGICIAN].SetUp(CHR_CATE.MAGICIAN);
+        for(int i = 0; i < charaCardArr.Length; i++)
+        {
+            charaCardArr[i].SetUp((CHR_CATE)i);
+        }
     }
 
     void Start()
@@ -93,10 +94,10 @@ public class CharaCollectionUIManager : MonoBehaviour
     /// </summary>
     public void UpdateUI()
     {
-        charaCardArr[(int)CHR_CATE.ARCHER].UpdateUI();
-        charaCardArr[(int)CHR_CATE.WARRIOR].UpdateUI();
-        charaCardArr[(int)CHR_CATE.MAGICIAN].UpdateUI();
-        //* 캐릭터카드 추가시 여기에 추가
+        for(int i = 0; i < charaCardArr.Length; i++)
+        {
+            charaCardArr[i].UpdateUI();
+        }
     }
 
     /// <summary>

@@ -79,6 +79,8 @@ public class DB : MonoBehaviour
             new (CHR_CATE.ARCHER, CHR_GRADE.NORMAL, 999, CHR_PLACE.CENTER, new int[SKILL_CNT] {1,0,0,0,0,0,0}),
             new (CHR_CATE.WARRIOR, CHR_GRADE.NORMAL, 999, CHR_PLACE.NONE, new int[SKILL_CNT] {1,0,0,0,0,0,0}),
             new (CHR_CATE.MAGICIAN, CHR_GRADE.NORMAL, 999, CHR_PLACE.NONE, new int[SKILL_CNT] {1,0,0,0,0,0,0}),
+            new (CHR_CATE.HOLYKNIGHT, CHR_GRADE.NORMAL, 999, CHR_PLACE.NONE, new int[SKILL_CNT] {1,0,0,0,0,0,0}),
+            // 여기에 추가
         };
     }
 
