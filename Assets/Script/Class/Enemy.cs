@@ -29,11 +29,8 @@ public class Enemy : MonoBehaviour
     public int ExtraDmg;
     [SerializeField] int dmg;   public int Dmg
     {
-        get => dmg;
-        set
-        {
-            dmg = ExtraDmg + value;
-        }
+        get => Mathf.Max(1, dmg + ExtraDmg);
+        set => dmg = value;
     }
 
     public bool IsAlive => hp > 0;

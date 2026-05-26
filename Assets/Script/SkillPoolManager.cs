@@ -23,6 +23,8 @@ public class SkillPoolManager : MonoBehaviour
         //* 성기사 스킬
         SK_HolyBurst, // 빛폭발
         SK_HolyAura, // 빛의아우라
+        SK_HolyBeam, // 빛의기둥
+        SK_HolySmite, // 빛의심판
     }
 
     // 오브젝트 풀링
@@ -42,6 +44,8 @@ public class SkillPoolManager : MonoBehaviour
     [Header("성기사 스킬")]
     public HolyBurst holyBurst;
     public HolyAura holyAura;
+    public HolyBeam holyBeam;
+    public HolySmite holySmite;
 
     void Awake()
     {
@@ -60,6 +64,8 @@ public class SkillPoolManager : MonoBehaviour
         // 성기사
         poolDics.Add(SK_IDX.SK_HolyBurst, Init(holyBurst.gameObject, 1));
         poolDics.Add(SK_IDX.SK_HolyAura, Init(holyAura.gameObject, 1));
+        poolDics.Add(SK_IDX.SK_HolyBeam, Init(holyBeam.gameObject, 1));
+        poolDics.Add(SK_IDX.SK_HolySmite, Init(holySmite.gameObject, 1));
     }
 
 #region POOL
