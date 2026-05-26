@@ -3,27 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using static SkillPoolManager;
 
-public class HolyBeam : MonoBehaviour
+public class HolySmite : MonoBehaviour
 {
-    // 외부 클래스
-    public TargetFinder targetFinder;
-
     const float dmgInterval = 0.75f; // 데미지 간격
-    public int dmg; // 틱당 데미지
-    private float moveSpeed = 2;
+    const float rotateSpeed = 45;
+    public int dmg;
+    private float rotZ = 0;
 
     // 적 객체마다 마지막으로 데미지를 받은 시간 저장 딕셔너리
     private Dictionary<Enemy, float> lastHitTimeDict = new Dictionary<Enemy, float>();
 
     void Update()
     {
-        if(targetFinder.CurrentTarget == null)
-            return;
-
-        Vector3 targetPos = targetFinder.CurrentTarget.transform.position;
-        Vector3 dir = (targetPos - transform.position).normalized;
-
-        transform.position += dir * moveSpeed * Time.deltaTime;
+        rotZ += rotateSpeed * Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(0, 0, rotZ);
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -55,7 +48,6 @@ public class HolyBeam : MonoBehaviour
 
                 // 피격시간을 현재로 갱신
                 lastHitTimeDict[enemy] = Time.time;
-
             }
         }
     }
@@ -79,6 +71,9 @@ public class HolyBeam : MonoBehaviour
     /// </summary>
     public void Init(Vector3 pos, int dmg)
     {
+        transform.localRotation = Quaternion.identity;
+        rotZ = 0;
+
         transform.position = pos;
         this.dmg = dmg;
 
@@ -94,7 +89,7 @@ public class HolyBeam : MonoBehaviour
     {
         yield return Config.WFS_5;
         yield return Config.WFS_2;
-        GM._.spm.ReleasePoolDics(SK_IDX.SK_HolyBeam, gameObject);
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_HolySmite, gameObject);
     }
 #endregion
 }

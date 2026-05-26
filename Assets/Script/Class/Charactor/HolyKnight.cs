@@ -30,7 +30,7 @@ public class HolyKnight : Chara
     [SerializeField] float holyBeamTime = 0;
 
     // 신의심판
-    const int HOLY_SMITE_COOLTIME = 69;
+    const int HOLY_SMITE_COOLTIME = 15; // 69;
     [SerializeField] float holySmiteTime = 0;
 
     Tower tower;
@@ -136,7 +136,7 @@ public class HolyKnight : Chara
             holySmiteTime += Time.deltaTime;
             if(holySmiteTime >= HOLY_SMITE_COOLTIME)
             {
-                //TODO Skill7_HolySmite();
+                Skill7_HolySmite();
                 holySmiteTime = 0;
             }
         }
@@ -252,14 +252,31 @@ public class HolyKnight : Chara
 
         // 빛의기둥
         HolyBeam holyBeam = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyBeam).GetComponent<HolyBeam>();
-        Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+        Vector3 enemyPos = GetCurrentTargetEnemy()? GetCurrentTargetEnemy().transform.position : new Vector3(1,1,0);
         holyBeam.Init(enemyPos, dmg);
     }
     /// <summary>
     /// 신의심판
     /// </summary>
     private void Skill7_HolySmite() {
+        const int DMG = 0;
         
+        const int gradeIdx = (int)CHR_GRADE.PRIME;
+        int skillLv = SkillLvArr[gradeIdx];
+        var skillValList = CharaSkill.skillAssetArr[gradeIdx].ValueList;
+
+        // {0} 데미지
+        float defPer = skillValList[DMG].def;
+        float unitPer = skillValList[DMG].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+
+        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
+
+        // 빛의심판
+        HolySmite holySmite = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolySmite).GetComponent<HolySmite>();
+        Vector3 pos = tower.transform.position;
+        holySmite.Init(pos, dmg);
+
     }
 #endregion
 }

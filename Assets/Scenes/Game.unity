@@ -31463,6 +31463,7 @@ MonoBehaviour:
   holyBurst: {fileID: 911121686919064742, guid: c8439374cfb55584caf7c24a56de13ee, type: 3}
   holyAura: {fileID: 2158378841779001230, guid: e0f34fe59b0f74342be14fceb11b361c, type: 3}
   holyBeam: {fileID: 453125562911333045, guid: 432d97cf299ddf2489e93c3321816156, type: 3}
+  holySmite: {fileID: 3584247389651537234, guid: 8173d87f52dd7f345a938dbd1576e5e5, type: 3}
 --- !u!4 &1682242765
 Transform:
   m_ObjectHideFlags: 0
