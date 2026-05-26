@@ -26,7 +26,7 @@ public class HolyKnight : Chara
     [SerializeField] float holyAuraTime = 0;
 
     // 빛의기둥
-    const int HOLY_BEAM_COOLTIME = 39;
+    const int HOLY_BEAM_COOLTIME = 10; //39;
     [SerializeField] float holyBeamTime = 0;
 
     // 신의심판
@@ -37,7 +37,7 @@ public class HolyKnight : Chara
 
     void Start()
     {
-        tower = GameObject.Find("Tower").GetComponent<Tower>();
+        tower = GM._.tower;
     }
 
     public override void Attack(Enemy enemy)
@@ -126,7 +126,7 @@ public class HolyKnight : Chara
             holyBeamTime += Time.deltaTime;
             if(holyBeamTime >= HOLY_BEAM_COOLTIME)
             {
-                //TODO Skill6_HolyBeam();
+                Skill6_HolyBeam();
                 holyBeamTime = 0;
             }
         }
@@ -227,6 +227,7 @@ public class HolyKnight : Chara
         float unitPer2 = skillValList[DEC_PER].unit;
         float decPer = (defPer2 + unitPer2 * skillLv) * 0.01f; // 백분률
 
+        // 아우라
         HolyAura holyAura = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyAura).GetComponent<HolyAura>();
         Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y - 0.75f, tower.transform.position.z);
         holyAura.Init(pos, duration, decPer);
@@ -236,7 +237,23 @@ public class HolyKnight : Chara
     /// 빛의기둥
     /// </summary>
     private void Skill6_HolyBeam() {
-        
+        const int DMG = 0;
+
+        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        int skillLv = SkillLvArr[gradeIdx];
+        var skillValList = CharaSkill.skillAssetArr[gradeIdx].ValueList;
+
+        // {0} 데미지
+        float defPer = skillValList[DMG].def;
+        float unitPer = skillValList[DMG].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+
+        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
+
+        // 빛의기둥
+        HolyBeam holyBeam = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyBeam).GetComponent<HolyBeam>();
+        Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+        holyBeam.Init(enemyPos, dmg);
     }
     /// <summary>
     /// 신의심판

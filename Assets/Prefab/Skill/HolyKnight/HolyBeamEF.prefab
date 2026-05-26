@@ -4879,6 +4879,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6945088782242952063}
+  - component: {fileID: 453125562911333045}
+  - component: {fileID: 6013548799747446407}
+  - component: {fileID: 6510996605370652402}
   - component: {fileID: 8558829770553225739}
   - component: {fileID: 655737545608446021}
   m_Layer: 0
@@ -4906,6 +4909,71 @@ Transform:
   - {fileID: 8702615109282602569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
+--- !u!114 &453125562911333045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830778073028818274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d772e6e8336e3c54a9d88183cdecd7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HolyBeam
+  targetFinder: {fileID: 6013548799747446407}
+  dmg: 0
+  dmgInterval: 1
+--- !u!114 &6013548799747446407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830778073028818274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d520b4b741e26f74fb541a14101799ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetFinder
+  radius: 12
+  CurrentTarget: {fileID: 0}
+--- !u!58 &6510996605370652402
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830778073028818274}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1
 --- !u!198 &8558829770553225739
 ParticleSystem:
   m_ObjectHideFlags: 0
