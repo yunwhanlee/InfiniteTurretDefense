@@ -100,7 +100,7 @@ public class Archer : Chara
         percent *= 10; // unit 소수점단위 정수로 올리기
 
         int random = Random.Range(0, 1000);
-        if(random < percent)
+        if(random <= percent)
         {
             Vector3 pos = shootTf.position;
 
