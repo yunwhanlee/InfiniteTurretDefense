@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 2f46b8bedce012f42a9f51d8a497a116
+guid: 4a9638bcb777fad49bef9488d678b0a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7171188406754763337
-    second: Ninza3__0
+      213: -4687449653314221766
+    second: Ninza7_0
   - first:
-      213: 8651997314392510578
-    second: Ninza3__1
+      213: -8258574641263094780
+    second: Ninza7_1
   - first:
-      213: 1324908178638926839
-    second: Ninza3__2
+      213: -5144322411880053680
+    second: Ninza7_2
   - first:
-      213: 3908100653454548008
-    second: Ninza3__3
+      213: -991375174838695799
+    second: Ninza7_3
   - first:
-      213: -8936457879497473309
-    second: Ninza3__4
+      213: -7300953643075850987
+    second: Ninza7_4
   - first:
-      213: 862243415039025816
-    second: Ninza3__5
+      213: -4044873747744503223
+    second: Ninza7_5
   - first:
-      213: -2825878889384598896
-    second: Ninza3__6
+      213: -1355547721884903091
+    second: Ninza7_6
   - first:
-      213: -4729318195895174948
-    second: Ninza3__7
+      213: 6222664988272456410
+    second: Ninza7_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninza3__0
+      name: Ninza7_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bd9bfd7322da7c90800000000000000
-      internalID: -7171188406754763337
+      spriteID: a398daf1065d2feb0800000000000000
+      internalID: -4687449653314221766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__1
+      name: Ninza7_1
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +171,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 270dff997b1121870800000000000000
-      internalID: 8651997314392510578
+      spriteID: 404d67c9e16a36d80800000000000000
+      internalID: -8258574641263094780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__2
+      name: Ninza7_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0540fcda502bb98b0800000000000000
+      internalID: -5144322411880053680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninza7_3
       rect:
         serializedVersion: 2
         x: 0
@@ -193,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f378c308f4036210800000000000000
-      internalID: 1324908178638926839
+      spriteID: 9884990f78ded32f0800000000000000
+      internalID: -991375174838695799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__3
+      name: Ninza7_4
       rect:
         serializedVersion: 2
         x: 64
@@ -215,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82c51ab96dc5c3630800000000000000
-      internalID: 3908100653454548008
+      spriteID: 51daedef75dcdaa90800000000000000
+      internalID: -7300953643075850987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__4
+      name: Ninza7_5
       rect:
         serializedVersion: 2
         x: 128
@@ -237,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e2005ee7e25bf380800000000000000
-      internalID: -8936457879497473309
+      spriteID: 94ac260d1c8bdd7c0800000000000000
+      internalID: -4044873747744503223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__5
+      name: Ninza7_6
       rect:
         serializedVersion: 2
         x: 0
@@ -259,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 892225f41dd47fb00800000000000000
-      internalID: 862243415039025816
+      spriteID: d49d5f86780203de0800000000000000
+      internalID: -1355547721884903091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninza3__6
+      name: Ninza7_7
       rect:
         serializedVersion: 2
         x: 64
@@ -281,30 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 092a4fb4f1678c8d0800000000000000
-      internalID: -2825878889384598896
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ninza3__7
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd870e768261e5eb0800000000000000
-      internalID: -4729318195895174948
+      spriteID: ad27d3676d85b5650800000000000000
+      internalID: 6222664988272456410
       vertices: []
       indices: 
       edges: []
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ac208e9b2c7a8d74291c37001e64a447
+    spriteID: 31006b6962dbe244b860ea9a84fc4ac9
     internalID: 0
     vertices: []
     indices: 
@@ -325,14 +325,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Ninza3__0: -7171188406754763337
-      Ninza3__1: 8651997314392510578
-      Ninza3__2: 1324908178638926839
-      Ninza3__3: 3908100653454548008
-      Ninza3__4: -8936457879497473309
-      Ninza3__5: 862243415039025816
-      Ninza3__6: -2825878889384598896
-      Ninza3__7: -4729318195895174948
+      Ninza7_0: -4687449653314221766
+      Ninza7_1: -8258574641263094780
+      Ninza7_2: -5144322411880053680
+      Ninza7_3: -991375174838695799
+      Ninza7_4: -7300953643075850987
+      Ninza7_5: -4044873747744503223
+      Ninza7_6: -1355547721884903091
+      Ninza7_7: 6222664988272456410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
