@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90362b8be2b4765429f85156e66b67ad, type: 3}
+  m_Name: NinzaSkills
+  m_EditorClassIdentifier: Assembly-CSharp::CharaSkillAsset
+  skillAssetArr:
+  - Name: "\uD45C\uCC3D"
+    Grade: 0
+    Img: {fileID: 0}
+    Desc: "{0}\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801\uC744 \uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 0
+      unit: 0
+    MaxLv: 1000
+    PriceUnit: 1000
+  - Name: "\uB354\uBE14\uC4F0\uB85C\uC6B0"
+    Grade: 1
+    Img: {fileID: 0}
+    Desc: "{0}%\uB85C \uCD94\uAC00 \uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 10
+      unit: 0.2
+    MaxLv: 250
+    PriceUnit: 2500
+  - Name: "\uD06C\uB9AC\uD2F0\uCEEC"
+    Grade: 2
+    Img: {fileID: 0}
+    Desc: "\uCE58\uBA85\uD0C0 +{0}% \uC99D\uAC00"
+    ValueList:
+    - type: 0
+      def: 2
+      unit: 1
+    MaxLv: 48
+    PriceUnit: 4000
+  - Name: "\uB2E4\uC911\uD45C\uCC3D"
+    Grade: 3
+    Img: {fileID: 0}
+    Desc: "{0}%\uB85C 2\uB9C8\uB9AC \uC801\uC5D0\uAC8C 60% \uB370\uBBF8\uC9C0 \uCD94\uAC00
+      \uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 5
+      unit: 0.2
+    MaxLv: 475
+    PriceUnit: 6000
+  - Name: "\uD06C\uB9AC\uD2F0\uCEEC \uB370\uBBF8\uC9C0"
+    Grade: 4
+    Img: {fileID: 0}
+    Desc: "\uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0 +{0}% \uC99D\uAC00"
+    ValueList:
+    - type: 0
+      def: 10
+      unit: 2
+    MaxLv: 75
+    PriceUnit: 8500
+  - Name: "\uC250\uB3C4\uC6B0 \uD30C\uD2B8\uB108"
+    Grade: 5
+    Img: {fileID: 0}
+    Desc: "57\uCD08\uB9C8\uB2E4 {0}\uCD08\uAC04 \uB370\uBBF8\uC9C0 60%\uB85C \uD589\uB3D9\uC744
+      \uB530\uB77C\uD558\uB294 \uADF8\uB9BC\uC790 \uBD84\uC2E0 \uC18C\uD658"
+    ValueList:
+    - type: 0
+      def: 7
+      unit: 0.2
+    MaxLv: 150
+    PriceUnit: 12000
+  - Name: "\uCE7C\uCDA4"
+    Grade: 6
+    Img: {fileID: 0}
+    Desc: "63\uCD08\uB9C8\uB2E4 360\uB3C4 \uD68C\uC804\uD558\uB294 \uD45C\uCC3D\uACFC
+      \uB370\uBBF8\uC9C0 {0}%\uD48D\uCC28\uC218\uB9AC\uAC80\uC744 \uB09C\uC0AC\uD55C\uB2E4."
+    ValueList:
+    - type: 0
+      def: 150
+      unit: 1
+    MaxLv: 500
+    PriceUnit: 25000
