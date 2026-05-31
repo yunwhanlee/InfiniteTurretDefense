@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +30,6 @@ public class CharaCard : MonoBehaviour
     private void SetCharaDataAsset(CHR_CATE cate)
     {
         Debug.Log($"SetCharaDataAsset():: cate= {cate}");
-
         switch (cate)
         {
             case CHR_CATE.ARCHER:
@@ -43,6 +43,9 @@ public class CharaCard : MonoBehaviour
                 break;
             case CHR_CATE.HOLYKNIGHT:
                 charaDataAsset = GM._.crm.holyKnightDataAssetArr[(int)userData.grade];
+                break;
+            case CHR_CATE.NINZA:
+                charaDataAsset = GM._.crm.ninzaDataAssetArr[(int)userData.grade];
                 break;
             // 여기에 추가
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using static Config;
 using static SkillPoolManager;
@@ -66,7 +67,10 @@ public class Ninza : Chara
 
         // 투사체 발사
         GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
-        Skill2_DoubleThrow(damage, isCritical);
+
+        // 더블쓰로우
+        if(Grade >= CHR_GRADE.RARE)
+            StartCoroutine(Skill2_DoubleThrow(damage, isCritical));
     }
 
 #region SKILL
@@ -74,11 +78,8 @@ public class Ninza : Chara
     /// 더블쓰로우
     /// </summary>
     /// <param name="damage">데미지</param>
-    private void Skill2_DoubleThrow(int damage, bool isCritical)
+    private IEnumerator Skill2_DoubleThrow(int damage, bool isCritical)
     {
-        if(Grade < CHR_GRADE.RARE)
-            return;
-        
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
 
@@ -91,7 +92,9 @@ public class Ninza : Chara
         int random = Random.Range(0, 1000);
         if(random <= percent)
         {
-            //TODO 두번 공격
+            // 한번더 투사체 발사
+            yield return WFS_0_1;
+            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
         }
     }
 

@@ -77,6 +77,7 @@ public class Archer : Chara
 
         // 투사체 발사
         GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+        // 멀티샷
         Skill2_MultiShot(damage, isCritical);
     }
 
