@@ -11,6 +11,10 @@ public class Ninza : Chara
     public Transform shootTf;
     public Sprite missileSpr;
 
+    // 스킬4 풍차수리검
+    const int STORM_SHURIKEN_COOLTIME = 21;
+    [SerializeField] float stormShurikenTime = 0;
+
     // 스킬6 쉐도우 파트너
     const int SHADOW_PARTNER_COOLTIME = 57;
     [SerializeField] float shadowPartnerTime = 0;
@@ -22,6 +26,15 @@ public class Ninza : Chara
     protected void Update()
     {
         base.Update();
+
+        // 스킬4 풍차수리검
+        if(Grade >= CHR_GRADE.UNIQUE) {
+            stormShurikenTime += Time.deltaTime;
+            if(stormShurikenTime >= STORM_SHURIKEN_COOLTIME) {
+                Skill4_StormShuriken();
+                stormShurikenTime = 0;
+            }
+        }
 
         // 스킬6 쉐도우 파트너
         if(Grade >= CHR_GRADE.MYTHIC) {
@@ -68,14 +81,14 @@ public class Ninza : Chara
         // 투사체 발사
         GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
 
-        // 더블쓰로우
+        // 더블 쓰로우
         if(Grade >= CHR_GRADE.RARE)
             StartCoroutine(Skill2_DoubleThrow(damage, isCritical));
     }
 
 #region SKILL
     /// <summary>
-    /// 더블쓰로우
+    /// 더블 쓰로우
     /// </summary>
     /// <param name="damage">데미지</param>
     private IEnumerator Skill2_DoubleThrow(int damage, bool isCritical)
@@ -117,29 +130,29 @@ public class Ninza : Chara
     }
 
     /// <summary>
-    /// 급소 타격 : 같은 대상을 연속 x번 공격할 경우 추가 체력%데미지 타격
+    /// 풍차수리검
     /// </summary>
-    private void Skill4_VitalStrike()
+    private void Skill4_StormShuriken()
     {
         if(Grade < CHR_GRADE.UNIQUE)
             return;
         
         const int STIKE_CNT_IDX = 0;
-        const int DMG_IDX = 1;
 
         const int gradeIdx = (int)CHR_GRADE.UNIQUE;
         int skillLv = SkillLvArr[gradeIdx];
         var skillValList = CharaSkill.skillAssetArr[gradeIdx].ValueList;
 
-        // {0} 타격 횟수
-        int defCnt = (int)skillValList[STIKE_CNT_IDX].def;
-        int unitCnt = (int)skillValList[STIKE_CNT_IDX].unit;
-        int strikeCnt = defCnt + unitCnt * (int)Grade;
+        // {0} 데미지
+        float defPer = skillValList[STIKE_CNT_IDX].def;
+        float unitPer = skillValList[STIKE_CNT_IDX].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        // {1} 적 체력% 추가데미지
-        float defPer = skillValList[DMG_IDX].def;
-        float unitPer = skillValList[DMG_IDX].unit;
-        float enemyHpDmgPer = defPer + unitPer * skillLv;
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+
+        // 오브젝트 풀링리스트 관통샷 생성 및 초기화
+        StormShuriken stormShuriken = GM._.spm.SpawnPoolDics(SK_IDX.SK_StormShuriken).GetComponent<StormShuriken>();
+        stormShuriken.Init(shootTf.position, direction, damage);
     }
 
     /// <summary>

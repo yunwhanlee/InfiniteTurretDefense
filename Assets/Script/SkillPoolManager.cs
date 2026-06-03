@@ -25,6 +25,8 @@ public class SkillPoolManager : MonoBehaviour
         SK_HolyAura, // 빛의아우라
         SK_HolyBeam, // 빛의기둥
         SK_HolySmite, // 빛의심판
+        //* 닌자 스킬
+        SK_StormShuriken, // 폭풍수리검
     }
 
     // 오브젝트 풀링
@@ -46,6 +48,8 @@ public class SkillPoolManager : MonoBehaviour
     public HolyAura holyAura;
     public HolyBeam holyBeam;
     public HolySmite holySmite;
+    [Header("닌자 스킬")]
+    public StormShuriken stormShurikenPf;
 
     void Awake()
     {
@@ -66,6 +70,8 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_HolyAura, Init(holyAura.gameObject, 1));
         poolDics.Add(SK_IDX.SK_HolyBeam, Init(holyBeam.gameObject, 1));
         poolDics.Add(SK_IDX.SK_HolySmite, Init(holySmite.gameObject, 1));
+        // 닌자
+        poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 5));
     }
 
 #region POOL
