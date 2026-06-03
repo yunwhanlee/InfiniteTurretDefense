@@ -1,0 +1,457 @@
+fileFormatVersion: 2
+guid: 33c976cd105daac4e9fbe4b25550c22a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 821950843697242837
+    second: NinzaShadowPartner_0
+  - first:
+      213: -4356535573629664
+    second: NinzaShadowPartner_1
+  - first:
+      213: 7089461725211625994
+    second: NinzaShadowPartner_2
+  - first:
+      213: 684721054592681846
+    second: NinzaShadowPartner_3
+  - first:
+      213: 751524356700515731
+    second: NinzaShadowPartner_4
+  - first:
+      213: 8474683880191242842
+    second: NinzaShadowPartner_5
+  - first:
+      213: 1991829838035923402
+    second: NinzaShadowPartner_6
+  - first:
+      213: -2418793202756092684
+    second: NinzaShadowPartner_7
+  - first:
+      213: 5369232928373530349
+    second: NinzaShadowPartner_8
+  - first:
+      213: 5242468059965433135
+    second: NinzaShadowPartner_9
+  - first:
+      213: 7135531963322917552
+    second: NinzaShadowPartner_10
+  - first:
+      213: -6831446419506605807
+    second: NinzaShadowPartner_11
+  - first:
+      213: -7199199142740491508
+    second: NinzaShadowPartner_12
+  - first:
+      213: 44129746512007099
+    second: NinzaShadowPartner_13
+  - first:
+      213: 760696340047915109
+    second: NinzaShadowPartner_14
+  - first:
+      213: -8470340856815162393
+    second: NinzaShadowPartner_15
+  - first:
+      213: -102886256569071940
+    second: NinzaShadowPartner_16
+  - first:
+      213: 1935112994265289478
+    second: NinzaShadowPartner_17
+  - first:
+      213: 2624424752014236914
+    second: NinzaShadowPartner_18
+  - first:
+      213: 6295777282099335061
+    second: NinzaShadowPartner_19
+  - first:
+      213: 7192007983739907103
+    second: NinzaShadowPartner_20
+  - first:
+      213: -5317071174977035970
+    second: NinzaShadowPartner_21
+  - first:
+      213: 1376115819988904844
+    second: NinzaShadowPartner_22
+  - first:
+      213: -1746566854847405211
+    second: NinzaShadowPartner_23
+  - first:
+      213: -7271305921777089329
+    second: NinzaShadowPartner_24
+  - first:
+      213: -6258323126049698094
+    second: NinzaShadowPartner_25
+  - first:
+      213: 3780638713510810903
+    second: NinzaShadowPartner_26
+  - first:
+      213: -4963620812637008631
+    second: NinzaShadowPartner_27
+  - first:
+      213: -7536219830544861666
+    second: NinzaShadowPartner_28
+  - first:
+      213: -580575723125339855
+    second: NinzaShadowPartner_29
+  - first:
+      213: -8757081606701375483
+    second: NinzaShadowPartner_30
+  - first:
+      213: -2338355950536614395
+    second: NinzaShadowPartner_31
+  - first:
+      213: 4044409921774058459
+    second: NinzaShadowPartner_32
+  - first:
+      213: 8322601644419896280
+    second: NinzaShadowPartner_33
+  - first:
+      213: -9096126877134135483
+    second: NinzaShadowPartner_34
+  - first:
+      213: -3420813586976500180
+    second: NinzaShadowPartner_35
+  - first:
+      213: 3891055121712120386
+    second: NinzaShadowPartner_36
+  - first:
+      213: -7368968543743440208
+    second: NinzaShadowPartner_37
+  - first:
+      213: -3262312666770036223
+    second: NinzaShadowPartner_38
+  - first:
+      213: 2092902199574524783
+    second: NinzaShadowPartner_39
+  - first:
+      213: -5846072498258775956
+    second: NinzaShadowPartner_40
+  - first:
+      213: 1151845564532806621
+    second: NinzaShadowPartner_41
+  - first:
+      213: 5640028583730862170
+    second: NinzaShadowPartner_42
+  - first:
+      213: 8554808295002874856
+    second: NinzaShadowPartner_43
+  - first:
+      213: 8644203536377307178
+    second: NinzaShadowPartner_44
+  - first:
+      213: -505470522599100323
+    second: NinzaShadowPartner_45
+  - first:
+      213: -8292443640188509106
+    second: NinzaShadowPartner_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NinzaShadowPartner_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766ff0357677fc349bfdadd65d5ed957
+      internalID: 821950843697242837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbd2518e9355c746b3a226e576fb659
+      internalID: -4356535573629664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7129e51bac6fd4482a4a31ff69a5aa
+      internalID: 7089461725211625994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96241ba98b343b044ab550c995afd8a5
+      internalID: 684721054592681846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93cd01b2ca2f8de43ab6cf1bd2679cb2
+      internalID: 751524356700515731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e66f6a3ab1f23d44b762f81156dd132
+      internalID: 8474683880191242842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2cc733ec6b18140992a6f707b86d37
+      internalID: 1991829838035923402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NinzaShadowPartner_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762920ebd80184e47849a2d5f421b8e4
+      internalID: -2418793202756092684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3ddff9ff670176a4bae230191bf88bde
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      NinzaShadowPartner_0: 821950843697242837
+      NinzaShadowPartner_1: -4356535573629664
+      NinzaShadowPartner_2: 7089461725211625994
+      NinzaShadowPartner_3: 684721054592681846
+      NinzaShadowPartner_4: 751524356700515731
+      NinzaShadowPartner_5: 8474683880191242842
+      NinzaShadowPartner_6: 1991829838035923402
+      NinzaShadowPartner_7: -2418793202756092684
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

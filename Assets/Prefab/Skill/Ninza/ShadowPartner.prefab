@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 3926822100353082275}
   - component: {fileID: 8387603257266804225}
   m_Layer: 6
-  m_Name: Ninza5
+  m_Name: ShadowPartner
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ce2c8c50f9c949498f4411431704695, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,9 +211,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2057799953
   m_SortingLayer: 4
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7533240152134596783, guid: a7bdfb2aef282a247b39f0db82a212b6, type: 3}
+  m_Sprite: {fileID: 821950843697242837, guid: 33c976cd105daac4e9fbe4b25550c22a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   <SkillLvArr>k__BackingField: 
   <CharaSkill>k__BackingField: {fileID: 0}
   shootTf: {fileID: 8255936985933046289}
-  missileSpr: {fileID: -7362888197062665486, guid: d617d9fdd035a33448ae836a8848c4ab, type: 3}
+  missileSpr: {fileID: -9074250713814175723, guid: d617d9fdd035a33448ae836a8848c4ab, type: 3}
   stormShurikenTime: 0
   shadowPartnerTime: 0
   bladeDanceTime: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 1476a32992582d04f8a615056a6babd7, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 3bbb3d078b9e9374b9301a8a03838d9b, type: 3}
 --- !u!114 &2922150406429055484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.125}
-    oldSize: {x: 2.4615386, y: 2.4615386}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 3.5555556, y: 3.5555556}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
