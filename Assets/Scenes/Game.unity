@@ -32889,6 +32889,7 @@ MonoBehaviour:
   holyAura: {fileID: 2158378841779001230, guid: e0f34fe59b0f74342be14fceb11b361c, type: 3}
   holyBeam: {fileID: 453125562911333045, guid: 432d97cf299ddf2489e93c3321816156, type: 3}
   holySmite: {fileID: 3584247389651537234, guid: 8173d87f52dd7f345a938dbd1576e5e5, type: 3}
+  doubleThrowPf: {fileID: 5560282842134720139, guid: 9964a0e9a74e5f6499837a183ccfb46f, type: 3}
   stormShurikenPf: {fileID: 3356321707341361519, guid: 7a414db97e224384cabfc46be88d892e, type: 3}
 --- !u!4 &1682242765
 Transform:

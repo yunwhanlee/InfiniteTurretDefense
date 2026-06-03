@@ -262,15 +262,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void OnHit(int dmg, bool isCritical)
     {
+        const float Y_OFFSET = 0.7f; // Pivot이 아래 있으므로, Y축을 약간 올려서 데미지 텍스트 표시
+
         // 이미 죽은상태라면 텍스트만 더 띄우고 종료
         if(state == STATE.DEAD)
         {
-            GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical);
+            GM._.dmgTxtMng.GetPool(dmg, transform.position + Vector3.up * Y_OFFSET, isCritical);
             return;
         }
 
         // 데미지 텍스트 표시
-        GM._.dmgTxtMng.GetPool(dmg, transform.position, isCritical);
+        GM._.dmgTxtMng.GetPool(dmg, transform.position + Vector3.up * Y_OFFSET, isCritical);
 
         hp -= dmg;
 

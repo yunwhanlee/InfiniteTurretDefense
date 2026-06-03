@@ -21,8 +21,7 @@ public class Missile : MonoBehaviour
         if(isHit)
             return;
 
-        //TODO Enemy를 Config 상수만들기
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag(Config.TAG.ENEMY))
         {
             Enemy enemy = col.GetComponent<Enemy>();
 

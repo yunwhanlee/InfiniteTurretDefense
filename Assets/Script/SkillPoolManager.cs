@@ -26,6 +26,7 @@ public class SkillPoolManager : MonoBehaviour
         SK_HolyBeam, // 빛의기둥
         SK_HolySmite, // 빛의심판
         //* 닌자 스킬
+        SK_DoubleThrow, // 더블쓰로우
         SK_StormShuriken, // 폭풍수리검
     }
 
@@ -49,6 +50,7 @@ public class SkillPoolManager : MonoBehaviour
     public HolyBeam holyBeam;
     public HolySmite holySmite;
     [Header("닌자 스킬")]
+    public DoubleThrow doubleThrowPf;
     public StormShuriken stormShurikenPf;
 
     void Awake()
@@ -71,6 +73,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_HolyBeam, Init(holyBeam.gameObject, 1));
         poolDics.Add(SK_IDX.SK_HolySmite, Init(holySmite.gameObject, 1));
         // 닌자
+        poolDics.Add(SK_IDX.SK_DoubleThrow, Init(doubleThrowPf.gameObject, 10));
         poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 5));
     }
 

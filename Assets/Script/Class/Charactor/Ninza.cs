@@ -78,12 +78,19 @@ public class Ninza : Chara
                 damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
 
-        // 투사체 발사
-        GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+        bool isActiveSkill = false; // 액티브 스킬 발동 여부
 
         // 더블 쓰로우
         if(Grade >= CHR_GRADE.RARE)
-            StartCoroutine(Skill2_DoubleThrow(damage, isCritical));
+        {
+            isActiveSkill = Skill2_DoubleThrow(damage, isCritical);
+        }
+
+        if(!isActiveSkill)
+        {
+            // 투사체 발사
+            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+        }
     }
 
 #region SKILL
@@ -91,7 +98,9 @@ public class Ninza : Chara
     /// 더블 쓰로우
     /// </summary>
     /// <param name="damage">데미지</param>
-    private IEnumerator Skill2_DoubleThrow(int damage, bool isCritical)
+    /// <param name="isCritical">치명타 여부</param>
+    /// <returns>발동 여부</returns>
+    private bool Skill2_DoubleThrow(int damage, bool isCritical)
     {
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
@@ -105,10 +114,12 @@ public class Ninza : Chara
         int random = Random.Range(0, 1000);
         if(random <= percent)
         {
-            // 한번더 투사체 발사
-            yield return WFS_0_1;
-            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+            Debug.Log("Skill2_DoubleThrow():: 발동!");
+            DoubleThrow doubleThrow = GM._.spm.SpawnPoolDics(SK_IDX.SK_DoubleThrow).GetComponent<DoubleThrow>();
+            doubleThrow.Init(shootTf.position, direction, damage, isCritical, missileSpr);
+            return true;
         }
+        return false;
     }
 
     /// <summary>
