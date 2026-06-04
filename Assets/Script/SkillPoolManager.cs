@@ -28,6 +28,7 @@ public class SkillPoolManager : MonoBehaviour
         //* 닌자 스킬
         SK_DoubleThrow, // 더블쓰로우
         SK_StormShuriken, // 폭풍수리검
+        SK_ShadowPartner, // 쉐도우파트너
     }
 
     // 오브젝트 풀링
@@ -52,7 +53,7 @@ public class SkillPoolManager : MonoBehaviour
     [Header("닌자 스킬")]
     public DoubleThrow doubleThrowPf;
     public StormShuriken stormShurikenPf;
-
+    public ShadowPartner shadowPartnerPf;
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
@@ -75,6 +76,7 @@ public class SkillPoolManager : MonoBehaviour
         // 닌자
         poolDics.Add(SK_IDX.SK_DoubleThrow, Init(doubleThrowPf.gameObject, 10));
         poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 5));
+        poolDics.Add(SK_IDX.SK_ShadowPartner, Init(shadowPartnerPf.gameObject, 2));
     }
 
 #region POOL
