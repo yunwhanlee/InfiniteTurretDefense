@@ -17,6 +17,7 @@ public class Ninza : Chara
 
     // 스킬6 쉐도우 파트너
     const int SHADOW_PARTNER_COOLTIME = 57;
+    [SerializeField] bool isActiveShadowPartner; // 쉐도우 파트너 발동여부
     [SerializeField] float shadowPartnerTime = 0;
 
     // 스킬7 칼춤
@@ -199,9 +200,8 @@ public class Ninza : Chara
         float duration = defPer + unitPer * skillLv;
 
         //TODO 쉐도우파트너 소환
-        // ShadowPartner shadowPartner = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyAura).GetComponent<HolyAura>();
-        // Vector3 pos = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-        // shadowPartner.Init(pos, duration);
+        ShadowPartner shadowPartner = GM._.spm.SpawnPoolDics(SK_IDX.SK_ShadowPartner).GetComponent<ShadowPartner>();
+        shadowPartner.Init(transform.position, duration, () => isActiveShadowPartner = false );
     }
 
     private void Skill7_BladeDance()
