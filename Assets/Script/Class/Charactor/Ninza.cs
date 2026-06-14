@@ -19,6 +19,7 @@ public class Ninza : Chara
     public bool IsActiveShadowPartner;
     public ShadowPartner shadowPartner;
     const int SHADOW_PARTNER_COOLTIME = 57;
+    [SerializeField] bool isActiveShadowPartner; // 쉐도우 파트너 발동여부
     [SerializeField] float shadowPartnerTime = 0;
 
     // 스킬7 칼춤

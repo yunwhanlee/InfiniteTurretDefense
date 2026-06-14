@@ -13,7 +13,6 @@ public class ShadowPartner : MonoBehaviour
     const float OFFSET_Y = 0.1f;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -75,6 +74,7 @@ public class ShadowPartner : MonoBehaviour
     /// <param name="duration">지속시간</param>
     IEnumerator CoRelease(float duration)
     {
+        // 지속시간 대기 후
         yield return new WaitForSeconds(duration);
         ninzaParent.IsActiveShadowPartner = false;
         ninzaParent.shadowPartner = null;
