@@ -1,27 +1,72 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static SkillPoolManager;
 
 public class ShadowPartner : MonoBehaviour
 {
+    SpriteRenderer sprRdr;
     Animator anim;
-    Vector3 targetPos;
+    Ninza ninzaParent; // 부모 닌자캐릭터
+
+    const float OFFSET_X = 0.2f;
+    const float OFFSET_Y = 0.1f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
+        sprRdr = GetComponent<SpriteRenderer>();
     }
 
-    public void PlayAnim(string animName, bool isFlipX)
+    public void PlayAnim()
     {
-        anim.SetTrigger(animName);
+        sprRdr.flipX = ninzaParent.sprRdr.flipX;
+
+        Vector3 pos = ninzaParent.transform.position;
+        float offsetX = sprRdr.flipX? OFFSET_X : -OFFSET_X;
+
+        transform.position = new Vector3(pos.x + offsetX, pos.y, pos.z);
+
+        anim.SetTrigger("IsAttack");
     }
 
-    public void Init(Vector3 pos, float duration)
+    public void Init(Ninza ninza, float duration)
     {
-        targetPos = pos;
+        ninzaParent = ninza;
+
+        Vector3 pos = ninzaParent.transform.position;
+        float offsetX = ninzaParent.sprRdr.flipX? OFFSET_X : -OFFSET_X;
+
+        transform.position = new Vector3(pos.x + offsetX, pos.y + OFFSET_Y, pos.z);
+
         StartCoroutine(CoRelease(duration));
+    }
+
+    private void OnDestroy() {
+        ninzaParent.IsActiveShadowPartner = false;
+        ninzaParent.shadowPartner = null;
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_ShadowPartner, gameObject); // 회수
+    }
+
+#region FUNC
+    /// <summary>
+    /// 쉐도우파트너 추가공격 (외부)
+    /// </summary>
+    public void Attack(Action callback)
+    {
+        StartCoroutine(CoShadowPartnerAttack(callback));
+    }
+
+    /// <summary>
+    /// 쉐도우파트너 추가공격 (내부 코루틴)
+    /// </summary>
+    IEnumerator CoShadowPartnerAttack(Action callback)
+    {
+        yield return Config.WFS_0_2;
+        yield return Config.WFS_0_1;
+        callback.Invoke();
     }
 
     /// <summary>
@@ -31,8 +76,9 @@ public class ShadowPartner : MonoBehaviour
     IEnumerator CoRelease(float duration)
     {
         yield return new WaitForSeconds(duration);
-
-        // 회수
-        GM._.spm.ReleasePoolDics(SK_IDX.SK_ShadowPartner, gameObject);
+        ninzaParent.IsActiveShadowPartner = false;
+        ninzaParent.shadowPartner = null;
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_ShadowPartner, gameObject); // 회수
     }
+#endregion
 }

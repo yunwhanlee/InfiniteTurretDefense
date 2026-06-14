@@ -43,7 +43,7 @@ public abstract class Chara : MonoBehaviour
     [field: SerializeField] public CharaSkillAsset CharaSkill {get; private set;}
 
     float time = 0;
-    SpriteRenderer sprRdr;
+    public SpriteRenderer sprRdr;
     Animator anim;
 
     // 최적화를 위한 프로퍼티 블록 변수

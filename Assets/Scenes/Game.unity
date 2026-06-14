@@ -32891,6 +32891,7 @@ MonoBehaviour:
   holySmite: {fileID: 3584247389651537234, guid: 8173d87f52dd7f345a938dbd1576e5e5, type: 3}
   doubleThrowPf: {fileID: 5560282842134720139, guid: 9964a0e9a74e5f6499837a183ccfb46f, type: 3}
   stormShurikenPf: {fileID: 3356321707341361519, guid: 7a414db97e224384cabfc46be88d892e, type: 3}
+  shadowPartnerPf: {fileID: 3569102642422998224, guid: b0205fca8d8b92048865da00fa4a8520, type: 3}
 --- !u!4 &1682242765
 Transform:
   m_ObjectHideFlags: 0

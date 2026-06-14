@@ -16,6 +16,8 @@ public class Ninza : Chara
     [SerializeField] float stormShurikenTime = 0;
 
     // 스킬6 쉐도우 파트너
+    public bool IsActiveShadowPartner;
+    public ShadowPartner shadowPartner;
     const int SHADOW_PARTNER_COOLTIME = 57;
     [SerializeField] float shadowPartnerTime = 0;
 
@@ -33,6 +35,15 @@ public class Ninza : Chara
             if(stormShurikenTime >= STORM_SHURIKEN_COOLTIME) {
                 Skill4_StormShuriken();
                 stormShurikenTime = 0;
+
+                // 쉐도우 파트너 추가 공격
+                if(IsActiveShadowPartner)
+                {
+                    shadowPartner.PlayAnim();
+                    shadowPartner.Attack(
+                        () => Skill4_StormShuriken(decDmgPer: 0.6f)
+                    );
+                }
             }
         }
 
@@ -41,6 +52,7 @@ public class Ninza : Chara
             shadowPartnerTime += Time.deltaTime;
             if(shadowPartnerTime >= SHADOW_PARTNER_COOLTIME) {
                 Skill6_ShadowPartner();
+                IsActiveShadowPartner = true;
                 shadowPartnerTime = 0;
             }
         }
@@ -84,13 +96,41 @@ public class Ninza : Chara
         if(Grade >= CHR_GRADE.RARE)
         {
             isActiveSkill = Skill2_DoubleThrow(damage, isCritical);
+
+            // 쉐도우 파트너 추가 공격
+            if(IsActiveShadowPartner)
+            {
+                shadowPartner.PlayAnim();
+                shadowPartner.Attack(
+                    () => Skill2_DoubleThrow(Mathf.RoundToInt(damage * 0.6f), isCritical, true)
+                );
+
+            }
         }
 
         if(!isActiveSkill)
         {
             // 투사체 발사
             GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+
+            // 쉐도우 파트너 추가 공격
+            if(IsActiveShadowPartner)
+            {
+                shadowPartner.PlayAnim();
+                shadowPartner.Attack(
+                    () => GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical)
+                );
+            }
         }
+    }
+
+    /// <summary>
+    /// 쉐도우파트너 추가공격
+    /// </summary>
+    public IEnumerator CoShadowPartnerAttack(Action callback)
+    {
+        yield return WFS_0_5;
+        callback.Invoke();
     }
 
 #region SKILL
@@ -99,8 +139,9 @@ public class Ninza : Chara
     /// </summary>
     /// <param name="damage">데미지</param>
     /// <param name="isCritical">치명타 여부</param>
+    /// <param name="isActive">무조건 발동</param>
     /// <returns>발동 여부</returns>
-    private bool Skill2_DoubleThrow(int damage, bool isCritical)
+    private bool Skill2_DoubleThrow(int damage, bool isCritical, bool isActive = false)
     {
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
@@ -112,13 +153,14 @@ public class Ninza : Chara
         percent *= 10; // unit 소수점단위 정수로 올리기
 
         int random = Random.Range(0, 1000);
-        if(random <= percent)
+        if(isActive || random <= percent)
         {
             Debug.Log("Skill2_DoubleThrow():: 발동!");
             DoubleThrow doubleThrow = GM._.spm.SpawnPoolDics(SK_IDX.SK_DoubleThrow).GetComponent<DoubleThrow>();
             doubleThrow.Init(shootTf.position, direction, damage, isCritical, missileSpr);
             return true;
         }
+
         return false;
     }
 
@@ -143,7 +185,7 @@ public class Ninza : Chara
     /// <summary>
     /// 풍차수리검
     /// </summary>
-    private void Skill4_StormShuriken()
+    private void Skill4_StormShuriken(float decDmgPer = 1.0f)
     {
         if(Grade < CHR_GRADE.UNIQUE)
             return;
@@ -159,7 +201,7 @@ public class Ninza : Chara
         float unitPer = skillValList[STIKE_CNT_IDX].unit;
         float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer * decDmgPer);
 
         // 오브젝트 풀링리스트 관통샷 생성 및 초기화
         StormShuriken stormShuriken = GM._.spm.SpawnPoolDics(SK_IDX.SK_StormShuriken).GetComponent<StormShuriken>();
@@ -198,10 +240,9 @@ public class Ninza : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float duration = defPer + unitPer * skillLv;
 
-        //TODO 쉐도우파트너 소환
-        // ShadowPartner shadowPartner = GM._.spm.SpawnPoolDics(SK_IDX.SK_HolyAura).GetComponent<HolyAura>();
-        // Vector3 pos = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-        // shadowPartner.Init(pos, duration);
+        //쉐도우파트너 소환
+        shadowPartner = GM._.spm.SpawnPoolDics(SK_IDX.SK_ShadowPartner).GetComponent<ShadowPartner>();
+        shadowPartner.Init(this, duration);
     }
 
     private void Skill7_BladeDance()
