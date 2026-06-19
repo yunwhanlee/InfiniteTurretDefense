@@ -24,7 +24,9 @@ public class Ninza : Chara
 
     // 스킬7 칼춤
     const int BLADE_DANCE_COOLTIME = 63;
+    [SerializeField] bool isActiveBladeDance;
     [SerializeField] float bladeDanceTime = 0;
+
 
     protected void Update()
     {
@@ -261,7 +263,50 @@ public class Ninza : Chara
 
         int dmg = Mathf.RoundToInt(Dmg * dmgPer);
 
-        //TODO 칼춤 처리
+        // 칼춤 처리
+        StartCoroutine(CoBaldeDance(dmg));
+    }
+
+    IEnumerator CoBaldeDance(int dmg)
+    {
+        int curDeg = 0;
+        const int maxDeg = 360 * 4;
+        int stormShurikenCnt = 0;
+
+        while(curDeg < maxDeg)
+        {
+            // 투사체 발사
+            GM._.mpm.SpawnPool(shootTf.position, Vector2.right, Dmg, curDeg, missileSpr, false);
+            GM._.mpm.SpawnPool(shootTf.position, Vector2.left, Dmg, curDeg, missileSpr, false);
+
+            // 풍차수리검 발사
+            if(curDeg % 360 == 0)
+            {
+                if(stormShurikenCnt % 2 == 0)
+                {
+                    for(int i = 0; i < 4; i++)
+                    {
+                        Vector2 dir = Quaternion.Euler(0, 0, 0 - i * 90) * Vector2.right;
+                        StormShuriken stormShuriken = GM._.spm.SpawnPoolDics(SK_IDX.SK_StormShuriken).GetComponent<StormShuriken>();
+                        stormShuriken.Init(shootTf.position, dir, dmg);
+                    }
+                }
+                else
+                {
+                    for(int i = 0; i < 4; i++)
+                    {
+                        Vector2 dir = Quaternion.Euler(0, 0, 0 - i * 90 + 45) * Vector2.right;
+                        StormShuriken stormShuriken = GM._.spm.SpawnPoolDics(SK_IDX.SK_StormShuriken).GetComponent<StormShuriken>();
+                        stormShuriken.Init(shootTf.position, dir, dmg);
+                    }
+                }
+                stormShurikenCnt++;
+            }
+            curDeg += 10;
+
+            yield return WFS_0_1;
+        }
+
     }
 #endregion
 }

@@ -74,9 +74,9 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_HolyBeam, Init(holyBeam.gameObject, 1));
         poolDics.Add(SK_IDX.SK_HolySmite, Init(holySmite.gameObject, 1));
         // 닌자
-        poolDics.Add(SK_IDX.SK_DoubleThrow, Init(doubleThrowPf.gameObject, 10));
-        poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 5));
-        poolDics.Add(SK_IDX.SK_ShadowPartner, Init(shadowPartnerPf.gameObject, 2));
+        poolDics.Add(SK_IDX.SK_DoubleThrow, Init(doubleThrowPf.gameObject, 20));
+        poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 10));
+        poolDics.Add(SK_IDX.SK_ShadowPartner, Init(shadowPartnerPf.gameObject, 1));
     }
 
 #region POOL
