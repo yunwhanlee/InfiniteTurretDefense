@@ -13,84 +13,92 @@ MonoBehaviour:
   m_Name: EngineerSkills
   m_EditorClassIdentifier: Assembly-CSharp::CharaSkillAsset
   skillAssetArr:
-  - Name: "\uC5D0\uB108\uC9C0\uBCFC\uD2B8"
+  - Name: "\uD0C4\uD658\uBC1C\uC0AC"
     Grade: 0
-    Img: {fileID: 7450870849948873471, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "{0}\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801\uC744 \uACF5\uACA9."
+    Img: {fileID: 0}
+    Desc: "{0}\uC758 \uB370\uBBF8\uC9C0\uB85C \uC801\uC744 \uACF5\uACA9"
     ValueList:
     - type: 0
       def: 0
       unit: 0
     MaxLv: 1000
     PriceUnit: 1000
-  - Name: "\uD30C\uC774\uC5B4\uBCFC"
+  - Name: "\uC0F7\uAC74"
     Grade: 1
-    Img: {fileID: 140729979, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "{0}% \uD655\uB960\uB85C, \uACF5\uACA9\uB825 {0}% \uBC94\uC704\uACF5\uACA9."
+    Img: {fileID: 0}
+    Desc: "{0}%\uBC1C\uB3D9, \uACF5\uACA9\uB825 {1}% \uB2E4\uC218\uC758 \uD0C4\uD658
+      \uBC1C\uC0AC"
+    ValueList:
+    - type: 1
+      def: 20
+      unit: 2
+    - type: 0
+      def: 40
+      unit: 0.2
+    MaxLv: 250
+    PriceUnit: 2500
+  - Name: "\uD3EC\uD0D1"
+    Grade: 2
+    Img: {fileID: 0}
+    Desc: "28\uCD08\uB9C8\uB2E4, \uC801\uC774 \uC788\uB294 \uBC29\uD5A5\uC5D0 \uACF5\uACA9\uB825
+      {0}% \uCCB4\uB825 {1} \uD3EC\uD0D1\uC744 40\uCD08\uAC04 \uC124\uCE58"
+    ValueList:
+    - type: 0
+      def: 20
+      unit: 0.5
+    - type: 0
+      def: 10
+      unit: 0.5
+    MaxLv: 300
+    PriceUnit: 4000
+  - Name: "\uBC14\uC8FC\uCE74"
+    Grade: 3
+    Img: {fileID: 0}
+    Desc: "16\uCD08\uB9C8\uB2E4, \uD3EC\uD0C4\uC744 \uB0A0\uB824\uC11C {0}% \uB370\uBBF8\uC9C0
+      \uBC94\uC704\uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 90
+      unit: 2
+    MaxLv: 300
+    PriceUnit: 6000
+  - Name: "\uD654\uC5FC\uBC29\uC0AC"
+    Grade: 4
+    Img: {fileID: 0}
+    Desc: "32\uCD08\uB9C8\uB2E4, \uACF5\uACA9\uB825 n% \uAD00\uD1B5\uD615 \uC5F0\uC18D\uBC94\uC704
+      \uACF5\uACA9"
+    ValueList:
+    - type: 0
+      def: 20
+      unit: 0.2
+    MaxLv: 200
+    PriceUnit: 8500
+  - Name: "\uC720\uB3C4"
+    Grade: 5
+    Img: {fileID: 0}
+    Desc: "6\uCD08\uB9C8\uB2E4, \uACF5\uACA9\uB825 {0}% \uC720\uB3C4\uD0C4\uC744
+      {1}\uAC1C \uBC1C\uC0AC. "
     ValueList:
     - type: 0
       def: 15
       unit: 0.5
-    - type: 0
+    - type: 1
       def: 120
-      unit: 3
-    MaxLv: 90
-    PriceUnit: 2500
-  - Name: "\uB9E4\uC9C1\uC624\uBE0C"
-    Grade: 2
-    Img: {fileID: 2004552407, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "30\uCD08\uB9C8\uB2E4, 20\uCD08\uB3D9\uC548 \uACF5\uACA9\uB825 {0}%\uC758
-      \uC624\uBE0C\uB97C \uC18C\uD658"
+      unit: 1
+    MaxLv: 150
+    PriceUnit: 12000
+  - Name: "\uACFC\uBD80\uD558"
+    Grade: 6
+    Img: {fileID: 0}
+    Desc: "\uACF5\uACA9 \uBC0F \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD560\uB54C\uB9C8\uB2E4
+      {0}%\uB85C \uACFC\uC5F4\uD3EC\uC778\uD2B8 1\uC529 \uC313\uC774\uBA70, 100\uC774
+      \uB420\uB54C\uB9C8\uB2E4 {1}% \uB370\uBBF8\uC9C0 \uD3ED\uBC1C \uBC94\uC704\uACF5\uACA9"
     ValueList:
     - type: 0
       def: 10
-      unit: 0.5
-    MaxLv: 50
-    PriceUnit: 4000
-  - Name: "\uCE7C\uB0A0\uC5BC\uC74C"
-    Grade: 3
-    Img: {fileID: -1465441008, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "14\uCD08\uB9C8\uB2E4, \uACF5\uACA9\uB825 {0}% {1}\uAC1C \uBE59\uACB0\uACF5\uACA9"
-    ValueList:
-    - type: 0
-      def: 70
-      unit: 1
-    - type: 1
-      def: 5
-      unit: 2
-    MaxLv: 500
-    PriceUnit: 6000
-  - Name: "\uD1A0\uB124\uC774\uB3C4"
-    Grade: 4
-    Img: {fileID: 473961380, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "21\uCD08\uB9C8\uB2E4 \uACF5\uACA9\uB825 {0}% \uC77C\uC9C1\uC120\uC73C\uB85C
-      \uB098\uC544\uAC00\uB294 \uD68C\uC624\uB9AC\uB97C \uC18C\uD658. \uACF5\uACA9\uBC1B\uC740
-      \uC801\uC774 \uBC00\uB824\uB0A8"
-    ValueList:
-    - type: 0
-      def: 140
-      unit: 2
-    MaxLv: 250
-    PriceUnit: 8500
-  - Name: "\uCC9C\uB465\uBC88\uAC1C"
-    Grade: 5
-    Img: {fileID: 1267999862, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "9\uCD08\uB9C8\uB2E4 \uACF5\uACA9\uB825 {0}% \uB79C\uB364 \uBC94\uC704\uACF5\uACA9
-      2\uCD08 \uAE30\uC808"
-    ValueList:
+      unit: 0.4
     - type: 0
       def: 120
-      unit: 2
-    MaxLv: 500
-    PriceUnit: 12000
-  - Name: "\uBE14\uB9AC\uC790\uB4DC"
-    Grade: 6
-    Img: {fileID: -1244012193, guid: 9b8d6c666e539b64b99ffd67e26faf50, type: 3}
-    Desc: "67\uCD08\uB9C8\uB2E4, \uBAA8\uB4E0\uC801\uC5D0\uAC8C \uACF5\uACA9\uB825
-      {0}% \uBE59\uACB0\uACF5\uACA9"
-    ValueList:
-    - type: 0
-      def: 500
       unit: 3
-    MaxLv: 500
+    MaxLv: 200
     PriceUnit: 25000
