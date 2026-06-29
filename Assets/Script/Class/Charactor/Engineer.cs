@@ -12,16 +12,16 @@ public class Enginner : Chara
     public Sprite missileSpr;
 
     // SK3. 포탑설치
-    const int TURRET_TIME = 30;
+    const int TURRET_TIME = 28;
     [SerializeField] float TurretTime;
     // SK4. 바주카
-    const int BAZOOKA_TIME = 14;
+    const int BAZOOKA_TIME = 16;
     [SerializeField] float BazookaTime;
     // SK5. 화염방사
     const int FLAMESHOT_TIME = 32;
     [SerializeField] float FlameShotTime;
     // SK6. 유도탄
-    const int HORMINGMISSILE_TIME = 9;
+    const int HORMINGMISSILE_TIME = 6;
     [SerializeField] float HormingMissileTime;
     // SK7. 과부하
     const int OVERLOAD_MAX = 100;
@@ -31,6 +31,43 @@ public class Enginner : Chara
     {
         base.Update();
 
+        // SK3. 포탑설치
+        if(Grade >= CHR_GRADE.EPIC) {
+            TurretTime += Time.deltaTime;
+            if(TurretTime >= TURRET_TIME) {
+                // Skill3_Turret();
+                TurretTime = 0;
+            }
+        }
+
+        // SK4. 바주카
+        if(Grade >= CHR_GRADE.UNIQUE) {
+            BazookaTime += Time.deltaTime;
+            if(BazookaTime >= BAZOOKA_TIME) {
+                // Skill4_Bazooka();
+                BazookaTime = 0;
+            }
+        }
+
+        // SK5. 화염방사
+        if(Grade >= CHR_GRADE.LEGEND) {
+            FlameShotTime += Time.deltaTime;
+            if(FlameShotTime >= FLAMESHOT_TIME) {
+                // Skill5_FlameShot();
+                FlameShotTime = 0;
+            }
+        }
+
+        // SK6. 유도탄
+        if(Grade >= CHR_GRADE.MYTHIC) {
+            HormingMissileTime += Time.deltaTime;
+            if(HormingMissileTime >= HORMINGMISSILE_TIME) {
+                // Skill6_HormingMissile();
+                HormingMissileTime = 0;
+            }
+        }
+
+        // Skill7_OverLoad();
     }
 
     public override void Attack(Enemy enemy)
@@ -56,25 +93,26 @@ public class Enginner : Chara
                 damage = Mathf.RoundToInt(damage * CritDmgPer);
         }
 
-        // 스킬2. 파이어볼
-        bool isFireBallActive = SKill2_FireBall();
+        // 스킬2. 샷건
+        bool isShotGunActive = SKill2_ShotGun(isCritical);
 
         // 일반 공격
-        if(!isFireBallActive)
+        if(!isShotGunActive)
         {
             // 투사체 발사
-            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
+            Vector2 pos = new Vector2(sprRdr.flipX? -shootTf.position.x : shootTf.position.x, shootTf.position.y);
+            GM._.mpm.SpawnPool(pos, direction, damage, 0, missileSpr, isCritical);
         }
     }
 
 #region SKILL
-    private bool SKill2_FireBall()
+    private bool SKill2_ShotGun(bool isCritical)
     {
         if(Grade < CHR_GRADE.RARE)
             return false;
         
-        const int ATK_PER = 0;
-        const int DMG = 1;
+        const int ATK_PER = 0; // 발동% IDX
+        const int DMG = 1; // 데미지 IDX
 
         const int gradeIdx = (int)CHR_GRADE.RARE;
         int skillLv = SkillLvArr[gradeIdx];
@@ -83,12 +121,12 @@ public class Enginner : Chara
         // {0} 공격 확률
         float defPer = skillValList[ATK_PER].def;
         float unitPer = skillValList[ATK_PER].unit;
-        float percent = defPer + unitPer * skillLv;
+        float percent = defPer + unitPer * (int)Grade;
         percent *= 10; // unit 소수점단위 정수로 올리기
 
         int random = Random.Range(0, 1000);
         bool isActive = random < percent;
-        Debug.Log($"SKill2_FireBall():: random({random}) < percent({percent}) = {isActive}");
+        Debug.Log($"SKill2_ShotGun():: random({random}) < percent({percent}) = {isActive}");
 
         if(isActive)
         {
@@ -99,9 +137,16 @@ public class Enginner : Chara
 
             int dmg = Mathf.RoundToInt(Dmg * dmgPer);
 
-            // 오브젝트 풀링리스트 관통샷 생성 및 초기화
-            FireBall fireBall = GM._.spm.SpawnPoolDics(SK_IDX.SK_FireBall).GetComponent<FireBall>();
-            fireBall.Init(shootTf.position, direction, dmg);
+            // 샷건 투사체 발사
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, -60, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, -45, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, -30, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, -15, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, 0, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, 15, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, 30, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, 45, missileSpr, isCritical);
+            GM._.mpm.SpawnPool(shootTf.position, direction, dmg, 60, missileSpr, isCritical);
         }
 
         return isActive;

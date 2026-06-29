@@ -47,6 +47,9 @@ public class CharaCard : MonoBehaviour
             case CHR_CATE.NINZA:
                 charaDataAsset = GM._.crm.ninzaDataAssetArr[(int)userData.grade];
                 break;
+            case CHR_CATE.ENGINEER:
+                charaDataAsset = GM._.crm.engineerDataAssetArr[(int)userData.grade];
+                break;
             // 여기에 추가
         }
     }
