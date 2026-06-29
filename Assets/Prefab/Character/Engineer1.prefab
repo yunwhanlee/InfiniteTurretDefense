@@ -245,7 +245,7 @@ MonoBehaviour:
   <CharaSkill>k__BackingField: {fileID: 0}
   sprRdr: {fileID: 0}
   shootTf: {fileID: 8255936985933046289}
-  missileSpr: {fileID: 6771521017701282519, guid: 97fea5047b075da429063a73389a8d63, type: 3}
+  missileSpr: {fileID: -9158520035601498265, guid: 586fc50f9210ccb4ba3970e82dd01dd8, type: 3}
   TurretTime: 0
   BazookaTime: 0
   FlameShotTime: 0
