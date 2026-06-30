@@ -47,8 +47,18 @@ public class Util : MonoBehaviour
         OnClickConfirmEvent.Invoke();
     }
 #endregion
+#region FUNC CALC
+    /// <summary>
+    /// 1초당 공격 속도단위를 실제 공격속도로 변환
+    /// </summary>
+    /// <param name="speed">공격속도 단위 (예) 1.5 → 1초당 1.5번 공격</param>
+    public static float GetAttackPerSecond(float speed)
+    {
+        return (float)Math.Round(1f / speed * 1000f) / 1000f;
+    }
+#endregion
 
-#region FUNC
+#region FUNC UI
     /// <summary> (코루틴) 해당 메세지 2초간 표시 </summary>
     private IEnumerator CorShowMsg(GameObject msgPopup)
     {

@@ -73,7 +73,7 @@ public abstract class Chara : MonoBehaviour
             return;
 
         // 공격
-        if(time > GetAttackPerSecond(AttackSpeed))
+        if(time > Util.GetAttackPerSecond(AttackSpeed))
         {
             Attack(target);
             time = 0;
@@ -117,15 +117,6 @@ public abstract class Chara : MonoBehaviour
         anim.SetTrigger("IsAttack");
 
         // 이후 공격방식은 각각 자식클래스에서 오버라이딩으로 추가할 것!
-    }
-
-    /// <summary>
-    /// 1초당 공격 속도단위를 실제 공격속도로 변환
-    /// </summary>
-    /// <param name="speed">공격속도 단위 (예) 1.5 → 1초당 1.5번 공격</param>
-    public float GetAttackPerSecond(float speed)
-    {
-        return (float)Math.Round(1f / speed * 1000f) / 1000f;
     }
 
     /// <summary>
