@@ -14,7 +14,8 @@ public static class Config
 
     public class Layer
     {
-        public static LayerMask ENEMY = LayerMask.GetMask("Enemy");
+        public static LayerMask ENEMY = LayerMask.GetMask("Enemy"); 
+        public static LayerMask TOWER = LayerMask.GetMask("Tower");
     }
 
     /// <summary> 태그네임 </summary>

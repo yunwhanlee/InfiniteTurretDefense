@@ -34,8 +34,13 @@ public class Enemy : MonoBehaviour
     }
 
     public bool IsAlive => hp > 0;
-    public Transform targetSpotTf;
 
+    [Header("타겟팅(어그로) 설정")]
+    public Transform targetSpotTf;
+    public float detectRadius = 3.0f;
+    private Transform curTarget; // 💡 요놈 하나로 이동/공격 모두 처리!
+
+    [Header("속성")]
     [SerializeField] ENEMY_TYPE type;    public ENEMY_TYPE Type {get => type;}
     [SerializeField] STATE state;    public STATE State {get => state; set => state = value;}
 
@@ -56,14 +61,14 @@ public class Enemy : MonoBehaviour
     public int dotDamage = 0;      // 초당 들어갈 도트 데미지
     private float dotTickTimer = 0f; // 1초마다 데미지를 주기 위한 내부 틱 타이머
 
+    // UI
+    public Slider hpSlider;
+
     // 컴포넌트
     SpriteRenderer sprRdr;
     Animator anim;
     SpriteLibrary sprLib;
     public Rigidbody2D rigid;
-
-    // UI
-    public Slider hpSlider;
 
     MaterialPropertyBlock propBlock;
     Vector3 playerPos;
@@ -72,7 +77,6 @@ public class Enemy : MonoBehaviour
     Coroutine corAttackId;
 
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
-
     const string ANIM_TRG_IS_MOVE = "IsMove";
     const string ANIM_TRG_IS_ATTACK = "IsAttack";
     const string ANIM_TRG_IS_DEAD = "IsDead";
@@ -150,9 +154,7 @@ public class Enemy : MonoBehaviour
 
             if(time > span)
             {
-                Tower tower = GM._.tower;
-                Attack(tower);
-
+                Attack();
                 time = 0;
             }
         }
@@ -160,12 +162,12 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        // Debug.Log($"OnTriggerEnter2D():: collision= {col.name}");
-
-        //TODO Player를 Config로 상수만들기
-        if(col.gameObject.CompareTag("Player"))
+        // 💡 Config 레이어 비트마스크 연산으로 충돌 확인
+        if ((Config.Layer.TOWER & (1 << col.gameObject.layer)) > 0)
         {
+            curTarget = col.transform; // 부딪힌 놈을 타겟으로 확정!
             state = STATE.ATTACK;
+            CancelInvoke(nameof(FindTarget)); // 공격할 땐 두리번거리지 않음
         }
     }
 
@@ -197,9 +199,39 @@ public class Enemy : MonoBehaviour
 
         // 방향
         direction = (playerPos - transform.position).normalized;
+
         // 방향에 따라 이미지 반전
         bool isFlip = (direction.x < 0)? true : false;
         sprRdr.flipX = isFlip;
+
+        curTarget = targetSpotTf;
+        CancelInvoke(nameof(FindTarget));
+        InvokeRepeating(nameof(FindTarget), 0f, 0.25f);
+    }
+
+    private void FindTarget()
+    {
+        if (!IsAlive || state == STATE.DEAD) return;
+
+        // 💡 Config 레이어 직접 사용! (Config.LAYER.Tower 등으로 쓰시면 됩니다)
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, detectRadius, Config.Layer.TOWER);
+
+        float shortestDistance = Mathf.Infinity;
+        Transform nearestTarget = null;
+
+        // 가장 가까운 타겟 탐색
+        foreach (Collider2D col in cols)
+        {
+            float distance = Vector2.Distance(transform.position, col.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                nearestTarget = col.transform;
+            }
+        }
+
+        // 가장 가까운 놈으로 타겟 갱신
+        curTarget = (nearestTarget != null) ? nearestTarget : targetSpotTf;
     }
 
     /// <summary>
@@ -244,16 +276,27 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 플레이어를 공격
     /// </summary>
-    public void Attack(Tower tower)
+    public void Attack()
     {
         // Debug.Log("Attack():: tower=", tower);
-        corAttackId = StartCoroutine(CorAttack(tower));
+        if(corAttackId != null) StopCoroutine(corAttackId);
+        corAttackId = StartCoroutine(CorAttack());
     }
 
-    IEnumerator CorAttack(Tower tower)
+    IEnumerator CorAttack()
     {
         anim.SetTrigger(ANIM_TRG_IS_ATTACK);
-        tower.OnHit(Dmg);
+
+        // 타겟에 따른 컴포넌트 호출
+        if(curTarget.GetComponent<Tower>() is Tower tower)
+        {
+            tower.OnHit(Dmg);
+        }
+        else if(curTarget.GetComponent<Turret>() is Turret turret)
+        {
+            turret.OnHit(Dmg);
+        }
+
         yield return new WaitForSeconds(1);
     }
 
@@ -344,6 +387,19 @@ public class Enemy : MonoBehaviour
         int randIdx = Random.Range(0, len);
         sprLib.spriteLibraryAsset = sprLibAstArr[randIdx];
     }
-
 #endregion
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// 에디터 씬 뷰에서 적을 선택했을 때 어그로 반경을 그려줍니다.
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        // 1. 기즈모 색상을 반투명한 빨간색으로 설정
+        Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+        
+        // 2. 내 위치를 기준으로 detectRadius 반경만큼 선으로 된 원을 그림
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
+    }
+#endif
 }

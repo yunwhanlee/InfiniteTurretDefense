@@ -115,21 +115,22 @@ MonoBehaviour:
   maxHp: 10
   hp: 0
   moveSpeed: 1
+  ExtraDmg: 0
   dmg: 1
   targetSpotTf: {fileID: 5824243940381422805}
+  detectRadius: 3
   type: 0
   state: 0
   time: 0
   span: 1
-  isKnockbacked: 0
   knockbackPower: 0
   knockbackDir: {x: 0, y: 0, z: 0}
   stunTime: 0
   slowTime: 0
   dotTime: 0
   dotDamage: 0
-  rigid: {fileID: 0}
   hpSlider: {fileID: 7256901569083789837}
+  rigid: {fileID: 0}
 --- !u!61 &8124658118983439031
 BoxCollider2D:
   m_ObjectHideFlags: 0
