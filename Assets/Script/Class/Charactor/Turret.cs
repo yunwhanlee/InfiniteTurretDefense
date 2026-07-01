@@ -72,17 +72,18 @@ public class Turret : MonoBehaviour
     public void Attack(Enemy enemy)
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
-        direction = (enemy.targetSpotTf.position - transform.position).normalized;
         sprRdr.flipX = direction.x < 0;
         anim.SetTrigger("IsAttack");
 
         // 오브젝트 중심과 총구 사이의 절대적인 X거리(Offset)를 구함
         float shootOffsetX = Mathf.Abs(shootTf.position.x - transform.position.x);
         float posX = transform.position.x + (sprRdr.flipX ? -shootOffsetX : shootOffsetX);
-        Vector2 pos = new Vector2(posX, shootTf.position.y);
+        Vector3 shootPos = new Vector3(posX, shootTf.position.y, 0);
+
+        direction = (enemy.targetSpotTf.position - shootPos).normalized;
 
         // 투사체 발사
-        GM._.mpm.SpawnPool(pos, direction, damage, 0, missileSpr, false);
+        GM._.mpm.SpawnPool(shootPos, direction, damage, 0, missileSpr, false);
     }
 
     /// <summary>
