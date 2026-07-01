@@ -35,10 +35,7 @@ public class Enemy : MonoBehaviour
 
     public bool IsAlive => hp > 0;
 
-    [Header("타겟팅(어그로) 설정")]
-    public Transform targetSpotTf;
-    public float detectRadius = 3.0f;
-    private Transform curTarget; // 💡 요놈 하나로 이동/공격 모두 처리!
+
 
     [Header("속성")]
     [SerializeField] ENEMY_TYPE type;    public ENEMY_TYPE Type {get => type;}
@@ -61,6 +58,13 @@ public class Enemy : MonoBehaviour
     public int dotDamage = 0;      // 초당 들어갈 도트 데미지
     private float dotTickTimer = 0f; // 1초마다 데미지를 주기 위한 내부 틱 타이머
 
+    [Header("타겟팅(어그로) 설정")]
+    public Transform targetSpotTf;
+    float detectRadius = 2.0f; // 타겟팅 탐색 반경
+    Transform towerTf; // 타워 Transform
+    Transform curTarget; // 💡 요놈 하나로 이동/공격 모두 처리!
+    Vector3 direction; // 적 이동 방향
+
     // UI
     public Slider hpSlider;
 
@@ -71,8 +75,6 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rigid;
 
     MaterialPropertyBlock propBlock;
-    Vector3 playerPos;
-    Vector3 direction;
     Coroutine corFlashId;
     Coroutine corAttackId;
 
@@ -89,7 +91,6 @@ public class Enemy : MonoBehaviour
         sprLib = GetComponent<SpriteLibrary>();
         rigid = GetComponent<Rigidbody2D>();
         propBlock = new MaterialPropertyBlock();
-        playerPos = Vector3.zero;
     }
 
     void Update()
@@ -143,7 +144,7 @@ public class Enemy : MonoBehaviour
                 anim.SetTrigger(ANIM_TRG_IS_MOVE);
                 knockbackPower = 0;
                 knockbackDir = Vector3.zero;
-                direction = (playerPos - transform.position).normalized;
+                direction = (curTarget.position - transform.position).normalized;
                 sprRdr.flipX = direction.x < 0? true : false;;
             }
         }
@@ -197,14 +198,16 @@ public class Enemy : MonoBehaviour
         hp = maxHp;
         hpSlider.value = (float)hp / maxHp;
 
+
         // 방향
-        direction = (playerPos - transform.position).normalized;
+        towerTf = GM._.tower.transform;
+        curTarget = towerTf;
+        direction = (curTarget.position - transform.position).normalized;
 
         // 방향에 따라 이미지 반전
         bool isFlip = (direction.x < 0)? true : false;
         sprRdr.flipX = isFlip;
 
-        curTarget = targetSpotTf;
         CancelInvoke(nameof(FindTarget));
         InvokeRepeating(nameof(FindTarget), 0f, 0.25f);
     }
@@ -230,8 +233,9 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // 가장 가까운 놈으로 타겟 갱신
-        curTarget = (nearestTarget != null) ? nearestTarget : targetSpotTf;
+        // 가장 가까운 놈으로 타겟 갱신 (없다면 타워로)
+        curTarget = (nearestTarget != null) ? nearestTarget : towerTf;
+        direction = (curTarget.position - transform.position).normalized;
     }
 
     /// <summary>
