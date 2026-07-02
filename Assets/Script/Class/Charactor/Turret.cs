@@ -7,6 +7,9 @@ using UnityEngine.UI;
 /// </summary>
 public class Turret : MonoBehaviour
 {
+    public enum STATE { IDLE, ATTACK, DEAD };
+    [SerializeField] private STATE state;
+
     // 외부 클래스
     public TargetFinder targetFinder;
 
@@ -18,11 +21,13 @@ public class Turret : MonoBehaviour
     [SerializeField] private int damage;    public int Damage { get => damage;}
     [SerializeField] private float attackSpeed; public float AttackSpeed { get => attackSpeed;}
     [SerializeField] private float time = 0;
-    private bool isDead { get => hp <= 0; }
     Vector3 direction;
     Coroutine corFlashId;
     MaterialPropertyBlock propBlock;
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
+    const string ANIM_TRG_IS_MOVE = "IsMove";
+    const string ANIM_TRG_IS_ATTACK = "IsAttack";
+    const string ANIM_TRG_IS_DEAD = "IsDead";
 
     // UI
     public Slider hpSlider;
@@ -40,17 +45,25 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        if(isDead) return;
+        if(state == STATE.DEAD) return;
 
         time += Time.deltaTime;
 
         Enemy target = targetFinder.CurrentTarget;
         if(target == null)
+        {
+            if (state != STATE.IDLE)
+            {
+                state = STATE.IDLE;
+                anim.SetTrigger(ANIM_TRG_IS_MOVE);
+            }
             return;
+        }
 
         // 공격
         if(time > Util.GetAttackPerSecond(AttackSpeed))
         {
+            state = STATE.ATTACK;
             Attack(target);
             time = 0;
             attackSpeed = 1;
@@ -60,11 +73,14 @@ public class Turret : MonoBehaviour
 #region FUNC
     public void Init()
     {
+        anim.SetTrigger(ANIM_TRG_IS_MOVE);
+        state = STATE.IDLE;
+        time = 0;
 
         attackSpeed = 1;
-        damage = 5;
+        damage = 2;
 
-        maxHp = 10;
+        maxHp = 3;
         hp = maxHp;
 
         hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
@@ -75,7 +91,7 @@ public class Turret : MonoBehaviour
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
         sprRdr.flipX = direction.x < 0;
-        anim.SetTrigger("IsAttack");
+        anim.SetTrigger(ANIM_TRG_IS_ATTACK);
 
         // 오브젝트 중심과 총구 사이의 절대적인 X거리(Offset)를 구함
         float shootOffsetX = Mathf.Abs(shootTf.position.x - transform.position.x);
@@ -93,16 +109,10 @@ public class Turret : MonoBehaviour
     /// </summary>
     public void OnHit(int dmg)
     {
+        if(state == STATE.DEAD) return;
+
         const float Y_OFFSET = 0.7f; // Pivot이 아래 있으므로, Y축을 약간 올려서 데미지 텍스트 표시
 
-        // 이미 죽은상태라면 텍스트만 더 띄우고 종료
-        if(hp <= 0)
-        {
-            hp = 0;
-            GM._.dmgTxtMng.GetPool(dmg, transform.position + Vector3.up * Y_OFFSET, false);
-            hpSlider.gameObject.SetActive(false);
-            return;
-        }
 
         // 데미지 텍스트 표시
         GM._.dmgTxtMng.GetPool(dmg, transform.position + Vector3.up * Y_OFFSET, false);
@@ -111,6 +121,13 @@ public class Turret : MonoBehaviour
 
         Flash();
         hpSlider.value = (float)hp / maxHp;
+
+        // 죽음
+        if(hp <= 0)
+        {
+            StartCoroutine(CorDead());
+            return;
+        }
 
         // HP슬라이더 표시
         if(!hpSlider.gameObject.activeSelf)
@@ -146,6 +163,17 @@ public class Turret : MonoBehaviour
         sprRdr.GetPropertyBlock(propBlock);
         propBlock.SetFloat(hitFlashMat_IsHit, ORIGIN_COLOR);
         sprRdr.SetPropertyBlock(propBlock);
+    }
+
+    IEnumerator CorDead()
+    {
+        state = STATE.DEAD;
+        hp = 0;
+        anim.SetTrigger(ANIM_TRG_IS_DEAD);
+        hpSlider.gameObject.SetActive(false);
+
+        yield return Config.WFS_1;
+        yield return Config.WFS_0_5;
     }
 #endregion
 }
