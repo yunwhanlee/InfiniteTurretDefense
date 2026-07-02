@@ -13,69 +13,114 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrarySourceAsset
   m_Library:
-  - m_Name: Idle
-    m_Hash: 1008081451
+  - m_Name: Move
+    m_Hash: 252483654
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: Archer1-sheet_0
-      m_Hash: 381467907
+    - m_Name: New Label
+      m_Hash: 259326342
       m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_1
-      m_Hash: 565939605
+    - m_Name: New Label_0
+      m_Hash: 16589798
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_1
+      m_Hash: 939135856
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_2
+      m_Hash: 787694282
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_3
+      m_Hash: 435450460
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_4
+      m_Hash: 126937087
       m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 2
-  - m_Name: Spawn
-    m_Hash: 298836195
-    m_CategoryList: []
-    m_OverrideEntries:
-    - m_Name: Idle
-      m_Hash: 1008081451
-      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_3
-      m_Hash: 263580857
-      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_4
-      m_Hash: 298940698
-      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 6
   - m_Name: Attack
     m_Hash: 7088141
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: Archer1-sheet_5
-      m_Hash: 651577740
+    - m_Name: New Label
+      m_Hash: 259326342
       m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_6
-      m_Hash: 1071585334
+    - m_Name: New Label_0
+      m_Hash: 16589798
+      m_Sprite: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_1
+      m_Hash: 939135856
+      m_Sprite: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_2
+      m_Hash: 787694282
       m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_7
-      m_Hash: 148383904
-      m_Sprite: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_3
+      m_Hash: 435450460
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
-    - m_Name: Archer1-sheet_8
-      m_Hash: 409417009
-      m_Sprite: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_4
+      m_Hash: 126937087
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 5230282939540972716, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 4
+    m_EntryOverrideCount: 6
+  - m_Name: Dead
+    m_Hash: 219670042
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: New Label
+      m_Hash: 259326342
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_0
+      m_Hash: 16589798
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_1
+      m_Hash: 939135856
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_2
+      m_Hash: 787694282
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_3
+      m_Hash: 435450460
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    - m_Name: New Label_4
+      m_Hash: 126937087
+      m_Sprite: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1455620136064275869, guid: 1b957f35619ee7743b3b5a5ab307cc4a, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639184223146926464
+  m_ModificationHash: 639185847391701828
   m_Version: 1

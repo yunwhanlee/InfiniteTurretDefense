@@ -18,17 +18,17 @@ public class Turret : MonoBehaviour
     [SerializeField] private int damage;    public int Damage { get => damage;}
     [SerializeField] private float attackSpeed; public float AttackSpeed { get => attackSpeed;}
     [SerializeField] private float time = 0;
-    private Vector3 direction;
-    private Coroutine corFlashId;
+    private bool isDead { get => hp <= 0; }
+    Vector3 direction;
+    Coroutine corFlashId;
     MaterialPropertyBlock propBlock;
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
 
     // UI
     public Slider hpSlider;
-
     // Component
-    private SpriteRenderer sprRdr;
-    private Animator anim;
+    SpriteRenderer sprRdr;
+    Animator anim;
 
     void Start()
     {
@@ -40,6 +40,8 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
+        if(isDead) return;
+
         time += Time.deltaTime;
 
         Enemy target = targetFinder.CurrentTarget;
