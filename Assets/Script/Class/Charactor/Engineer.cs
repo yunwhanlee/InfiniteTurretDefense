@@ -12,7 +12,7 @@ public class Enginner : Chara
     public Sprite missileSpr;
 
     // SK3. 포탑설치
-    const int TURRET_TIME = 28;
+    const int TURRET_TIME = 35;
     [SerializeField] float TurretTime;
     // SK4. 바주카
     const int BAZOOKA_TIME = 16;
@@ -34,8 +34,8 @@ public class Enginner : Chara
         // SK3. 포탑설치
         if(Grade >= CHR_GRADE.EPIC) {
             TurretTime += Time.deltaTime;
-            if(TurretTime >= TURRET_TIME) {
-                // Skill3_Turret();
+            if(TurretTime >= TURRET_TIME && targetFinder.CurrentTarget) {
+                Skill3_Turret();
                 TurretTime = 0;
             }
         }
@@ -152,24 +152,58 @@ public class Enginner : Chara
         return isActive;
     }
 
-    private void Skill3_MagicOrb()
+    private void Skill3_Turret()
     {
         const int gradeIdx = (int)CHR_GRADE.EPIC;
         int skillLv = SkillLvArr[gradeIdx];
 
+        // 포탑 공격력
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
         float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
+        int turretDmg = Mathf.RoundToInt(Dmg * dmgPer);
 
-        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
+        // 포탑 체력
+        float def2Per = CharaSkill.skillAssetArr[gradeIdx].ValueList[1].def;
+        float unit2Per = CharaSkill.skillAssetArr[gradeIdx].ValueList[1].unit;
+        float hpPer = (def2Per + unit2Per * skillLv) * 0.01f;
+        int turretHp = 10 + Mathf.RoundToInt(hpPer);
 
-        // 매직오브 소환 이펙트
-        Vector3 pos = new Vector3(transform.position.x + 0.35f, transform.position.y + 0.6f, transform.position.z);
-        GM._.epm.SpawnPoolDics(EF_IDX.MagicOrbSpawnEF, pos);
+        //TODO 소환 이펙트
 
-        // 매직오브 소환
-        MagicOrb magicOrb = GM._.spm.SpawnPoolDics(SK_IDX.SK_MagicOrb).GetComponent<MagicOrb>();
-        magicOrb.Init(dmg, pos);
+        // 고정된 중심점
+        Vector3 center = new Vector3(0, -0.8f, 0);
+        Vector3 targetPos = targetFinder.CurrentTarget.transform.position;
+        const float DISTANCE = 2f;
+
+        // 2. 상하좌우 4개의 설치 후보 위치를 배열로 만들기
+        Vector3[] candidatePositions = new Vector3[4]
+        {
+            center + Vector3.up * DISTANCE,    // 상 (0, 1.2, 0)
+            center + Vector3.down * DISTANCE,  // 하 (0, -2.8, 0)
+            center + Vector3.left * DISTANCE,  // 좌 (-2, -0.8, 0)
+            center + Vector3.right * DISTANCE  // 우 (2, -0.8, 0)
+        };
+
+        // 3. 4개의 위치 중 타겟(적)과 가장 가까운 위치 찾기
+        Vector3 bestPos = candidatePositions[0];
+        float minDistance = float.MaxValue; // 최솟값을 찾기 위해 가장 큰 값으로 초기화
+
+        foreach (Vector3 pos in candidatePositions)
+        {
+            float distanceToTarget = Vector3.Distance(pos, targetPos);
+            
+            // 현재 검사하는 위치가 지금까지 발견한 위치보다 타겟과 가깝다면 갱신
+            if (distanceToTarget < minDistance)
+            {
+                minDistance = distanceToTarget;
+                bestPos = pos;
+            }
+        }
+
+        // 4. 최종 결정된 가장 가까운 위치(bestPos)에 터렛 생성
+        Turret turret = GM._.spm.SpawnPoolDics(SK_IDX.SK_Turret).GetComponent<Turret>();
+        turret.Init(turretDmg, turretHp, bestPos);
     }
 
     IEnumerator CorSkill4_IceBlade()

@@ -8,6 +8,7 @@ using static Config;
 [System.Serializable]
 public struct SkillValue
 {
+    public string name;
     public enum Type {SkillLv, GradeLv}
     public Type type; // 타입: 스킬레벨 또는 등급레벨
     public float def; // 초기 수치

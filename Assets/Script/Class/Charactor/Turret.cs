@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private int damage;    public int Damage { get => damage;}
     [SerializeField] private float attackSpeed; public float AttackSpeed { get => attackSpeed;}
     [SerializeField] private float time = 0;
+    [SerializeField] private float lifeTime = 0;
     Vector3 direction;
     Coroutine corFlashId;
     MaterialPropertyBlock propBlock;
@@ -28,6 +29,7 @@ public class Turret : MonoBehaviour
     const string ANIM_TRG_IS_MOVE = "IsMove";
     const string ANIM_TRG_IS_ATTACK = "IsAttack";
     const string ANIM_TRG_IS_DEAD = "IsDead";
+    const int LIFE_TIME_SEC = 30;
 
     // UI
     public Slider hpSlider;
@@ -35,12 +37,11 @@ public class Turret : MonoBehaviour
     SpriteRenderer sprRdr;
     Animator anim;
 
-    void Start()
+    void Awake()
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         propBlock = new MaterialPropertyBlock();
-        Init();
     }
 
     void Update()
@@ -48,7 +49,16 @@ public class Turret : MonoBehaviour
         if(state == STATE.DEAD) return;
 
         time += Time.deltaTime;
+        lifeTime += Time.deltaTime;
 
+        // 소환시간 종료시 제거
+        if(LIFE_TIME_SEC < lifeTime)
+        {
+            GM._.spm.ReleasePoolDics(SkillPoolManager.SK_IDX.SK_Turret, gameObject);
+            return;
+        }
+
+        // 타겟 찾기
         Enemy target = targetFinder.CurrentTarget;
         if(target == null)
         {
@@ -71,36 +81,42 @@ public class Turret : MonoBehaviour
     }
 
 #region FUNC
-    public void Init()
+    public void Init(int dmg, int hp, Vector3 pos)
     {
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
         state = STATE.IDLE;
+
         time = 0;
+        lifeTime = 0;
 
         attackSpeed = 1;
-        damage = 2;
+        damage = dmg;
 
-        maxHp = 3;
+        maxHp = hp;
         hp = maxHp;
 
         hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
         hpSlider.value = (float)hp / maxHp;
+
+        transform.position = pos;
     }
 
     public void Attack(Enemy enemy)
     {
         // Debug.Log($"Attack():: {enemy.name}, HP: {enemy.hp}");
-        sprRdr.flipX = direction.x < 0;
+        sprRdr.flipX = enemy.targetSpotTf.position.x < transform.position.x;
+
         anim.SetTrigger(ANIM_TRG_IS_ATTACK);
 
-        // 오브젝트 중심과 총구 사이의 절대적인 X거리(Offset)를 구함
+        // 2. 이제 올바르게 갱신된 flipX를 바탕으로 총구(shootPos)의 X 위치를 계산합니다.
         float shootOffsetX = Mathf.Abs(shootTf.position.x - transform.position.x);
         float posX = transform.position.x + (sprRdr.flipX ? -shootOffsetX : shootOffsetX);
         Vector3 shootPos = new Vector3(posX, shootTf.position.y, 0);
 
+        // 3. 방금 정확하게 구한 총구 위치(shootPos)에서 적을 향하는 투사체 방향을 계산합니다.
         direction = (enemy.targetSpotTf.position - shootPos).normalized;
 
-        // 투사체 발사
+        // 4. 투사체 발사
         GM._.mpm.SpawnPool(shootPos, direction, damage, 0, missileSpr, false);
     }
 

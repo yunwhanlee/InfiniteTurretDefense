@@ -29,6 +29,8 @@ public class SkillPoolManager : MonoBehaviour
         SK_DoubleThrow, // 더블쓰로우
         SK_StormShuriken, // 폭풍수리검
         SK_ShadowPartner, // 쉐도우파트너
+        //* 엔지니어 스킬
+        SK_Turret, // 터렛
     }
 
     // 오브젝트 풀링
@@ -54,6 +56,8 @@ public class SkillPoolManager : MonoBehaviour
     public DoubleThrow doubleThrowPf;
     public StormShuriken stormShurikenPf;
     public ShadowPartner shadowPartnerPf;
+    [Header("엔지니어 스킬")]
+    public Turret turretPf;
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
@@ -77,6 +81,8 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_DoubleThrow, Init(doubleThrowPf.gameObject, 20));
         poolDics.Add(SK_IDX.SK_StormShuriken, Init(stormShurikenPf.gameObject, 10));
         poolDics.Add(SK_IDX.SK_ShadowPartner, Init(shadowPartnerPf.gameObject, 1));
+        // 엔지니어
+        poolDics.Add(SK_IDX.SK_Turret, Init(turretPf.gameObject, 3));
     }
 
 #region POOL
