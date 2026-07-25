@@ -474,4 +474,9 @@ MonoBehaviour:
     Textures:
     - {fileID: 2800000, guid: aed23809eefddb54fbbd51b7c1a00c9b, type: 3}
     - {fileID: 2800000, guid: 5d9935d3090efc442abf787d1707aa07, type: 3}
+    - {fileID: 2800000, guid: 25f9d43c9633d074090f8865321f6702, type: 3}
+    - {fileID: 2800000, guid: d6f2f1a88e12a8141846577110b5ef31, type: 3}
+    - {fileID: 2800000, guid: 5d340322751cf8c478cc15345b8cd9a5, type: 3}
+    - {fileID: 2800000, guid: 83a1d6c7129500b4e86246db97976adb, type: 3}
+    - {fileID: 2800000, guid: d69b0a72c926604419bf98d40b74dbc9, type: 3}
   PaletteTexture: {fileID: 2800000, guid: 2a6e5d2d9f284512963a17b0ae004c3f, type: 3}

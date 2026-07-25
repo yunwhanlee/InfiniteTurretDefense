@@ -94,8 +94,8 @@ namespace Assets.PixelFantasy.PixelHeroes.Common.Scripts.ExampleScripts
                 _character.Animator.SetTrigger("Fire");
             }
 
-            _character.AudioSource.pitch = Random.Range(0.9f, 1.1f);
-            _character.AudioSource.PlayOneShot(PixelEffectManager.Instance.FireAudioClip);
+            // _character.AudioSource.pitch = Random.Range(0.9f, 1.1f);
+            // _character.AudioSource.PlayOneShot(PixelEffectManager.Instance.FireAudioClip);
             PixelEffectManager.Instance.CreateSpriteEffect(_character, power ? "FireMuzzleM" : "FireMuzzleS", direction: 1, parent: firearm.FireMuzzle);
         }
     }
