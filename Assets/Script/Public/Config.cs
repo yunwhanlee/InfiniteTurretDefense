@@ -16,12 +16,14 @@ public static class Config
     {
         public static LayerMask ENEMY = LayerMask.GetMask("Enemy"); 
         public static LayerMask TOWER = LayerMask.GetMask("Tower");
+        public static LayerMask CHARACTER = LayerMask.GetMask("Character");
     }
 
     /// <summary> 태그네임 </summary>
     public class TAG
     {
         public static readonly string ENEMY = "Enemy";
+        public static readonly string CHARACTER = "Character";
     }
 
 #region ENUM

@@ -29,7 +29,7 @@ public class ObjectClickDetector : MonoBehaviour
             // 맞은 게 있는지 확인
             if (hit.collider != null)
             {
-                if (hit.collider.CompareTag("Character"))
+                if (hit.collider.CompareTag(Config.TAG.CHARACTER))
                 {
                     Debug.Log("캐릭터 선택됨: " + hit.collider.name);
 
