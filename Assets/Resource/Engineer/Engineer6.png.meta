@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: 8f98d822a2d87214abd12ef523923e56
+guid: 0bf58f2c1ff163c46b55fb4de7654ff3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1054879549792967020
-    second: Engineer1_sheet_0
+      213: -3034703824514909139
+    second: Engineer2_sheet_0
   - first:
-      213: -2672662571572316007
-    second: Engineer1_sheet_1
+      213: -6924329614398297923
+    second: Engineer2_sheet_1
   - first:
-      213: 6829786966656612193
-    second: Engineer1_sheet_2
+      213: -4720629502109050492
+    second: Engineer2_sheet_2
   - first:
-      213: -8839165032287817041
-    second: Engineer1_sheet_3
+      213: -2640943847992990249
+    second: Engineer2_sheet_3
   - first:
-      213: -2947215128215673020
-    second: Engineer1_sheet_4
+      213: 5389663818776557055
+    second: Engineer2_sheet_4
   - first:
-      213: 2701615911961289232
-    second: Engineer1_sheet_5
+      213: 3100256161398207575
+    second: Engineer2_sheet_5
   - first:
-      213: 2122674915469671059
-    second: Engineer1_sheet_6
+      213: -3999196734771635701
+    second: Engineer2_sheet_6
   - first:
-      213: 5008678074925709398
-    second: Engineer1_sheet_7
-  - first:
-      213: -3384057127921095563
-    second: Engineer1_sheet_8
+      213: -661437495309306590
+    second: Engineer2_sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +118,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -137,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Engineer1_sheet_0
+      name: Engineer6_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,16 +147,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 49624c173a05c51f0800000000000000
-      internalID: -1054879549792967020
+      spriteID: 97d736e6ea2db114b95e9da90547cc02
+      internalID: 1234002900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_1
+      name: Engineer6_1
       rect:
         serializedVersion: 2
         x: 64
@@ -172,38 +169,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99833f03d8bc8ead0800000000000000
-      internalID: -2672662571572316007
+      spriteID: b2fae12a809f005418b11083536e9d2b
+      internalID: 1797228551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.125}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 167f8277f0748ce50800000000000000
-      internalID: 6829786966656612193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Engineer1_sheet_3
+      name: Engineer6_2
       rect:
         serializedVersion: 2
         x: 0
@@ -216,16 +191,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fa23e6b2c3af45580800000000000000
-      internalID: -8839165032287817041
+      spriteID: 6233a6068c5a4b54b9b177042fb80fea
+      internalID: 979008899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_4
+      name: Engineer6_3
       rect:
         serializedVersion: 2
         x: 64
@@ -238,16 +213,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4472c06b4736917d0800000000000000
-      internalID: -2947215128215673020
+      spriteID: e18946c4393387b4494fe67884985c68
+      internalID: -967261815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_5
+      name: Engineer6_4
       rect:
         serializedVersion: 2
         x: 128
@@ -260,16 +235,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 012eeffab511e7520800000000000000
-      internalID: 2701615911961289232
+      spriteID: c0754483e875298458ae81d251c0caa5
+      internalID: -1545692362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_6
+      name: Engineer6_5
       rect:
         serializedVersion: 2
         x: 0
@@ -282,16 +257,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 39ab336d691457d10800000000000000
-      internalID: 2122674915469671059
+      spriteID: 3fdae991d002a9342ad8da05a57f81d1
+      internalID: 1080290730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer1_sheet_7
+      name: Engineer6_6
       rect:
         serializedVersion: 2
         x: 64
@@ -304,10 +279,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 658fb3a0c26628540800000000000000
-      internalID: 5008678074925709398
+      spriteID: 2c45856f7ff18b3498a8912ab10ab207
+      internalID: -699695781
       vertices: []
       indices: 
       edges: []
@@ -316,7 +291,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 127c789d376b32a4cb3415fa313d129e
+    spriteID: 436b004fbfa2858469536a5c06443bf6
     internalID: 0
     vertices: []
     indices: 
@@ -328,14 +303,13 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Engineer1_sheet_0: -1054879549792967020
-      Engineer1_sheet_1: -2672662571572316007
-      Engineer1_sheet_2: 6829786966656612193
-      Engineer1_sheet_3: -8839165032287817041
-      Engineer1_sheet_4: -2947215128215673020
-      Engineer1_sheet_5: 2701615911961289232
-      Engineer1_sheet_6: 2122674915469671059
-      Engineer1_sheet_7: 5008678074925709398
+      Engineer6_0: 1234002900
+      Engineer6_1: 1797228551
+      Engineer6_2: 979008899
+      Engineer6_3: -967261815
+      Engineer6_4: -1545692362
+      Engineer6_5: 1080290730
+      Engineer6_6: -699695781
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

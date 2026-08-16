@@ -66,11 +66,11 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 5008678074925709398, guid: 8f98d822a2d87214abd12ef523923e56, type: 3}
     - m_Name: Engineer1_sheet_7
       m_Hash: 311177790
-      m_Sprite: {fileID: 5008678074925709398, guid: 8f98d822a2d87214abd12ef523923e56, type: 3}
+      m_Sprite: {fileID: 2122674915469671059, guid: 8f98d822a2d87214abd12ef523923e56, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 5008678074925709398, guid: 8f98d822a2d87214abd12ef523923e56, type: 3}
+      m_SpriteOverride: {fileID: 2122674915469671059, guid: 8f98d822a2d87214abd12ef523923e56, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 3
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639183274263046211
+  m_ModificationHash: 639225250782567247
   m_Version: 1

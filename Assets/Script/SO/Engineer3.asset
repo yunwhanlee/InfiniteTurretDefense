@@ -15,8 +15,8 @@ MonoBehaviour:
   cardIdx: 5
   grade: 2
   charaName: "\uC5D4\uC9C0\uB2C8\uC5B43"
-  icon: {fileID: -1935260683, guid: c7d5cb21f227b094fbe059aa677a88f1, type: 3}
-  charaPrefab: {fileID: 3544792553527042751, guid: 173a9d836bf20e74e8790fe642c64848, type: 3}
+  icon: {fileID: 3100256161398207575, guid: cacec7f68715526449de2fe60c1351d9, type: 3}
+  charaPrefab: {fileID: 3544792553527042751, guid: e5222b83a2af83c40a3122fa335f3e26, type: 3}
   baseDmg: 45
   baseAttackSpeed: 1.15
   baseRange: 5.5

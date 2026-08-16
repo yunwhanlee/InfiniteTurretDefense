@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Engineer2_sheet_0
+      name: Idle1
       rect:
         serializedVersion: 2
         x: 0
@@ -156,7 +156,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_1
+      name: Idle2
       rect:
         serializedVersion: 2
         x: 64
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_2
+      name: Jump1
       rect:
         serializedVersion: 2
         x: 0
@@ -200,7 +200,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_3
+      name: Jump2
       rect:
         serializedVersion: 2
         x: 64
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_4
+      name: Jump3
       rect:
         serializedVersion: 2
         x: 128
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_5
+      name: Fire1
       rect:
         serializedVersion: 2
         x: 0
@@ -266,7 +266,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Engineer2_sheet_6
+      name: Fire2
       rect:
         serializedVersion: 2
         x: 64
@@ -303,13 +303,13 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.125},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Engineer2_sheet_0: -3034703824514909139
-      Engineer2_sheet_1: -6924329614398297923
-      Engineer2_sheet_2: -4720629502109050492
-      Engineer2_sheet_3: -2640943847992990249
-      Engineer2_sheet_4: 5389663818776557055
-      Engineer2_sheet_5: 3100256161398207575
-      Engineer2_sheet_6: -3999196734771635701
+      Fire1: 3100256161398207575
+      Fire2: -3999196734771635701
+      Idle1: -3034703824514909139
+      Idle2: -6924329614398297923
+      Jump1: -4720629502109050492
+      Jump2: -2640943847992990249
+      Jump3: 5389663818776557055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
