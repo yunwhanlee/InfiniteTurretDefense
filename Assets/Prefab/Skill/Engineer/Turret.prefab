@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3481175182717991809}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.477, y: 0.648, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
+  m_Sprite: {fileID: 1102364170521726321, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   damage: 0
   attackSpeed: 0
   time: 0
+  lifeTime: 0
   hpSlider: {fileID: 8648056136408690045}
 --- !u!114 &4527924225899619
 MonoBehaviour:
@@ -178,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 3544792553527042751}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 71317a1aa066d0745b4287b11602e41c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5522f4994a7849c4b82921482a771221, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -216,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.009161512
-  m_labelHash: 3.0492321e-25
+  m_CategoryHash: 4.680744e-31
+  m_labelHash: 1.2079726e-29
   m_SpriteKey: 0
-  m_SpriteHash: 99362693
+  m_SpriteHash: 686515536
 --- !u!61 &3926822100353082275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9098039, g: 0.14117648, b: 0.23137255, a: 1}
+  m_Color: {r: 0.14117646, g: 0.9098039, b: 0.25554246, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -787,7 +788,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6313726}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

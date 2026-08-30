@@ -26,7 +26,7 @@ public class Turret : MonoBehaviour
     Coroutine corFlashId;
     MaterialPropertyBlock propBlock;
     static readonly int hitFlashMat_IsHit = Shader.PropertyToID("_IsHit");
-    const string ANIM_TRG_IS_MOVE = "IsMove";
+    const string ANIM_TRG_IS_IDLE = "IsIdle";
     const string ANIM_TRG_IS_ATTACK = "IsAttack";
     const string ANIM_TRG_IS_DEAD = "IsDead";
     const int LIFE_TIME_SEC = 30;
@@ -65,7 +65,7 @@ public class Turret : MonoBehaviour
             if (state != STATE.IDLE)
             {
                 state = STATE.IDLE;
-                anim.SetTrigger(ANIM_TRG_IS_MOVE);
+                anim.SetTrigger(ANIM_TRG_IS_IDLE);
             }
             return;
         }
@@ -81,9 +81,9 @@ public class Turret : MonoBehaviour
     }
 
 #region FUNC
-    public void Init(int dmg, int hp, Vector3 pos)
+    public void Init(int dmg, int _hp, Vector3 pos)
     {
-        anim.SetTrigger(ANIM_TRG_IS_MOVE);
+        anim.SetTrigger(ANIM_TRG_IS_IDLE);
         state = STATE.IDLE;
 
         time = 0;
@@ -92,11 +92,11 @@ public class Turret : MonoBehaviour
         attackSpeed = 1;
         damage = dmg;
 
-        maxHp = hp;
+        maxHp = _hp;
         hp = maxHp;
 
         hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
-        hpSlider.value = (float)hp / maxHp;
+        hpSlider.value = (float)_hp / maxHp;
 
         transform.position = pos;
     }
@@ -190,6 +190,8 @@ public class Turret : MonoBehaviour
 
         yield return Config.WFS_1;
         yield return Config.WFS_0_5;
+
+        GM._.spm.ReleasePoolDics(SkillPoolManager.SK_IDX.SK_Turret, gameObject);
     }
 #endregion
 }

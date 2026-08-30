@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrarySourceAsset
   m_Library:
-  - m_Name: Move
-    m_Hash: 252483654
+  - m_Name: Idle
+    m_Hash: 1008081451
     m_CategoryList: []
     m_OverrideEntries:
     - m_Name: New Label
@@ -27,28 +27,8 @@ MonoBehaviour:
       m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_1
-      m_Hash: 939135856
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_2
-      m_Hash: 787694282
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_3
-      m_Hash: 435450460
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_4
-      m_Hash: 126937087
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 6
+    m_EntryOverrideCount: 2
   - m_Name: Attack
     m_Hash: 7088141
     m_CategoryList: []
@@ -68,23 +48,8 @@ MonoBehaviour:
       m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_2
-      m_Hash: 787694282
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_3
-      m_Hash: 435450460
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-    - m_Name: New Label_4
-      m_Hash: 126937087
-      m_Sprite: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -4346315181082228412, guid: b60066e7affc5ab4f94a183af08e809f, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 6
+    m_EntryOverrideCount: 3
   - m_Name: Dead
     m_Hash: 219670042
     m_CategoryList: []
@@ -122,5 +87,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 6
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639185955561580541
+  m_ModificationHash: 639237326428439468
   m_Version: 1
