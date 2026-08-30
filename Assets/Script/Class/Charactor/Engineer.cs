@@ -21,7 +21,7 @@ public class Enginner : Chara
     const int FLAMESHOT_TIME = 32;
     [SerializeField] float FlameShotTime;
     // SK6. 유도탄
-    const int HORMINGMISSILE_TIME = 6;
+    const int HORMING_TIME = 6;
     [SerializeField] float HormingMissileTime;
     // SK7. 과부하
     const int OVERLOAD_MAX = 100;
@@ -44,7 +44,7 @@ public class Enginner : Chara
         if(Grade >= CHR_GRADE.UNIQUE) {
             BazookaTime += Time.deltaTime;
             if(BazookaTime >= BAZOOKA_TIME) {
-                // Skill4_Bazooka();
+                Skill4_Bazooka();
                 BazookaTime = 0;
             }
         }
@@ -61,7 +61,7 @@ public class Enginner : Chara
         // SK6. 유도탄
         if(Grade >= CHR_GRADE.MYTHIC) {
             HormingMissileTime += Time.deltaTime;
-            if(HormingMissileTime >= HORMINGMISSILE_TIME) {
+            if(HormingMissileTime >= HORMING_TIME) {
                 // Skill6_HormingMissile();
                 HormingMissileTime = 0;
             }
@@ -100,8 +100,8 @@ public class Enginner : Chara
         if(!isShotGunActive)
         {
             // 투사체 발사
-            Vector2 pos = new Vector2(sprRdr.flipX? -shootTf.position.x : shootTf.position.x, shootTf.position.y);
-            GM._.mpm.SpawnPool(pos, direction, damage, 0, missileSpr, isCritical);
+            // Vector2 pos = new Vector2(sprRdr.flipX? -shootTf.position.x : shootTf.position.x, shootTf.position.y);
+            GM._.mpm.SpawnPool(shootTf.position, direction, damage, 0, missileSpr, isCritical);
         }
     }
 
@@ -206,107 +206,79 @@ public class Enginner : Chara
         turret.Init(turretDmg, turretHp, bestPos);
     }
 
-    IEnumerator CorSkill4_IceBlade()
+    private void Skill4_Bazooka()
     {
         const int gradeIdx = (int)CHR_GRADE.UNIQUE;
         int skillLv = SkillLvArr[gradeIdx];
 
-        // 현재 등급의 스킬 데이터 에셋 가져오기
-        SkillAsset skillAsset = CharaSkill.skillAssetArr[gradeIdx];
-
-        float dmgPer = 0;
-        int bladeCount = 0;
-
-        // 인스펙터에 세팅된 ValueList를 순회하며 타입별로 값 가져오기
-        foreach (var val in skillAsset.ValueList)
-        {
-            if (val.type == SkillValue.Type.SkillLv)
-            {
-                dmgPer = (val.def + val.unit * skillLv) * 0.01f;
-            }
-            else if (val.type == SkillValue.Type.GradeLv)
-            {
-                int gradeDiff = (int)Grade - (int)skillAsset.Grade;
-                bladeCount = Mathf.RoundToInt(val.def + gradeDiff * val.unit);
-            }
-        }
-
-        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
-
-        // 발사 간격 및 각도 계산
-        const float angleInterval = 15f; 
-        float startAngle = -((bladeCount - 1) * angleInterval / 2f);
-        Vector3 dir = direction; // 방향이 바뀌지 않도록 발사시 방향 변수에 저장
-
-        // 칼날얼음 순차적 생성
-        for(int i = 0; i < bladeCount; i++)
-        {
-            float currentAngle = startAngle + (angleInterval * i);
-
-            IceBlade iceBlade = GM._.spm.SpawnPoolDics(SK_IDX.SK_IceBlade).GetComponent<IceBlade>();
-            iceBlade.Init(shootTf.position, dir, dmg, currentAngle);
-            
-            yield return WFS_0_1;
-        }
-    }
-
-    private void Skill5_Tornado()
-    {
-        const int gradeIdx = (int)CHR_GRADE.LEGEND;
-        int skillLv = SkillLvArr[gradeIdx];
-
         float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
-        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        int dmg = Mathf.RoundToInt(Dmg * defPer);
 
-        Tornado tornado = GM._.spm.SpawnPoolDics(SK_IDX.SK_Tornado).GetComponent<Tornado>();
-        tornado.Init(shootTf.position, direction, damage);
+        // 미사일 생성
+        Bazooka bazooka = GM._.spm.SpawnPoolDics(SK_IDX.SK_Bazooka).GetComponent<Bazooka>();
+        bazooka.Init(shootTf.position, direction, dmg);
     }
 
-    private void Skill6_Thunder()
+    private void Skill5_FlameShot()
     {
-        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
-        int skillLv = SkillLvArr[gradeIdx];
+        // const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        // int skillLv = SkillLvArr[gradeIdx];
 
-        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
-        Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
-        thunder.Init(enemyPos, damage);
+        // Tornado tornado = GM._.spm.SpawnPoolDics(SK_IDX.SK_Tornado).GetComponent<Tornado>();
+        // tornado.Init(shootTf.position, direction, damage);
     }
 
-    private void Skill7_Blizzard()
+    private void Skill6_Horming()
     {
-        const int gradeIdx = (int)CHR_GRADE.PRIME;
-        int skillLv = SkillLvArr[gradeIdx];
+        // const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        // int skillLv = SkillLvArr[gradeIdx];
 
-        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        // 이펙트
-        GM._.epm.SpawnPoolDics(EF_IDX.BlizzardEF, transform.position, WFS_3);
-
-        // 모든 적 공격
-        StartCoroutine(CoBlizzardAttack(damage));
+        // Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
+        // Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+        // thunder.Init(enemyPos, damage);
     }
 
-    IEnumerator CoBlizzardAttack(int damage)
+    private void Skill7_Overload()
     {
-        yield return WFS_1;
+        // const int gradeIdx = (int)CHR_GRADE.PRIME;
+        // int skillLv = SkillLvArr[gradeIdx];
 
-        GM._.emm.GetAllEnemies().ForEach(enemy => {
-            enemy.OnHit(damage, false);
-            enemy.Slow(5f); // 5초간 빙결 (슬로우)
-        });
+        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+
+        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
+
+        // // 이펙트
+        // GM._.epm.SpawnPoolDics(EF_IDX.BlizzardEF, transform.position, WFS_3);
+
+        // // 모든 적 공격
+        // StartCoroutine(CoBlizzardAttack(damage));
     }
+
+    // IEnumerator CoBlizzardAttack(int damage)
+    // {
+    //     yield return WFS_1;
+
+    //     GM._.emm.GetAllEnemies().ForEach(enemy => {
+    //         enemy.OnHit(damage, false);
+    //         enemy.Slow(5f); // 5초간 빙결 (슬로우)
+    //     });
+    // }
 #endregion
 }

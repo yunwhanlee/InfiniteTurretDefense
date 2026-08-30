@@ -2,9 +2,9 @@ using UnityEngine;
 using static EffectPoolManager;
 using static SkillPoolManager;
 
-public class FireBall : MonoBehaviour
+public class Bazooka : MonoBehaviour
 {
-    public float moveSpeed = 10;
+    public float moveSpeed = 5;
     [SerializeField] float radius;
     Vector3 dir;
     int dmg;
@@ -24,7 +24,7 @@ public class FireBall : MonoBehaviour
                 return;
 
             // 이펙트
-            GM._.epm.SpawnPoolDics(EF_IDX.FireBallExplosionEF, transform.position);
+            GM._.epm.SpawnPoolDics(EF_IDX.BazookaExplosionEF, transform.position);
 
             // 구 범위 충돌
             Collider2D[] hits = Physics2D.OverlapCircleAll(

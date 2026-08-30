@@ -32,6 +32,8 @@ public class EffectPoolManager : MonoBehaviour
         //? HolyAuraEF, // 빛의아우라 => SkillPoolManager 관리
         //? HolyBeamEF => SkillPoolManager 관리
         //? HolySmiteEF => SkillPoolManager 관리
+        //* 엔지니어 스킬
+        BazookaExplosionEF, // 바주카 폭발
     }
 
     // 오브젝트
@@ -52,6 +54,8 @@ public class EffectPoolManager : MonoBehaviour
     public GameObject HolyGuardIconEF;
     public GameObject HolyGuardEF_Object; // 미리 오브젝트 GroupTf에 생성 비/활성화 관리
     public GameObject HolyHealEF;
+    [Header("엔지니어 스킬 이펙트")]
+    public GameObject BazookaExplosionEF;
     [Space(5)]
     // 오브젝트 풀링
     public Transform effectGroupTf;
@@ -78,6 +82,8 @@ public class EffectPoolManager : MonoBehaviour
         poolDics.Add(EF_IDX.HolyGuardIconEF, Init(HolyGuardIconEF.gameObject, 1));
         HolyGuardEF_Object.SetActive(false); // 오브젝트 비활성화 초기화
         poolDics.Add(EF_IDX.HolyHealEF, Init(HolyHealEF.gameObject, 1));
+        // 엔지니어
+        poolDics.Add(EF_IDX.BazookaExplosionEF, Init(BazookaExplosionEF.gameObject, 1));
         // 여기에 추가
     }
 

@@ -4923,7 +4923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HolyBeam
   targetFinder: {fileID: 6013548799747446407}
   dmg: 0
-  dmgInterval: 1
 --- !u!114 &6013548799747446407
 MonoBehaviour:
   m_ObjectHideFlags: 0

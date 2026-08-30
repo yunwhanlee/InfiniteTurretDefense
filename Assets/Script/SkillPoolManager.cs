@@ -31,6 +31,9 @@ public class SkillPoolManager : MonoBehaviour
         SK_ShadowPartner, // 쉐도우파트너
         //* 엔지니어 스킬
         SK_Turret, // 터렛
+        SK_Bazooka,
+        SK_FlameShot,
+        SK_Horming,
     }
 
     // 오브젝트 풀링
@@ -58,6 +61,7 @@ public class SkillPoolManager : MonoBehaviour
     public ShadowPartner shadowPartnerPf;
     [Header("엔지니어 스킬")]
     public Turret turretPf;
+    public Bazooka bazookaPf;
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
@@ -83,6 +87,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_ShadowPartner, Init(shadowPartnerPf.gameObject, 1));
         // 엔지니어
         poolDics.Add(SK_IDX.SK_Turret, Init(turretPf.gameObject, 3));
+        poolDics.Add(SK_IDX.SK_Bazooka, Init(bazookaPf.gameObject, 2));
     }
 
 #region POOL
