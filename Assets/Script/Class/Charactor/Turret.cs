@@ -33,14 +33,17 @@ public class Turret : MonoBehaviour
 
     // UI
     public Slider hpSlider;
+
     // Component
     SpriteRenderer sprRdr;
     Animator anim;
+    BoxCollider2D boxCollider;
 
     void Awake()
     {
         sprRdr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
         propBlock = new MaterialPropertyBlock();
     }
 
@@ -84,6 +87,7 @@ public class Turret : MonoBehaviour
     public void Init(int dmg, int _hp, Vector3 pos)
     {
         anim.SetTrigger(ANIM_TRG_IS_IDLE);
+        boxCollider.enabled = true;
         state = STATE.IDLE;
 
         time = 0;
@@ -123,9 +127,15 @@ public class Turret : MonoBehaviour
     /// <summary>
     /// 적으로부터 공격받음
     /// </summary>
-    public void OnHit(int dmg)
+    public bool OnHit(int dmg)
     {
-        if(state == STATE.DEAD) return;
+        bool isDead = false;
+
+        if(state == STATE.DEAD)
+        {
+            isDead = true;
+            return isDead;
+        } 
 
         const float Y_OFFSET = 0.7f; // Pivot이 아래 있으므로, Y축을 약간 올려서 데미지 텍스트 표시
 
@@ -142,12 +152,16 @@ public class Turret : MonoBehaviour
         if(hp <= 0)
         {
             StartCoroutine(CorDead());
-            return;
+            boxCollider.enabled = false;
+            isDead = true;
+            return isDead;
         }
 
         // HP슬라이더 표시
         if(!hpSlider.gameObject.activeSelf)
             hpSlider.gameObject.SetActive(true);
+        
+        return isDead;
     }
 
     /// <summary>

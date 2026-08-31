@@ -298,9 +298,16 @@ public class Enemy : MonoBehaviour
         }
         else if(curTarget.GetComponent<Turret>() is Turret turret)
         {
-            turret.OnHit(Dmg);
+            bool isDead = turret.OnHit(Dmg);
+            if(isDead)
+            {
+                curTarget = towerTf;
+                state = STATE.MOVE; 
+                anim.SetTrigger(ANIM_TRG_IS_MOVE); // 다시 걷는 애니메이션으로 전환
+                InvokeRepeating(nameof(FindTarget), 0f, 0.25f); 
+                yield break; // 타겟이 죽었으므로 코루틴을 즉시 종료
+            }
         }
-
         yield return new WaitForSeconds(1);
     }
 

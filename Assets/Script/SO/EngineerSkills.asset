@@ -43,7 +43,7 @@ MonoBehaviour:
   - Name: "\uD3EC\uD0D1"
     Grade: 2
     Img: {fileID: 0}
-    Desc: "28\uCD08\uB9C8\uB2E4, \uC801\uC774 \uC788\uB294 \uBC29\uD5A5\uC5D0 \uACF5\uACA9\uB825
+    Desc: "35\uCD08\uB9C8\uB2E4, \uC801\uC774 \uC788\uB294 \uBC29\uD5A5\uC5D0 \uACF5\uACA9\uB825
       {0}% \uCCB4\uB825 {1} \uD3EC\uD0D1\uC744 40\uCD08\uAC04 \uC124\uCE58"
     ValueList:
     - name: Damage
