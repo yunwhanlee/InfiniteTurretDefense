@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Config;
 using static EffectPoolManager;
 using static SkillPoolManager;
+using Random = UnityEngine.Random;
 
 public class Enginner : Chara
 {
@@ -53,7 +55,7 @@ public class Enginner : Chara
         if(Grade >= CHR_GRADE.LEGEND) {
             FlameShotTime += Time.deltaTime;
             if(FlameShotTime >= FLAMESHOT_TIME) {
-                // Skill5_FlameShot();
+                Skill5_FlameShot();
                 FlameShotTime = 0;
             }
         }
@@ -169,8 +171,6 @@ public class Enginner : Chara
         float hpPer = (def2Per + unit2Per * skillLv) * 0.01f;
         int turretHp = 10 + Mathf.RoundToInt(hpPer);
 
-        //TODO 소환 이펙트
-
         // 고정된 중심점
         Vector3 center = new Vector3(0, -0.8f, 0);
         Vector3 targetPos = targetFinder.CurrentTarget.transform.position;
@@ -215,7 +215,7 @@ public class Enginner : Chara
         float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
         float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률
 
-        int dmg = Mathf.RoundToInt(Dmg * defPer);
+        int dmg = Mathf.RoundToInt(Dmg * dmgPer);
 
         // 미사일 생성
         Bazooka bazooka = GM._.spm.SpawnPoolDics(SK_IDX.SK_Bazooka).GetComponent<Bazooka>();
@@ -224,17 +224,50 @@ public class Enginner : Chara
 
     private void Skill5_FlameShot()
     {
-        // const int gradeIdx = (int)CHR_GRADE.LEGEND;
-        // int skillLv = SkillLvArr[gradeIdx];
+        const int gradeIdx = (int)CHR_GRADE.LEGEND;
+        int skillLv = SkillLvArr[gradeIdx];
 
-        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        // Tornado tornado = GM._.spm.SpawnPoolDics(SK_IDX.SK_Tornado).GetComponent<Tornado>();
-        // tornado.Init(shootTf.position, direction, damage);
+        FlameShot flameShot = GM._.spm.SpawnPoolDics(SK_IDX.SK_FlameShot).GetComponent<FlameShot>();
+
+        Vector3 targetVec = targetFinder.CurrentTarget.transform.position - transform.position;
+        Vector3 dir = targetVec.normalized;
+        float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        flameShot.Init(shootTf.position, zRot, damage);
+
+        StartCoroutine(CorSkill5_FlameShot(flameShot));
+    }
+
+    IEnumerator CorSkill5_FlameShot(FlameShot flameShot)
+    {
+        // 람다 함수를 미리 변수(Action)에 캐싱하여 저장
+        Action copyAction = () => { UpdateTargetRotZ(flameShot); };
+
+        targetFinder.OnTargetChanged += copyAction;
+        yield return WFS_5;
+        yield return WFS_3;
+        targetFinder.OnTargetChanged -= copyAction;
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_FlameShot, flameShot.gameObject);
+    }
+
+    private void UpdateTargetRotZ(FlameShot flameShot)
+    {
+        // 안전 검사 (타겟이 죽었거나, 화염방사기가 이미 회수된 경우 예외 처리)
+        if (flameShot == null || !flameShot.gameObject.activeInHierarchy) return;
+        if (targetFinder.CurrentTarget == null) return;
+
+        // 2D 회전 각도
+        Vector3 targetVec = targetFinder.CurrentTarget.transform.position - transform.position;
+        Vector3 dir = targetVec.normalized;
+        float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        flameShot.transform.localRotation = Quaternion.Euler(0, 0, zRot);
     }
 
     private void Skill6_Horming()

@@ -1,19 +1,32 @@
 using UnityEngine;
 using static Config;
+using System;
 
 public class TargetFinder : MonoBehaviour
 {
     [Header("Search Settings")]
     public float radius;
-
     public Enemy CurrentTarget;
+    public Action OnTargetChanged; // 타겟이 바뀌었을때 호출되는 이벤트 액션
+
+    void Awake()
+    {
+        OnTargetChanged = () => {};
+    }
 
     void Update()
     {
         // 타겟이 없거나, 죽었거나, 범위를 벗어났을 때만 다시 찾기
         if (IsNeedToFindTarget(CurrentTarget))
         {
-            CurrentTarget = FindNearestTarget();
+            // 먼저 새로운 타겟을 찾음
+            Enemy newTarget = FindNearestTarget();
+
+            // 새로 찾은 타겟이 기존 타겟과 다르고, 유효한 타겟이라면 이벤트 호출
+            if (newTarget != CurrentTarget && newTarget != null)
+                OnTargetChanged?.Invoke();
+
+            CurrentTarget = newTarget;
         }
     }
 

@@ -62,6 +62,8 @@ public class SkillPoolManager : MonoBehaviour
     [Header("엔지니어 스킬")]
     public Turret turretPf;
     public Bazooka bazookaPf;
+    public FlameShot flameShot;
+
     void Awake()
     {
         poolDics = new Dictionary<SK_IDX, IObjectPool<GameObject>>();
@@ -88,6 +90,7 @@ public class SkillPoolManager : MonoBehaviour
         // 엔지니어
         poolDics.Add(SK_IDX.SK_Turret, Init(turretPf.gameObject, 3));
         poolDics.Add(SK_IDX.SK_Bazooka, Init(bazookaPf.gameObject, 2));
+        poolDics.Add(SK_IDX.SK_FlameShot, Init(flameShot.gameObject, 1));
     }
 
 #region POOL
