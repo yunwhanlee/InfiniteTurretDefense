@@ -63,6 +63,7 @@ public class SkillPoolManager : MonoBehaviour
     public Turret turretPf;
     public Bazooka bazookaPf;
     public FlameShot flameShot;
+    public Horming hormingPf;
 
     void Awake()
     {
@@ -91,6 +92,7 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_Turret, Init(turretPf.gameObject, 3));
         poolDics.Add(SK_IDX.SK_Bazooka, Init(bazookaPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_FlameShot, Init(flameShot.gameObject, 1));
+        poolDics.Add(SK_IDX.SK_Horming, Init(hormingPf.gameObject, 8));
     }
 
 #region POOL

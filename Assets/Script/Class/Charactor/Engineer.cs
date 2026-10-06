@@ -64,7 +64,7 @@ public class Enginner : Chara
         if(Grade >= CHR_GRADE.MYTHIC) {
             HormingMissileTime += Time.deltaTime;
             if(HormingMissileTime >= HORMING_TIME) {
-                // Skill6_HormingMissile();
+                Skill6_Horming();
                 HormingMissileTime = 0;
             }
         }
@@ -272,18 +272,23 @@ public class Enginner : Chara
 
     private void Skill6_Horming()
     {
-        // const int gradeIdx = (int)CHR_GRADE.MYTHIC;
-        // int skillLv = SkillLvArr[gradeIdx];
+        const int gradeIdx = (int)CHR_GRADE.MYTHIC;
+        int skillLv = SkillLvArr[gradeIdx];
 
-        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        // Thunder thunder = GM._.spm.SpawnPoolDics(SK_IDX.SK_Thunder).GetComponent<Thunder>();
-        // Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
-        // thunder.Init(enemyPos, damage);
+        for(int i = 0; i < (int)Grade - 2; i++)
+        {
+            var horming = GM._.spm.SpawnPoolDics(SK_IDX.SK_Horming).GetComponent<Horming>();
+            Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
+            Vector3 dir = (enemyPos - transform.position).normalized;
+
+            horming.Init(transform.position, dir, damage, Random.Range(-30f, 30f));
+        } 
     }
 
     private void Skill7_Overload()
