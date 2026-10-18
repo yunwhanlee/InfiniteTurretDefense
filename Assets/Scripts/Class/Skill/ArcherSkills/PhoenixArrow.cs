@@ -41,10 +41,10 @@ public class PhoenixArrow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         // 일정시간뒤 제거 및 불장판 생성
-        StartCoroutine(CoDestroyMe());
+        StartCoroutine(CoRelease());
     }
 
-    IEnumerator CoDestroyMe()
+    IEnumerator CoRelease()
     {
         // 불장판 생성
         yield return new WaitForSeconds(3.5f);
@@ -53,7 +53,7 @@ public class PhoenixArrow : MonoBehaviour
 
         // 오브젝트 회수
         yield return new WaitForSeconds(0.5f);
-        GM._.spm.ReleasePoolDics(SK_IDX.SK_PassArrow, gameObject);
+        GM._.spm.ReleasePoolDics(SK_IDX.SK_PhoenixArrow, gameObject);
     }
 #endregion
 }

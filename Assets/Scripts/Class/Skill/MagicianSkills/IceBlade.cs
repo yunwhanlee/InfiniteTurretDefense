@@ -1,7 +1,11 @@
 using UnityEngine;
+using static SkillPoolManager;
 
 public class IceBlade : MonoBehaviour
 {
+    const int LIFE_TIME = 5;
+    float lifeTime = 0;
+
     public float moveSpeed = 8;
     Vector3 dir;
     int dmg;
@@ -9,6 +13,14 @@ public class IceBlade : MonoBehaviour
     void Update()
     {
         transform.position += moveSpeed * Time.deltaTime * dir;
+
+        lifeTime -= Time.deltaTime;
+        // 일정시간 지나면 회수
+        if(lifeTime <= 0)
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_IceBlade, gameObject);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_IceBlade, gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -26,6 +38,8 @@ public class IceBlade : MonoBehaviour
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg, float angleOffset)
     {
+        lifeTime = LIFE_TIME;
+
         transform.position = pos;
         this.dmg = dmg;
 

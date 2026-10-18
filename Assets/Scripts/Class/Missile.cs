@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    private const int LIFE_TIME = 5;
+    private float lifeTime;
+
     [SerializeField] int dmg; public int Dmg {get => dmg; set => dmg = value;}
     [SerializeField] bool isCritical; public bool IsCritical {get => isCritical; set => isCritical = value;}
     [SerializeField] float moveSpeed;
@@ -14,6 +17,14 @@ public class Missile : MonoBehaviour
     void Update()
     {
         transform.position += moveSpeed * Time.deltaTime * direction;
+
+        lifeTime -= Time.deltaTime;
+        // 일정시간 지나면 회수
+        if(lifeTime <= 0)
+            GM._.mpm.Pool.Release(this);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.mpm.Pool.Release(this);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -34,19 +45,13 @@ public class Missile : MonoBehaviour
         }
     }
 
-    // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
-    void OnBecameInvisible()
-    {
-        if(gameObject.activeSelf)
-            GM._.mpm.Pool.Release(this);
-    }
-
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, float angleOffset, Sprite missileSpr)
     {
         if(!missileSpr)
             Debug.LogError("미사일 이미지 스프라이트가 NULL입니다.");
 
+        lifeTime = LIFE_TIME;
         isHit = false;
         transform.position = pos;
 

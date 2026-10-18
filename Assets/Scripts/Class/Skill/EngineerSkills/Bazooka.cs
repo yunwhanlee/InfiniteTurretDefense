@@ -4,6 +4,9 @@ using static SkillPoolManager;
 
 public class Bazooka : MonoBehaviour
 {
+    private const int LIFE_TIME = 5;
+    private float lifeTime;
+
     public float moveSpeed = 5;
     [SerializeField] float radius;
     Vector3 dir;
@@ -12,6 +15,14 @@ public class Bazooka : MonoBehaviour
     void Update()
     {
         transform.position += moveSpeed * Time.deltaTime * dir;
+
+        lifeTime -= Time.deltaTime;
+        // 일정시간 지나면 회수
+        if(lifeTime <= 0)
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_Bazooka, gameObject);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_Bazooka, gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -40,13 +51,14 @@ public class Bazooka : MonoBehaviour
                 hitEnemy.OnHit(dmg, isCritical: false);
             }
 
-            GM._.spm.ReleasePoolDics(SK_IDX.SK_FireBall, gameObject);
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_Bazooka, gameObject);
         }
     }
 
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg)
     {
+        lifeTime = LIFE_TIME;
         transform.position = pos;
         this.dir = dir;
         this.dmg = dmg;

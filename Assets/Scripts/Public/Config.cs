@@ -24,6 +24,7 @@ public static class Config
     {
         public static readonly string ENEMY = "Enemy";
         public static readonly string CHARACTER = "Character";
+        public static readonly string MISSILE = "Missile";
     }
 
 #region ENUM

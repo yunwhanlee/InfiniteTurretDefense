@@ -3,6 +3,9 @@ using static SkillPoolManager;
 
 public class Horming : MonoBehaviour
 {
+    private const int LIFE_TIME = 6;
+    private float lifeTime;
+
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float rotateSpeed = 250f; // 회전 속도 (낮을수록 크게 원을 그리며 꺾임)
@@ -62,6 +65,14 @@ public class Horming : MonoBehaviour
         // 타겟 유무와 상관없이 항상 자신의 앞쪽 방향으로 계속 전진
         // (주의: 미사일 2D 스프라이트의 앞부분이 오른쪽(Right)이 아니라 위쪽(Up)이라면 transform.up으로 변경하세요)
         transform.position += transform.right * moveSpeed * Time.deltaTime;
+
+        lifeTime -= Time.deltaTime;
+        // 일정시간 지나면 회수
+        if(lifeTime <= 0)
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_Horming, gameObject);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_Horming, gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -84,6 +95,8 @@ public class Horming : MonoBehaviour
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg, float angleOffset)
     {
+        lifeTime = LIFE_TIME;
+
         transform.position = pos;
         this.dmg = dmg;
 

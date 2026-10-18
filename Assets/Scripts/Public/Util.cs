@@ -56,6 +56,16 @@ public class Util : MonoBehaviour
     {
         return (float)Math.Round(1f / speed * 1000f) / 1000f;
     }
+
+    /// <summary>
+    /// 인게임 외부로 오브젝트가 나갔는지 여부 체크
+    /// </summary>
+    public static bool CheckOutSidePos(Vector3 pos)
+    {
+        const int W = 12; // 씬 높이
+        const int H = 7; // 씬 너비
+        return pos.x < -W || W < pos.x || pos.y < -H  || H < pos.y;        
+    }
 #endregion
 
 #region FUNC UI

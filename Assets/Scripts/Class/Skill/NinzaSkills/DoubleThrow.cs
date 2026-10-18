@@ -4,6 +4,9 @@ using System.Collections;
 
 public class DoubleThrow : MonoBehaviour
 {
+    private const int LIFE_TIME = 5;
+    private float lifeTime;
+
     const float ORG_MOVE_SPEED = 8;
     [SerializeField] float moveSpeed = ORG_MOVE_SPEED;
     [SerializeField] SpriteRenderer firstSprRdr;
@@ -17,6 +20,15 @@ public class DoubleThrow : MonoBehaviour
     void Update()
     {
         transform.position += moveSpeed * Time.deltaTime * dir;
+
+        lifeTime -= Time.deltaTime;
+        // 일정시간 지나면 회수
+        if(lifeTime <= 0)
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_DoubleThrow, gameObject);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_DoubleThrow, gameObject);
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -39,6 +51,7 @@ public class DoubleThrow : MonoBehaviour
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg, bool isCritical, Sprite missileSpr)
     {
+        lifeTime = LIFE_TIME;
         isHit = false;
         this.isCritical = isCritical;
         moveSpeed = ORG_MOVE_SPEED;

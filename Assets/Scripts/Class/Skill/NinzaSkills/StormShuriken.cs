@@ -3,13 +3,25 @@ using static SkillPoolManager;
 
 public class StormShuriken : MonoBehaviour
 {
+    private const int LIFE_TIME = 5;
+    private float lifeTime;
+
     public float moveSpeed = 5;
     private Vector3 dir;
     private int dmg;
 
+
     void Update()
     {
         transform.position += moveSpeed * Time.deltaTime * dir;
+
+        // 일정시간 지나면 회수
+        lifeTime -= Time.deltaTime;
+        if(lifeTime <= 0)
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_StormShuriken, gameObject);
+        // 인게임 외부로 나갔다면 회수
+        else if(Util.CheckOutSidePos(transform.position))
+            GM._.spm.ReleasePoolDics(SK_IDX.SK_StormShuriken, gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -25,16 +37,10 @@ public class StormShuriken : MonoBehaviour
         }
     }
 
-    // 오브젝트가 카메라 시야에서 완전히 사라지면 호출됨
-    void OnBecameInvisible()
-    {
-        if(gameObject.activeSelf)
-            GM._.spm.ReleasePoolDics(SK_IDX.SK_StormShuriken, gameObject);
-    }
-
 #region FUNC
     public void Init(Vector3 pos, Vector3 dir, int dmg)
     {
+        lifeTime = LIFE_TIME;
         transform.position = pos;
         this.dir = dir;
         this.dmg = dmg;
