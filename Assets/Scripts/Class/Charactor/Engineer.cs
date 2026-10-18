@@ -25,9 +25,9 @@ public class Enginner : Chara
     // SK6. 유도탄
     const int HORMING_TIME = 6;
     [SerializeField] float HormingMissileTime;
-    // SK7. 과부하
-    const int OVERLOAD_MAX = 100;
-    [SerializeField] int curOverLoadGuage;
+    // SK7. 대공습
+    const int AIRRAID_TIME = 62;
+    [SerializeField] float airRaidTime;
 
     protected void Update()
     {
@@ -69,7 +69,14 @@ public class Enginner : Chara
             }
         }
 
-        // Skill7_OverLoad();
+        // SK7. 대공습
+        if(Grade >= CHR_GRADE.PRIME) {
+            airRaidTime += Time.deltaTime;
+            if(airRaidTime >= AIRRAID_TIME) {
+                Skill7_AirRaid();
+                airRaidTime = 0;
+            }
+        }
     }
 
     public override void Attack(Enemy enemy)
@@ -235,7 +242,12 @@ public class Enginner : Chara
 
         FlameShot flameShot = GM._.spm.SpawnPoolDics(SK_IDX.SK_FlameShot).GetComponent<FlameShot>();
 
-        Vector3 targetVec = targetFinder.CurrentTarget.transform.position - transform.position;
+        Vector3 targetVec;
+        if (targetFinder.CurrentTarget)
+            targetVec = targetFinder.CurrentTarget.transform.position - transform.position;
+        else
+            targetVec = Vector3.right;
+
         Vector3 dir = targetVec.normalized;
         float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
@@ -284,39 +296,52 @@ public class Enginner : Chara
         for(int i = 0; i < (int)Grade - 2; i++)
         {
             var horming = GM._.spm.SpawnPoolDics(SK_IDX.SK_Horming).GetComponent<Horming>();
-            Vector3 enemyPos = GetCurrentTargetEnemy().transform.position;
-            Vector3 dir = (enemyPos - transform.position).normalized;
+            var targetEnemy = GetCurrentTargetEnemy();
+            Vector3 enemyPos;
 
+            // 타겟이 존재하는지(null이 아닌지) 검사
+            if(targetEnemy != null)
+                enemyPos = targetEnemy.transform.position;
+            else
+                enemyPos = transform.position + Vector3.up; 
+
+            Vector3 dir = (enemyPos - transform.position).normalized;
             horming.Init(transform.position, dir, damage, Random.Range(-30f, 30f));
         } 
     }
 
-    private void Skill7_Overload()
+    private void Skill7_AirRaid()
     {
-        // const int gradeIdx = (int)CHR_GRADE.PRIME;
-        // int skillLv = SkillLvArr[gradeIdx];
+        const int gradeIdx = (int)CHR_GRADE.PRIME;
+        int skillLv = SkillLvArr[gradeIdx];
 
-        // float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
-        // float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
-        // float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
+        float defPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].def;
+        float unitPer = CharaSkill.skillAssetArr[gradeIdx].ValueList[0].unit;
+        float dmgPer = (defPer + unitPer * skillLv) * 0.01f; // 백분률화
 
-        // int damage = Mathf.RoundToInt(Dmg * dmgPer);
+        int damage = Mathf.RoundToInt(Dmg * dmgPer);
 
-        // // 이펙트
-        // GM._.epm.SpawnPoolDics(EF_IDX.BlizzardEF, transform.position, WFS_3);
-
-        // // 모든 적 공격
-        // StartCoroutine(CoBlizzardAttack(damage));
+        // 스킬 생성
+        StartCoroutine(CoAirRaid(damage));
     }
 
-    // IEnumerator CoBlizzardAttack(int damage)
-    // {
-    //     yield return WFS_1;
+    /// <summary>
+    /// 일정시간마다 수직라인 공급 스킬 오브젝트 생성
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <returns></returns>
+    IEnumerator CoAirRaid(int damage)
+    {
+        const int startPosX = -9;
 
-    //     GM._.emm.GetAllEnemies().ForEach(enemy => {
-    //         enemy.OnHit(damage, false);
-    //         enemy.Slow(5f); // 5초간 빙결 (슬로우)
-    //     });
-    // }
+        for(int i = 0; i < 7; i++)
+        {
+            AirRaid airRaid = GM._.spm.SpawnPoolDics(SK_IDX.SK_AirRaid).GetComponent<AirRaid>();
+
+            Vector3 pos = new Vector3(startPosX + i * 3, airRaid.transform.position.y, 0);
+            airRaid.Init(pos, damage);
+            yield return WFS_0_5; // 0.5초마다 오른쪽으로 수직라인 생성
+        }
+    }
 #endregion
 }

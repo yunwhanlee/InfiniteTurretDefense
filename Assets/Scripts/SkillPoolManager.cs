@@ -31,9 +31,10 @@ public class SkillPoolManager : MonoBehaviour
         SK_ShadowPartner, // 쉐도우파트너
         //* 엔지니어 스킬
         SK_Turret, // 터렛
-        SK_Bazooka,
-        SK_FlameShot,
-        SK_Horming,
+        SK_Bazooka, // 바주카
+        SK_FlameShot, // 화염방사
+        SK_Horming, // 호밍미사일
+        SK_AirRaid, // 대공습
     }
 
     // 오브젝트 풀링
@@ -64,6 +65,7 @@ public class SkillPoolManager : MonoBehaviour
     public Bazooka bazookaPf;
     public FlameShot flameShot;
     public Horming hormingPf;
+    public AirRaid airRaidPf;
 
     void Awake()
     {
@@ -93,6 +95,9 @@ public class SkillPoolManager : MonoBehaviour
         poolDics.Add(SK_IDX.SK_Bazooka, Init(bazookaPf.gameObject, 2));
         poolDics.Add(SK_IDX.SK_FlameShot, Init(flameShot.gameObject, 1));
         poolDics.Add(SK_IDX.SK_Horming, Init(hormingPf.gameObject, 8));
+        poolDics.Add(SK_IDX.SK_AirRaid, Init(airRaidPf.gameObject, 6));
+        // 여기에 추가
+        // poolDics.Add(SK_IDX., Init(.gameObject, 99));
     }
 
 #region POOL
