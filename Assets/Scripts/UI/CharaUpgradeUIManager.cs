@@ -67,8 +67,15 @@ public class CharaUpgradeUIManager : MonoBehaviour
         CHR_CATE cate = GM._.crm.curSelectedChara.Cate;
         var curCard = UI._.charaCltUI.charaCardArr[(int)cate];
 
-        bool isSuccess = curCard.GradeUp(cate);
+        // 최고등급 예외
+        if(curCard.GetGrade() == CHR_GRADE.PRIME)
+        {
+            Util._.ShowErrorMessage("이미 최고 등급을 달성했습니다.");
+            return;
+        }
 
+        // 등급업
+        bool isSuccess = curCard.GradeUp(cate);
         if (isSuccess)
         {
             Util._.ShowUnderBarMessage("캐릭터 등급업 완료!");
@@ -204,7 +211,9 @@ public class CharaUpgradeUIManager : MonoBehaviour
         critDmgPerTxt.text = $"{Chara.DEF_CRITDMG * 100}%";
 
         // 등급업 텍스트 최신화
-        gradeUpTxt.text = $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
+        string str = card.GetGrade() == CHR_GRADE.PRIME? "등급 MAX"
+            : $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
+        gradeUpTxt.text = str;
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)
