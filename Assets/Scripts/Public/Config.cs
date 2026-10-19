@@ -10,6 +10,7 @@ public static class Config
     public readonly static WaitForSeconds WFS_2 = new(2);
     public readonly static WaitForSeconds WFS_3 = new(3);
     public readonly static WaitForSeconds WFS_5 = new(5);
+    public readonly static WaitForSeconds WFS_10 = new(10);
     public readonly static WaitForSecondsRealtime WFS_RT_2 = new(2);
 
     public class Layer

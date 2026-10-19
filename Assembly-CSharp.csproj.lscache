@@ -130,6 +130,7 @@ Assets/
      PhoenixArrow.cs
      PhoenixFireField.cs
     EngineerSkills/
+     AirRaid.cs
      Bazooka.cs
      FlameShot.cs
      Horming.cs
