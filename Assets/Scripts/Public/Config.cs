@@ -41,5 +41,10 @@ public static class Config
     public enum CHR_PLACE {
         NONE = -1, CENTER, LEFT, RIGHT, TOP, BOTTOM
     }
+    /// <summary> 적 타입 </summary>
+    public enum ENEMY_TYPE
+    {
+        NORMAL, ELITE, BOSS
+    }
 }
 #endregion

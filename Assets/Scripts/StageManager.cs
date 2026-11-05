@@ -20,12 +20,23 @@ public class StageManager : MonoBehaviour
     };
 
     [Header("적 HP 증가량")]
-    const int DEF_HP = 3;            // 기본 적 HP
-    const float MIN_HP_RATE = 1.04f; // 스테이지당 HP 증가율 최소값
+    const int DEF_HP = 3;               // 기본 적 HP
+    const float ELITE_INC_HP_RATE = 5;  // 엘리트 체력 증가 배율
+    const float BOSS_INC_HP_RATE = 20;  // 보스 체력 증가 배율
+    const float MIN_HP_RATE = 1.04f;    // 스테이지당 HP 증가율 최소값
     public float incHpRate = 1.5f;   // 스테이지당 HP 증가량
     public float hpDecay = 0.005f;   // 스테이지당 HP 배율 감소폭
     public int curEnemyHp;           // 현재 적 HP
     public int nextEnemyHp;          // 다음 스테이지 적 HP
+
+    [Header("적 처지시 획득 골드량")]
+    public ENEMY_TYPE enemyType;
+    public int coin;
+    const int DEFCOIN = 1; // 기본 코인
+    const float ELITE_INC_COIN_RATE = 2.0f; // 엘리트 몬스터 코인 획득 배율
+    const float BOSS_INC_COIN_RATE = 4.0f;  // 보스 코인 획득 배율
+    float coinMult = 1.5f; // 코인 배율
+    float stageRate = 0.01f; // 스테이지당 추가 코인 증가량
 
     [Header("적 공격력 증가량")]
     const int DEF_ATK = 2;           // 기본 적 공격력
@@ -106,6 +117,25 @@ public class StageManager : MonoBehaviour
     private float CalcIncHpRate(int stage)
     {
         return Mathf.Max(MIN_HP_RATE, incHpRate - (stage - 1) * hpDecay);
+    }
+
+    /// <summary>
+    /// 적 처치시 획득 골드량
+    /// </summary>
+    public int GetCalcCoin(int hp)
+    {
+        int eliteHp = Mathf.RoundToInt(hp * ELITE_INC_HP_RATE);
+        int bossHp = Mathf.RoundToInt(hp * BOSS_INC_HP_RATE);
+
+        // 타입에 따른 HP 증가률
+        float resultHp = enemyType == ENEMY_TYPE.NORMAL? hp : enemyType == ENEMY_TYPE.ELITE? eliteHp : bossHp;
+        // 타입에 따른 추가 곱연산 변수
+        float extraMulti = enemyType == ENEMY_TYPE.NORMAL? 1 : enemyType == ENEMY_TYPE.ELITE? ELITE_INC_COIN_RATE : BOSS_INC_COIN_RATE;
+        // 코인 획득량 계산
+        int coin = DEFCOIN + Mathf.RoundToInt(Mathf.Sqrt(resultHp) * coinMult * (1 + (stage-1) * stageRate));
+
+        // 최종 결과 계산
+        return Mathf.RoundToInt(coin * extraMulti);
     }
 #endregion
 }
