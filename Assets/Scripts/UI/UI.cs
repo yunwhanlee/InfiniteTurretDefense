@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI diamondTxt;
 
     [Space(10)]
+    public TextMeshProUGUI timeTxt;
     public TextMeshProUGUI killCntTxt;  // TODO 지금은 안씀
     public TextMeshProUGUI EnemyCntTxt; // 몬스터 수
     public TextMeshProUGUI EnemyHpTxt;  // 몬스터 체력

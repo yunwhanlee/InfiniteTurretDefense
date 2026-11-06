@@ -30,21 +30,24 @@ public static class Config
 
 #region ENUM
     /// <summary> 캐릭터카드 인덱스 (UI Content에 배치 순서) </summary>
-    public enum CHR_CATE {
-        ARCHER, WARRIOR, MAGICIAN, HOLYKNIGHT, NINZA, ENGINEER
-    }
+    public enum CHR_CATE { ARCHER, WARRIOR, MAGICIAN, HOLYKNIGHT, NINZA, ENGINEER }
     /// <summary> 캐릭터 등급 </summary>
-    public enum CHR_GRADE {
-        NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, PRIME, COUNT
-    }
+    public enum CHR_GRADE { NORMAL, RARE, EPIC, UNIQUE, LEGEND, MYTHIC, PRIME, COUNT }
     /// <summary> 캐릭터 배치 위치 </summary>
-    public enum CHR_PLACE {
-        NONE = -1, CENTER, LEFT, RIGHT, TOP, BOTTOM
-    }
+    public enum CHR_PLACE { NONE = -1, CENTER, LEFT, RIGHT, TOP, BOTTOM }
     /// <summary> 적 타입 </summary>
-    public enum ENEMY_TYPE
-    {
-        NORMAL, ELITE, BOSS
-    }
+    public enum ENEMY_TYPE { NORMAL, ELITE, BOSS }
+    /// <summary> 맵 타입 </summary>
+    public enum MAP_TYPE {
+        FIELD,          // 황무지
+        FOREST,         // 초원
+        TOMB,           // 무덤
+        OCEAN,          // 해양
+        LAVAZONE,       // 용암지대
+        MAGIC_DUNGEON,  // 마법던전
+        RUINS,          // 유적지
+        GOLDEN_TEMPLE,  // 황금신전
+        MAX             // 총 맵의 개수
+    };
 }
 #endregion

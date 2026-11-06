@@ -53,6 +53,7 @@ public class DB : MonoBehaviour
 {
     public static DB _; // 싱글톤
 
+    public int stage; // 돌파한 스테이지
     public UserTowerUpgData userTowerUpgData; // 유저 타워 데이터
     public UserCharaData[] userCharaDataArr; // 유저 캐릭터 데이터 배열
 
@@ -63,6 +64,8 @@ public class DB : MonoBehaviour
         //TODO 나중에 PlayerPref으로 클래스 저장하기
         //TODO 나중에 Load함수에서 호출하기
         //TODO 나중에 클래스에서 Init과 Reset함수를 따로 만들기
+
+        stage = 1;
 
         // 타워 업그레이드 데이터 로드
         userTowerUpgData = new UserTowerUpgData(

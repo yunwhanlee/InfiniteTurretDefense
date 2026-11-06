@@ -7,7 +7,7 @@ using static Config;
 public class Tower : MonoBehaviour
 {
     const float BLINK_TIME = 0.05f; // 피격시 플래시 지속시간
-    const int DEF_HP = 500;             // 기본 체력
+    const int DEF_HP = 50000;             // 기본 체력
     const int HEAL_SPAN_SEC = 5;        // 자동 회복 간격(초)
 
     public enum STATE {IDLE, DEAD}
