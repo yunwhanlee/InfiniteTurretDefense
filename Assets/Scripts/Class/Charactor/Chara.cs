@@ -153,7 +153,7 @@ public abstract class Chara : MonoBehaviour
     {
         SkillLvArr[(int)grade]++;
     }
-    
+
     /// <summary> 스킬1. 평타 (통일) </summary>
     /// <param name="gradeUnitArr">등급에 따른 공격력 증가비율 배열</param>
     /// <returns>스킬레벨에 따른 데미지</returns>

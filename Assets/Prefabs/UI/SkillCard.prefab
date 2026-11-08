@@ -96,8 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillCard
   lockFrame: {fileID: 7478481753123668801}
   lockedTxt: {fileID: 1168335297684604044}
-  TitleTxt: {fileID: 5505252834263504268}
+  titleTxt: {fileID: 5505252834263504268}
   descTxt: {fileID: 5542794659593556918}
+  UpgradeBtn: {fileID: 7744049623889418137}
   priceTxt: {fileID: 6522938840672047390}
   lvTxt: {fileID: 99338165754167586}
   iconImg: {fileID: 2432696885753627734}
@@ -183,8 +184,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

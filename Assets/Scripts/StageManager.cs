@@ -64,7 +64,7 @@ public class StageManager : MonoBehaviour
         mapType = (MAP_TYPE)(stage / (int)MAP_TYPE.MAX);
 
         time = 0;
-        Time.timeScale = 3;
+        Time.timeScale = 7;
 
         stageTxt.text = $"{mapType} : 스테이지 {stage}";
 
@@ -96,10 +96,10 @@ public class StageManager : MonoBehaviour
                     switch (curStageLoopIdx)
                     {
                         case 2: case 4: case 6: case 8:
-                            Debug.Log("적 소환 : 엘리트 몬스터");
+                            Debug.Log($"{curStageLoopIdx} => 적 소환 : 엘리트 몬스터");
                             break;
                         case 0: // 10, 20, 30 스테이지는 나머지가 무조건 0
-                            Debug.Log("적 소환 : 보스");
+                            Debug.Log($"{curStageLoopIdx} => 적 소환 : 보스");
                             break;
                     }
                 }
@@ -111,7 +111,7 @@ public class StageManager : MonoBehaviour
                 // 진행도 계산 (10초마다 0.2씩 증가)
                 float progressPer = sec / 10 * 0.2f;
 
-                // 적 HP 제곱근
+                // 적 HP
                 float curStageHp = GetStageHp(stage);
                 float nextStageHp = GetStageHp(stage + 1);
                 EnemyStageHp = Mathf.CeilToInt((float)(curStageHp + (nextStageHp - curStageHp) * progressPer));
@@ -123,6 +123,7 @@ public class StageManager : MonoBehaviour
                 EnemyStageDmg = Mathf.CeilToInt((float)(curStageDmg + (nextStageDmg - curStageDmg) * progressPer));
                 Debug.Log($"적 공격력= {curStageDmg} + ({nextStageDmg} - {curStageDmg}) * {progressPer} = {EnemyStageDmg}");
 
+                // UI
                 UI._.timeTxt.text = $"{minute + startStage} : {sec}";
                 UI._.EnemyHpTxt.text = $"체력 : {EnemyStageHp}";
                 UI._.EnemyDmgTxt.text = $"데미지 : {EnemyStageDmg}";

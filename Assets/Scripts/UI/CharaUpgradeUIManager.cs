@@ -22,7 +22,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
     public TextMeshProUGUI rangeTxt;
     public TextMeshProUGUI critPerTxt;
     public TextMeshProUGUI critDmgPerTxt;
-
+    public Button gradeUpBtn;
     public TextMeshProUGUI gradeUpTxt;
 
     public SkillCard[] skillCardArr;
@@ -79,7 +79,7 @@ public class CharaUpgradeUIManager : MonoBehaviour
         if (isSuccess)
         {
             Util._.ShowUnderBarMessage("캐릭터 등급업 완료!");
-            UpdateUI(curCard);
+            UpdateUI(crm.curSelectedChara); // 인게임 캐릭터
         }
         else
             Util._.ShowErrorMessage("캐릭터카드가 부족합니다.");
@@ -105,20 +105,36 @@ public class CharaUpgradeUIManager : MonoBehaviour
     /// <summary>
     /// 스킬레벨 업그레이드 버튼 클릭
     /// </summary>
-    /// <param name="lv">스킬</param>
+    /// <param name="idx">스킬 등급 인덱스</param>
     public void OnClickUpgradeSkillBtn(int idx)
     {
         Chara chara = crm.curSelectedChara;
+        if(chara == null) return;
 
+        SkillCard skillcard = skillCardArr[idx];
+        SkillAsset skillAsset = chara.CharaSkill.skillAssetArr[idx];
+        int curLv = chara.SkillLvArr[idx];
+
+        if(curLv >= skillAsset.MaxLv)
+        {
+            Util._.ShowErrorMessage("이미 최대 레벨입니다.");
+            return;
+        }
+        if(GM._.Coin < skillcard.upgradePrice)
+        {
+            Util._.ShowErrorMessage("코인이 부족합니다.");
+            return;
+        }
+
+        GM._.Coin -= skillcard.upgradePrice;
         chara.LevelUpSkill((CHR_GRADE)idx);
         UpdateUI(chara);
-
         Util._.ShowUnderBarMessage("스킬 업그레이드 성공!");
     }
 #endregion
 #region FUNC
     /// <summary>
-    /// 인게임에서 캐릭터 클릭 또는 메뉴>캐릭터 버튼 클릭 시, 패널 표시 (배치된 캐릭터만 표시)
+    /// 🎮인게임에서 캐릭터카드 클릭 또는 메뉴 > 캐릭터 버튼 클릭시, 패널 표시 (배치된 캐릭터만 표시)
     /// </summary>
     public void ShowPanel()
     {
@@ -128,17 +144,20 @@ public class CharaUpgradeUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 캐릭터카드 콜랙션에서 카드 클릭 시, 패널 표시 (모든 캐릭터 표시)
+    /// 👜콜랙션에서 캐릭터카드 클릭시, 패널 표시 (모든 캐릭터 표시)
     /// </summary>
     /// <param name="card"></param>
     public void ShowPanel(CharaCard card)
     {
         panelObj.SetActive(true);
         arrowBtnGroup.SetActive(false); // 화살표 이동 비활성화
+        
         UpdateUI(card);
     }
 
-    /// <summary> 인게임에서 캐릭터 선택시 업데이트 </summary>
+    /// <summary>
+    /// 🎮인게임에서 캐릭터 선택시 업데이트
+    /// </summary>
     public void UpdateUI(Chara chara)
     {
         Debug.Log("UpdateUI(chara):: chara=" + chara.name);
@@ -159,13 +178,15 @@ public class CharaUpgradeUIManager : MonoBehaviour
         
         // 등급업 텍스트 최신화
         CharaCard curCard = UI._.charaCltUI.charaCardArr[(int)chara.Cate];
-        gradeUpTxt.text = $"등급업 {curCard.GetUserData().cardCnt} / {curCard.GetNextGradeCardCnt()}";
+        gradeUpTxt.text = (chara.Grade == CHR_GRADE.PRIME)? "등급 MAX" : $"등급업 {curCard.GetUserData().cardCnt} / {curCard.GetNextGradeCardCnt()}";
+        gradeUpBtn.interactable = true;
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)
         {
             SkillCard skillcard = skillCardArr[i];
             skillcard.UpdateUI(i, chara.CharaSkill, chara.SkillLvArr[i], chara.Grade);
+            skillcard.UpgradeBtn.interactable = true;
 
             int lv = chara.SkillLvArr[i];
             var skillAst = chara.CharaSkill.skillAssetArr[i];
@@ -188,7 +209,9 @@ public class CharaUpgradeUIManager : MonoBehaviour
         }
     }
 
-    /// <summary> 콜렉션에서 캐릭터카드 선택시 업데이트 </summary>
+    /// <summary>
+    /// 👜콜렉션에서 캐릭터카드 선택시 업데이트
+    /// </summary>
     public void UpdateUI(CharaCard card)
     {
         Debug.Log("UpdateUI(CharaCard card)");
@@ -211,23 +234,15 @@ public class CharaUpgradeUIManager : MonoBehaviour
         critDmgPerTxt.text = $"{Chara.DEF_CRITDMG * 100}%";
 
         // 등급업 텍스트 최신화
-        string str = card.GetGrade() == CHR_GRADE.PRIME? "등급 MAX"
-            : $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
-        gradeUpTxt.text = str;
+        gradeUpTxt.text = (card.GetGrade() == CHR_GRADE.PRIME)? "등급 MAX" : $"등급업 {card.GetUserData().cardCnt} / {card.GetNextGradeCardCnt()}";
+        gradeUpBtn.interactable = false;
 
         // Skill 최신화
         for(int i = 0; i < skillCardArr.Length; i++)
         {
             SkillCard skillcard = skillCardArr[i];
             skillcard.UpdateUI(i, data.charaSkillAsset, card.GetSkillLv(i), card.GetGrade());
-        }
-
-        // Skill 최신화
-        for(int i = 0; i < skillCardArr.Length; i++)
-        {
-            SkillCard skillcard = skillCardArr[i];
-            skillcard.UpdateUI(i, data.charaSkillAsset, card.GetSkillLv(i), card.GetGrade());
-
+            skillcard.UpgradeBtn.interactable = false;
             int lv = card.GetSkillLv(i);
             var skillAst = data.charaSkillAsset.skillAssetArr[i];
 

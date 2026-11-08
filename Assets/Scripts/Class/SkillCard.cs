@@ -15,12 +15,13 @@ public class SkillCard : MonoBehaviour
     public TextMeshProUGUI lockedTxt;
     public TextMeshProUGUI titleTxt;
     public TextMeshProUGUI descTxt;
+    public Button UpgradeBtn;
     public TextMeshProUGUI priceTxt;
     public TextMeshProUGUI lvTxt;
     public Image iconImg;
 
     // Data
-
+    public int upgradePrice {get; private set;}
 
 #region FUNC
     /// <summary>
@@ -30,7 +31,8 @@ public class SkillCard : MonoBehaviour
     /// <param name="skillLv">스킬 레벨</param>
     private int CalcPrice(int priceUnit, int skillLv)
     {
-        return priceUnit + skillLv * (skillLv - 1) * priceUnit / 2;
+        upgradePrice = priceUnit + skillLv * (skillLv - 1) * priceUnit / 2;
+        return upgradePrice;
     }
 
     /// <summary>
@@ -46,14 +48,14 @@ public class SkillCard : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// 스킬 업그레이드 카드(프레임) UI 최신화
     /// </summary>
     /// <param name="idx">스킬카드 프리팹 인덱스</param>
     /// <param name="chara">현재 선택한 캐릭터</param>
     public void UpdateUI(int idx, CharaSkillAsset charaSkill, int skillLv, CHR_GRADE curGrade)
     {
         SkillAsset skillAsset = charaSkill.skillAssetArr[idx];
-        // int skillLv = chara.SkillLvArr[idx];
+        bool isLvMax = skillLv >= skillAsset.MaxLv;
 
         // 잠김상태 여부
         bool isOverGrade = idx > (int)curGrade;
@@ -61,8 +63,8 @@ public class SkillCard : MonoBehaviour
         // UI 업데이트
         lockedTxt.text = $"{(CHR_GRADE)idx}등급 잠금해제";
         titleTxt.text = skillAsset.Name;
-        priceTxt.text = $"{CalcPrice(skillAsset.PriceUnit, skillLv)}";
-        lvTxt.text = $"LV.{skillLv}/{skillAsset.MaxLv}";
+        priceTxt.text = isLvMax? "MAX" : $"{CalcPrice(skillAsset.PriceUnit, skillLv)}";
+        lvTxt.text = isLvMax? "LV. MAX" : $"LV.{skillLv}/{skillAsset.MaxLv}";
         iconImg.sprite = skillAsset.Img;
     }
 
