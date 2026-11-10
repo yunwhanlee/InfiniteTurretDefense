@@ -14,46 +14,49 @@ public class StageManager : MonoBehaviour
     public TextMeshProUGUI stageTxt;
     public Slider progressSlider;
 
-    [Header("적 HP 증가량")]
+    [Header("스테이지1. 몬스터 스프라이트 에셋")]
+    public SpriteLibraryAsset[] stage1_MonsterSprLibAstArr;
+
+    [Header("스테이지1. 보스 스프라이트 에셋")]
+    public SpriteLibraryAsset[] stage1_BossSprLibAstArr;
+
+    [Header("Value")]
+    public MAP_TYPE mapType;
+    public int stage; // 스테이지 = 분
+    public int prevStageLoopIdx; // 이전 스테이지 순환 인덱스
+    public int curStageLoopIdx; // 0~9까지의 스테이지 순환 인덱스
+    private Dictionary<int, int> hpCache = new Dictionary<int, int>(); // 거듭 제곱 체력을 저장할 캐시 딕셔너리
+    private int startStage;
+    private float time;
+
+#region 적 HP 증가량
+    [Header("적 스테이지 밸런스 변수")]
+    public int curEnemyHp; // 현재 적 HP
+    public int nextEnemyHp; // 다음 스테이지 적 HP
+    [field:SerializeField] public int EnemyStageHp {get; private set;}
     const int DEF_HP = 3; // 기본 적 HP
     public const float ELITE_INC_HP_RATE = 5; // 엘리트 체력 증가 배율
     public const float BOSS_INC_HP_RATE = 20; // 보스 체력 증가 배율
     const float MIN_HP_RATE = 1.04f; // 스테이지당 HP 증가율 최소값
     public const float INC_HP_RATE = 1.5f; // 스테이지당 HP 증가량
     public const float HP_DECAY = 0.005f; // 스테이지당 HP 배율 감소폭
-    public int curEnemyHp; // 현재 적 HP
-    public int nextEnemyHp; // 다음 스테이지 적 HP
+#endregion
 
-    [Header("적 처지시 획득 골드량")]
-    public int coin;
+#region 적 처지시 획득 골드량
     const int DEFCOIN = 1; // 기본 코인
     const float ELITE_INC_COIN_RATE = 2.0f; // 엘리트 몬스터 코인 획득 배율
     const float BOSS_INC_COIN_RATE = 4.0f; // 보스 코인 획득 배율
     float coinMult = 1.5f; // 코인 배율
     float stageRate = 0.01f; // 스테이지당 추가 코인 증가량
-
-    [Header("적 공격력 증가량")]
+    [field:SerializeField] public int EnemyStageCoin {get; private set;}
+#endregion
+#region 적 공격력 증가량
     const int DEF_DMG = 1; // 기본 적 공격력
     public const float ELITE_INC_DMG_RATE = 1.75f;
     const float BOSS_INC_DMG_RATE = 3.5f;
     public const int INC_DMG_VAL = 2; // 공격력 증가량 (정수)
-
-    [Header("스테이지1. 몬스터 스프라이트 에셋")]
-    public SpriteLibraryAsset[] stage1_MonsterSprLibAstArr;
-    [Header("스테이지1. 보스 스프라이트 에셋")]
-    public SpriteLibraryAsset[] stage1_BossSprLibAstArr;
-    private Dictionary<int, int> hpCache = new Dictionary<int, int>(); // 거듭 제곱 체력을 저장할 캐시 딕셔너리
-
-    // VALUE
-    public MAP_TYPE mapType;
-    public int stage; // 스테이지 = 분
-    public int prevStageLoopIdx; // 이전 스테이지 순환 인덱스
-    public int curStageLoopIdx; // 0~9까지의 스테이지 순환 인덱스
-    public int EnemyStageHp {get; private set;}
-    public int EnemyStageDmg {get; private set;}
-    public int EnemyStageCoin {get; private set;}
-    private int startStage;
-    private float time;
+    [field:SerializeField] public int EnemyStageDmg {get; private set;}
+#endregion
 
     void Start()
     {
@@ -82,6 +85,8 @@ public class StageManager : MonoBehaviour
         {
             if(GM._.tower.State != Tower.STATE.DEAD)
             {
+                ENEMY_TYPE type = ENEMY_TYPE.NORMAL;
+
                 // 현재 분과 초 먼저 계산
                 int minute = Mathf.FloorToInt(time / 60f); // 순수하게 경과한 '분'
                 int sec = (int)time % 60;
@@ -99,14 +104,13 @@ public class StageManager : MonoBehaviour
                     {
                         case 2: case 4: case 6: case 8:
                             Debug.Log($"{curStageLoopIdx} => 적 소환 : 엘리트 몬스터");
-                            EnemyStageCoin = GetCalcCoin(EnemyStageHp, ENEMY_TYPE.BOSS);
+                            type = ENEMY_TYPE.ELITE;
                             break;
                         case 0: // 10, 20, 30 스테이지는 나머지가 무조건 0
                             Debug.Log($"{curStageLoopIdx} => 적 소환 : 보스");
-                            EnemyStageCoin = GetCalcCoin(EnemyStageHp, ENEMY_TYPE.ELITE);
+                            type = ENEMY_TYPE.BOSS;
                             break;
                         default:
-                            EnemyStageCoin = GetCalcCoin(EnemyStageHp, ENEMY_TYPE.NORMAL);
                             break;
                     }
                 }
@@ -129,6 +133,9 @@ public class StageManager : MonoBehaviour
                 int nextStageDmg = DEF_DMG + stage * INC_DMG_VAL; // 다음 스테이지 공격력
                 EnemyStageDmg = Mathf.CeilToInt((float)(curStageDmg + (nextStageDmg - curStageDmg) * progressPer));
                 Debug.Log($"적 공격력= {curStageDmg} + ({nextStageDmg} - {curStageDmg}) * {progressPer} = {EnemyStageDmg}");
+
+                // 코인 획득량
+                EnemyStageCoin = GetCalcCoin(EnemyStageHp, type);
 
                 // UI
                 UI._.timeTxt.text = $"{minute + startStage} : {sec}";
