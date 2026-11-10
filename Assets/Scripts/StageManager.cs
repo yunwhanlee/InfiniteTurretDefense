@@ -46,8 +46,8 @@ public class StageManager : MonoBehaviour
     const int DEFCOIN = 1; // 기본 코인
     const float ELITE_INC_COIN_RATE = 2.0f; // 엘리트 몬스터 코인 획득 배율
     const float BOSS_INC_COIN_RATE = 4.0f; // 보스 코인 획득 배율
-    float coinMult = 1.5f; // 코인 배율
-    float stageRate = 0.01f; // 스테이지당 추가 코인 증가량
+    const float COIN_MULT = 2.0f; // 코인 배율
+    const float STAGE_RATE = 0.01f; // 스테이지당 추가 코인 증가량
     [field:SerializeField] public int EnemyStageCoin {get; private set;}
 #endregion
 #region 적 공격력 증가량
@@ -85,8 +85,6 @@ public class StageManager : MonoBehaviour
         {
             if(GM._.tower.State != Tower.STATE.DEAD)
             {
-                ENEMY_TYPE type = ENEMY_TYPE.NORMAL;
-
                 // 현재 분과 초 먼저 계산
                 int minute = Mathf.FloorToInt(time / 60f); // 순수하게 경과한 '분'
                 int sec = (int)time % 60;
@@ -104,11 +102,11 @@ public class StageManager : MonoBehaviour
                     {
                         case 2: case 4: case 6: case 8:
                             Debug.Log($"{curStageLoopIdx} => 적 소환 : 엘리트 몬스터");
-                            type = ENEMY_TYPE.ELITE;
+                            // TODO
                             break;
                         case 0: // 10, 20, 30 스테이지는 나머지가 무조건 0
                             Debug.Log($"{curStageLoopIdx} => 적 소환 : 보스");
-                            type = ENEMY_TYPE.BOSS;
+                            // TODO
                             break;
                         default:
                             break;
@@ -134,8 +132,8 @@ public class StageManager : MonoBehaviour
                 EnemyStageDmg = Mathf.CeilToInt((float)(curStageDmg + (nextStageDmg - curStageDmg) * progressPer));
                 Debug.Log($"적 공격력= {curStageDmg} + ({nextStageDmg} - {curStageDmg}) * {progressPer} = {EnemyStageDmg}");
 
-                // 코인 획득량
-                EnemyStageCoin = GetCalcCoin(EnemyStageHp, type);
+                // 일반 적 코인 획득량
+                EnemyStageCoin = GetCalcCoin(EnemyStageHp, ENEMY_TYPE.NORMAL);
 
                 // UI
                 UI._.timeTxt.text = $"{minute + startStage} : {sec}";
@@ -199,7 +197,7 @@ public class StageManager : MonoBehaviour
         // 타입에 따른 추가 곱연산 변수
         float extraMulti = enemyType == ENEMY_TYPE.NORMAL? 1 : enemyType == ENEMY_TYPE.ELITE? ELITE_INC_COIN_RATE : BOSS_INC_COIN_RATE;
         // 코인 획득량 계산
-        int coin = DEFCOIN + Mathf.RoundToInt(Mathf.Sqrt(resultHp) * coinMult * (1 + (stage-1) * stageRate));
+        int coin = DEFCOIN + Mathf.RoundToInt(Mathf.Sqrt(resultHp) * COIN_MULT * (1 + (stage-1) * STAGE_RATE));
 
         // 최종 결과 계산
         return Mathf.RoundToInt(coin * extraMulti);
