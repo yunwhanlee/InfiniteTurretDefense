@@ -53,18 +53,21 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
+        var stm = GM._.stm;
+
         float deltaTime = Time.deltaTime;
         totalTime += deltaTime;
         time += deltaTime;
         eliteTime += deltaTime;
 
-        // 몬스터 소환
+        // 일반 몬스터 소환
         if(time > span)
         {
             time = 0;
 
             // 적 생성
-            Enemy enemy = SpawnEnemy(GM._.stm.EnemyStageHp, GM._.stm.EnemyStageDmg);
+            EnemyStat normal = stm.Normal;
+            Enemy enemy = SpawnEnemy(normal.hp, normal.dmg, normal.coin);
             enemy.moveSpeed = 1;
             enemy.transform.localScale = new Vector3(1,1,1);
             enemy.SetSprLibAst(stm.stage1_MonsterSprLibAstArr);
@@ -84,11 +87,9 @@ public class EnemyManager : MonoBehaviour
             eliteTime = 0;
             time = 0; // 몬스터 소환도 한 주기 안되도록
 
-            int eliteHp = Mathf.RoundToInt(GM._.stm.EnemyStageHp * StageManager.BOSS_INC_HP_RATE);
-            int eliteDmg = Mathf.RoundToInt(GM._.stm.EnemyStageDmg * StageManager.ELITE_INC_DMG_RATE);
-
             // 적 체력 및 공격력 업데이트
-            Enemy enemy = SpawnEnemy(eliteHp, eliteDmg);
+            EnemyStat elite = stm.Elite;
+            Enemy enemy = SpawnEnemy(elite.hp, elite.dmg, elite.coin);
             enemy.moveSpeed = 0.5f;
             enemy.transform.localScale = new Vector3(3,3,3);
             enemy.SetSprLibAst(stm.stage1_BossSprLibAstArr);
@@ -97,6 +98,10 @@ public class EnemyManager : MonoBehaviour
             enemy.OnDeadEvent = (enemy) => {
                 pool.Release(enemy);
             };
+        }
+        else
+        {
+            //TODO BOSS
         }
     }
 
@@ -115,11 +120,11 @@ public class EnemyManager : MonoBehaviour
 
     void OnDelete(Enemy enemy) => Destroy(enemy);
 
-    public Enemy SpawnEnemy(int maxHp, int dmg)
+    public Enemy SpawnEnemy(int maxHp, int dmg, int coin)
     {
         Enemy enemy = pool.Get();
         enemy.transform.position = GetRandomCirclePosition(spawnRadius);
-        enemy.Init(maxHp, dmg);
+        enemy.Init(maxHp, dmg, coin);
 
         return enemy;
     }

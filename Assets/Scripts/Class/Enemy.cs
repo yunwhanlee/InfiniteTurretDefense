@@ -19,22 +19,23 @@ public class Enemy : MonoBehaviour
 
     // 이벤트 액션
     public Action<Enemy> OnDeadEvent = (Enemy) => {};
-
     public int maxHp;
     public int hp;
-
     private float originMoveSpeed;
     public float moveSpeed;
-
     public int ExtraDmg;
     [SerializeField] int dmg;   public int Dmg
     {
         get => Mathf.Max(1, dmg + ExtraDmg);
         set => dmg = value;
     }
+    [SerializeField] int coin;  public int Coin // 처치시 획득코인
+    {
+        get => coin;
+        set => coin = value;
+    }
 
     public bool IsAlive => hp > 0;
-
 
 
     [Header("속성")]
@@ -176,7 +177,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 초기화
     /// </summary>
-    public void Init(int maxHp, int dmg)
+    public void Init(int maxHp, int dmg, int coin)
     {
         hpSlider.gameObject.SetActive(false); // HP슬라이더 비표시
         sprRdr.color = Color.white;
@@ -190,6 +191,7 @@ public class Enemy : MonoBehaviour
         this.maxHp = maxHp;
         Dmg = dmg;
         ExtraDmg = 0;
+        this.coin = coin;
 
         state = STATE.MOVE;
         anim.SetTrigger(ANIM_TRG_IS_MOVE);
