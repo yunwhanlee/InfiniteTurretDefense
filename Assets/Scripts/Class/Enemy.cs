@@ -3,13 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 using Random = UnityEngine.Random;
-
-public enum ENEMY_TYPE
-{
-    NORMAL, ELITE, BOSS
-}
+using static Config;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -346,6 +341,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 뒤짐
+    /// </summary>
     IEnumerator CorDead()
     {
         state = STATE.DEAD;
