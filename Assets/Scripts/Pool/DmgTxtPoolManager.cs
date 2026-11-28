@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 /// <summary>
-/// 데미지텍스트 오브젝트풀링 매니저
+/// 데미지 텍스트 오브젝트 풀링 매니저
 /// </summary>
-public class DmgTxtManager : MonoBehaviour
+public class DmgTxtPoolManager : MonoBehaviour
 {
     public Transform groupTf;
     IObjectPool<DmgTxt> pool;   public IObjectPool<DmgTxt> Pool {get => pool;}

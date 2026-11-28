@@ -71,7 +71,7 @@ public class StageManager : MonoBehaviour
         mapType = (MAP_TYPE)(stage / (int)MAP_TYPE.MAX);
 
         time = 0;
-        Time.timeScale = 7;
+        Time.timeScale = 1;
 
         stageTxt.text = $"{mapType} : 스테이지 {stage}";
 

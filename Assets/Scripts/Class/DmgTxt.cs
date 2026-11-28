@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using static Config;
 
 public class DmgTxt : MonoBehaviour
 {
@@ -26,6 +25,6 @@ public class DmgTxt : MonoBehaviour
         time = 0;
         txt.text = $"{dmg}";
         txt.color = isCritical? Color.yellow : Color.white;
-        anim.Play("DmgTxtAnim", -1, 0f);
+        anim.Play("TxtUpAnim", -1, 0f);
     }
 }

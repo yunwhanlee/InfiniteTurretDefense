@@ -357,6 +357,11 @@ public class Enemy : MonoBehaviour
         if(corAttackId != null)
             StopCoroutine(corAttackId);
 
+        // 동전 드랍
+        var poolIdx = DropItemPoolManager.DROPITEM_IDX.COIN;
+        var pos = transform.position + Vector3.up * 0.225f;
+        GM._.dpm.SpawnPoolDics(poolIdx, transform.position, coin);
+
         yield return new WaitForSeconds(1.5f);
         OnDeadEvent?.Invoke(this);
     }
